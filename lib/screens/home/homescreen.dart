@@ -1,54 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_calicut/screens/home/components/catrgory.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:trip_calicut/screens/home/widgets.dart';
 
-import 'components/img.dart';
+import 'components/carousel.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-
-  final List<Widget> imageSliders = imgList
-      .map((item) => Container(
-            child: Container(
-              margin: EdgeInsets.all(5.0),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  child: Stack(
-                    children: <Widget>[
-                      Image.network(item, fit: BoxFit.cover, width: 1000.0),
-                      Positioned(
-                        bottom: 0.0,
-                        left: 0.0,
-                        right: 0.0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color.fromARGB(200, 0, 0, 0),
-                                Color.fromARGB(0, 0, 0, 0)
-                              ],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                            ),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0),
-                          child: Text(
-                            'No. ${imgList.indexOf(item)} image',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
-            ),
-          ))
-      .toList();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'),
+                        'https://images.unsplash.com/photo-1645379033960-72d6cb488c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -88,59 +48,61 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: Column(
+                          child: Row(
+                            //spaceevenly
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Row(
-                                //spaceevenly
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              Column(
+                                
                                 children: [
-                                  category(),
-                                  category(),
-                                  category(),
-                                  category(),
+                                  Category(
+                                      image: 'assets/icons/tours.svg',
+                                      title: 'Tours'),
+                                  Category(
+                                      image: 'assets/icons/resort.svg',
+                                      title: 'Resort'),
+                                  Category(
+                                      image: 'assets/icons/trekking.svg',
+                                      title: 'Trekking'),
                                 ],
                               ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              Row(
-                                //spaceevenly
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              Column(
                                 children: [
-                                  category(),
-                                  category(),
-                                  category(),
-                                  category(),
+                                  Category(
+                                      image: 'assets/icons/houseboat.svg',
+                                      title: 'House Boat'),
+                                  Category(
+                                      image: 'assets/icons/travel.svg',
+                                      title: 'Travel'),
+                                  Category(
+                                      image: 'assets/icons/homestay.svg',
+                                      title: 'Homestay'),
                                 ],
                               ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              Row(
-                                //spaceevenly
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              Column(
                                 children: [
-                                  category(),
-                                  category(),
-                                  category(),
-                                  category(),
+                                  Category(
+                                      image: 'assets/icons/places.svg',
+                                      title: 'Places'),
+                                  Category(
+                                      image: 'assets/icons/blindspot.svg',
+                                      title: 'Blind Spot'),
+                                  Category(
+                                      image: 'assets/icons/education.svg',
+                                      title: 'Education'),
                                 ],
                               ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              Row(
-                                //spaceevenly
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              Column(
                                 children: [
-                                  category(),
-                                  category(),
-                                  category(),
-                                  category(),
+                                  Category(
+                                      image: 'assets/icons/camping.svg',
+                                      title: 'camping'),
+                                  Category(
+                                      image: 'assets/icons/globaltravel.svg',
+                                      title: 'Global Travel'),
+                                  Category(
+                                      image: 'assets/icons/jobs.svg',
+                                      title: 'Jobs'),
                                 ],
                               ),
                             ],
@@ -154,12 +116,12 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: Container(
-                          height: 200.h,
+                          height: 150.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
                               image: NetworkImage(
-                                  'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'),
+                                  'https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80'),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -232,24 +194,39 @@ class HomeScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  category(),
-                                  category(),
-                                  category(),
-                                  category(),
+                                  // Category(
+                                  //     image: 'assets/trifswitches/zomato.svg',
+                                  //     title: 'Zomato'),
+                                      Category(
+                                      image: 'assets/trifswitches/ola.svg',
+                                      title: 'Ola Cabs'),
+                                      Category(
+                                      image: 'assets/trifswitches/oyo.svg',
+                                      title: 'Oyo Roos'),
+                                      Category(
+                                      image: 'assets/trifswitches/redbus.svg',
+                                      title: 'RedBus'),
                                 ],
                               ),
                               SizedBox(
                                 height: 10.h,
                               ),
                               Row(
-                                //spaceevenly
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  category(),
-                                  category(),
-                                  category(),
-                                  category(),
+                                  Category(
+                                      image: 'assets/trifswitches/uber.svg',
+                                      title: 'Uber'),
+                                      Category(
+                                      image: 'assets/trifswitches/swiggy.svg',
+                                      title: 'Swiggy'),
+                                      Category(
+                                      image: 'assets/trifswitches/trivago.svg',
+                                      title: 'Trivago'),
+                                      Category(
+                                      image: 'assets/trifswitches/bookingcom.svg',
+                                      title: 'Booking.com'),
                                 ],
                               ),
                             ],
@@ -280,7 +257,7 @@ class HomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'),
+                                      'https://images.unsplash.com/photo-1645379033960-72d6cb488c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -331,7 +308,7 @@ class HomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'),
+                                      'https://images.unsplash.com/photo-1645379033960-72d6cb488c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -368,10 +345,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 Text('Athirapilly'),
                               ],
-                            )
+                            ),
                           ],
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -379,51 +356,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Stack topAttractions() {
-    return Stack(
-      children: [
-        Container(
-          //background image
-          height: 100.h,
-          width: 100.w,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                  'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Positioned(
-            top: 10.h,
-            child: Container(
-              color: Colors.yellow,
-              child: Text('ernakulam'),
-            ))
-      ],
-    );
-  }
-
-  Container category() {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.location_on,
-            color: Colors.black,
-          ),
-          Text(
-            'Calicut',
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
-        ],
       ),
     );
   }
