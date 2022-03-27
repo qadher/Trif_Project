@@ -12,19 +12,24 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       padding: EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
             image,
-            height: 30.h,
-            width: 30.w,
+            height: 25.h,
+            width: 25.w,
+          ),
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             title,
             style: TextStyle(
               color: Colors.black,
+              fontSize: 10
             ),
           ),
         ],
