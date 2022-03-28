@@ -98,7 +98,7 @@ class PlaceScreen extends StatelessWidget {
                   ),
                 ),
                 heightSizedBox(),
-                exploreSlider(context),
+                
                 heightSizedBox(),
                 TitleText(text: 'Trending Now'),
                 heightSizedBox(),
