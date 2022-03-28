@@ -13,8 +13,7 @@ class PackageCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20)),
+          color: Colors.white, borderRadius: BorderRadius.circular(20)),
       child: Column(
         children: [
           Container(
@@ -23,8 +22,7 @@ class PackageCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
-                image: NetworkImage(
-                    'https://images.unsplash.com/photo-1645379033960-72d6cb488c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
+                image: AssetImage('assets/images/imageone.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -37,8 +35,7 @@ class PackageCard extends StatelessWidget {
             height: 10.h,
           ),
           Row(
-            mainAxisAlignment:
-                MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
@@ -52,8 +49,7 @@ class PackageCard extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.grey,
                         // line text
-                        decoration:
-                            TextDecoration.lineThrough),
+                        decoration: TextDecoration.lineThrough),
                   ),
                   SizedBox(
                     width: 5.w,

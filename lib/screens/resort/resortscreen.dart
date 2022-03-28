@@ -73,6 +73,7 @@ class ResortScreen extends StatelessWidget {
                       TitleText(text: 'Discover Resorts'),
                       heightSizedBox(),
                       ListView.separated(
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: 10,
                         separatorBuilder: (context, index) => SizedBox(

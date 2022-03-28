@@ -111,8 +111,7 @@ class TourScreen extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://img.traveltriangle.com/blog/wp-content/uploads/2018/09/cover-for-Trekking-In-Kathmandu-e1582960550667.jpg'),
+                      image: AssetImage('assets/images/imageone.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -238,8 +237,7 @@ class TourScreen extends StatelessWidget {
           width: 100.w,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(
-                  'https://images.unsplash.com/photo-1529171696861-bac785a44828?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'),
+              image: AssetImage('assets/images/background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -252,8 +250,7 @@ class TourScreen extends StatelessWidget {
           width: 100.w,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(
-                  'https://images.unsplash.com/photo-1604239282228-6a723984962c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fHRyaXB8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'),
+              image: AssetImage('assets/images/background.jpg'),
               fit: BoxFit.cover,
             ),
           ),

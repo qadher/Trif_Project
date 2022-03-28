@@ -37,8 +37,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.black,
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.unsplash.com/photo-1645379033960-72d6cb488c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
+                      image: AssetImage('assets/images/background.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -111,38 +110,39 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Category(
                                       image: 'assets/icons/tours.svg',
-                                      title: 'Tours', onClick: 
-                                      //navigate to tourScreen
-                                      () {
+                                      title: 'Tours',
+                                      onClick:
+                                          //navigate to tourScreen
+                                          () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => TourScreen(),
                                           ),
-                                        
                                         );
-                                      }
-                                      ),
+                                      }),
                                   Category(
                                       image: 'assets/icons/resort.svg',
-                                      title: 'Resort', onClick: () {
+                                      title: 'Resort',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => ResortScreen(),
+                                            builder: (context) =>
+                                                ResortScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                   Category(
                                       image: 'assets/icons/trekking.svg',
-                                      title: 'Trekking', onClick: () {
+                                      title: 'Trekking',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => TrekkingScreen(),
+                                            builder: (context) =>
+                                                TrekkingScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                 ],
@@ -151,35 +151,38 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Category(
                                       image: 'assets/icons/houseboat.svg',
-                                      title: 'House Boat', onClick: () {
+                                      title: 'House Boat',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => HouseBoatScreen(),
+                                            builder: (context) =>
+                                                HouseBoatScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                   Category(
                                       image: 'assets/icons/travel.svg',
-                                      title: 'Travel', onClick: () {
+                                      title: 'Travel',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => TravelScreen(),
+                                            builder: (context) =>
+                                                TravelScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                   Category(
                                       image: 'assets/icons/homestay.svg',
-                                      title: 'Homestay', onClick: () {
+                                      title: 'Homestay',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => HomeStayScreen(),
+                                            builder: (context) =>
+                                                HomeStayScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                 ],
@@ -188,35 +191,35 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Category(
                                       image: 'assets/icons/places.svg',
-                                      title: 'Places', onClick: () {
+                                      title: 'Places',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => TourScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                   Category(
                                       image: 'assets/icons/blindspot.svg',
-                                      title: 'Blind Spot', onClick: () {
+                                      title: 'Blind Spot',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => TourScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                   Category(
                                       image: 'assets/icons/education.svg',
-                                      title: 'Education', onClick: () {
+                                      title: 'Education',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => TourScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                 ],
@@ -225,35 +228,36 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Category(
                                       image: 'assets/icons/camping.svg',
-                                      title: 'camping', onClick: () {
+                                      title: 'camping',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => CampingScreen(),
+                                            builder: (context) =>
+                                                CampingScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                   Category(
                                       image: 'assets/icons/globaltravel.svg',
-                                      title: 'Global Travel', onClick: () {
+                                      title: 'Global Travel',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => TourScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                   Category(
                                       image: 'assets/icons/jobs.svg',
-                                      title: 'Jobs', onClick: () {
+                                      title: 'Jobs',
+                                      onClick: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => TourScreen(),
                                           ),
-                                        
                                         );
                                       }),
                                 ],
@@ -273,8 +277,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80'),
+                              image: AssetImage('assets/images/imageone.jpg'),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -319,7 +322,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: TitleText(text: 'Nearby Places'),
+                        child: TitleText(text: ' Places'),
                       ),
                       Container(
                         height: 150.h,
@@ -351,14 +354,20 @@ class HomeScreen extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Category(
-                                          image: 'assets/icons/tours.svg',
-                                          title: 'Tours', onClick: () {  },),
+                                        image: 'assets/icons/tours.svg',
+                                        title: 'Tours',
+                                        onClick: () {},
+                                      ),
                                       Category(
-                                          image: 'assets/icons/resort.svg',
-                                          title: 'Resort', onClick: () {  },),
+                                        image: 'assets/icons/resort.svg',
+                                        title: 'Resort',
+                                        onClick: () {},
+                                      ),
                                       Category(
-                                          image: 'assets/icons/trekking.svg',
-                                          title: 'Trekking', onClick: () {  },),
+                                        image: 'assets/icons/trekking.svg',
+                                        title: 'Trekking',
+                                        onClick: () {},
+                                      ),
                                     ],
                                   ),
                                   SizedBox(
@@ -369,14 +378,20 @@ class HomeScreen extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Category(
-                                          image: 'assets/icons/tours.svg',
-                                          title: 'Tours', onClick: () {  },),
+                                        image: 'assets/icons/tours.svg',
+                                        title: 'Tours',
+                                        onClick: () {},
+                                      ),
                                       Category(
-                                          image: 'assets/icons/resort.svg',
-                                          title: 'Resort', onClick: () {  },),
+                                        image: 'assets/icons/resort.svg',
+                                        title: 'Resort',
+                                        onClick: () {},
+                                      ),
                                       Category(
-                                          image: 'assets/icons/trekking.svg',
-                                          title: 'Trekking', onClick: () {  },),
+                                        image: 'assets/icons/trekking.svg',
+                                        title: 'Trekking',
+                                        onClick: () {},
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -403,8 +418,8 @@ class HomeScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       image: DecorationImage(
-                                        image: NetworkImage(
-                                            'https://images.unsplash.com/photo-1645379033960-72d6cb488c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
+                                        image: AssetImage(
+                                            'assets/images/imageone.jpg'),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -440,6 +455,7 @@ class HomeScreen extends StatelessWidget {
                               height: 10.h,
                             ),
                             ListView.separated(
+                              physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: 10,
                               separatorBuilder: (context, index) => SizedBox(

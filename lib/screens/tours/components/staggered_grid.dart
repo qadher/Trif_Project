@@ -44,7 +44,7 @@ class StaggeredPage extends StatelessWidget {
                     width: 0.3,
                   ),
                   image: DecorationImage(
-                    image: NetworkImage(
+                    image: AssetImage(
                       imgList[index],
                     ),
                     fit: BoxFit.cover,

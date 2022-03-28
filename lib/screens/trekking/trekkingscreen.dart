@@ -72,6 +72,7 @@ class TrekkingScreen extends StatelessWidget {
                 ),
                 heightSizedBox(),
                 ListView.separated(
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: 10,
                   separatorBuilder: (context, index) => SizedBox(
