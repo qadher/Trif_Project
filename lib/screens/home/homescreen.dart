@@ -372,6 +372,11 @@ class HomeScreen extends StatelessWidget {
                                         title: 'Trekking',
                                         onClick: () {},
                                       ),
+                                       Category(
+                                        image: 'assets/icons/tours.svg',
+                                        title: 'Tours',
+                                        onClick: () {},
+                                      ),
                                     ],
                                   ),
                                   SizedBox(
@@ -394,6 +399,11 @@ class HomeScreen extends StatelessWidget {
                                       Category(
                                         image: 'assets/icons/trekking.svg',
                                         title: 'Trekking',
+                                        onClick: () {},
+                                      ),
+                                      Category(
+                                        image: 'assets/icons/tours.svg',
+                                        title: 'Tours',
                                         onClick: () {},
                                       ),
                                     ],

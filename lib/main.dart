@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           colorScheme: theme.colorScheme
               .copyWith(secondary: Colors.transparent, primary: Colors.blue),
         ),
-        home: HomeScreen(),
+        home: App(),
       ),
     );
   }
