@@ -40,7 +40,12 @@ class PackageCard extends StatelessWidget {
               Row(
                 children: [
                   Text('₹'),
-                  Text('2000/-'),
+                  Text(
+                    '2000/-',
+                    style: TextStyle(
+                      fontFamily: 'Lato',
+                    ),
+                  ),
                   SizedBox(
                     width: 5.w,
                   ),
@@ -48,16 +53,27 @@ class PackageCard extends StatelessWidget {
                     '₹2500',
                     style: TextStyle(
                         color: Colors.grey,
+                        fontFamily: 'Lato',
                         // line text
                         decoration: TextDecoration.lineThrough),
                   ),
                   SizedBox(
                     width: 5.w,
                   ),
-                  Text('20%Off'),
+                  Text(
+                    '20%Off',
+                    style: TextStyle(
+                      fontFamily: 'Lato',
+                    ),
+                  ),
                 ],
               ),
-              Text('Athirapilly'),
+              Text(
+                'Athirapilly',
+                style: TextStyle(
+                  fontFamily: 'Lato',
+                ),
+              ),
             ],
           ),
         ],

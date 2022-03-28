@@ -26,7 +26,13 @@ class TopAttractions extends StatelessWidget {
             child: Container(
               width: 80.w,
               color: Colors.yellow,
-              child: Text('e'),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: Text('Manali',
+                    style: TextStyle(
+                      fontFamily: 'Lato',
+                    )),
+              ),
             ))
       ],
     );

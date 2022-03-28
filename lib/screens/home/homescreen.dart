@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.black.withOpacity(0.3),
                 ),
                 Positioned(
-                  top: MediaQuery.of(context).size.height * 0.13,
+                  top: MediaQuery.of(context).size.height * 0.10,
                   left: MediaQuery.of(context).size.width * 0.1,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,6 +63,7 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 24.sp,
+                          fontFamily: 'SpectralSC',
                         ),
                       ),
                       Row(
@@ -77,7 +78,10 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Text(
                             'Thrissur, Kerala',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontFamily: 'Lato'),
                           ),
                         ],
                       )
@@ -89,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.25),
                   decoration: BoxDecoration(
-                    color: Color(0xffE5E5E5),
+                    color: Color(0xffebf5fb ),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(45),
                       topRight: Radius.circular(45),
@@ -430,7 +434,12 @@ class HomeScreen extends StatelessWidget {
                                   Expanded(
                                     child: Column(
                                       children: [
-                                        Text('Wayanadan Vibes'),
+                                        Text(
+                                          'Wayanadan Vibes',
+                                          style: TextStyle(
+                                            fontFamily: 'Lato',
+                                          ),
+                                        ),
                                         SizedBox(
                                           height: 10.h,
                                         ),
@@ -438,8 +447,10 @@ class HomeScreen extends StatelessWidget {
                                           'Wayanad is a rural district in Kerala state, southwest India. In the east, the Wayanad Wildlife Sanctuary is a lush, forested region with areas of ....',
                                           maxLines: 3,
                                           style: TextStyle(
-                                              overflow: TextOverflow.ellipsis,
-                                              fontSize: 10.sp),
+                                            overflow: TextOverflow.ellipsis,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Lato',
+                                          ),
                                         )
                                       ],
                                     ),

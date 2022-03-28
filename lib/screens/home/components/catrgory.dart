@@ -32,7 +32,8 @@ class Category extends StatelessWidget {
               title,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 10
+                fontSize: 10,
+                fontFamily: 'Lato',
               ),
             ),
           ],
