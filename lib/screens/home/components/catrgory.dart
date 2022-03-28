@@ -7,13 +7,16 @@ class Category extends StatelessWidget {
   final String title;
   final VoidCallback onClick;
 
-  Category({Key? key, required this.image, required this.title, required this.onClick})
+  Category(
+      {Key? key,
+      required this.image,
+      required this.title,
+      required this.onClick})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       padding: EdgeInsets.all(10),
       child: GestureDetector(
         onTap: onClick,
@@ -22,8 +25,8 @@ class Category extends StatelessWidget {
           children: [
             SvgPicture.asset(
               image,
-              height: 25.h,
-              width: 25.w,
+              height: 45.h,
+              width: 45.w,
             ),
             SizedBox(
               height: 10.h,
@@ -32,7 +35,7 @@ class Category extends StatelessWidget {
               title,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 10,
+                fontSize: 12.sp,
                 fontFamily: 'Lato',
               ),
             ),

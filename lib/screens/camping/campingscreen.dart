@@ -15,7 +15,7 @@ class CampingScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBarWidget(
-          title: 'Resorts',
+          title: 'Camping',
         ),
       ),
       body: SafeArea(

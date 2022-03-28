@@ -18,7 +18,7 @@ class TrekkingScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBarWidget(
-          title: 'Resorts',
+          title: 'Trekking',
         ),
       ),
       body: SafeArea(
