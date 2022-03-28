@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_calicut/screens/camping/campingscreen.dart';
 import 'package:trip_calicut/screens/home/components/catrgory.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trip_calicut/screens/home/components/topattractions.dart';
+import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
+import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
+import 'package:trip_calicut/screens/resort/resortscreen.dart';
+import 'package:trip_calicut/screens/tours/tourscreen.dart';
+import 'package:trip_calicut/screens/travel/travelscreen.dart';
+import 'package:trip_calicut/screens/trekking/trekkingscreen.dart';
 
 import '../../components/packagecard.dart';
 import 'components/carousel.dart';
@@ -104,52 +111,151 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Category(
                                       image: 'assets/icons/tours.svg',
-                                      title: 'Tours'),
+                                      title: 'Tours', onClick: 
+                                      //navigate to tourScreen
+                                      () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TourScreen(),
+                                          ),
+                                        
+                                        );
+                                      }
+                                      ),
                                   Category(
                                       image: 'assets/icons/resort.svg',
-                                      title: 'Resort'),
+                                      title: 'Resort', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => ResortScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                   Category(
                                       image: 'assets/icons/trekking.svg',
-                                      title: 'Trekking'),
+                                      title: 'Trekking', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TrekkingScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Category(
                                       image: 'assets/icons/houseboat.svg',
-                                      title: 'House Boat'),
+                                      title: 'House Boat', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => HouseBoatScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                   Category(
                                       image: 'assets/icons/travel.svg',
-                                      title: 'Travel'),
+                                      title: 'Travel', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TravelScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                   Category(
                                       image: 'assets/icons/homestay.svg',
-                                      title: 'Homestay'),
+                                      title: 'Homestay', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => HomeStayScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Category(
                                       image: 'assets/icons/places.svg',
-                                      title: 'Places'),
+                                      title: 'Places', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TourScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                   Category(
                                       image: 'assets/icons/blindspot.svg',
-                                      title: 'Blind Spot'),
+                                      title: 'Blind Spot', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TourScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                   Category(
                                       image: 'assets/icons/education.svg',
-                                      title: 'Education'),
+                                      title: 'Education', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TourScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                 ],
                               ),
                               Column(
                                 children: [
                                   Category(
                                       image: 'assets/icons/camping.svg',
-                                      title: 'camping'),
+                                      title: 'camping', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => CampingScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                   Category(
                                       image: 'assets/icons/globaltravel.svg',
-                                      title: 'Global Travel'),
+                                      title: 'Global Travel', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TourScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                   Category(
                                       image: 'assets/icons/jobs.svg',
-                                      title: 'Jobs'),
+                                      title: 'Jobs', onClick: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => TourScreen(),
+                                          ),
+                                        
+                                        );
+                                      }),
                                 ],
                               ),
                             ],
@@ -246,13 +352,13 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       Category(
                                           image: 'assets/icons/tours.svg',
-                                          title: 'Tours'),
+                                          title: 'Tours', onClick: () {  },),
                                       Category(
                                           image: 'assets/icons/resort.svg',
-                                          title: 'Resort'),
+                                          title: 'Resort', onClick: () {  },),
                                       Category(
                                           image: 'assets/icons/trekking.svg',
-                                          title: 'Trekking'),
+                                          title: 'Trekking', onClick: () {  },),
                                     ],
                                   ),
                                   SizedBox(
@@ -264,13 +370,13 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       Category(
                                           image: 'assets/icons/tours.svg',
-                                          title: 'Tours'),
+                                          title: 'Tours', onClick: () {  },),
                                       Category(
                                           image: 'assets/icons/resort.svg',
-                                          title: 'Resort'),
+                                          title: 'Resort', onClick: () {  },),
                                       Category(
                                           image: 'assets/icons/trekking.svg',
-                                          title: 'Trekking'),
+                                          title: 'Trekking', onClick: () {  },),
                                     ],
                                   ),
                                 ],

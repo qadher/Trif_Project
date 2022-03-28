@@ -5,8 +5,9 @@ import 'package:flutter_svg/svg.dart';
 class Category extends StatelessWidget {
   final String image;
   final String title;
+  final VoidCallback onClick;
 
-  Category({Key? key, required this.image, required this.title})
+  Category({Key? key, required this.image, required this.title, required this.onClick})
       : super(key: key);
 
   @override
@@ -14,25 +15,28 @@ class Category extends StatelessWidget {
     return Container(
       
       padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            image,
-            height: 25.h,
-            width: 25.w,
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 10
+      child: GestureDetector(
+        onTap: onClick,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              image,
+              height: 25.h,
+              width: 25.w,
             ),
-          ),
-        ],
+            SizedBox(
+              height: 10.h,
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 10
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
