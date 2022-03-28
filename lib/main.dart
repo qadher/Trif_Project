@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
+import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
+import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
+import 'package:trip_calicut/screens/resort/resortscreen.dart';
+import 'package:trip_calicut/screens/tours/tourscreen.dart';
+import 'package:trip_calicut/screens/travel/travelscreen.dart';
+import 'package:trip_calicut/screens/trekking/trekkingscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
     return ScreenUtilInit(
       designSize: Size(360, 690),
       minTextAdapt: true,
@@ -19,10 +26,11 @@ class MyApp extends StatelessWidget {
       builder: () => MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+        theme: theme.copyWith(
+          colorScheme: theme.colorScheme
+              .copyWith(secondary: Colors.transparent, primary: Colors.blue),
         ),
-        home:  HomeScreen(),
+        home: HomeScreen(),
       ),
     );
   }
