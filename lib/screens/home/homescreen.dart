@@ -8,6 +8,7 @@ import 'package:trip_calicut/screens/home/components/topattractions.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
+import 'package:trip_calicut/screens/places/placesScreen.dart';
 import 'package:trip_calicut/screens/resort/resortscreen.dart';
 import 'package:trip_calicut/screens/tours/tourscreen.dart';
 import 'package:trip_calicut/screens/travel/travelscreen.dart';
@@ -201,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => TourScreen(),
+                                            builder: (context) => PlaceScreen(),
                                           ),
                                         );
                                       }),

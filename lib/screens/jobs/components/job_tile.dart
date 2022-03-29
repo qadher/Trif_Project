@@ -23,6 +23,7 @@ class JobTile extends StatelessWidget {
               
               height: 105.h,
               decoration: BoxDecoration(
+                color: Colors.white,
                   border: Border.all(width: 1, color: Colors.grey),
                   borderRadius: BorderRadius.circular(20)),
               child: Row(
