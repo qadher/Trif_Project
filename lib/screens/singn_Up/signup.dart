@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:trip_calicut/screens/singn_Up/signup.dart';
+import 'package:trip_calicut/bottom_navigation/navigation.dart';
+import 'package:trip_calicut/screens/login_screen/login_screen.dart';
 import 'package:trip_calicut/widgets.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -32,37 +33,58 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 60.h,
+                  height: 100.h,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 60.0),
-                  child: Center(
-                    child: Container(
-                        width: 90.w,
-                        height: 90.h,
-                        /*decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(50.0)),*/
-                        child: Image.asset(
-                          'assets/images/trifs_logo_login.png',
-                        )),
-                  ),
-                ),
+               
                 heightSizedBox(),
                 Text(
-                  "Welcome Back!",
+                  "Join Us!",
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 SizedBox(
-                  height: 60.h,
+                  height: 50.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Column(
                     children: [
+                       Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.42),
+                          borderRadius: BorderRadius.circular(32),
+                        ),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintStyle: TextStyle(fontSize: 17),
+                            hintText: 'Full Name',
+                            prefixIcon: Icon(Icons.person),
+                            // suffixIcon: Icon(Icons.search),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(20),
+                          ),
+                        ),
+                      ),
+                      heightSizedBox(),
+                       Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.42),
+                          borderRadius: BorderRadius.circular(32),
+                        ),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintStyle: TextStyle(fontSize: 17),
+                            hintText: 'Mobile Number',
+                            prefixIcon: Icon(Icons.mobile_friendly),
+                            // suffixIcon: Icon(Icons.search),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(20),
+                          ),
+                        ),
+                      ),
+                      heightSizedBox(),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.42),
@@ -71,8 +93,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextField(
                           decoration: InputDecoration(
                             hintStyle: TextStyle(fontSize: 17),
-                            hintText: 'Email Id or Mobile Number',
-                            prefixIcon: Icon(Icons.person),
+                            hintText: 'Password',
+                            prefixIcon: Icon(Icons.lock),
                             // suffixIcon: Icon(Icons.search),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.all(20),
@@ -89,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           obscureText: true,
                           decoration: InputDecoration( 
                             hintStyle: TextStyle(fontSize: 17),
-                            hintText: 'Password',
+                            hintText: 'Confirm Password',
                             prefixIcon: Icon(Icons.lock),
                             // suffixIcon: Icon(Icons.search),
                             border: InputBorder.none,
@@ -97,57 +119,29 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Forgot Password ?',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   children: [
+                      //     TextButton(
+                      //       onPressed: () {},
+                      //       child: Text(
+                      //         'Forgot Password ?',
+                      //         style:
+                      //             TextStyle(color: Colors.white, fontSize: 15),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                 ),
-                // Padding(
-                //   //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-                //   padding: EdgeInsets.symmetric(horizontal: 15),
-                //   child: TextFormField(
-                //     // controller: ,
-                //     decoration: InputDecoration(
-                //         filled: true,
-                //         fillColor: Colors.grey,
-                //         prefixIcon: Icon(Icons.person),
-                //         border: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(50),
-                //         ),
-                //         labelText: 'Email Id or Mobile Number',
-                //         hintText: 'Enter valid email id as abc@gmail.com'),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       left: 15.0, right: 15.0, top: 15, bottom: 0),
-                //   //padding: EdgeInsets.symmetric(horizontal: 15),
-                //   child: TextFormField(
-                //     obscureText: true,
-                //     decoration: InputDecoration(
-                //         prefixIcon: Icon(Icons.lock),
-                //         border: OutlineInputBorder(
-                //             borderRadius: BorderRadius.circular(50)),
-                //         labelText: 'Password',
-                //         hintText: 'Enter secure password'),
-                //   ),
-                // ),
-
+                SizedBox(height: 30.h,),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>App()));
+                  },
                   child: Text(
-                    'Sign In',
+                    'Sign Up',
                     // style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -160,25 +154,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   fixedSize: Size(300.w, 45.h)
                   ),
                 ),
-                // Container(
-                //   height: 50,
-                //   width: 250,
-                //   decoration: BoxDecoration(
-                //       color: Colors.blue,
-                //       borderRadius: BorderRadius.circular(20)),
-                //   child: TextButton(
-                //     onPressed: () {
-                //       // Navigator.push(
-                //       // context, MaterialPageRoute(builder: (_) => HomePage()));
-                //     },
-                //     child: Text(
-                //       'Login',
-                //       style: TextStyle(color: Colors.white, fontSize: 25),
-                //     ),
-                //   ),
-                // ),
                 SizedBox(
-                  height: 28.h,
+                  height: 150.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -189,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 18
                       ),),
                     GestureDetector(
-                      child: Text('Sign Up',
+                      child: Text('Sign In',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -197,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ),
                       onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>SignUpScreen()));
+                         Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>LoginScreen()));
                       },
                     ),
                     Text(' here',

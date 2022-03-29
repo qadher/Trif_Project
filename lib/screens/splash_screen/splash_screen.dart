@@ -4,7 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/main.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
+import 'package:trip_calicut/screens/login_screen/login_screen.dart';
 import 'package:trip_calicut/screens/onboarding/onboarding.dart';
+import 'package:trip_calicut/screens/singn_Up/signup.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -45,9 +47,9 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
   Future<void> gotoBoarding( ) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (ctx) => App()));
+        .pushReplacement(MaterialPageRoute(builder: (ctx) => LoginScreen()));
         
   }
   Future<void> checkFirst() async{
@@ -57,9 +59,9 @@ class _SplashScreenState extends State<SplashScreen> {
       gotoBoarding();
     } 
     else {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (ctx1) =>const App()));
+          .pushReplacement(MaterialPageRoute(builder: (ctx1) => LoginScreen()));
     }
   }
 }

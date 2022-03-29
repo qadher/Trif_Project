@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget heightSizedBox(){
   return SizedBox(
-    height: 10.h,
+    height: 12.h,
   );
 }
 

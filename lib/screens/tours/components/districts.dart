@@ -10,8 +10,8 @@ class DistrictCard extends StatelessWidget {
       children: [
         Container(
           //background image
-          height: 90.h,
-          width: 90.w,
+          height: 75.h,
+          width: 75.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
             image: DecorationImage(
@@ -20,7 +20,10 @@ class DistrictCard extends StatelessWidget {
             ),
           ),
         ),
-        Text('Calicut')
+        Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Text('Calicut'),
+        )
       ],
     );
   }
