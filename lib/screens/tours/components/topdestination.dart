@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
 class TopDestination extends StatelessWidget {
-  const TopDestination({
+   TopDestination({
     Key? key,
   }) : super(key: key);
-
+ 
+List<String> places = [
+  'Otty',
+  'Kodailanal'
+  'Mysuru',
+  'Bengaluru',
+  'Delhi'
+];
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {},
       child: Text(
-        'Otty',
+        'Mysuru',
         style: TextStyle(color: Colors.black),
       ),
       style: ElevatedButton.styleFrom(

@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.25),
                   decoration: BoxDecoration(
-                    color: Color(0xffebf5fb ),
+                    color: Color(0xffebf5fb),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(45),
                       topRight: Radius.circular(45),
@@ -112,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Column(
                                 children: [
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/tours.svg',
                                       title: 'Tours',
                                       onClick:
@@ -125,7 +125,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/resort.svg',
                                       title: 'Resort',
                                       onClick: () {
@@ -137,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/trekking.svg',
                                       title: 'Trekking',
                                       onClick: () {
@@ -153,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/houseboat.svg',
                                       title: 'House Boat',
                                       onClick: () {
@@ -165,7 +165,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/travel.svg',
                                       title: 'Travel',
                                       onClick: () {
@@ -177,7 +177,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/homestay.svg',
                                       title: 'Homestay',
                                       onClick: () {
@@ -193,7 +193,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/places.svg',
                                       title: 'Places',
                                       onClick: () {
@@ -204,7 +204,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/blindspot.svg',
                                       title: 'Blind Spot',
                                       onClick: () {
@@ -215,7 +215,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/education.svg',
                                       title: 'Education',
                                       onClick: () {
@@ -230,7 +230,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/camping.svg',
                                       title: 'camping',
                                       onClick: () {
@@ -242,7 +242,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/globaltravel.svg',
                                       title: 'Global Travel',
                                       onClick: () {
@@ -253,7 +253,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         );
                                       }),
-                                  Category(
+                                  CategoryMain(
                                       image: 'assets/icons/jobs.svg',
                                       title: 'Jobs',
                                       onClick: () {
@@ -271,22 +271,53 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
 
-                      // SizedBox(
-                      //   height: 25.h,
-                      // ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w),
-                        child: Container(
-                          height: 150.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/imageone.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Container(
+                        height: 140.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        width: MediaQuery.of(context).size.width,
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                              autoPlay: true,
+                              aspectRatio: 2.0,
+                              enlargeCenterPage: false,
+                              viewportFraction: 1),
+                          items: imageSlidersBanner,
                         ),
                       ),
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      //   child: SingleChildScrollView(
+                      //     scrollDirection: Axis.horizontal,
+                      //     child: Row(
+                      //       children: [
+                      //         Container(
+                      //           height: 150.h,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(10),
+                      //             image: DecorationImage(
+                      //               image: AssetImage('assets/images/imageone.jpg'),
+                      //               fit: BoxFit.cover,
+                      //             ),
+                      //           ),
+                      //         ),
+                      //         Container(
+                      //           height: 150.h,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(10),
+                      //             image: DecorationImage(
+                      //               image: AssetImage('assets/images/imageone.jpg'),
+                      //               fit: BoxFit.cover,
+                      //             ),
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                       SizedBox(
                         height: 10.h,
                       ),
@@ -349,6 +380,9 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TitleText(text: 'Trif Switches'),
+                            SizedBox(
+                              height: 5.h,
+                            ),
                             Container(
                               child: Column(
                                 children: [
@@ -358,22 +392,22 @@ class HomeScreen extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Category(
-                                        image: 'assets/icons/tours.svg',
+                                        image: 'assets/trifswitches/zomato.png',
                                         title: 'Tours',
                                         onClick: () {},
                                       ),
                                       Category(
-                                        image: 'assets/icons/resort.svg',
+                                        image: 'assets/trifswitches/ola.png',
                                         title: 'Resort',
                                         onClick: () {},
                                       ),
                                       Category(
-                                        image: 'assets/icons/trekking.svg',
+                                        image: 'assets/trifswitches/oyo.png',
                                         title: 'Trekking',
                                         onClick: () {},
                                       ),
-                                       Category(
-                                        image: 'assets/icons/tours.svg',
+                                      Category(
+                                        image: 'assets/trifswitches/redbus.png',
                                         title: 'Tours',
                                         onClick: () {},
                                       ),
@@ -387,22 +421,22 @@ class HomeScreen extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Category(
-                                        image: 'assets/icons/tours.svg',
+                                        image: 'assets/trifswitches/uber.png',
                                         title: 'Tours',
                                         onClick: () {},
                                       ),
                                       Category(
-                                        image: 'assets/icons/resort.svg',
+                                        image: 'assets/trifswitches/swiggy.png',
                                         title: 'Resort',
                                         onClick: () {},
                                       ),
                                       Category(
-                                        image: 'assets/icons/trekking.svg',
+                                        image: 'assets/trifswitches/myshow.png',
                                         title: 'Trekking',
                                         onClick: () {},
                                       ),
                                       Category(
-                                        image: 'assets/icons/tours.svg',
+                                        image: 'assets/trifswitches/ere.png',
                                         title: 'Tours',
                                         onClick: () {},
                                       ),
@@ -414,60 +448,60 @@ class HomeScreen extends StatelessWidget {
                             SizedBox(
                               height: 10.h,
                             ),
-                            TitleText(text: 'Trifs Vodcasts'),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 100.h,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.5,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/imageone.jpg'),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          'Wayanadan Vibes',
-                                          style: TextStyle(
-                                            fontFamily: 'Lato',
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10.h,
-                                        ),
-                                        Text(
-                                          'Wayanad is a rural district in Kerala state, southwest India. In the east, the Wayanad Wildlife Sanctuary is a lush, forested region with areas of ....',
-                                          maxLines: 3,
-                                          style: TextStyle(
-                                            overflow: TextOverflow.ellipsis,
-                                            fontSize: 10.sp,
-                                            fontFamily: 'Lato',
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
+                            // TitleText(text: 'Trifs Vodcasts'),
+                            // SizedBox(
+                            //   height: 10.h,
+                            // ),
+                            // Container(
+                            //   padding: EdgeInsets.all(8),
+                            //   decoration: BoxDecoration(
+                            //       color: Colors.white,
+                            //       borderRadius: BorderRadius.circular(20)),
+                            //   child: Row(
+                            //     children: [
+                            //       Container(
+                            //         height: 100.h,
+                            //         width:
+                            //             MediaQuery.of(context).size.width / 2.5,
+                            //         decoration: BoxDecoration(
+                            //           borderRadius: BorderRadius.circular(20),
+                            //           image: DecorationImage(
+                            //             image: AssetImage(
+                            //                 'assets/images/imageone.jpg'),
+                            //             fit: BoxFit.cover,
+                            //           ),
+                            //         ),
+                            //       ),
+                                  // SizedBox(
+                                  //   width: 10.w,
+                                  // ),
+                                  // Expanded(
+                                  //   child: Column(
+                                  //     children: [
+                                  //       Text(
+                                  //         'Wayanadan Vibes',
+                                  //         style: TextStyle(
+                                  //           fontFamily: 'Lato',
+                                  //         ),
+                                  //       ),
+                                  //       SizedBox(
+                                  //         height: 10.h,
+                                  //       ),
+                                  //       Text(
+                                  //         'Wayanad is a rural district in Kerala state, southwest India. In the east, the Wayanad Wildlife Sanctuary is a lush, forested region with areas of ....',
+                                  //         maxLines: 3,
+                                  //         style: TextStyle(
+                                  //           overflow: TextOverflow.ellipsis,
+                                  //           fontSize: 10.sp,
+                                  //           fontFamily: 'Lato',
+                                  //         ),
+                                  //       )
+                                  //     ],
+                                  //   ),
+                                  // )
+                                // ],
+                            //   ),
+                            // ),
                             SizedBox(
                               height: 10.h,
                             ),

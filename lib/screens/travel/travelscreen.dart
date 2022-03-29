@@ -1,5 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_calicut/screens/home/components/carousel.dart';
 
 import '../../components/packagecard.dart';
 import '../home/components/titletext.dart';
@@ -18,7 +20,7 @@ class TravelScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBarWidget(
-          title: 'Resorts',
+          title: 'Travel',
         ),
       ),
       body: SafeArea(
@@ -31,7 +33,21 @@ class TravelScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                adsBanner(context),
+                // adsBanner(context),
+                 Container(
+                        height: 140.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        width: MediaQuery.of(context).size.width,
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                              autoPlay: true,
+                              aspectRatio: 2.0,
+                              enlargeCenterPage: false,
+                              viewportFraction: 1),
+                          items: imageSlidersBanner,
+                        ),
+                      ),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -39,6 +55,7 @@ class TravelScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
+                        
                         TopDestination(),
                         widthSizedBox(),
                         TopDestination(),

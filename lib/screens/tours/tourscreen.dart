@@ -36,7 +36,22 @@ class TourScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                adsBanner(context),
+                // adsBanner(context),
+                Container(
+                  height: 140.h,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  width: MediaQuery.of(context).size.width,
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                        autoPlay: true,
+                        aspectRatio: 2.0,
+                        autoPlayInterval: const Duration(seconds: 2),
+                        enlargeCenterPage: false,
+                        viewportFraction: 1),
+                    items: imageSlidersBanner,
+                  ),
+                ),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
@@ -91,20 +106,23 @@ class TourScreen extends StatelessWidget {
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: ViewAll(text: 'Top Destinations',),
-                ),
-                heightSizedBox(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TopDestination(),
-                      TopDestination(),
-                      TopDestination(),
-                    ],
+                  child: ViewAll(
+                    text: 'Top Destinations',
                   ),
                 ),
+                heightSizedBox(),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 8),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //     children: [
+                //       FutureBuilder(builder: (context, index)=> TopDestination(index: index))
+                //       // TopDestination(),
+                //       // TopDestination(),
+                //       // TopDestination(),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -119,7 +137,7 @@ class TourScreen extends StatelessWidget {
                     children: [
                       Container(
                         height: 200.h,
-                        width: MediaQuery.of(context).size.width * 0.3,
+                        width: MediaQuery.of(context).size.width * 0.35,
                         color: Colors.black.withOpacity(0.5),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -137,6 +155,8 @@ class TourScreen extends StatelessWidget {
                                     Text(
                                       'Trekking',
                                       style: TextStyle(
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -145,7 +165,8 @@ class TourScreen extends StatelessWidget {
                                       'Explore the world of adventure',
                                       maxLines: 3,
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.white.withOpacity(0.8),
+                                        fontSize: 18,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
@@ -154,19 +175,35 @@ class TourScreen extends StatelessWidget {
                               ),
                               //add button
 
-                              Container(
-                                // height: 10.h,
-                                padding: EdgeInsets.all(10),
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Explore',
-                                    style: TextStyle(
-                                      color: Colors.black,
+                              GestureDetector(
+                                onTap: () {
+                                  final snackBar = SnackBar(
+                                    content: const Text('Hi, I am a SnackBar!'),
+                                    backgroundColor: (Colors.black),
+                                    action: SnackBarAction(
+                                      label: 'dismiss',
+                                      onPressed: () {},
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                },
+                                child: Container(
+                                  // height: 10.h,
+                                  padding: EdgeInsets.all(15),
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.2),
+                                    border: Border.all(
+                                        width: 1, color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Explore',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -227,36 +264,77 @@ class TourScreen extends StatelessWidget {
     );
   }
 
- 
-
   Column scrollCard() {
     return Column(
       children: [
-        Container(
-          height: 80.h,
-          width: 100.w,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/background.jpg'),
-              fit: BoxFit.cover,
+        Stack(children: [
+          Container(
+            height: 80.h,
+            width: 130.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 0.8,color: Colors.white),
+              image: DecorationImage(
+                image: AssetImage('assets/images/background.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
+          Positioned(
+              bottom: 0,
+              child: Container(
+                width: 130.w,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 3),
+                  child: Center(
+                    child: Text(
+                      'Malampuzha Dam',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.4),
+                ),
+              ))
+        ]),
         SizedBox(
           height: 10.h,
         ),
-        Container(
-          height: 80.h,
-          width: 100.w,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/background.jpg'),
-              fit: BoxFit.cover,
+        Stack(children: [
+          Container(
+            height: 80.h,
+            width: 130.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 0.8,color: Colors.white),
+              image: DecorationImage(
+                image: AssetImage('assets/images/background.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
+          Positioned(
+              bottom: 0,
+              child: Container(
+                width: 130.w,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 3),
+                  child: Center(
+                    child: Text(
+                      'Malampuzha Dam',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.4),
+                ),
+              ))
+        ]),
       ],
     );
   }
 }
-

@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_calicut/components/packagecard.dart';
+import 'package:trip_calicut/screens/home/components/carousel.dart';
 
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
@@ -17,7 +19,7 @@ class HouseBoatScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBarWidget(
-          title: 'Resorts',
+          title: 'House Boat',
         ),
       ),
       body: SafeArea(
@@ -30,7 +32,21 @@ class HouseBoatScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                adsBanner(context),
+                // adsBanner(context),
+                Container(
+                        height: 140.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        width: MediaQuery.of(context).size.width,
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                              autoPlay: true,
+                              aspectRatio: 2.0,
+                              enlargeCenterPage: false,
+                              viewportFraction: 1),
+                          items: imageSlidersBanner,
+                        ),
+                      ),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),

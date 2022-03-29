@@ -17,10 +17,10 @@ class PackageCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 150.h,
+            height: 120.h,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 image: AssetImage('assets/images/imageone.jpg'),
                 fit: BoxFit.cover,
@@ -30,7 +30,12 @@ class PackageCard extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          TitleText(text: 'Manali Package'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TitleText(text: 'Manali Package'),
+            ],
+          ),
           SizedBox(
             height: 10.h,
           ),
@@ -39,20 +44,23 @@ class PackageCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text('₹'),
+                  // Text('₹'),
                   Text(
-                    '2000/-',
+                    '₹2000/-',
                     style: TextStyle(
-                      fontFamily: 'Lato',
-                    ),
+                        fontFamily: 'Lato',
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF00A6F6)),
                   ),
                   SizedBox(
-                    width: 5.w,
+                    width: 8.w,
                   ),
                   Text(
                     '₹2500',
                     style: TextStyle(
                         color: Colors.grey,
+                        fontSize: 18,
                         fontFamily: 'Lato',
                         // line text
                         decoration: TextDecoration.lineThrough),
@@ -63,8 +71,10 @@ class PackageCard extends StatelessWidget {
                   Text(
                     '20%Off',
                     style: TextStyle(
-                      fontFamily: 'Lato',
-                    ),
+                        fontFamily: 'Lato',
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFF6B100)),
                   ),
                 ],
               ),
@@ -72,6 +82,9 @@ class PackageCard extends StatelessWidget {
                 'Athirapilly',
                 style: TextStyle(
                   fontFamily: 'Lato',
+                  color: Color.fromARGB(255, 102, 101, 101),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
               ),
             ],

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trip_calicut/bottom_navigation/navigation.dart';
+import 'package:trip_calicut/main.dart';
+import 'package:trip_calicut/screens/home/homescreen.dart';
+import 'package:trip_calicut/screens/onboarding/onboarding.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -10,6 +15,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    checkFirst();
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,5 +43,23 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
     );
+  }
+  Future<void> gotoBoarding( ) async {
+    await Future.delayed(const Duration(seconds: 2));
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (ctx) => App()));
+        
+  }
+  Future<void> checkFirst() async{
+    final _sharedPreferences = await SharedPreferences.getInstance();
+    final _finishBoarding = _sharedPreferences.getBool(status);
+    if (_finishBoarding == null || !_finishBoarding) {
+      gotoBoarding();
+    } 
+    else {
+      await Future.delayed(const Duration(seconds: 2));
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (ctx1) =>const App()));
+    }
   }
 }

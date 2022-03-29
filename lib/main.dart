@@ -10,6 +10,7 @@ import 'package:trip_calicut/screens/tours/tourscreen.dart';
 import 'package:trip_calicut/screens/travel/travelscreen.dart';
 import 'package:trip_calicut/screens/trekking/trekkingscreen.dart';
 
+const status = 'first_time';
 void main() {
   runApp(const MyApp());
 }
