@@ -17,7 +17,6 @@ class JobScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Color(0xffE5E5E5),
       appBar: PreferredSize(
@@ -97,15 +96,14 @@ class JobScreen extends StatelessWidget {
                 // heightSizedBox(),
                 // JobTile(),
                 ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: 10,
-                              separatorBuilder: (context, index) => SizedBox(
-                                height: 10.h,
-                              ),
-                              itemBuilder: (context, index) => JobTile(),
-                            ),
-
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  separatorBuilder: (context, index) => SizedBox(
+                    height: 10.h,
+                  ),
+                  itemBuilder: (context, index) => JobTile(),
+                ),
                 // Padding(
                 //   padding: const EdgeInsets.only(left: 8),
                 //   child: TitleText(text: 'Vehicles in Ollur...'),
@@ -131,4 +129,3 @@ class JobScreen extends StatelessWidget {
     );
   }
 }
-

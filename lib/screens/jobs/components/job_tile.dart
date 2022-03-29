@@ -31,7 +31,7 @@ class JobTile extends StatelessWidget {
                     height: 105.h,
                     width: 100.w,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
                         image: AssetImage('assets/images/imageone.jpg'),
                         fit: BoxFit.cover,
@@ -116,7 +116,7 @@ class JobTile extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: Color(0xFF00A6F6).withOpacity(0.4),
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15),topRight: Radius.circular(15))
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),topRight: Radius.circular(20))
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 14),
