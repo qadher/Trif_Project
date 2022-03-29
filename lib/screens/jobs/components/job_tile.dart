@@ -16,15 +16,15 @@ class JobTile extends StatelessWidget {
           Container(
             // padding: EdgeInsets.all(8),
             
-            height: 115.h,
+            height: 105.h,
             decoration: BoxDecoration(
                 border: Border.all(width: 1, color: Colors.grey),
                 borderRadius: BorderRadius.circular(20)),
             child: Row(
               children: [
                 Container(
-                  height: 115.h,
-                  width: 110.w,
+                  height: 105.h,
+                  width: 100.w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
@@ -91,8 +91,9 @@ class JobTile extends StatelessWidget {
               ],
             ),
           ),
+          
           Positioned(
-            bottom: 8.h,
+            bottom: 2.h,
             right: 10.h,
             child: Text(
               'Provided By Naukari obs',
