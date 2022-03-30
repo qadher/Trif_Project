@@ -20,7 +20,7 @@ class HomeStayScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBarWidget(
-          title: 'Homestay',
+          title: 'HomeStay',
         ),
       ),
       body: SafeArea(

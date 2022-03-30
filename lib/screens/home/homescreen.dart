@@ -7,12 +7,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trip_calicut/screens/home/components/topattractions.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
-import 'package:trip_calicut/screens/jobs/job_screen.dart';
-import 'package:trip_calicut/screens/places/placesScreen.dart';
+import 'package:trip_calicut/screens/places/placescreen.dart';
 import 'package:trip_calicut/screens/resort/resortscreen.dart';
 import 'package:trip_calicut/screens/tours/tourscreen.dart';
 import 'package:trip_calicut/screens/travel/travelscreen.dart';
 import 'package:trip_calicut/screens/trekking/trekkingscreen.dart';
+import 'package:trip_calicut/widgets.dart';
 
 import '../../components/packagecard.dart';
 import 'components/carousel.dart';
@@ -104,178 +104,16 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            //spaceevenly
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Column(
-                                children: [
-                                  CategoryMain(
-                                      image: 'assets/icons/tours.svg',
-                                      title: 'Tours',
-                                      onClick:
-                                          //navigate to tourScreen
-                                          () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => TourScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/resort.svg',
-                                      title: 'Resort',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                ResortScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/trekking.svg',
-                                      title: 'Trekking',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                TrekkingScreen(),
-                                          ),
-                                        );
-                                      }),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  CategoryMain(
-                                      image: 'assets/icons/houseboat.svg',
-                                      title: 'House Boat',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                HouseBoatScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/travel.svg',
-                                      title: 'Travel',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                TravelScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/homestay.svg',
-                                      title: 'Homestay',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                HomeStayScreen(),
-                                          ),
-                                        );
-                                      }),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  CategoryMain(
-                                      image: 'assets/icons/places.svg',
-                                      title: 'Places',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => PlaceScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/blindspot.svg',
-                                      title: 'Blind Spot',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => TourScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/education.svg',
-                                      title: 'Education',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => TourScreen(),
-                                          ),
-                                        );
-                                      }),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  CategoryMain(
-                                      image: 'assets/icons/camping.svg',
-                                      title: 'camping',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                CampingScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/globaltravel.svg',
-                                      title: 'Global Travel',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => TourScreen(),
-                                          ),
-                                        );
-                                      }),
-                                  CategoryMain(
-                                      image: 'assets/icons/jobs.svg',
-                                      title: 'Jobs',
-                                      onClick: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => JobScreen(),
-                                          ),
-                                        );
-                                      }),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      Category(
+                        categoryname: categoryLists,
                       ),
 
-                      SizedBox(
-                        height: 10.h,
-                      ),
+                      // SizedBox(
+                      //   height: 25.h,
+                      // ),
                       Container(
                         height: 140.h,
                         decoration: BoxDecoration(
@@ -290,36 +128,6 @@ class HomeScreen extends StatelessWidget {
                           items: imageSlidersBanner,
                         ),
                       ),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(horizontal: 8.w),
-                      //   child: SingleChildScrollView(
-                      //     scrollDirection: Axis.horizontal,
-                      //     child: Row(
-                      //       children: [
-                      //         Container(
-                      //           height: 150.h,
-                      //           decoration: BoxDecoration(
-                      //             borderRadius: BorderRadius.circular(10),
-                      //             image: DecorationImage(
-                      //               image: AssetImage('assets/images/imageone.jpg'),
-                      //               fit: BoxFit.cover,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //         Container(
-                      //           height: 150.h,
-                      //           decoration: BoxDecoration(
-                      //             borderRadius: BorderRadius.circular(10),
-                      //             image: DecorationImage(
-                      //               image: AssetImage('assets/images/imageone.jpg'),
-                      //               fit: BoxFit.cover,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
                       SizedBox(
                         height: 10.h,
                       ),
@@ -327,39 +135,13 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: TitleText(text: 'Top Attractions'),
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Row(
-                            children: [
-                              TopAttractions(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TopAttractions(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TopAttractions(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TopAttractions(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TopAttractions(),
-                            ],
-                          ),
-                        ),
-                      ),
+                      TopAttractionCard(),
                       SizedBox(
                         height: 10.h,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: TitleText(text: ' Places'),
+                        child: TitleText(text: 'Nearby Places'),
                       ),
                       Container(
                         height: 150.h,
@@ -382,128 +164,66 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TitleText(text: 'Trif Switches'),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  Row(
-                                    //spaceevenly
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Category(
-                                        image: 'assets/trifswitches/zomato.png',
-                                        title: 'Tours',
-                                        onClick: () {},
-                                      ),
-                                      Category(
-                                        image: 'assets/trifswitches/ola.png',
-                                        title: 'Resort',
-                                        onClick: () {},
-                                      ),
-                                      Category(
-                                        image: 'assets/trifswitches/oyo.png',
-                                        title: 'Trekking',
-                                        onClick: () {},
-                                      ),
-                                      Category(
-                                        image: 'assets/trifswitches/redbus.png',
-                                        title: 'Tours',
-                                        onClick: () {},
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10.h,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Category(
-                                        image: 'assets/trifswitches/uber.png',
-                                        title: 'Tours',
-                                        onClick: () {},
-                                      ),
-                                      Category(
-                                        image: 'assets/trifswitches/swiggy.png',
-                                        title: 'Resort',
-                                        onClick: () {},
-                                      ),
-                                      Category(
-                                        image: 'assets/trifswitches/myshow.png',
-                                        title: 'Trekking',
-                                        onClick: () {},
-                                      ),
-                                      Category(
-                                        image: 'assets/trifswitches/ere.png',
-                                        title: 'Tours',
-                                        onClick: () {},
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                            Category(
+                              categoryname: trifSwitches,
                             ),
                             SizedBox(
                               height: 10.h,
                             ),
-                            // TitleText(text: 'Trifs Vodcasts'),
-                            // SizedBox(
-                            //   height: 10.h,
-                            // ),
-                            // Container(
-                            //   padding: EdgeInsets.all(8),
-                            //   decoration: BoxDecoration(
-                            //       color: Colors.white,
-                            //       borderRadius: BorderRadius.circular(20)),
-                            //   child: Row(
-                            //     children: [
-                            //       Container(
-                            //         height: 100.h,
-                            //         width:
-                            //             MediaQuery.of(context).size.width / 2.5,
-                            //         decoration: BoxDecoration(
-                            //           borderRadius: BorderRadius.circular(20),
-                            //           image: DecorationImage(
-                            //             image: AssetImage(
-                            //                 'assets/images/imageone.jpg'),
-                            //             fit: BoxFit.cover,
-                            //           ),
-                            //         ),
-                            //       ),
-                                  // SizedBox(
-                                  //   width: 10.w,
-                                  // ),
-                                  // Expanded(
-                                  //   child: Column(
-                                  //     children: [
-                                  //       Text(
-                                  //         'Wayanadan Vibes',
-                                  //         style: TextStyle(
-                                  //           fontFamily: 'Lato',
-                                  //         ),
-                                  //       ),
-                                  //       SizedBox(
-                                  //         height: 10.h,
-                                  //       ),
-                                  //       Text(
-                                  //         'Wayanad is a rural district in Kerala state, southwest India. In the east, the Wayanad Wildlife Sanctuary is a lush, forested region with areas of ....',
-                                  //         maxLines: 3,
-                                  //         style: TextStyle(
-                                  //           overflow: TextOverflow.ellipsis,
-                                  //           fontSize: 10.sp,
-                                  //           fontFamily: 'Lato',
-                                  //         ),
-                                  //       )
-                                  //     ],
-                                  //   ),
-                                  // )
-                                // ],
-                            //   ),
-                            // ),
+                            TitleText(text: 'Trifs Vodcasts'),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 100.h,
+                                    width:
+                                        MediaQuery.of(context).size.width / 2.5,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/imageone.jpg'),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Wayanadan Vibes',
+                                          style: TextStyle(
+                                            fontFamily: 'Lato',
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        Text(
+                                          'Wayanad is a rural district in Kerala state, southwest India. In the east, the Wayanad Wildlife Sanctuary is a lush, forested region with areas of ....',
+                                          maxLines: 3,
+                                          style: TextStyle(
+                                            overflow: TextOverflow.ellipsis,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Lato',
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                             SizedBox(
                               height: 10.h,
                             ),

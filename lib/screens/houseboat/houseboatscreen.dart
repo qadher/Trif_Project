@@ -20,7 +20,7 @@ class HouseBoatScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBarWidget(
-          title: 'House Boat',
+          title: 'HouseBoat',
         ),
       ),
       body: SafeArea(
