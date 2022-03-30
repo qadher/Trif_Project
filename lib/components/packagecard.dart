@@ -18,8 +18,7 @@ class PackageCard extends StatelessWidget {
         children: [
           Container(
             height: 120.h,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
+            width: MediaQuery.of(context).size.width,            decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 image: AssetImage('assets/images/imageone.jpg'),

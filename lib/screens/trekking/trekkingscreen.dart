@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_calicut/components/viewall.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
+import 'package:trip_calicut/screens/trekking/components/packagecard_trecking.dart';
 
 import '../../components/packagecard.dart';
 import '../home/components/titletext.dart';
@@ -96,7 +97,7 @@ class TrekkingScreen extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: PackageCard(),
+                    child: PackageCardTrecking(),
                   ),
                 )
               ],

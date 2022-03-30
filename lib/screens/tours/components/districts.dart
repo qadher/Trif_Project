@@ -10,8 +10,8 @@ class DistrictCard extends StatelessWidget {
       children: [
         Container(
           //background image
-          height: 75.h,
-          width: 75.w,
+          height: 80.h,
+          width: 80.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
             image: DecorationImage(
