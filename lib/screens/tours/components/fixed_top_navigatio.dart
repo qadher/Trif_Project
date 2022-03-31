@@ -18,7 +18,9 @@ class FixedTopNavigation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
                 child: Icon(Icons.arrow_back_ios,
                 color: Colors.white,
                 size: 25.h,
