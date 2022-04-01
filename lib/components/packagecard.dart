@@ -71,7 +71,7 @@ class PackageCardList extends StatelessWidget {
                             '₹${controller.packageData.value[index].avgAmount!.toString()}/-',
                             style: TextStyle(
                                 fontFamily: 'Lato',
-                                fontSize: 15.sp,
+                                fontSize: 17.sp,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF00A6F6)),
                           ),
@@ -82,7 +82,7 @@ class PackageCardList extends StatelessWidget {
                             '₹${controller.packageData.value[index].offerAmount!.toString()}',
                             style: TextStyle(
                                 color: Colors.grey,
-                                fontSize: 18,
+                                fontSize: 15.sp,
                                 fontFamily: 'Lato',
                                 // line text
                                 decoration: TextDecoration.lineThrough),
@@ -94,7 +94,7 @@ class PackageCardList extends StatelessWidget {
                             '${controller.packageData.value[index].advAmount!.toString()}%Off',
                             style: TextStyle(
                                 fontFamily: 'Lato',
-                                fontSize: 18,
+                                fontSize: 17.sp,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFF6B100)),
                           ),
@@ -107,7 +107,7 @@ class PackageCardList extends StatelessWidget {
                           fontFamily: 'Lato',
                           color: Color.fromARGB(255, 102, 101, 101),
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 17.sp,
                         ),
                       ),
                     ],
