@@ -2,7 +2,7 @@
     package="com.example.trip_calicut">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="trip_calicut"
+        android:label="trifs"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

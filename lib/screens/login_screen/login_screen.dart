@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/singn_Up/signup.dart';
 import 'package:trip_calicut/widgets.dart';
 
@@ -145,7 +146,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 // ),
 
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  },
                   child: Text(
                     'Sign In',
                     // style: TextStyle(color: Colors.white, fontSize: 15),

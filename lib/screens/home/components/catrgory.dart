@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -145,33 +143,34 @@ List<CategoryList> categoryLists = <CategoryList>[
       image: 'assets/icons/jobs.svg', title: 'Jobs', screen: JobScreen()),
 ];
 
-List<CategoryList> trifSwitches = <CategoryList>[
-  CategoryList(
-      image: 'assets/icons/tours.svg', title: 'Tours', screen: TourScreen()),
-  CategoryList(
-      image: 'assets/icons/houseboat.svg',
-      title: 'House Boat',
-      screen: HouseBoatScreen()),
-  CategoryList(
-      image: 'assets/icons/places.svg', title: 'Places', screen: PlaceScreen()),
-  CategoryList(
-      image: 'assets/icons/camping.svg',
-      title: 'Camping',
-      screen: CampingScreen()),
-  CategoryList(
-      image: 'assets/icons/resort.svg',
-      title: 'Resort',
-      screen: ResortScreen()),
-  CategoryList(
-      image: 'assets/icons/travel.svg',
-      title: 'Travel',
-      screen: TravelScreen()),
-  CategoryList(
-      image: 'assets/icons/blindspot.svg',
-      title: 'Blind Spot',
-      screen: TourScreen()),
-  CategoryList(
-      image: 'assets/icons/globaltravel.svg',
-      title: 'Global Travel',
-      screen: TourScreen()),
-];
+
+// List<CategoryList> trifSwitches = <CategoryList>[
+//   CategoryList(
+//       image: 'assets/icons/tours.svg', title: 'Tours', screen: TourScreen()),
+//   CategoryList(
+//       image: 'assets/icons/houseboat.svg',
+//       title: 'House Boat',
+//       screen: HouseBoatScreen()),
+//   CategoryList(
+//       image: 'assets/icons/places.svg', title: 'Places', screen: PlaceScreen()),
+//   CategoryList(
+//       image: 'assets/icons/camping.svg',
+//       title: 'Camping',
+//       screen: CampingScreen()),
+//   CategoryList(
+//       image: 'assets/icons/resort.svg',
+//       title: 'Resort',
+//       screen: ResortScreen()),
+//   CategoryList(
+//       image: 'assets/icons/travel.svg',
+//       title: 'Travel',
+//       screen: TravelScreen()),
+//   CategoryList(
+//       image: 'assets/icons/blindspot.svg',
+//       title: 'Blind Spot',
+//       screen: TourScreen()),
+//   CategoryList(
+//       image: 'assets/icons/globaltravel.svg',
+//       title: 'Global Travel',
+//       screen: TourScreen()),
+// ];

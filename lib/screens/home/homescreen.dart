@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_calicut/screens/camping/campingscreen.dart';
 import 'package:trip_calicut/screens/home/components/catrgory.dart';
+import 'package:trip_calicut/screens/home/components/switchescard.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trip_calicut/screens/home/components/topattractions.dart';
@@ -110,7 +111,6 @@ class HomeScreen extends StatelessWidget {
                       Category(
                         categoryname: categoryLists,
                       ),
-                      
 
                       // SizedBox(
                       //   height: 25.h,
@@ -165,9 +165,10 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TitleText(text: 'Trif Switches'),
-                            Category(
-                              categoryname: trifSwitches,
+                            SizedBox(
+                              height: 10.h,
                             ),
+                            Switches(categoryname: trifSwitches),
                             SizedBox(
                               height: 10.h,
                             ),
