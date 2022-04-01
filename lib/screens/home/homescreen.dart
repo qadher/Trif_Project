@@ -233,15 +233,7 @@ class HomeScreen extends StatelessWidget {
                             SizedBox(
                               height: 10.h,
                             ),
-                            ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: 10,
-                              separatorBuilder: (context, index) => SizedBox(
-                                height: 10.h,
-                              ),
-                              itemBuilder: (context, index) => PackageCard(),
-                            )
+                            PackageCardList()
                           ],
                         ),
                       ),
@@ -256,3 +248,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+

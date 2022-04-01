@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_calicut/bottom_navigation/navigation.dart';
+import 'package:trip_calicut/demo.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/singn_Up/signup.dart';
 import 'package:trip_calicut/widgets.dart';
@@ -20,12 +22,13 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(children: [
         Container(
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/login.jpg'),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.24), BlendMode.darken),
-                  ),
-                  ),
+            image: DecorationImage(
+              image: AssetImage('assets/images/login.jpg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.24), BlendMode.darken),
+            ),
+          ),
         ),
         SingleChildScrollView(
           child: Form(
@@ -88,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: TextField(
                           obscureText: true,
-                          decoration: InputDecoration( 
+                          decoration: InputDecoration(
                             hintStyle: TextStyle(fontSize: 17),
                             hintText: 'Password',
                             prefixIcon: Icon(Icons.lock),
@@ -149,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(builder: (context) => App()),
                     );
                   },
                   child: Text(
@@ -158,13 +161,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   style: ElevatedButton.styleFrom(
                       primary: Color(0xFF00A6F6),
-                      
                       textStyle: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.w500),
-                          shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)),
-                  fixedSize: Size(300.w, 45.h)
-                  ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)),
+                      fixedSize: Size(300.w, 45.h)),
                 ),
                 // Container(
                 //   height: 50,
@@ -189,29 +190,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Don’t have an account? ',
-                    style: TextStyle(
-                      color: Colors.white70,
-                        fontSize: 18
-                      ),),
+                    Text(
+                      'Don’t have an account? ',
+                      style: TextStyle(color: Colors.white70, fontSize: 18),
+                    ),
                     GestureDetector(
-                      child: Text('Sign Up',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
                       ),
-                      ),
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>SignUpScreen()));
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => SignUpScreen()));
                       },
                     ),
-                    Text(' here',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18
-                      ),
-                      ),
+                    Text(
+                      ' here',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
                   ],
                 )
               ],
