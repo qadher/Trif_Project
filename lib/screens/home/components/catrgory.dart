@@ -30,8 +30,8 @@ class Category extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
           childAspectRatio: 1.0,
-          crossAxisSpacing: 10.0,
-          mainAxisSpacing: 10.0,
+          // crossAxisSpacing: 10.0,
+          // mainAxisSpacing: 10.0,
         ),
         children: List.generate(
           categoryname.length,

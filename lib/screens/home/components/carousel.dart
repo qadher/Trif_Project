@@ -87,7 +87,7 @@ final List<Widget> imageSliders = imgList
                        Positioned(
             top: 0,
             child: Container(
-              width: 60.w,
+              // width: 60.w,
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.5),
                 borderRadius: BorderRadius.all(Radius.circular(5.0)), 
@@ -97,7 +97,7 @@ final List<Widget> imageSliders = imgList
                 padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 2),
                 child: Text('Promoted',
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontFamily: 'Lato',

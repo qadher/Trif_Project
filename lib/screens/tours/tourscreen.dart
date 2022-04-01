@@ -58,33 +58,7 @@ class TourScreen extends StatelessWidget {
                   child: TitleText(text: 'Kerala > Districts'),
                 ),
                 heightSizedBox(),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Container(
-                    padding: EdgeInsets.only(left: 8),
-                    child: Row(
-                      children: [
-                        DistrictCard(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        DistrictCard(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        DistrictCard(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        DistrictCard(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        DistrictCard(),
-                      ],
-                    ),
-                  ),
-                ),
+                District(),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
