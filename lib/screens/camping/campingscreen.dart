@@ -112,7 +112,7 @@ class CampingScreen extends StatelessWidget {
                                     Text(
                                       'Trekking',
                                       style: TextStyle(
-                                        fontSize: 28,
+                                        fontSize: 22.w,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
@@ -123,7 +123,7 @@ class CampingScreen extends StatelessWidget {
                                       maxLines: 3,
                                       style: TextStyle(
                                         color: Colors.white.withOpacity(0.8),
-                                        fontSize: 18,
+                                        fontSize: 16.w,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
@@ -139,6 +139,7 @@ class CampingScreen extends StatelessWidget {
                                     backgroundColor: (Colors.black),
                                     action: SnackBarAction(
                                       label: 'dismiss',
+                                      textColor: Colors.amber,
                                       onPressed: () {},
                                     ),
                                   );
@@ -201,6 +202,8 @@ class CampingScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                     
+                    
               heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),

@@ -172,60 +172,60 @@ class HomeScreen extends StatelessWidget {
                             SizedBox(
                               height: 10.h,
                             ),
-                            TitleText(text: 'Trifs Vodcasts'),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 100.h,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.5,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/imageone.jpg'),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          'Wayanadan Vibes',
-                                          style: TextStyle(
-                                            fontFamily: 'Lato',
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10.h,
-                                        ),
-                                        Text(
-                                          'Wayanad is a rural district in Kerala state, southwest India. In the east, the Wayanad Wildlife Sanctuary is a lush, forested region with areas of ....',
-                                          maxLines: 3,
-                                          style: TextStyle(
-                                            overflow: TextOverflow.ellipsis,
-                                            fontSize: 10.sp,
-                                            fontFamily: 'Lato',
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
+                            // TitleText(text: 'Trifs Vodcasts'),
+                            // SizedBox(
+                            //   height: 10.h,
+                            // ),
+                            // Container(
+                            //   padding: EdgeInsets.all(8),
+                            //   decoration: BoxDecoration(
+                            //       color: Colors.white,
+                            //       borderRadius: BorderRadius.circular(20)),
+                            //   child: Row(
+                            //     children: [
+                            //       Container(
+                            //         height: 100.h,
+                            //         width:
+                            //             MediaQuery.of(context).size.width / 2.5,
+                            //         decoration: BoxDecoration(
+                            //           borderRadius: BorderRadius.circular(20),
+                            //           image: DecorationImage(
+                            //             image: AssetImage(
+                            //                 'assets/images/imageone.jpg'),
+                            //             fit: BoxFit.cover,
+                            //           ),
+                            //         ),
+                            //       ),
+                            //       SizedBox(
+                            //         width: 10.w,
+                            //       ),
+                            //       Expanded(
+                            //         child: Column(
+                            //           children: [
+                            //             Text(
+                            //               'Wayanadan Vibes',
+                            //               style: TextStyle(
+                            //                 fontFamily: 'Lato',
+                            //               ),
+                            //             ),
+                            //             SizedBox(
+                            //               height: 10.h,
+                            //             ),
+                            //             Text(
+                            //               'Wayanad is a rural district in Kerala state, southwest India. In the east, the Wayanad Wildlife Sanctuary is a lush, forested region with areas of ....',
+                            //               maxLines: 3,
+                            //               style: TextStyle(
+                            //                 overflow: TextOverflow.ellipsis,
+                            //                 fontSize: 10.sp,
+                            //                 fontFamily: 'Lato',
+                            //               ),
+                            //             )
+                            //           ],
+                            //         ),
+                            //       )
+                            //     ],
+                            //   ),
+                            // ),
                             SizedBox(
                               height: 10.h,
                             ),
