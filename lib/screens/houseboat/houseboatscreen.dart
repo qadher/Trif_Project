@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_calicut/components/packagecard.dart';
+import 'package:trip_calicut/screens/houseboat/components/houseboat_list_card.dart';
 import 'package:trip_calicut/screens/houseboat/components/packagecard_houseboat.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 
@@ -138,7 +139,7 @@ class HouseBoatScreen extends StatelessWidget {
                   separatorBuilder: (context, index) => SizedBox(
                     height: 10.h,
                   ),
-                  itemBuilder: (context, index) => PackageCard(),
+                  itemBuilder: (context, index) => HouseBoatPackageCard(),
                 )
               ],
             ),
