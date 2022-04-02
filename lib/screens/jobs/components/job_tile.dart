@@ -21,7 +21,7 @@ class JobTile extends StatelessWidget {
             Container(
               // padding: EdgeInsets.all(8),
               
-              height: 105.h,
+              // height: 105.h,
               decoration: BoxDecoration(
                 color: Colors.white,
                   border: Border.all(width: 1, color: Colors.grey),
@@ -29,7 +29,7 @@ class JobTile extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    height: 105.h,
+                    height: 125.h,
                     width: 100.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -86,14 +86,17 @@ class JobTile extends StatelessWidget {
                       SizedBox(
                         height: 4.h,
                       ),
-                      Text(
-                        'Edabroad is one of the leading study abroad\nconsultants in Cochin with immense ...',
+                     Container(
+                       width: 200.w,
+                       child:  Text(
+                        'Edabroad is one of the leading study abroadconsultants in Cochin wijsdgfjksdhgjbhdykl;ykl;jlkjkl;jth immense ...',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
                             fontSize: 11.sp,
                             ),
                       ),
+                     ),
                       heightSizedBox(),
                     ],
                   )
