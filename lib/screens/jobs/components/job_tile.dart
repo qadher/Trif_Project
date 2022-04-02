@@ -29,8 +29,8 @@ class JobTile extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    height: 125.h,
-                    width: 100.w,
+                    height: 130.h,
+                    width: 109.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
@@ -45,12 +45,17 @@ class JobTile extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
-                        child: Text(
-                          'JCB Operator',
-                          style: TextStyle(
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.bold,
-                            // fontFamily: 'Lato'
+                        child: Container(
+                          width: 100.w,
+                          child: Text(
+                            'JCB Operatorfdgdsthbfdyjh fdhgdjtfgj',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                              // fontFamily: 'Lato'
+                            ),
                           ),
                         ),
                       ),
@@ -67,7 +72,7 @@ class JobTile extends StatelessWidget {
                           Text(
                             'Canada',
                             style: TextStyle(
-                                fontSize: 11.sp,
+                                fontSize: 14.sp,
                                 color: Colors.green,
                                 fontWeight: FontWeight.w500),
                           )
@@ -79,7 +84,7 @@ class JobTile extends StatelessWidget {
                       Text(
                         'Exp. required: 1 - 5 yrs',
                         style: TextStyle(
-                            fontSize: 11.sp,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                             color: Colors.black87),
                       ),
@@ -93,11 +98,11 @@ class JobTile extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
-                            fontSize: 11.sp,
+                            fontSize: 12.sp,
                             ),
                       ),
                      ),
-                      heightSizedBox(),
+                      SizedBox(height:25.h),
                     ],
                   )
                 ],
@@ -105,8 +110,8 @@ class JobTile extends StatelessWidget {
             ),
             
             Positioned(
-              bottom: 2.h,
-              right: 10.h,
+              bottom: 5.h,
+              right: 14.h,
               child: Text(
                 'Provided By Naukari obs',
                 textAlign: TextAlign.end,
