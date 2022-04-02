@@ -13,7 +13,7 @@ class FixedTopNavigation extends StatelessWidget {
       child: Align(
         alignment: Alignment.topCenter,
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 25.w,vertical: 15.h),
+          padding:  EdgeInsets.symmetric(horizontal: 15.w,vertical: 15.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

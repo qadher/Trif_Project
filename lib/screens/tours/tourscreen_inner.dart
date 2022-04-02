@@ -59,7 +59,7 @@ class TourInnerScreen extends StatelessWidget {
                                           Text(
                                             'Heritage Villa',
                                             style: TextStyle(
-                                                fontSize: 30.w,
+                                                fontSize: 25.w,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
@@ -92,7 +92,7 @@ class TourInnerScreen extends StatelessWidget {
                                   child: Text(
                                     'Price Starts from ₹2000/-',
                                     style: TextStyle(
-                                        fontSize: 28.w,
+                                        fontSize: 24.w,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),

@@ -61,43 +61,45 @@ class PlaceScreen extends StatelessWidget {
                   //height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate:
-                           SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        crossAxisSpacing: 15,
-                        mainAxisExtent: 100.h,
-                        
-                      ),
-                      itemCount: 15,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          children: [
-                            Container(
-                              height: 68.h,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(image: AssetImage('assets/images/imageone.jpg'),fit: BoxFit.cover),
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 15,
+                      mainAxisExtent: 100.h,
+                    ),
+                    itemCount: 15,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(
+                        children: [
+                          Container(
+                            height: 68.h,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/imageone.jpg'),
+                                    fit: BoxFit.cover),
                                 color: Colors.amber,
-                                borderRadius: BorderRadius.circular(20)
-                              ),
-                              // child: Center(child: Text('$index')),
-                            ),
-                            Padding(
-                              padding:  EdgeInsets.only(top: 8.h),
-                              child: Center(
-                                child: Text('data',
+                                borderRadius: BorderRadius.circular(20)),
+                            // child: Center(child: Text('$index')),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 8.h),
+                            child: Center(
+                              child: Text(
+                                'data',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.black87
-                                ),
+                                  color: Colors.black87,
                                 ),
                               ),
                             ),
-                          ],
-                        );
-                      }),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 ),
                 // SingleChildScrollView(
                 //   scrollDirection: Axis.horizontal,
@@ -178,7 +180,7 @@ class PlaceScreen extends StatelessWidget {
                                     Text(
                                       'Trekking',
                                       style: TextStyle(
-                                        fontSize: 28,
+                                        fontSize: 22.w,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
@@ -189,7 +191,7 @@ class PlaceScreen extends StatelessWidget {
                                       maxLines: 3,
                                       style: TextStyle(
                                         color: Colors.white.withOpacity(0.8),
-                                        fontSize: 18,
+                                        fontSize: 16.w,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
@@ -205,6 +207,7 @@ class PlaceScreen extends StatelessWidget {
                                     backgroundColor: (Colors.black),
                                     action: SnackBarAction(
                                       label: 'dismiss',
+                                      textColor: Colors.amber,
                                       onPressed: () {},
                                     ),
                                   );
@@ -274,32 +277,32 @@ class PlaceScreen extends StatelessWidget {
                 ),
                 heightSizedBox(),
                 SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Row(
-                            children: [
-                              TrendingNow(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TrendingNow(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TrendingNow(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TrendingNow(),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              TrendingNow(),
-                            ],
-                          ),
+                  scrollDirection: Axis.horizontal,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Row(
+                      children: [
+                        TrendingNow(),
+                        SizedBox(
+                          width: 10.w,
                         ),
-                      ),
+                        TrendingNow(),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        TrendingNow(),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        TrendingNow(),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        TrendingNow(),
+                      ],
+                    ),
+                  ),
+                ),
                 heightSizedBox(),
               ],
             ),

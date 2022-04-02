@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
+import 'package:trip_calicut/screens/places/placesScreen.dart';
 
 import '../../camping/campingscreen.dart';
 import '../../homestay/homestayscreen.dart';

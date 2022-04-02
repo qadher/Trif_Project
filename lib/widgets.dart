@@ -18,7 +18,7 @@ Container providerCard() {
     child: Column(
       children: [
         CircleAvatar(
-          radius: 30.w,
+          radius: 40.w,
           backgroundImage: AssetImage('assets/images/background.jpg'),
         ),
         heightSizedBox(),

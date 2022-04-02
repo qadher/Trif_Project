@@ -116,7 +116,7 @@ class TopAttractions extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: Stack(
-      alignment: Alignment.topCenter,
+      alignment: Alignment.bottomCenter,
       children: [
         Container(
           height: 137.h,
@@ -146,7 +146,7 @@ class TopAttractions extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 11.h,
+          top: 25.h,
           left: 0,
           child: Container(
             width: 80.w,
