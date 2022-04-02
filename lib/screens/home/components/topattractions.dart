@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/attractionapicardcontroller.dart';
 
 class TopAttractionCard extends StatelessWidget {
   final AttractionApiCardController controller =
       Get.put(AttractionApiCardController());
 
-      final url = 'https://trifs.in';
+      
       
 
    TopAttractionCard({Key? key}) : super(key: key);
@@ -59,7 +60,7 @@ class TopAttractionCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
             image: DecorationImage(
-              image: NetworkImage('$url${controller.attractionData.value[index].image!}',),
+              image: NetworkImage(Api.imageUrl +'${controller.attractionData.value[index].image!}',),
               fit: BoxFit.cover,
             ),
           ),

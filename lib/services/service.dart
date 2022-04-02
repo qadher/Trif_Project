@@ -1,11 +1,12 @@
 import 'package:http/http.dart' as http;
+import 'package:trip_calicut/constant/api.dart';
 
 class ApiManager {
   static final client = new http.Client();
 
-  static Future fetchDistrictData(String name) async {
+  static Future fetchData({String? api}) async {
     var responses = await client.post(
-        Uri.parse('https://trifs.in/api/$name'));
+        Uri.parse(Api.apiUrl + '$api'));
         if (responses.statusCode == 200) {
           var jsonResponse = responses.body;
           return jsonResponse;

@@ -23,7 +23,7 @@ class AttractionApiCardController extends GetxController {
   Future fetchAttractionData() async {
     try {
       isLoading.value = true;
-      var response = await ApiManager.fetchDistrictData('attractions');
+      var response = await ApiManager.fetchData(api: 'attractions');
       var jsonResponse = json.decode(response);
       var attractionApiCard = AttractionApiCard.fromJson(jsonResponse);
       attractionData.value = attractionApiCard.attractions!;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/packageapicardcontroller.dart';
 
 import '../screens/home/components/titletext.dart';
@@ -9,7 +10,7 @@ class PackageCardList extends StatelessWidget {
   final PackageApiCardController controller =
       Get.put(PackageApiCardController());
 
-  final url = 'https://trifs.in';
+  
 
   PackageCardList({
     Key? key,
@@ -43,7 +44,7 @@ class PackageCardList extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
-                        image: NetworkImage('$url${controller.packageData.value[index].image!}'),
+                        image: NetworkImage(Api.imageUrl + '${controller.packageData.value[index].image!}'),
                         fit: BoxFit.fitWidth,
                       ),
                     ),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/keraladistrictcardcontroller.dart';
 
 class District extends StatelessWidget {
   final KeralaDistrictCardController controller =
       Get.put(KeralaDistrictCardController());
 
-      final url = 'https://trifs.in';
+      
   District({Key? key}) : super(key: key);
 
   @override
@@ -41,7 +42,7 @@ class District extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(25.0),
                                 image: DecorationImage(
                                   image:
-                                      NetworkImage('$url${controller.districtData.value[index].image!}',),
+                                      NetworkImage(Api.imageUrl + '${controller.districtData.value[index].image!}',),
                                   fit: BoxFit.cover,
                                 ),
                               ),

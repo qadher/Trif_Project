@@ -54,6 +54,17 @@ class HouseBoatScreen extends StatelessWidget {
                   child: TitleText(text: 'Recomended Packages'),
                 ),
                 heightSizedBox(),
+
+                // ListView.separated(
+                //   scrollDirection: Axis.horizontal,
+                //   itemCount: 10,
+                //   separatorBuilder: (context, index) => SizedBox(
+                //     height: 10,
+                //   ),
+                //   itemBuilder: (context, index) {
+                //     return PackageCardHouseBoat();
+                //   } ,
+                // ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Padding(

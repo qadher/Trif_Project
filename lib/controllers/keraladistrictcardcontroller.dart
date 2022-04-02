@@ -22,7 +22,7 @@ class KeralaDistrictCardController extends GetxController {
   Future fetchDistrictData() async {
     try {
       isLoading.value = true;
-      var response = await ApiManager.fetchDistrictData('places');
+      var response = await ApiManager.fetchData(api: 'places');
       var jsonResponse = json.decode(response);
       var keralaDistrictCard = KeralaDistrictCard.fromJson(jsonResponse);
       districtData.value = keralaDistrictCard.places!;

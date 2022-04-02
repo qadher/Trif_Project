@@ -24,7 +24,7 @@ class PackageApiCardController extends GetxController {
   Future fetchAttractionData() async {
     try {
       isLoading.value = true;
-      var response = await ApiManager.fetchDistrictData('packages');
+      var response = await ApiManager.fetchData(api: 'packages');
       var jsonResponse = json.decode(response);
       var packageApiCard = PackageApiCard.fromJson(jsonResponse);
       packageData.value = packageApiCard.packages!;

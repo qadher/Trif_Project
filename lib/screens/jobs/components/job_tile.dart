@@ -48,7 +48,7 @@ class JobTile extends StatelessWidget {
                         child: Text(
                           'JCB Operator',
                           style: TextStyle(
-                            fontSize: 22,
+                            fontSize: 15.sp,
                             fontWeight: FontWeight.bold,
                             // fontFamily: 'Lato'
                           ),
@@ -67,7 +67,7 @@ class JobTile extends StatelessWidget {
                           Text(
                             'Canada',
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 11.sp,
                                 color: Colors.green,
                                 fontWeight: FontWeight.w500),
                           )
@@ -79,7 +79,7 @@ class JobTile extends StatelessWidget {
                       Text(
                         'Exp. required: 1 - 5 yrs',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 11.sp,
                             fontWeight: FontWeight.w500,
                             color: Colors.black87),
                       ),
@@ -90,6 +90,9 @@ class JobTile extends StatelessWidget {
                         'Edabroad is one of the leading study abroad\nconsultants in Cochin with immense ...',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
+                        style: TextStyle(
+                            fontSize: 11.sp,
+                            ),
                       ),
                       heightSizedBox(),
                     ],
@@ -106,7 +109,7 @@ class JobTile extends StatelessWidget {
                 textAlign: TextAlign.end,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                  fontSize: 11.sp,
                   color: Color(0xFF00A6F6),
                 ),
               ),
@@ -124,7 +127,7 @@ class JobTile extends StatelessWidget {
                   child: Center(
                     child: Text('₹30,000 per Annum',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 11.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.black54
                     ),),
