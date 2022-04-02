@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_calicut/components/packagecard.dart';
+import 'package:trip_calicut/screens/houseboat/components/agencycard.dart';
 import 'package:trip_calicut/screens/houseboat/components/packagecard_houseboat.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 
@@ -55,76 +56,43 @@ class HouseBoatScreen extends StatelessWidget {
                 ),
                 heightSizedBox(),
 
-                // ListView.separated(
-                //   scrollDirection: Axis.horizontal,
-                //   itemCount: 10,
-                //   separatorBuilder: (context, index) => SizedBox(
-                //     height: 10,
-                //   ),
-                //   itemBuilder: (context, index) {
-                //     return PackageCardHouseBoat();
-                //   } ,
-                // ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Row(
-                      children: [
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                        widthSizedBox(),
-                        PackageCardHouseBoat(),
-                      ],
-                    ),
-                  ),
-                ),
+                RecommendedPackageCardHouseBoat(),
+               
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: TitleText(text: 'Promoted Agencies'),
                 ),
                 heightSizedBox(),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Row(
-                      children: [
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                        widthSizedBox(),
-                        providerCard(),
-                      ],
-                    ),
-                  ),
-                ),
+                AgencyCard(),
+                
+                // SingleChildScrollView(
+                //   scrollDirection: Axis.horizontal,
+                //   child: Padding(
+                //     padding: const EdgeInsets.only(left: 8),
+                //     child: Row(
+                //       children: [
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //         widthSizedBox(),
+                //         providerCard(),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
@@ -148,3 +116,4 @@ class HouseBoatScreen extends StatelessWidget {
     );
   }
 }
+
