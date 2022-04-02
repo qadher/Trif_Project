@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_calicut/screens/camping/Components/camping_list_card.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 
 import '../../components/packagecard.dart';
@@ -96,7 +97,7 @@ class TravelScreen extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: PackageCard(),
+                    child: CampingListCard(),
                   ),
                 ),
               ],

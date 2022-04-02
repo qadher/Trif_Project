@@ -39,7 +39,19 @@ class PackageCardTrecking extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TitleText(text: 'River Woods'),
+                    Container(
+                      width: 200.w,
+                      child: Text(
+                        'River Woods  uih ikjk l;j l; jkhkkj',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Lato',
+                            color: Colors.black.withOpacity(0.5)),
+                      ),
+                    ),
                     SizedBox(
                       height: 3.h,
                     ),
@@ -101,18 +113,28 @@ class PackageCardTrecking extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Provided by',
+                'Provided by ',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
                 style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black54,
+                  fontSize: 16.sp,
+                  // fontWeight: FontWeight.bold,
+                  fontFamily: 'Lato',
+                  color: Colors.black.withOpacity(0.5),
                 ),
               ),
-              Text(
-                'JIss Travels',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54,
+              Container(
+                width: 100.w,
+                child: Text(
+                  'River Woods  uih ikjk l;j l; jkhkkj',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Lato',
+                    color: Colors.black.withOpacity(0.5),
+                  ),
                 ),
               ),
             ],
