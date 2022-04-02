@@ -32,7 +32,7 @@ class HouseBoatPackageCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(left: 10.w,top: 10.w),
+              padding: EdgeInsets.only(left: 10.w, top: 10.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class HouseBoatPackageCard extends StatelessWidget {
                   Container(
                     width: 190.w,
                     child: Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'River Woods  uih ikjk l;j l; jkhkkj',
@@ -71,58 +71,57 @@ class HouseBoatPackageCard extends StatelessWidget {
                         SizedBox(
                           height: 12.h,
                         ),
-                         Row(
-                           crossAxisAlignment: CrossAxisAlignment.end,
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: [
-                             Padding(
-                               padding:  EdgeInsets.only(bottom: 12.h),
-                               child: Text(
-                                 'Verified',
-                                 overflow: TextOverflow.ellipsis,
-                                 maxLines: 1,
-                                 style: TextStyle(
-                                     fontSize: 20.sp,
-                                     fontWeight: FontWeight.bold,
-                                     fontFamily: 'Lato',
-                                     color: Colors.black.withOpacity(0.5)),
-                               ),
-                             ),
-                             Column(
-                               children: [
-                                 Text(
-                                   '20%Off',
-                                   style: TextStyle(
-                                       fontFamily: 'Lato',
-                                       fontSize: 16.sp,
-                                       fontWeight: FontWeight.bold,
-                                       color: Color(0xFFF6B100)),
-                                 ),
-                                 Text(
-                                   '₹2000/-',
-                                   style: TextStyle(
-                                       fontFamily: 'Lato',
-                                       fontSize: 20.sp,
-                                       fontWeight: FontWeight.bold,
-                                       color: Color(0xFF00A6F6)),
-                                 ),
-                                 Text(
-                                   '₹2500',
-                                   style: TextStyle(
-                                       color: Colors.grey,
-                                       fontSize: 16.sp,
-                                       fontFamily: 'Lato',
-                                       // line text
-                                       decoration: TextDecoration.lineThrough),
-                                 ),
-                               ],
-                             )
-                           ],
-                         )
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
+                              child: Text(
+                                'Verified',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Lato',
+                                    color: Colors.black.withOpacity(0.5)),
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  '20%Off',
+                                  style: TextStyle(
+                                      fontFamily: 'Lato',
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFF6B100)),
+                                ),
+                                Text(
+                                  '₹2000/-',
+                                  style: TextStyle(
+                                      fontFamily: 'Lato',
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF00A6F6)),
+                                ),
+                                Text(
+                                  '₹2500',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 16.sp,
+                                      fontFamily: 'Lato',
+                                      // line text
+                                      decoration: TextDecoration.lineThrough),
+                                ),
+                              ],
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
-                 
                 ],
               ),
             )
