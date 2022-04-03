@@ -5,6 +5,7 @@ import 'package:trip_calicut/bottom_navigation/bottomnavigation.dart';
 import 'package:trip_calicut/bottom_navigation/tab_item.dart';
 import 'package:trip_calicut/bottom_navigation/tab_navigator.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
+import 'package:trip_calicut/screens/offer_page/offerPage.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _AppState extends State<App> {
     HomeScreen(),
     HomeScreen(),
     HomeScreen(),
-    HomeScreen(),
+    OfferScreen(),
     HomeScreen(),
   ];
 
@@ -59,7 +60,7 @@ class _AppState extends State<App> {
                   height: 24.h,
                   width: 24.w,
                 ),
-                label: 'Account'),
+                label: 'Offers'),
                 BottomNavigationBarItem(
                   
                 icon: SvgPicture.asset(
