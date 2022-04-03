@@ -67,33 +67,7 @@ class HouseBoatScreen extends StatelessWidget {
                 heightSizedBox(),
                 AgencyCard(),
                 
-                // SingleChildScrollView(
-                //   scrollDirection: Axis.horizontal,
-                //   child: Padding(
-                //     padding: const EdgeInsets.only(left: 8),
-                //     child: Row(
-                //       children: [
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //         widthSizedBox(),
-                //         providerCard(),
-                //       ],
-                //     ),
-                //   ),
-                // ),
+               
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),

@@ -46,7 +46,21 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         children: [
-                          Container(
+                          controller.houseBoatData.value[index].image!.isEmpty || 
+                          controller.houseBoatData.value[index].image == null
+                              ? Container(
+                            height: 125.h,
+                            width: 232.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                          'assets/images/imageone.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          )
+                              : Container(
                             height: 125.h,
                             width: 232.w,
                             decoration: BoxDecoration(
@@ -56,7 +70,19 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                          ),
+                          ),    
+
+                          // Container(
+                          //   height: 125.h,
+                          //   width: 232.w,
+                          //   decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(15),
+                          //     image: DecorationImage(
+                          //       image: NetworkImage(Api.imageUrl + '${controller.houseBoatData.value[index].image}'),
+                          //       fit: BoxFit.cover,
+                          //     ),
+                          //   ),
+                          // ),
                           SizedBox(
                             height: 10.h,
                           ),

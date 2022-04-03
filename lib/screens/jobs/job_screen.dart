@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
-import 'package:trip_calicut/screens/jobs/components/job_tile.dart';
+import 'package:trip_calicut/screens/jobs/components/joblist.dart';
 
 import '../../components/packagecard.dart';
 import '../home/components/titletext.dart';
@@ -88,39 +88,10 @@ class JobScreen extends StatelessWidget {
                   ),
                 ),
                 heightSizedBox(),
-                // JobTile(),
-                // heightSizedBox(),
-                // JobTile(),
-                // heightSizedBox(),
-                // JobTile(),
-                // heightSizedBox(),
-                // JobTile(),
-                ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: 10.h,
-                  ),
-                  itemBuilder: (context, index) => JobTile(),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 8),
-                //   child: TitleText(text: 'Vehicles in Ollur...'),
-                // ),
+
+                JobList(),
+
                 heightSizedBox(),
-                // ListView.separated(
-                //   physics: NeverScrollableScrollPhysics(),
-                //   shrinkWrap: true,
-                //   itemCount: 10,
-                //   separatorBuilder: (context, index) => SizedBox(
-                //     height: 10.h,
-                //   ),
-                //   itemBuilder: (context, index) => Padding(
-                //     padding: const EdgeInsets.symmetric(horizontal: 8),
-                //     child: PackageCard(),
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -129,3 +100,4 @@ class JobScreen extends StatelessWidget {
     );
   }
 }
+

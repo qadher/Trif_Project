@@ -4,7 +4,6 @@ import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
-import 'package:trip_calicut/screens/places/placescreen.dart';
 import 'package:trip_calicut/screens/resort/resortscreen.dart';
 import 'package:trip_calicut/screens/splash_screen/splash_screen.dart';
 import 'package:trip_calicut/screens/tours/tourscreen.dart';
