@@ -2,9 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:trip_calicut/screens/home/components/carousel.dart';
-import 'package:trip_calicut/screens/jobs/components/job_tile.dart';
-
 import '../../components/packagecard.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
