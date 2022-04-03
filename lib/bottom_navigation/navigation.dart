@@ -46,14 +46,14 @@ class _AppState extends State<App> {
                   height: 24.h,
                   width: 24.w,
                 ),
-                label: 'Inbox'),
+                label: 'Search'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/heart color.svg',
                   height: 24.h,
                   width: 24.w,
                 ),
-                label: 'Account'),
+                label: 'Favorite'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/discount color.svg',
