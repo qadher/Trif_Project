@@ -149,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => App()),
                     );
@@ -202,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 18),
                       ),
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (ctx) => SignUpScreen()));
                       },
                     ),
