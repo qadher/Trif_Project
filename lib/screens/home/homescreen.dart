@@ -8,7 +8,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trip_calicut/screens/home/components/topattractions.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
-import 'package:trip_calicut/screens/places/placescreen.dart';
 import 'package:trip_calicut/screens/resort/resortscreen.dart';
 import 'package:trip_calicut/screens/tours/tourscreen.dart';
 import 'package:trip_calicut/screens/travel/travelscreen.dart';

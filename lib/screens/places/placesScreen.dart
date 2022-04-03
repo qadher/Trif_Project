@@ -12,6 +12,7 @@ import 'package:trip_calicut/widgets.dart';
 import '../../components/viewall.dart';
 import '../home/components/carousel.dart';
 import '../widgets.dart';
+import 'components/placesdistrict.dart';
 
 class PlaceScreen extends StatelessWidget {
   const PlaceScreen({Key? key}) : super(key: key);
@@ -56,78 +57,8 @@ class PlaceScreen extends StatelessWidget {
                   child: TitleText(text: 'Kerala > Districts'),
                 ),
                 heightSizedBox(),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  //height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 15,
-                      mainAxisExtent: 100.h,
-                    ),
-                    itemCount: 15,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Column(
-                        children: [
-                          Container(
-                            height: 68.h,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/imageone.jpg'),
-                                    fit: BoxFit.cover),
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(20)),
-                            // child: Center(child: Text('$index')),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 8.h),
-                            child: Center(
-                              child: Text(
-                                'data',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-                // SingleChildScrollView(
-                //   scrollDirection: Axis.horizontal,
-                //   child: Container(
-                //     padding: EdgeInsets.only(left: 8),
-                //     child: Row(
-                //       children: [
-                //         DistrictCard(),
-                //         SizedBox(
-                //           width: 10.w,
-                //         ),
-                //         DistrictCard(),
-                //         SizedBox(
-                //           width: 10.w,
-                //         ),
-                //         DistrictCard(),
-                //         SizedBox(
-                //           width: 10.w,
-                //         ),
-                //         DistrictCard(),
-                //         SizedBox(
-                //           width: 10.w,
-                //         ),
-                //         DistrictCard(),
-                //       ],
-                //     ),
-                //   ),
-                // ),
+                PlacesDistrict(),
+
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -136,18 +67,7 @@ class PlaceScreen extends StatelessWidget {
                   ),
                 ),
                 heightSizedBox(),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 8),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //     children: [
-                //       FutureBuilder(builder: (context, index)=> TopDestination(index: index))
-                //       // TopDestination(),
-                //       // TopDestination(),
-                //       // TopDestination(),
-                //     ],
-                //   ),
-                // ),
+
                 SizedBox(
                   height: 10.h,
                 ),
@@ -276,33 +196,7 @@ class PlaceScreen extends StatelessWidget {
                   child: TitleText(text: 'Trending Now '),
                 ),
                 heightSizedBox(),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Row(
-                      children: [
-                        TrendingNow(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        TrendingNow(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        TrendingNow(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        TrendingNow(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        TrendingNow(),
-                      ],
-                    ),
-                  ),
-                ),
+                TrendingNow(),
                 heightSizedBox(),
               ],
             ),

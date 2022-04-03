@@ -36,11 +36,23 @@ class AgencyCard extends StatelessWidget {
                   child: Container(
                     child: Column(
                       children: [
-                        CircleAvatar(
-                          radius: 40.sp,
-                          backgroundImage: NetworkImage(Api.imageUrl +
-                              '${controller.agencyData.value[index].logo}'),
-                        ),
+                        controller.agencyData.value[index].logo!.isEmpty ||
+                                controller.agencyData.value[index].logo! == null
+                            ? CircleAvatar(
+                                radius: 40.sp,
+                                backgroundImage:
+                                    AssetImage('assets/images/imageone.jpg'),
+                              )
+                            : CircleAvatar(
+                                radius: 40.sp,
+                                backgroundImage: NetworkImage(Api.imageUrl +
+                                    '${controller.agencyData.value[index].logo}'),
+                              ),
+                        // CircleAvatar(
+                        //   radius: 40.sp,
+                        //   backgroundImage: NetworkImage(Api.imageUrl +
+                        //       '${controller.agencyData.value[index].logo}'),
+                        // ),
                         heightSizedBox(),
                         Text(
                           '${controller.agencyData.value[index].name!.split(' ')[0]}\n' +

@@ -86,7 +86,7 @@ class TopAttractionCard extends StatelessWidget {
                 maxLines: 1,
                 style: TextStyle(
                   fontFamily: 'Lato',
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold
                 ),
               ),
