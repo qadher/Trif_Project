@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/singn_Up/signup.dart';
@@ -38,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 60.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 60.0),
+                  padding:  EdgeInsets.only(top: 60.sp),
                   child: Center(
                     child: Container(
                         width: 90.w,
@@ -73,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: TextField(
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(fontSize: 17),
+                            hintStyle: TextStyle(fontSize: 17.sp),
                             hintText: 'Email Id or Mobile Number',
                             prefixIcon: Icon(Icons.person),
                             // suffixIcon: Icon(Icons.search),
@@ -91,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(fontSize: 17),
+                            hintStyle: TextStyle(fontSize: 17.sp),
                             hintText: 'Password',
                             prefixIcon: Icon(Icons.lock),
                             // suffixIcon: Icon(Icons.search),
@@ -108,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               'Forgot Password ?',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
+                                  TextStyle(color: Colors.white, fontSize: 15.sp),
                             ),
                           ),
                         ],
@@ -191,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       'Don’t have an account? ',
-                      style: TextStyle(color: Colors.white70, fontSize: 18),
+                      style: TextStyle(color: Colors.white70, fontSize: 18.sp),
                     ),
                     GestureDetector(
                       child: Text(
@@ -208,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Text(
                       ' here',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(color: Colors.white, fontSize: 18.sp),
                     ),
                   ],
                 )

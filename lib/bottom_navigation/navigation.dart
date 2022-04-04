@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/bottomnavigation.dart';
 import 'package:trip_calicut/bottom_navigation/tab_item.dart';
 import 'package:trip_calicut/bottom_navigation/tab_navigator.dart';

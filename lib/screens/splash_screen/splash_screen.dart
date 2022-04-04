@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/main.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
@@ -31,6 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         children: [
           Container(
+            // height: MediaQuery.of(context).size.height,
+            // width: MediaQuery.of(context).size.width ,
             decoration: BoxDecoration(
               image: DecorationImage(image: AssetImage('assets/images/splash background.png'),
               fit: BoxFit.cover)

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:trip_calicut/screens/tours/components/districts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
