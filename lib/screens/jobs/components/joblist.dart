@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/controllers/jobsapicardcontroller.dart';
 import 'package:trip_calicut/widgets.dart';
 
@@ -27,7 +26,7 @@ class JobList extends StatelessWidget {
             shrinkWrap: true,
             itemCount: controller.jobsData.value.length,
             separatorBuilder: (context, index) => SizedBox(
-              height: 10.h,
+              height: 10,
             ),
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
@@ -49,8 +48,8 @@ class JobList extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            height: 130.h,
-                            width: 109.w,
+                            height: 130,
+                            width: 109,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
@@ -66,13 +65,13 @@ class JobList extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(top: 10),
                                 child: Container(
-                                  width: 100.w,
+                                  width: 100,
                                   child: Text(
                                     '${controller.jobsData.value[index].name}',
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                       // fontFamily: 'Lato'
                                     ),
@@ -80,68 +79,68 @@ class JobList extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                height: 3.h,
+                                height: 3,
                               ),
                               Row(
                                 children: [
                                   Icon(
                                     Icons.location_pin,
-                                    size: 18.sp,
+                                    size: 18,
                                     color: Color(0xFF00A6F6),
                                   ),
                                   Text(
                                     '${controller.jobsData.value[index].place}',
                                     style: TextStyle(
-                                        fontSize: 14.sp,
+                                        fontSize: 14,
                                         color: Colors.green,
                                         fontWeight: FontWeight.w500),
                                   )
                                 ],
                               ),
                               SizedBox(
-                                height: 2.h,
+                                height: 2,
                               ),
                               Container(
-                                width: 200.w,
+                                width: 200,
                                 child: Text(
                                   '${controller.jobsData.value[index].experience}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                      fontSize: 14.sp,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black87),
                                 ),
                               ),
                               SizedBox(
-                                height: 4.h,
+                                height: 4,
                               ),
                               Container(
-                                width: 200.w,
+                                width: 200,
                                 child: Text(
                                   '${controller.jobsData.value[index].qualification}',
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
                                   style: TextStyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 12,
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 25.h),
+                              SizedBox(height: 25),
                             ],
                           )
                         ],
                       ),
                     ),
                     Positioned(
-                      bottom: 5.h,
-                      right: 14.h,
+                      bottom: 5,
+                      right: 14,
                       child: Text(
                         'Provided By Naukari obs',
                         textAlign: TextAlign.end,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 11.sp,
+                          fontSize: 11,
                           color: Color(0xFF00A6F6),
                         ),
                       ),
@@ -162,7 +161,7 @@ class JobList extends StatelessWidget {
                               child: Text(
                                 '₹${controller.jobsData.value[index].salaryPackage} per Annum',
                                 style: TextStyle(
-                                    fontSize: 11.sp,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black54),
                               ),

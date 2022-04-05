@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class FixedBottomSwitch extends StatelessWidget {
   const FixedBottomSwitch({
@@ -9,7 +8,7 @@ class FixedBottomSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 20.h),
+      padding: EdgeInsets.only(bottom: 20),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Row(
@@ -23,8 +22,8 @@ class FixedBottomSwitch extends StatelessWidget {
                     topLeft: Radius.circular(50)),
               ),
               alignment: Alignment.center,
-              height: 45.h,
-              width: 150.w,
+              height: 45,
+              width: 150,
               child: Text(
                 'Enqury Now',
                 style: TextStyle(
@@ -34,7 +33,7 @@ class FixedBottomSwitch extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 2.w,
+              width: 2,
             ),
             Container(
               decoration: BoxDecoration(
@@ -44,8 +43,8 @@ class FixedBottomSwitch extends StatelessWidget {
                     topRight: Radius.circular(50)),
               ),
               alignment: Alignment.center,
-              height: 45.h,
-              width: 150.w,
+              height: 45,
+              width: 150,
               child: Text(
                 'Call Now',
                 style: TextStyle(

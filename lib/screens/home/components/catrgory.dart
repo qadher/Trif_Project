@@ -68,11 +68,11 @@ class CategoryCard extends StatelessWidget {
           children: [
             SvgPicture.asset(
               categoryList.image,
-              height: 45.h,
-              width: 45.w,
+              height: 6.h,
+              width: 6.w,
             ),
             SizedBox(
-              height: 10.h,
+              height: 10,
             ),
             Text(
               categoryList.title,

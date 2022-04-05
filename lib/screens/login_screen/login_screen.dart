@@ -19,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: Stack(children: [
         Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/login.jpg'),
@@ -34,35 +36,30 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 60.h,
+                  height: 16.h,
                 ),
-                Padding(
-                  padding:  EdgeInsets.only(top: 60.sp),
-                  child: Center(
-                    child: Container(
-                        width: 90.w,
-                        height: 90.h,
-                        /*decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(50.0)),*/
-                        child: Image.asset(
-                          'assets/images/trifs_logo_login.png',
-                        )),
+                Center(
+                  child: Image.asset(
+                    'assets/images/trifs_logo_login.png',
+                    height: 15.h,
+                    width: 25.w,
                   ),
                 ),
-                heightSizedBox(),
+                SizedBox(
+                  height: 2.h,
+                ),
                 Text(
                   "Welcome Back!",
                   style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
                 SizedBox(
-                  height: 60.h,
+                  height: 8.h,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Column(
                     children: [
                       Container(
@@ -72,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: TextField(
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(fontSize: 17.sp),
+                            hintStyle: TextStyle(fontSize: 15),
                             hintText: 'Email Id or Mobile Number',
                             prefixIcon: Icon(Icons.person),
                             // suffixIcon: Icon(Icons.search),
@@ -81,7 +78,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      heightSizedBox(),
+                      // heightSizedBox(),
+                      SizedBox(
+                        height: 2.h,
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.42),
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextField(
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(fontSize: 17.sp),
+                            hintStyle: TextStyle(fontSize: 15),
                             hintText: 'Password',
                             prefixIcon: Icon(Icons.lock),
                             // suffixIcon: Icon(Icons.search),
@@ -98,6 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             contentPadding: EdgeInsets.all(20),
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 0.5.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -107,90 +110,50 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               'Forgot Password ?',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 15.sp),
+                                  TextStyle(color: Colors.white, fontSize: 14),
                             ),
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: 0.5.h,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 5.h,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => App()),
+                            );
+                          },
+                          child: Text(
+                            'Sign In',
+                            // style: TextStyle(color: Colors.white, fontSize: 15),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF00A6F6),
+                            textStyle: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w900),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)),
+                            // fixedSize: Size(300, 45),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                // Padding(
-                //   //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-                //   padding: EdgeInsets.symmetric(horizontal: 15),
-                //   child: TextFormField(
-                //     // controller: ,
-                //     decoration: InputDecoration(
-                //         filled: true,
-                //         fillColor: Colors.grey,
-                //         prefixIcon: Icon(Icons.person),
-                //         border: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(50),
-                //         ),
-                //         labelText: 'Email Id or Mobile Number',
-                //         hintText: 'Enter valid email id as abc@gmail.com'),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       left: 15.0, right: 15.0, top: 15, bottom: 0),
-                //   //padding: EdgeInsets.symmetric(horizontal: 15),
-                //   child: TextFormField(
-                //     obscureText: true,
-                //     decoration: InputDecoration(
-                //         prefixIcon: Icon(Icons.lock),
-                //         border: OutlineInputBorder(
-                //             borderRadius: BorderRadius.circular(50)),
-                //         labelText: 'Password',
-                //         hintText: 'Enter secure password'),
-                //   ),
-                // ),
-
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => App()),
-                    );
-                  },
-                  child: Text(
-                    'Sign In',
-                    // style: TextStyle(color: Colors.white, fontSize: 15),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF00A6F6),
-                      textStyle: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w500),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
-                      fixedSize: Size(300.w, 45.h)),
-                ),
-                // Container(
-                //   height: 50,
-                //   width: 250,
-                //   decoration: BoxDecoration(
-                //       color: Colors.blue,
-                //       borderRadius: BorderRadius.circular(20)),
-                //   child: TextButton(
-                //     onPressed: () {
-                //       // Navigator.push(
-                //       // context, MaterialPageRoute(builder: (_) => HomePage()));
-                //     },
-                //     child: Text(
-                //       'Login',
-                //       style: TextStyle(color: Colors.white, fontSize: 25),
-                //     ),
-                //   ),
-                // ),
                 SizedBox(
-                  height: 28.h,
+                  height: 3.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'Don’t have an account? ',
-                      style: TextStyle(color: Colors.white70, fontSize: 18.sp),
+                      style: TextStyle(color: Colors.white70, fontSize: 16),
                     ),
                     GestureDetector(
                       child: Text(
@@ -198,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 18),
+                            fontSize: 16),
                       ),
                       onTap: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -207,8 +170,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Text(
                       ' here',
-                      style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
+                    SizedBox(
+                      height: 2.h,
+                    )
                   ],
                 )
               ],

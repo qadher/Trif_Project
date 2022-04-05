@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: theme.colorScheme
               .copyWith(secondary: Colors.transparent, primary: Colors.blue),
         ),
-        home: HomeScreen(),
+        home: SplashScreen(),
       );
     });
   }

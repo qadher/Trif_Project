@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/bottomnavigation.dart';
 import 'package:trip_calicut/bottom_navigation/tab_item.dart';
 import 'package:trip_calicut/bottom_navigation/tab_navigator.dart';
@@ -36,37 +35,37 @@ class _AppState extends State<App> {
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/home color.svg',
-                  height: 24.h,
-                  width: 24.w,
+                  height: 24,
+                  width: 24,
                 ),
                 label: 'Home'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/search vector.svg',
-                  height: 24.h,
-                  width: 24.w,
+                  height: 24,
+                  width: 24,
                 ),
                 label: 'Search'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/heart color.svg',
-                  height: 24.h,
-                  width: 24.w,
+                  height: 24,
+                  width: 24,
                 ),
                 label: 'Favorite'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/discount color.svg',
-                  height: 24.h,
-                  width: 24.w,
+                  height: 24,
+                  width: 24,
                 ),
                 label: 'Offers'),
                 BottomNavigationBarItem(
                   
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/user color.svg',
-                  height: 24.h,
-                  width: 24.w,
+                  height: 24,
+                  width: 24,
                 ),
                 label: 'Account'
                 ),

@@ -7,7 +7,6 @@ import 'package:trip_calicut/controllers/houseboatapicardcontroller.dart';
 import '../../home/components/titletext.dart';
 
 class RecommendedPackageCardHouseBoat extends StatelessWidget {
-  
   final HouseboatApiCardController controller =
       Get.put(HouseboatApiCardController());
 
@@ -25,13 +24,13 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
           );
         } else {
           return Container(
-            height: 199.h,
+            height: 28.7.h,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: controller.houseBoatData.value.length,
               separatorBuilder: (context, index) => SizedBox(
-                //width: 4.w,
-              ),
+                  //width: 4.w,
+                  ),
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -46,31 +45,34 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(
                         children: [
-                          controller.houseBoatData.value[index].image!.isEmpty || 
-                          controller.houseBoatData.value[index].image == null
+                          controller.houseBoatData.value[index].image!
+                                      .isEmpty ||
+                                  controller.houseBoatData.value[index].image ==
+                                      null
                               ? Container(
-                            height: 125.h,
-                            width: 232.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                image: AssetImage(
+                                  height: 19.h,
+                                  width: 60.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: DecorationImage(
+                                      image: AssetImage(
                                           'assets/images/imageone.jpg'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                )
                               : Container(
-                            height: 125.h,
-                            width: 232.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                image: NetworkImage(Api.imageUrl + '${controller.houseBoatData.value[index].image}'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),    
+                                  height: 19.h,
+                                  width: 60.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: DecorationImage(
+                                      image: NetworkImage(Api.imageUrl +
+                                          '${controller.houseBoatData.value[index].image}'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
 
                           // Container(
                           //   height: 125.h,
@@ -84,10 +86,10 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                           //   ),
                           // ),
                           SizedBox(
-                            height: 10.h,
+                            height: 10,
                           ),
                           Container(
-                            width: 210.w,
+                            width: 60.w,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,10 +101,10 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                       '${controller.houseBoatData.value[index].name!.substring(0, 1).toUpperCase() + controller.houseBoatData.value[index].name!.substring(1).toLowerCase().split(' ')[0]}',
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(fontSize: 20.sp),
+                                      style: TextStyle(fontSize: 20),
                                     ),
                                     SizedBox(
-                                      height: 3.h,
+                                      height: 3,
                                     ),
                                     Row(
                                       children: [
@@ -128,7 +130,7 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                       '₹${controller.houseBoatData.value[index].budget}',
                                       style: TextStyle(
                                           fontFamily: 'Lato',
-                                          fontSize: 16.sp,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xFF00A6F6)),
                                     ),
@@ -136,19 +138,20 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                       '₹${controller.houseBoatData.value[index].offerAmount}',
                                       style: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: 12.sp,
+                                          fontSize: 12,
                                           fontFamily: 'Lato',
                                           // line text
-                                          decoration: TextDecoration.lineThrough),
+                                          decoration:
+                                              TextDecoration.lineThrough),
                                     ),
                                     SizedBox(
-                                      width: 5.w,
+                                      width: 5,
                                     ),
                                     Text(
                                       '${controller.houseBoatData.value[index].advAmount}%Off',
                                       style: TextStyle(
                                           fontFamily: 'Lato',
-                                          fontSize: 10.sp,
+                                          fontSize: 10,
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xFFF6B100)),
                                     ),
@@ -185,8 +188,8 @@ class PackageCardHouseBoat extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 120.h,
-            width: 220.w,
+            height: 120,
+            width: 220,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
@@ -196,10 +199,10 @@ class PackageCardHouseBoat extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10.h,
+            height: 10,
           ),
           Container(
-            width: 210.w,
+            width: 210,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,7 +212,7 @@ class PackageCardHouseBoat extends StatelessWidget {
                   children: [
                     TitleText(text: 'River Woods'),
                     SizedBox(
-                      height: 3.h,
+                      height: 3,
                     ),
                     Row(
                       children: [
@@ -249,7 +252,7 @@ class PackageCardHouseBoat extends StatelessWidget {
                           decoration: TextDecoration.lineThrough),
                     ),
                     SizedBox(
-                      width: 5.w,
+                      width: 5,
                     ),
                     Text(
                       '20%Off',

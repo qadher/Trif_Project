@@ -48,18 +48,23 @@ class SwitchesCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: 45.h,
-              width: 45.w,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(categoryList.image),
-                  fit: BoxFit.cover,
-                ),
-              ),
+            Image.asset(
+              categoryList.image,
+              height: 10.w,
+              width: 10.h,
             ),
+            // Container(
+            //   height: 45,
+            //   width: 45,
+            //   decoration: BoxDecoration(
+            //     image: DecorationImage(
+            //       image: AssetImage(categoryList.image),
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
+            // ),
             SizedBox(
-              height: 10.h,
+              height: 10,
             ),
             Text(
               categoryList.title,

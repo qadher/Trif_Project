@@ -32,34 +32,52 @@ class PlacesDistrict extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 crossAxisSpacing: 15,
-                // mainAxisSpacing: 15,
-                mainAxisExtent: 100.h,
+                mainAxisSpacing: 15,
+                mainAxisExtent: 14.h,
               ),
               itemCount: controller.districtData.value.length,
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
-                    Container(
-                      height: 68.h,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(Api.imageUrl +
-                                  '${controller.districtData.value[index].image}'),
-                              fit: BoxFit.cover),
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(20)),
-                      // child: Center(child: Text('$index')),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 8.h),
-                      child: Center(
-                        child: Text(
-                          '${controller.districtData.value[index].name}',
-                          style: TextStyle(
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87,
+                    controller.districtData.value[index].image!.isEmpty ||
+                            controller.districtData.value[index].image == null
+                        ? Container(
+                            // width: MediaQuery.of(context).size.width * 0.25,
+                            height: 10.h,
+
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/imageone.jpg'),
+                                    fit: BoxFit.cover),
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(20)),
+                            // child: Center(child: Text('$index')),
+                          )
+                        : Container(
+                            // width: MediaQuery.of(context).size.width * 0.25,
+                            height: 10.h,
+
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage(Api.imageUrl +
+                                        '${controller.districtData.value[index].image}'),
+                                    fit: BoxFit.cover),
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(20)),
+                            // child: Center(child: Text('$index')),
                           ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Center(
+                      child: Text(
+                        '${controller.districtData.value[index].name}',
+                        maxLines: 1,
+                        style: TextStyle(
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black87,
                         ),
                       ),
                     ),

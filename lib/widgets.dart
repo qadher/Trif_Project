@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
-
 Widget heightSizedBox() {
   return SizedBox(
-    height: 12.h,
+    height: 12,
   );
 }
 
 Widget widthSizedBox() {
   return SizedBox(
-    width: 10.w,
+    width: 10,
   );
 }
 
@@ -18,7 +16,7 @@ Container providerCard() {
     child: Column(
       children: [
         CircleAvatar(
-          radius: 40.w,
+          radius: 40,
           backgroundImage: AssetImage('assets/images/background.jpg'),
         ),
         heightSizedBox(),
@@ -39,13 +37,13 @@ Container providerCard() {
                 child: Row(
                   children: [
                     Container(
-                      height: 200.h,
+                      height: 200,
                       width: MediaQuery.of(context).size.width * 0.3,
                       color: Colors.black.withOpacity(0.5),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 10.w,
-                          vertical: 15.h,
+                          horizontal: 10,
+                          vertical: 15,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +96,7 @@ Container providerCard() {
                     ),
                     Expanded(
                       child: Container(
-                        height: 200.h,
+                        height: 200,
                         width: MediaQuery.of(context).size.width,
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -108,15 +106,15 @@ Container providerCard() {
                               children: [
                                 scrollCard(),
                                 SizedBox(
-                                  width: 10.w,
+                                  width: 10,
                                 ),
                                 scrollCard(),
                                 SizedBox(
-                                  width: 10.w,
+                                  width: 10,
                                 ),
                                 scrollCard(),
                                 SizedBox(
-                                  width: 10.w,
+                                  width: 10,
                                 ),
                                 scrollCard(),
                               ],
@@ -136,8 +134,8 @@ Container providerCard() {
     return Column(
       children: [
         Container(
-          height: 80.h,
-          width: 100.w,
+          height: 80,
+          width: 100,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/background.jpg'),
@@ -146,11 +144,11 @@ Container providerCard() {
           ),
         ),
         SizedBox(
-          height: 10.h,
+          height: 10,
         ),
         Container(
-          height: 80.h,
-          width: 100.w,
+          height: 80,
+          width: 100,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/background.jpg'),

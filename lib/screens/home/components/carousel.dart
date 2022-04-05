@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
  final List<String> imgList = [
   'assets/images/background.jpg',
@@ -97,7 +96,7 @@ final List<Widget> imageSliders = imgList
                 padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 2),
                 child: Text('Promoted',
                     style: TextStyle(
-                      fontSize: 15.sp,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontFamily: 'Lato',

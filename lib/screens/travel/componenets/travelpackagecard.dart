@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trip_calicut/controllers/truckingpackageapicardcontroller.dart';
+import 'package:trip_calicut/constant/api.dart';
+import 'package:trip_calicut/controllers/travelpackageapicardcontroller.dart';
+import 'package:trip_calicut/widgets.dart';
 
-import '../../../constant/api.dart';
-import '../../home/components/titletext.dart';
+class TravelPackageCard extends StatelessWidget {
+  final TravelPackageApiCardController controller =
+      Get.put(TravelPackageApiCardController());
 
-class PackageCardTrecking extends StatelessWidget {
-  final TruckingPackageApiCardController  controller = Get.put(TruckingPackageApiCardController());
-
-   PackageCardTrecking({
+  TravelPackageCard({
     Key? key,
   }) : super(key: key);
 
@@ -23,7 +23,7 @@ class PackageCardTrecking extends StatelessWidget {
         return ListView.separated(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: controller.truckingPackageData.value.length,
+          itemCount: controller.travelPackageData.value.length,
           separatorBuilder: (context, index) => SizedBox(
             height: 10,
           ),
@@ -39,8 +39,8 @@ class PackageCardTrecking extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    controller.truckingPackageData.value[index].image!.isEmpty ||
-                            controller.truckingPackageData.value[index].image ==
+                    controller.travelPackageData.value[index].image!.isEmpty ||
+                            controller.travelPackageData.value[index].image ==
                                 null
                         ? Container(
                             height: 130,
@@ -64,7 +64,7 @@ class PackageCardTrecking extends StatelessWidget {
                                   topLeft: Radius.circular(20)),
                               image: DecorationImage(
                                 image: NetworkImage(Api.imageUrl +
-                                    '${controller.truckingPackageData.value[index].image}'),
+                                    '${controller.travelPackageData.value[index].image}'),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -85,7 +85,7 @@ class PackageCardTrecking extends StatelessWidget {
                                       width: MediaQuery.of(context).size.width *
                                           0.5,
                                       child: Text(
-                                        '${controller.truckingPackageData.value[index].name}',
+                                        '${controller.travelPackageData.value[index].name}',
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 1,
                                         style: TextStyle(
@@ -104,12 +104,12 @@ class PackageCardTrecking extends StatelessWidget {
                                           color: Color(0xFF00A6F6),
                                         ),
                                         controller
-                                                        .truckingPackageData
+                                                        .travelPackageData
                                                         .value[index]
                                                         .district ==
                                                     null ||
                                                 controller
-                                                    .truckingPackageData
+                                                    .travelPackageData
                                                     .value[index]
                                                     .district!
                                                     .isEmpty
@@ -123,7 +123,7 @@ class PackageCardTrecking extends StatelessWidget {
                                                         .withOpacity(0.5)),
                                               )
                                             : Text(
-                                                '${controller.truckingPackageData.value[index].district}',
+                                                '${controller.travelPackageData.value[index].district}',
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
@@ -140,7 +140,7 @@ class PackageCardTrecking extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        '₹${controller.truckingPackageData.value[index].offerAmount}',
+                                        '₹${controller.travelPackageData.value[index].perDayOfferAmount}',
                                         maxLines: 1,
                                         style: TextStyle(
                                             fontFamily: 'Lato',
@@ -149,7 +149,7 @@ class PackageCardTrecking extends StatelessWidget {
                                             color: Color(0xFF00A6F6)),
                                       ),
                                       Text(
-                                        '₹${controller.truckingPackageData.value[index].avgAmount}',
+                                        '₹${controller.travelPackageData.value[index].perDayAmount}',
                                         maxLines: 1,
                                         style: TextStyle(
                                             color: Colors.grey,
@@ -160,7 +160,7 @@ class PackageCardTrecking extends StatelessWidget {
                                                 TextDecoration.lineThrough),
                                       ),
                                       Text(
-                                        '${controller.truckingPackageData.value[index].advAmount}%Off',
+                                        '${controller.travelPackageData.value[index].advAmount}%Off',
                                         maxLines: 1,
                                         style: TextStyle(
                                           fontFamily: 'Lato',

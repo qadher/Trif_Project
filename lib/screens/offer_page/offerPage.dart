@@ -1,12 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sizer/sizer.dart';
-import '../../components/packagecard.dart';
+import '../home/components/packagecard.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
-import '../tours/components/topdestination.dart';
+import '../tours/components/categoryscrolllist.dart';
 import '../widgets.dart';
 
 class OfferScreen extends StatelessWidget {
@@ -37,37 +36,7 @@ class OfferScreen extends StatelessWidget {
                 heightSizedBox(),
                 
                 // heightSizedBox(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                      ],
-                    ),
-                  ),
-                ),
+                CategoryScrollList(),
                 heightSizedBox(),
                 // JobTile(),
                 // heightSizedBox(),
@@ -77,14 +46,14 @@ class OfferScreen extends StatelessWidget {
                 // heightSizedBox(),
                 // JobTile(),
                  Padding(
-                   padding:  EdgeInsets.symmetric(horizontal: 10.w),
+                   padding:  EdgeInsets.symmetric(horizontal: 10),
                    child: GridView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        crossAxisSpacing: 8.w,
-                        mainAxisSpacing: 2.h
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 2
                         // mainAxisExtent: 100.h,
                       ),
                       itemCount: 15,
@@ -92,7 +61,7 @@ class OfferScreen extends StatelessWidget {
                         return Column(
                           children: [
                             Container(
-                              height: 120.h,
+                              height: 120,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(

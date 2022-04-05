@@ -10,9 +10,8 @@ class TitleText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        
+        fontSize: 22,
         color: Color.fromARGB(255, 138, 138, 138),
-        fontSize: 22.sp,
         fontWeight: FontWeight.bold,
         fontFamily: 'Lato',
       ),

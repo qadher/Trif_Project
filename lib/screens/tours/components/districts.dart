@@ -13,7 +13,8 @@ class District extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110.h,
+      height: 17.h,
+      // width: 17.w,
       child: Obx(
         () {
           if (controller.isLoading.value) {
@@ -35,8 +36,8 @@ class District extends StatelessWidget {
                   children: [
                     Container(
                       //background image
-                      height: 80.h,
-                      width: 80.w,
+                      height: 100,
+                      width: 100,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25.0),
                         image: DecorationImage(
@@ -81,8 +82,8 @@ class DistrictCard extends StatelessWidget {
         children: [
           Container(
             //background image
-            height: 80.h,
-            width: 80.w,
+            height: 80,
+            width: 80,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25.0),
               image: DecorationImage(

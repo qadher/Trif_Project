@@ -5,11 +5,11 @@ import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 import 'package:trip_calicut/screens/jobs/components/joblist.dart';
 
-import '../../components/packagecard.dart';
+import '../home/components/packagecard.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
-import '../tours/components/topdestination.dart';
+import '../tours/components/categoryscrolllist.dart';
 import '../widgets.dart';
 
 class JobScreen extends StatelessWidget {
@@ -37,7 +37,7 @@ class JobScreen extends StatelessWidget {
               children: [
                 // adsBanner(context),
                 Container(
-                  height: 140.h,
+                  height: 20.h,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(20)),
                   width: MediaQuery.of(context).size.width,
@@ -55,38 +55,8 @@ class JobScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8),
                   child: TitleText(text: 'District'),
                 ),
-                // heightSizedBox(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                        widthSizedBox(),
-                        TopDestination(),
-                      ],
-                    ),
-                  ),
-                ),
+                heightSizedBox(),
+                CategoryScrollList(),
                 heightSizedBox(),
 
                 JobList(),
