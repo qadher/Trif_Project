@@ -15,11 +15,14 @@ class OfferScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffE5E5E5),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(56),
-        child: AppBarWidget(
-          title: 'Offers',
-        ),
+      // appBar: PreferredSize(
+      //   preferredSize: Size.fromHeight(56),
+      //   child: AppBarWidget(
+      //     title: 'Offers',
+      //   ),
+      // ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
       ),
       body: SafeArea(
         child: NotificationListener<OverscrollIndicatorNotification>(
