@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/screens/education/educatuion_screen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
 import 'package:trip_calicut/screens/places/placesScreen.dart';
 
@@ -138,7 +139,7 @@ List<CategoryList> categoryLists = <CategoryList>[
   CategoryList(
       image: 'assets/icons/education.svg',
       title: 'Education',
-      screen: TourScreen()),
+      screen: EducationScreen()),
   CategoryList(
       image: 'assets/icons/jobs.svg', title: 'Jobs', screen: JobScreen()),
 ];
