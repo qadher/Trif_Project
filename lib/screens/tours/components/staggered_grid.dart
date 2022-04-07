@@ -28,7 +28,7 @@ class StaggeredPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>TourInnerScreen()));
+        // Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>TourInnerScreen()));
       },
       child: StaggeredGrid.count(
         crossAxisCount: 4,
