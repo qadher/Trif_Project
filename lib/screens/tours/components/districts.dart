@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/keraladistrictcardcontroller.dart';
 
@@ -13,7 +12,7 @@ class District extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 17.h,
+      height: 125,
       // width: 17.w,
       child: Obx(
         () {
@@ -56,7 +55,7 @@ class District extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12.sp,
+                          fontSize: 12,
                         ),
                       ),
                     ),

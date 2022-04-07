@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/houseboatapicardcontroller.dart';
 
@@ -24,7 +23,7 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
           );
         } else {
           return Container(
-            height: 28.7.h,
+            height: 205,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: controller.houseBoatData.value.length,
@@ -50,8 +49,8 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                   controller.houseBoatData.value[index].image ==
                                       null
                               ? Container(
-                                  height: 19.h,
-                                  width: 60.w,
+                                  height: 130,
+                                  width: 220,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
                                     image: DecorationImage(
@@ -62,8 +61,8 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                   ),
                                 )
                               : Container(
-                                  height: 19.h,
-                                  width: 60.w,
+                                  height: 130,
+                                  width: 220,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15),
                                     image: DecorationImage(
@@ -89,7 +88,7 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                             height: 10,
                           ),
                           Container(
-                            width: 60.w,
+                            width: 220,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,

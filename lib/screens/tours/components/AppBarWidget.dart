@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../home/homescreen.dart';
+
 class AppBarWidget extends StatelessWidget {
   final String title;
    AppBarWidget({
@@ -21,7 +23,13 @@ class AppBarWidget extends StatelessWidget {
           Icons.arrow_back,
           color: Colors.blue,
         ),
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        
+        ),
       ),
       actions: [
         IconButton(
