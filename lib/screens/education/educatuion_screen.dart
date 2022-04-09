@@ -107,7 +107,7 @@ class EducationScreen extends StatelessWidget {
                                   Text(
                                     'Bachelors',
                                     style: TextStyle(
-                                        fontSize: 12.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.bold,
                                         // color: Colors.white,
                                         ),
@@ -116,7 +116,7 @@ class EducationScreen extends StatelessWidget {
                                   Text(
                                     'Masters',
                                     style: TextStyle(
-                                        fontSize: 12.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.bold,
                                         // color: Colors.white,
                                         ),
@@ -124,7 +124,7 @@ class EducationScreen extends StatelessWidget {
                                   Text(
                                     'Doctorate/Phd',
                                     style: TextStyle(
-                                        fontSize: 12.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.bold,
                                         // color: Colors.white,
                                         ),

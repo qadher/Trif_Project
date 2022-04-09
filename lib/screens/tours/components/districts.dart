@@ -30,36 +30,42 @@ class District extends StatelessWidget {
                   controller.districtData.value.length,
               separatorBuilder: (context, index) => SizedBox(),
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Column(
-                  children: [
-                    Container(
-                      //background image
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25.0),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            Api.imageUrl +
-                                '${controller.districtData.value[index].image!}',
+                padding:  EdgeInsets.only(left: 12),
+                child: GestureDetector(
+                  onTap: () {
+                    print(controller.districtData.value[index].id);
+                    // Get.toNamed('/singlepage');
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        //background image
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              Api.imageUrl +
+                                  '${controller.districtData.value[index].image!}',
+                            ),
+                            fit: BoxFit.cover,
                           ),
-                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        controller.districtData.value[index].name!,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 12,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text(
+                          controller.districtData.value[index].name!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

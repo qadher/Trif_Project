@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
@@ -51,8 +53,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> gotoBoarding() async {
     await Future.delayed(const Duration(seconds: 1));
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (ctx) => LoginScreen()));
+    Get.offNamed("/login");
+    //   Navigator.of(context)
+    //       .pushReplacement(MaterialPageRoute(builder: (ctx) => LoginScreen()));
   }
 
   Future<void> checkFirst() async {
@@ -62,8 +65,9 @@ class _SplashScreenState extends State<SplashScreen> {
       gotoBoarding();
     } else {
       await Future.delayed(const Duration(seconds: 1));
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (ctx1) => LoginScreen()));
+          Get.offNamed("/login");
+      // Navigator.of(context)
+      //     .pushReplacement(MaterialPageRoute(builder: (ctx1) => LoginScreen()));
     }
   }
 }

@@ -85,19 +85,7 @@ class TourScreen extends StatelessWidget {
                     text: 'Top Destinations',
                   ),
                 ),
-                // heightSizedBox(),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 8),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //     children: [
-                //       FutureBuilder(builder: (context, index)=> TopDestination(index: index))
-                //       // TopDestination(),
-                //       // TopDestination(),
-                //       // TopDestination(),
-                //     ],
-                //   ),
-                // ),
+              
                 SizedBox(
                   height: 10,
                 ),

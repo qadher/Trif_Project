@@ -30,8 +30,9 @@ class JobList extends StatelessWidget {
             ),
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (ctx) => JobInnerScreen(index: index,)));
+                Get.toNamed('/jobsinglepage',arguments: [controller.jobsData.value[index],index,controller]);
+                // Navigator.of(context).push(
+                //     MaterialPageRoute(builder: (ctx) => JobInnerScreen(index: index,)));
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

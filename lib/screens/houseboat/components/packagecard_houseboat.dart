@@ -33,7 +33,15 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    // print(Api.imageUrl + '${controller.houseBoatData.value[index].image}');
+                     Get.toNamed('/singlepage',arguments: [
+                 controller.houseBoatData.value[index],
+                 controller,
+                 controller.houseBoatData.value[index].image,
+                 controller.houseBoatData.value[index].name,
+                 controller.houseBoatData.value[index].budget,
+                 controller.houseBoatData.value[index].district,
+                 
+                 ],  );
                   },
                   child: Padding(
                     padding: EdgeInsets.only(left: 8),
@@ -72,7 +80,7 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
+            
                           // Container(
                           //   height: 125.h,
                           //   width: 232.w,
@@ -96,11 +104,15 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      '${controller.houseBoatData.value[index].name!.substring(0, 1).toUpperCase() + controller.houseBoatData.value[index].name!.substring(1).toLowerCase().split(' ')[0]}',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(fontSize: 20),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.3,
+                                      child: Text(
+                                        '${controller.houseBoatData.value[index].name!.substring(0, 1).toUpperCase() + controller.houseBoatData.value[index].name!.substring(1).toLowerCase().split(' ')[0]}',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(fontSize: 20),
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 3,

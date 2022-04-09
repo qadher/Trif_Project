@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
@@ -123,10 +124,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 5.h,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => App()),
-                            );
+                            Get.offNamed("/bottomNav");
+
+                            // Navigator.pushReplacement(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) => App()),
+                            // );
                           },
                           child: Text(
                             'Sign In',
@@ -164,8 +167,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 16),
                       ),
                       onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (ctx) => SignUpScreen()));
+                        Get.toNamed('/signUp');
+                        // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        //     builder: (ctx) => SignUpScreen()));
                       },
                     ),
                     Text(

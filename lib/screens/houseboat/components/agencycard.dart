@@ -29,6 +29,7 @@ class AgencyCard extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   // print(controller.agencyData.value[8].name);
+                    //  Get.toNamed('/singlepage',arguments: [controller.agencyData.value[index],controller],  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8),

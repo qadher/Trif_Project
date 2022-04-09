@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class FixedTopNavigation extends StatelessWidget {
   const FixedTopNavigation({
@@ -9,11 +8,11 @@ class FixedTopNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 20.h),
+      padding: EdgeInsets.only(bottom: 20),
       child: Align(
         alignment: Alignment.topCenter,
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 15.w,vertical: 15.h),
+          padding:  EdgeInsets.symmetric(horizontal: 15,vertical: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -23,12 +22,12 @@ class FixedTopNavigation extends StatelessWidget {
                 },
                 child: Icon(Icons.arrow_back_ios,
                 color: Colors.white,
-                size: 25.h,
+                size: 25,
                 ),
               ),
               CircleAvatar(
                 backgroundColor: Colors.white.withOpacity(0.6),
-                radius: 20.h,
+                radius: 20,
                 child: Icon(Icons.search,
                 color: Colors.black,),
               )

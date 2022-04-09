@@ -8,10 +8,12 @@ import 'package:trip_calicut/widgets.dart';
 import '../../controllers/jobsapicardcontroller.dart';
 
 class JobInnerScreen extends StatelessWidget {
-  final JobsApiCardController controller = Get.put(JobsApiCardController());
-  final AgencyApiController agencyController = Get.put(AgencyApiController());
-  final index;
-  JobInnerScreen({Key? key, this.index}) : super(key: key);
+  final agencyController = Get.put(AgencyApiController());
+  final controllerValue = Get.arguments[0];
+  final index = Get.arguments[1];
+  final controller = Get.arguments[2];
+
+  JobInnerScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,18 @@ class JobInnerScreen extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else {
-              return AppBarWidget(
-                title: '${controller.jobsData.value[index].name}',
+              return AppBar(
+                backgroundColor: Colors.white,
+                title: Text('${controllerValue.name}',
+                    style: TextStyle(color: Colors.blue)),
+                leading: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.blue,
+                    ),
+                    onPressed: () {
+                      Get.offNamed('/jobs');
+                    }),
               );
             }
           })),
@@ -78,7 +90,7 @@ class JobInnerScreen extends StatelessWidget {
                                       height: 30,
                                       child: Center(
                                         child: Text(
-                                          '₹${controller.jobsData.value[index].salaryPackage}',
+                                          '₹${controllerValue.salaryPackage}',
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold,
@@ -103,7 +115,7 @@ class JobInnerScreen extends StatelessWidget {
                                       child: Container(
                                         width: 280,
                                         child: Text(
-                                          '${controller.jobsData.value[index].name}',
+                                          '${controllerValue.name}',
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 2,
                                           style: TextStyle(
@@ -125,7 +137,7 @@ class JobInnerScreen extends StatelessWidget {
                                           color: Color(0xFF00A6F6),
                                         ),
                                         Text(
-                                          '${controller.jobsData.value[index].place}',
+                                          '${controllerValue.place}',
                                           style: TextStyle(
                                               fontSize: 14,
                                               color: Colors.green,
@@ -137,7 +149,7 @@ class JobInnerScreen extends StatelessWidget {
                                       height: 5,
                                     ),
                                     Text(
-                                      '${controller.jobsData.value[index].experience}',
+                                      '${controllerValue.experience}',
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
@@ -147,7 +159,7 @@ class JobInnerScreen extends StatelessWidget {
                                       height: 7,
                                     ),
                                     Text(
-                                      '${controller.jobsData.value[index].qualification}',
+                                      '${controllerValue.qualification}',
                                       textAlign: TextAlign.justify,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
