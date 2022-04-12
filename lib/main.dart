@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
+import 'package:trip_calicut/screens/home/homeinnerscreen.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
+import 'package:trip_calicut/screens/houseboat/houseboatinnerscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen_inner.dart';
@@ -55,6 +57,9 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/singlepage', page: () => TourInnerScreen()),
           GetPage(name: '/jobsinglepage', page: () => JobInnerScreen()),
           GetPage(name: '/jobs', page: () => JobScreen()),
+          GetPage(name: '/homesinglepage', page: () => HomeInnerScreen()),
+          GetPage(name: '/houseboatsinglepage', page: () => HouseBoatInnerScreen()),
+          
         ],
       );
     });

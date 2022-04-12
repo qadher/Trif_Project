@@ -1,19 +1,24 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/screens/home/components/packagecard.dart';
 import 'package:trip_calicut/screens/houseboat/components/agencycard.dart';
 import 'package:trip_calicut/screens/houseboat/components/houseboat_list_card.dart';
 import 'package:trip_calicut/screens/houseboat/components/packagecard_houseboat.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
+import 'package:trip_calicut/screens/houseboat/components/shimmerhouseboatscreen.dart';
 
+import '../../controllers/houseboatapicardcontroller.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
 import '../widgets.dart';
 
 class HouseBoatScreen extends StatelessWidget {
-  const HouseBoatScreen({Key? key}) : super(key: key);
+  final HouseboatApiCardController houseboatPageController =
+      Get.put(HouseboatApiCardController());
+   HouseBoatScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,11 @@ class HouseBoatScreen extends StatelessWidget {
             overscroll.disallowIndicator();
             return false;
           },
-          child: SingleChildScrollView(
+          child: Obx(() {
+          if (houseboatPageController.isLoading.value) {
+            return ShimmerHouseBoatScreen();
+          } else {
+            return SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -84,7 +93,8 @@ class HouseBoatScreen extends StatelessWidget {
                 )
               ],
             ),
-          ),
+          );
+          }}),
         ),
       ),
     );

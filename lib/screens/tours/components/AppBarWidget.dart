@@ -25,7 +25,8 @@ class AppBarWidget extends StatelessWidget {
           Icons.arrow_back,
           color: Colors.blue,
         ),
-        onPressed: () => Get.offAllNamed('/home'),
+        onPressed: () => Navigator.pop(context),
+        // Get.offAllNamed('/bottomNav'),
         // Navigator.pushReplacement(
         //   context,
         //   MaterialPageRoute(

@@ -60,13 +60,13 @@ class StaggeredPage extends StatelessWidget {
                     DecorationImage(
                       colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.darken),
                       image: AssetImage(
-                        imgList[index],
+                        images[index],
                       ),
                       fit: BoxFit.cover,
                     ) : DecorationImage(
                       // colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
                       image: AssetImage(
-                        imgList[index],
+                       images[index],
                       ),
                       fit: BoxFit.cover,
                     )

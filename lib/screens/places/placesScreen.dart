@@ -41,7 +41,7 @@ class PlaceScreen extends StatelessWidget {
                 // adsBanner(context),
                 heightSizedBox(),
                 Container(
-                  height: 20.h,
+                  height: 160,
                   width: MediaQuery.of(context).size.width,
                   child: CarouselSlider(
                     options: CarouselOptions(
@@ -73,13 +73,13 @@ class PlaceScreen extends StatelessWidget {
                   height: 10,
                 ),
                 insideScroller(context),
-                
+
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: TitleText(text: 'Trending Now '),
                 ),
-                
+
                 TrendingNow(),
                 heightSizedBox(),
               ],

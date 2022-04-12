@@ -32,7 +32,7 @@ class HouseBoatPackageCard extends StatelessWidget {
                   ),
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () {
-                  Get.toNamed('/singlepage',arguments: [
+                  Get.toNamed('/houseboatsinglepage',arguments: [
                  controller.houseBoatData.value[index],
                  controller,
                  controller.houseBoatData.value[index].image,

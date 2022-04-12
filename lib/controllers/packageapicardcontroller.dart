@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 
-import '../models/attractionapicard.dart';
-import '../models/keraladistrictcard.dart';
 import '../models/packageapicard.dart';
 import '../services/service.dart';
 

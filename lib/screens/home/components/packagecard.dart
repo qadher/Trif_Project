@@ -32,7 +32,7 @@ class PackageCardList extends StatelessWidget {
             ),
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
-               Get.toNamed('/singlepage',arguments: [
+               Get.toNamed('/homesinglepage',arguments: [
                  controller.packageData.value[index],
                  controller,
                  controller.packageData.value[index].image,
