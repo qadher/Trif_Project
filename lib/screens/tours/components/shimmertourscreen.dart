@@ -26,50 +26,6 @@ class ShimmerTourScreen extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              //category
-              Container(
-                child: GridView(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    childAspectRatio: 1.0,
-                    // crossAxisSpacing: 10.0,
-                    // mainAxisSpacing: 10.0,
-                  ),
-                  children: List.generate(
-                    12,
-                    (index) => Container(
-                      //padding: EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 6.w,
-                            backgroundColor: Colors.white,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 10,
-                            width: 40,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              Container(
-                height: 15.h,
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 10,
-              ),
               Container(
                 height: 20,
                 width: 100,
@@ -105,6 +61,24 @@ class ShimmerTourScreen extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
+              Center(
+                child: Container(
+                  height: 15.h,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 20,
+                width: 100,
+                color: Colors.white,
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 height: 15.h,
                 color: Colors.white,
@@ -113,39 +87,9 @@ class ShimmerTourScreen extends StatelessWidget {
                 height: 10,
               ),
               Container(
-                child: GridView(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    childAspectRatio: 1.0,
-                    // crossAxisSpacing: 10.0,
-                    // mainAxisSpacing: 10.0,
-                  ),
-                  children: List.generate(
-                    8,
-                    (index) => Container(
-                      //padding: EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 6.w,
-                            backgroundColor: Colors.white,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 10,
-                            width: 40,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                height: 20,
+                width: 100,
+                color: Colors.white,
               ),
             ],
           ),

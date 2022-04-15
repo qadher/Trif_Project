@@ -169,17 +169,22 @@ class HomeScreen extends StatelessWidget {
                                     height: 10,
                                   ),
                                   Container(
-                                    height: 160,
+                                    height: 23.h,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     width: MediaQuery.of(context).size.width,
                                     child: CarouselSlider(
                                       options: CarouselOptions(
                                         autoPlay: true,
                                         aspectRatio: 2.0,
                                         enlargeCenterPage: true,
+                                        // viewportFraction: 1,
                                       ),
                                       items: imageSliders,
                                     ),
                                   ),
+
                                   SizedBox(
                                     height: 10,
                                   ),

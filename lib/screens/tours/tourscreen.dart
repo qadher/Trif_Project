@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
+import 'package:trip_calicut/screens/tours/components/carousel.dart';
 import 'package:trip_calicut/screens/tours/components/districts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:trip_calicut/screens/tours/components/shimmertourscreen.dart';
