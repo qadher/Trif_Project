@@ -29,18 +29,20 @@ class TravelPackageCard extends StatelessWidget {
           ),
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              Get.toNamed('/singlepage',arguments: [
-                 controller.travelPackageData.value[index],
-                 controller,
-                 controller.travelPackageData.value[index].image,
-                 controller.travelPackageData.value[index].name,
-                 controller.travelPackageData.value[index].perDayOfferAmount,
-                 controller.travelPackageData.value[index].district,
-                 
-                 ],  );
+              Get.toNamed(
+                '/singlepage',
+                arguments: [
+                  controller.travelPackageData.value[index],
+                  controller,
+                  controller.travelPackageData.value[index].image,
+                  controller.travelPackageData.value[index].name,
+                  controller.travelPackageData.value[index].perDayOfferAmount,
+                  controller.travelPackageData.value[index].district,
+                ],
+              );
             },
             child: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -51,7 +53,8 @@ class TravelPackageCard extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      controller.travelPackageData.value[index].image!.isEmpty ||
+                      controller.travelPackageData.value[index].image!
+                                  .isEmpty ||
                               controller.travelPackageData.value[index].image ==
                                   null
                           ? Container(
@@ -91,11 +94,13 @@ class TravelPackageCard extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: MediaQuery.of(context).size.width *
-                                            0.5,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
                                         child: Text(
                                           '${controller.travelPackageData.value[index].name}',
                                           overflow: TextOverflow.ellipsis,
@@ -104,8 +109,8 @@ class TravelPackageCard extends StatelessWidget {
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'Lato',
-                                              color:
-                                                  Colors.black.withOpacity(0.5)),
+                                              color: Colors.black
+                                                  .withOpacity(0.5)),
                                         ),
                                       ),
                                       Row(
@@ -129,7 +134,8 @@ class TravelPackageCard extends StatelessWidget {
                                                   'Wayanad',
                                                   style: TextStyle(
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontFamily: 'Lato',
                                                       color: Colors.black
                                                           .withOpacity(0.5)),
@@ -138,7 +144,8 @@ class TravelPackageCard extends StatelessWidget {
                                                   '${controller.travelPackageData.value[index].district}',
                                                   style: TextStyle(
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontFamily: 'Lato',
                                                       color: Colors.black
                                                           .withOpacity(0.5)),
@@ -149,7 +156,8 @@ class TravelPackageCard extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Text(
                                           '₹${controller.travelPackageData.value[index].perDayOfferAmount}',
@@ -197,8 +205,8 @@ class TravelPackageCard extends StatelessWidget {
                                         text: 'Provided by ',
                                         style: TextStyle(
                                             fontSize: 10,
-                                            color:
-                                                Color.fromARGB(255, 58, 58, 58)),
+                                            color: Color.fromARGB(
+                                                255, 58, 58, 58)),
                                       ),
                                       TextSpan(
                                           text: 'Jiss Travels',

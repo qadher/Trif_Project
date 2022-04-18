@@ -53,7 +53,6 @@ class HomeScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.33,
                   color: Colors.black.withOpacity(0.3),
                 ),
-                
                 Container(
                   margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.10,
@@ -195,7 +194,8 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 8),
-                                    child: TitleText(text: 'Recommended Packages'),
+                                    child:
+                                        TitleText(text: 'Recommended Packages'),
                                   ),
                                   SizedBox(
                                     height: 10,
