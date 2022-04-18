@@ -73,7 +73,7 @@ class BlindSpotInnerScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25),
                             image: DecorationImage(
                               image: AssetImage(
-                                'assets/images/imageone.jpg',
+                                'assets/images/addimage.png',
                               ),
                               fit: BoxFit.cover,
                             ),

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/screens/blind_spot/blind_spot_screen.dart';
 import 'package:trip_calicut/screens/education/educatuion_screen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
 import 'package:trip_calicut/screens/places/placesScreen.dart';
@@ -126,7 +127,7 @@ List<CategoryList> categoryLists = <CategoryList>[
   CategoryList(
       image: 'assets/icons/blindspot.svg',
       title: 'Blind Spot',
-      screen: TourScreen()),
+      screen: BlindSpotScreen()),
   CategoryList(
       image: 'assets/icons/globaltravel.svg',
       title: 'Global Travel',
