@@ -23,7 +23,7 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
           );
         } else {
           return Container(
-            height: 205,
+            height: 207,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: controller.houseBoatData.value.length,
@@ -33,15 +33,17 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                     Get.toNamed('/singlepage',arguments: [
-                 controller.houseBoatData.value[index],
-                 controller,
-                 controller.houseBoatData.value[index].image,
-                 controller.houseBoatData.value[index].name,
-                 controller.houseBoatData.value[index].budget,
-                 controller.houseBoatData.value[index].district,
-                 
-                 ],  );
+                    Get.toNamed(
+                      '/singlepage',
+                      arguments: [
+                        controller.houseBoatData.value[index],
+                        controller,
+                        controller.houseBoatData.value[index].image,
+                        controller.houseBoatData.value[index].name,
+                        controller.houseBoatData.value[index].budget,
+                        controller.houseBoatData.value[index].district,
+                      ],
+                    );
                   },
                   child: Padding(
                     padding: EdgeInsets.only(left: 8),
@@ -80,7 +82,7 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-            
+
                           // Container(
                           //   height: 125.h,
                           //   width: 232.w,

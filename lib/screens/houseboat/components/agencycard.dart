@@ -48,7 +48,7 @@ class AgencyCard extends StatelessWidget {
                               : CircleAvatar(
                                   radius: 40,
                                   backgroundImage: NetworkImage(Api.imageUrl +
-                                      '${controller.agencyData.value[index].logo}'),
+                                      '/${controller.agencyData.value[index].logo}'),
                                 ),
                           // CircleAvatar(
                           //   radius: 40.sp,
