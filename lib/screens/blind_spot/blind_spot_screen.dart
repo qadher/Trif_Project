@@ -40,7 +40,7 @@ class BlindSpotScreen extends StatelessWidget {
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
-                  child: TitleText(text: 'Discover Spots'),
+                  child: TitleText(text: 'Discover Spots',),
                 ),
                 heightSizedBox(),
                 CategoryScrollList(),

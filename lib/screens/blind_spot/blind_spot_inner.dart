@@ -81,7 +81,7 @@ class BlindSpotInnerScreen extends StatelessWidget {
                         ),
                       )
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

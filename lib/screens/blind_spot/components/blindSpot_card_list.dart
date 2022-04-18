@@ -129,7 +129,7 @@ class BlindSpotCard extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
                                   image: DecorationImage(
-                                    image: AssetImage (
+                                    image: AssetImage(
                                       'assets/images/imageone.jpg',
                                     ),
                                     fit: BoxFit.cover,
@@ -172,7 +172,7 @@ class BlindSpotCard extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                'Bhoothan Moola ',
+                                'Bhoothan Moola',
                                 textAlign: TextAlign.end,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
@@ -226,7 +226,7 @@ class BlindSpotCard extends StatelessWidget {
                                     ),
                                   ),
                                   heightSizedBox(),
-                                  Row (
+                                  Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Text(
