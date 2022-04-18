@@ -60,13 +60,13 @@ class CategoryCard extends StatelessWidget {
       //padding: EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
-          Get.to(categoryList.screen);
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => categoryList.screen,
-          //   ),
-          // );
+          // Get.to(categoryList.screen);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => categoryList.screen,
+            ),
+          );
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,5 +1,18 @@
 import 'package:flutter/material.dart';
 
+
+final List<String> images = [
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+  'assets/images/imageone.jpg',
+];
  final List<String> imgList = [
   'assets/images/background.jpg',
   'assets/images/imageone.jpg',
