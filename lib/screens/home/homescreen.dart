@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/screens/home/components/catrgory.dart';
 import 'package:trip_calicut/screens/home/components/switchescard.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trip_calicut/screens/home/components/topattractions.dart';
 
+import '../../components/locationcontroller.dart';
 import '../../controllers/attractionapicardcontroller.dart';
 import '../../controllers/packageapicardcontroller.dart';
 import 'components/packagecard.dart';
@@ -18,6 +20,8 @@ class HomeScreen extends StatelessWidget {
       Get.put(AttractionApiCardController());
   final PackageApiCardController packageController =
       Get.put(PackageApiCardController());
+
+  final LocationController locationController = Get.put(LocationController());
 
   HomeScreen({Key? key}) : super(key: key);
 
@@ -94,12 +98,15 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Text(
-                                    'Thrissur, Kerala',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12.sp,
-                                        fontFamily: 'Lato'),
+                                  Obx(
+                                    () => Text(
+                                      '${locationController.address.value}',
+                                      // 'Location',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.sp,
+                                          fontFamily: 'Lato'),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -185,6 +192,34 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
 
+                                  //start
+
+                                  // Container(
+                                  //   height: 23.h,
+                                  //   decoration: BoxDecoration(
+                                  //       borderRadius:
+                                  //           BorderRadius.circular(20)),
+                                  //   width: MediaQuery.of(context).size.width,
+                                  //   child: CarouselSlider(
+                                  //     options: CarouselOptions(
+                                  //       autoPlay: true,
+                                  //       aspectRatio: 2.0,
+                                  //       enlargeCenterPage: true,
+                                  //       // viewportFraction: 1,
+                                  //     ),
+                                  //     items: [
+                                  //       nearbySliderWidget(
+                                  //           'assets/images/ads.png'),
+                                  //       nearbySliderWidget(
+                                  //           'assets/images/JCB.jpg'),
+                                  //           nearbySliderWidget(
+                                  //           'assets/images/background.jpg'),
+                                  //     ],
+                                  //   ),
+                                  // ),
+
+                                  //end
+
                                   SizedBox(
                                     height: 10,
                                   ),
@@ -233,6 +268,48 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ),
+      ),
+    );
+  }
+
+  Container nearbySliderWidget(String image) {
+    return Container(
+      child: Container(
+        margin: EdgeInsets.all(5.0),
+        child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            child: Stack(
+              children: <Widget>[
+                Image.asset('$image', fit: BoxFit.cover, width: 1000.0),
+                Positioned(
+                  bottom: 0.0,
+                  left: 0.0,
+                  right: 0.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromARGB(200, 0, 0, 0),
+                          Color.fromARGB(0, 0, 0, 0)
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                      ),
+                    ),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    // child: Text(
+                    //   'No. ${imgList.indexOf(item)} image',
+                    //   style: TextStyle(
+                    //     color: Colors.white,
+                    //     fontSize: 20.0,
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
+                  ),
+                ),
+              ],
+            )),
       ),
     );
   }
