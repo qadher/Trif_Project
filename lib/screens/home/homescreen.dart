@@ -100,8 +100,8 @@ class HomeScreen extends StatelessWidget {
                                     width: 5,
                                   ),
                                   Text(
-                                      // '${locationController.address.value}',
-                                      'Location',
+                                      '${locationController.address.value}',
+                                      // 'Location',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 12.sp,

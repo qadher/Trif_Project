@@ -13,7 +13,7 @@ class LocationController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-   // getLocation();
+   getLocation();
   }
 
   @override
