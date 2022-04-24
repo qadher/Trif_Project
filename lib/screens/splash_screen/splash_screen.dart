@@ -8,7 +8,6 @@ import 'package:trip_calicut/main.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/login_screen/login_screen.dart';
 import 'package:trip_calicut/screens/onboarding/onboarding.dart';
-import 'package:trip_calicut/screens/singn_Up/signup.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

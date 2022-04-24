@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
+import 'package:trip_calicut/screens/home/attractionsinglepage/attractionsinglepage.dart';
+import 'package:trip_calicut/screens/home/components/homesinglepage/homesinglepagepackage.dart';
 import 'package:trip_calicut/screens/home/homeinnerscreen.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
+import 'package:trip_calicut/screens/homestay/singlepage/homestaysinglepage.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatinnerscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
@@ -12,11 +15,16 @@ import 'package:trip_calicut/screens/jobs/job_screen_inner.dart';
 import 'package:trip_calicut/screens/login_screen/login_screen.dart';
 import 'package:trip_calicut/screens/onboarding/onboarding.dart';
 import 'package:trip_calicut/screens/resort/resortscreen.dart';
-import 'package:trip_calicut/screens/singn_Up/signup.dart';
+import 'package:trip_calicut/screens/resort/singlepage/resortsinglepage.dart';
+import 'package:trip_calicut/screens/sign_up/signup.dart';
+import 'package:trip_calicut/screens/singlepages/campingsinglepage.dart';
+import 'package:trip_calicut/screens/singlepages/packagesinglepage.dart';
 import 'package:trip_calicut/screens/splash_screen/splash_screen.dart';
+import 'package:trip_calicut/screens/tours/singlepage/toursinglepage.dart';
 import 'package:trip_calicut/screens/tours/tourscreen.dart';
 import 'package:trip_calicut/screens/tours/tourscreen_inner.dart';
 import 'package:trip_calicut/screens/travel/travelscreen.dart';
+import 'package:trip_calicut/screens/trekking/singlepage/truckingsinglepage.dart';
 import 'package:trip_calicut/screens/trekking/trekkingscreen.dart';
 
 const status = 'first_time';
@@ -58,7 +66,16 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/jobsinglepage', page: () => JobInnerScreen()),
           GetPage(name: '/jobs', page: () => JobScreen()),
           GetPage(name: '/homesinglepage', page: () => HomeInnerScreen()),
-          GetPage(name: '/houseboatsinglepage', page: () => HouseBoatInnerScreen()),
+          GetPage(
+              name: '/houseboatsinglepage', page: () => HouseBoatInnerScreen()),
+          GetPage(name: '/packagesinglepage', page: () => PackageSinglePage()),
+          GetPage(name: '/campingsinglepage', page: () => CampingSinglePage()),
+          GetPage(name: '/homesinglepagepackage', page: () => HomeSinglePagePackage()),
+          GetPage(name: '/resortsinglepage', page: () => ResortSinglePage()),
+          GetPage(name: '/homestaysinglepage', page: () => HomeStaySinglePage()),
+          GetPage(name: '/toursinglepage', page: () => TourSinglePage()),
+          GetPage(name: '/truckingsinglepage', page: () => TruckingSinglePage()),
+          GetPage(name: '/attractionsinglepage', page: () => AttractionSinglePage()),
           
         ],
       );

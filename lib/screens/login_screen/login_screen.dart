@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
-import 'package:trip_calicut/screens/singn_Up/signup.dart';
 import 'package:trip_calicut/widgets.dart';
 
 class LoginScreen extends StatefulWidget {

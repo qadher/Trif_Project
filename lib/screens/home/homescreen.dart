@@ -20,6 +20,7 @@ class HomeScreen extends StatelessWidget {
       Get.put(AttractionApiCardController());
   final PackageApiCardController packageController =
       Get.put(PackageApiCardController());
+      
 
   final LocationController locationController = Get.put(LocationController());
 
@@ -98,16 +99,24 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Obx(
-                                    () => Text(
-                                      '${locationController.address.value}',
-                                      // 'Location',
+                                  Text(
+                                      // '${locationController.address.value}',
+                                      'Location',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 12.sp,
                                           fontFamily: 'Lato'),
                                     ),
-                                  ),
+                                  // Obx(
+                                  //   () => Text(
+                                  //     '${locationController.address.value}',
+                                  //     // 'Location',
+                                  //     style: TextStyle(
+                                  //         color: Colors.white,
+                                  //         fontSize: 12.sp,
+                                  //         fontFamily: 'Lato'),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),

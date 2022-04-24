@@ -30,76 +30,87 @@ class TopAttractionCard extends StatelessWidget {
                     // shrinkWrap: true,
                     // physics: NeverScrollableScrollPhysics(),
                     itemCount: controller.attractionData.value.length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Stack(
-                        alignment: Alignment.topCenter,
-                        children: [
-                          Container(
-                            height: 18.h,
-                            width: 28.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Color(0xFFDCDCDC),
-                            ),
-                          ),
-                          Container(
-                            height: 17.h,
-                            width: 30.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: Color(0xFFAEAEAE)),
-                          ),
-                          Container(
-                            //background image
-                            height: 16.h,
-                            width: 32.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  Api.imageUrl +
-                                      '${controller.attractionData.value[index].image!}',
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            top: 11,
-                            left: 0,
-                            child: Container(
-                              width: 25.w,
+                    itemBuilder: (context, index) => GestureDetector(
+                       onTap: () {
+                Get.toNamed('/attractionsinglepage',arguments: [
+                 controller.attractionData.value[index].id,
+                 
+                
+                
+                 
+                 ],  );
+              },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: Stack(
+                          alignment: Alignment.topCenter,
+                          children: [
+                            Container(
+                              height: 18.h,
+                              width: 28.w,
                               decoration: BoxDecoration(
-                                color: Color(0xFFF6B100),
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(5),
-                                    bottomRight: Radius.circular(5)),
+                                borderRadius: BorderRadius.circular(15),
+                                color: Color(0xFFDCDCDC),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 4, vertical: 3),
-                                child: Text(
-                                  //first letter capital
-                                  controller.attractionData.value[index].name!
-                                          .substring(0, 1)
-                                          .toUpperCase() +
-                                      controller
-                                          .attractionData.value[index].name!
-                                          .substring(1)
-                                          .toLowerCase()
-                                          .split(' ')[0],
-                                  // controller.attractionData.value[index].name!.split(' ')[0],
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      fontFamily: 'Lato',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
+                            ),
+                            Container(
+                              height: 17.h,
+                              width: 30.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Color(0xFFAEAEAE)),
+                            ),
+                            Container(
+                              //background image
+                              height: 16.h,
+                              width: 32.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    Api.imageUrl +
+                                        '${controller.attractionData.value[index].image!}',
+                                  ),
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            Positioned(
+                              top: 11,
+                              left: 0,
+                              child: Container(
+                                width: 25.w,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF6B100),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(5),
+                                      bottomRight: Radius.circular(5)),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 4, vertical: 3),
+                                  child: Text(
+                                    //first letter capital
+                                    controller.attractionData.value[index].name!
+                                            .substring(0, 1)
+                                            .toUpperCase() +
+                                        controller
+                                            .attractionData.value[index].name!
+                                            .substring(1)
+                                            .toLowerCase()
+                                            .split(' ')[0],
+                                    // controller.attractionData.value[index].name!.split(' ')[0],
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontFamily: 'Lato',
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     separatorBuilder: (context, index) => SizedBox(),

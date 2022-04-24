@@ -3,25 +3,51 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/keraladistrictcardcontroller.dart';
+import 'package:trip_calicut/screens/homestay/singlepage/homestaysinglepagecontroller.dart';
 import 'package:trip_calicut/screens/jobs/components/FixedBottomSwitch.dart';
 import 'package:trip_calicut/screens/tours/components/fixed_top_navigatio.dart';
+import 'package:http/http.dart' as http;
 
-import '../../controllers/packageapicardcontroller.dart';
-import '../tours/components/staggered_grid.dart';
+import '../../resort/singlepage/resortsinglepagecontroller.dart';
 
-class PackageSinglePage extends StatelessWidget {
-  final PackageApiCardController packageController =
-      Get.put(PackageApiCardController());
+class HomeStaySinglePage extends StatelessWidget {
+  final HomeStaySinglePageController homeStayController =
+      Get.put(HomeStaySinglePageController());
+
+  final HomeStayAmenitiesController amenitiesController =
+      Get.put(HomeStayAmenitiesController());
+
+  final PlaceGalleryController galleryController =
+      Get.put(PlaceGalleryController());
+
+  // final SuperDeluxRoomController roomController =
+  //     Get.put(SuperDeluxRoomController());
+
+  //final PackageApiCardController packageController =
+  //    Get.put(PackageApiCardController());
   final KeralaDistrictCardController districtController =
       Get.put(KeralaDistrictCardController());
-  final controllerValue = Get.arguments[0];
-  final controller = Get.arguments[1];
-  final image = Get.arguments[2];
-  final name = Get.arguments[3];
-  final price = Get.arguments[4];
-  final place = Get.arguments[5];
 
-  PackageSinglePage({Key? key}) : super(key: key);
+  // final packageCardIndex = Get.arguments[2];
+  // final packageCardController = Get.arguments[3];
+  final homeStayCardImage = Get.arguments[1];
+  // final packageCardName = Get.arguments[4];
+
+  HomeStaySinglePage({Key? key}) : super(key: key);
+  static final homeStayItemId = Get.arguments[0];
+
+  static final client = new http.Client();
+
+  static Future fetchHomeStayData({String? api}) async {
+    var responses =
+        await client.post(Uri.parse(Api.apiUrl + '$api$homeStayItemId'));
+    if (responses.statusCode == 200) {
+      var jsonResponse = responses.body;
+      return jsonResponse;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +60,16 @@ class PackageSinglePage extends StatelessWidget {
           overscroll.disallowIndicator();
           return false;
         }, child: Obx(() {
-          if (controller.isLoading.value) {
+          if (homeStayController.isLoading.value) {
             return Center(
               child: CircularProgressIndicator(),
             );
           } else {
+            // return ElevatedButton(
+            //     onPressed: () {
+            //       print(controller.packageData.value.advAmount);
+            //     },
+            //     child: Text("hello"));
             return Stack(
               children: <Widget>[
                 SingleChildScrollView(
@@ -53,7 +84,7 @@ class PackageSinglePage extends StatelessWidget {
                             Stack(
                               clipBehavior: Clip.none,
                               children: [
-                                image!.isEmpty || image == null
+                                homeStayCardImage == null
                                     ? Container(
                                         height: 500,
                                         decoration: BoxDecoration(
@@ -75,8 +106,9 @@ class PackageSinglePage extends StatelessWidget {
                                                     Colors.black
                                                         .withOpacity(0.4),
                                                     BlendMode.darken),
-                                                image: NetworkImage(
-                                                    Api.imageUrl + image),
+                                                image: NetworkImage(Api
+                                                        .imageUrl +
+                                                    homeStayCardImage.toString()),
                                                 fit: BoxFit.cover),
                                             color: Colors.black),
                                       ),
@@ -96,32 +128,45 @@ class PackageSinglePage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                //first letter caps and rest lower
-                                                name
-                                                        .substring(0, 1)
-                                                        .toUpperCase() +
-                                                    name
-                                                        .substring(1)
-                                                        .toLowerCase(),
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.80,
+                                                child: Text(
+                                                  //first letter caps and rest lower
+                                                  //split with two words
+                                                  homeStayController
+                                                      .homeStayData.value.name
+                                                      .toString(),
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+
+                                                  //     .substring(0, 1)
+                                                  //     .toUpperCase() +
+                                                  // controller.packageData.value.name!
+                                                  //     .substring(1)
+                                                  //     .toLowerCase(),
+                                                  style: TextStyle(
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.white),
+                                                ),
                                               ),
                                               SizedBox(
                                                 height: 5,
                                               ),
                                               Text(
-                                                place!.isEmpty || place == null
+                                                homeStayController
+                                                      .homeStayData.value.district ==
+                                                        null
                                                     ? 'Kerala'
-                                                    : place
-                                                            .substring(0, 1)
-                                                            .toUpperCase() +
-                                                        place
-                                                            .substring(1)
-                                                            .toLowerCase()
-                                                            .split(' ')[0],
+                                                    : "${homeStayController
+                                                      .homeStayData.value.district},${homeStayController
+                                                      .homeStayData.value.state},${homeStayController
+                                                      .homeStayData.value.country}",
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     // fontWeight: FontWeight.bold,
@@ -145,7 +190,8 @@ class PackageSinglePage extends StatelessWidget {
                                     height: 60,
                                     child: Center(
                                       child: Text(
-                                        'Price Starts from ₹${price}/-',
+                                        'Price Starts from ₹${homeStayController
+                                                      .homeStayData.value.offerAmount}/-',
                                         style: TextStyle(
                                             fontSize: 22,
                                             fontWeight: FontWeight.bold,
@@ -265,13 +311,7 @@ class PackageSinglePage extends StatelessWidget {
                                                           children: [
                                                             SizedBox(
                                                                 height: 10),
-                                                            priceData(),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            priceData(),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            priceData(),
+                                                            Text('${homeStayController.homeStayData.value.desc}'),
                                                             SizedBox(
                                                                 height: 10),
                                                             Text('Aminities'),
@@ -292,7 +332,7 @@ class PackageSinglePage extends StatelessWidget {
                                                                 mainAxisExtent:
                                                                     25,
                                                               ),
-                                                              itemCount: 6,
+                                                              itemCount: amenitiesController.amenitiesData.value.length,
                                                               itemBuilder:
                                                                   (BuildContext
                                                                           context,
@@ -320,23 +360,42 @@ class PackageSinglePage extends StatelessWidget {
                                                                         MainAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      Icon(Icons
-                                                                          .alarm),
+                                                                      amenitiesController.amenitiesData.value[index].image!.isEmpty ||
+                                                                              amenitiesController.amenitiesData.value[index].image ==
+                                                                                  null
+                                                                          ? Icon(
+                                                                              Icons.alarm)
+                                                                          : Container(
+                                                                              height: 15,
+                                                                              width: 15,
+                                                                              decoration: BoxDecoration(
+                                                                                image: DecorationImage(
+                                                                                  image: NetworkImage(Api.imageUrl + '${amenitiesController.amenitiesData.value[index].image}'),
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
                                                                       SizedBox(
                                                                         width:
                                                                             5,
                                                                       ),
                                                                       Container(
-                                                                        child:
-                                                                            Text(
-                                                                          '24-Hour Front Desk',
-                                                                          maxLines:
-                                                                              1,
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          style:
-                                                                              TextStyle(fontSize: 7),
-                                                                        ),
+                                                                        width: MediaQuery.of(context).size.width *
+                                                                            0.20,
+                                                                        child: amenitiesController.amenitiesData.value[index].name!.isEmpty ||
+                                                                                amenitiesController.amenitiesData.value[index].name == null
+                                                                            ? Text(
+                                                                                '24-Hour Front Desk',
+                                                                                maxLines: 1,
+                                                                                overflow: TextOverflow.ellipsis,
+                                                                                style: TextStyle(fontSize: 7),
+                                                                              )
+                                                                            : Text(
+                                                                                '${amenitiesController.amenitiesData.value[index].name}',
+                                                                                maxLines: 1,
+                                                                                overflow: TextOverflow.ellipsis,
+                                                                                style: TextStyle(fontSize: 7),
+                                                                              ),
                                                                       )
                                                                     ],
                                                                   ),
@@ -382,8 +441,8 @@ class PackageSinglePage extends StatelessWidget {
                                                                       Padding(
                                                                         padding:
                                                                             const EdgeInsets.all(4),
-                                                                        child: image.isEmpty ||
-                                                                                image == null
+                                                                        child: homeStayController.homeStayData.value.image ==
+                                                                                null
                                                                             ? Container(
                                                                                 // width: MediaQuery.of(context).size.width * 0.25,
                                                                                 height: MediaQuery.of(context).size.height * 0.10,
@@ -508,7 +567,11 @@ class PackageSinglePage extends StatelessWidget {
                                                         mainAxisSpacing: 5,
                                                         mainAxisExtent: 14.h,
                                                       ),
-                                                      itemCount: 6,
+                                                      itemCount:
+                                                          galleryController
+                                                              .galleryData
+                                                              .value
+                                                              .length,
                                                       itemBuilder:
                                                           (BuildContext context,
                                                               int index) {
@@ -516,48 +579,60 @@ class PackageSinglePage extends StatelessWidget {
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(4),
-                                                          child:
-                                                              image.isEmpty ||
-                                                                      image ==
-                                                                          null
-                                                                  ? Container(
-                                                                      // width: MediaQuery.of(context).size.width * 0.25,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.10,
+                                                          child: galleryController
+                                                                      .galleryData
+                                                                      .value[
+                                                                          index]
+                                                                      .image!
+                                                                      .isEmpty ||
+                                                                  galleryController
+                                                                          .galleryData
+                                                                          .value[
+                                                                              index]
+                                                                          .image ==
+                                                                      null
+                                                              ? Container(
+                                                                  // width: MediaQuery.of(context).size.width * 0.25,
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.10,
 
-                                                                      decoration: BoxDecoration(
-                                                                          image: DecorationImage(
-                                                                              image: AssetImage(
-                                                                                  'assets/images/imageone.jpg'),
-                                                                              fit: BoxFit
-                                                                                  .cover),
-                                                                          color: Colors
-                                                                              .amber,
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(20)),
-                                                                      // child: Center(child: Text('$index')),
-                                                                    )
-                                                                  : Container(
-                                                                      // width: MediaQuery.of(context).size.width * 0.25,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.10,
+                                                                  decoration: BoxDecoration(
+                                                                      image: DecorationImage(
+                                                                          image: AssetImage(
+                                                                              'assets/images/imageone.jpg'),
+                                                                          fit: BoxFit
+                                                                              .cover),
+                                                                      color: Colors
+                                                                          .amber,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              20)),
+                                                                  // child: Center(child: Text('$index')),
+                                                                )
+                                                              : Container(
+                                                                  // width: MediaQuery.of(context).size.width * 0.25,
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.10,
 
-                                                                      decoration: BoxDecoration(
-                                                                          image: DecorationImage(
-                                                                              image: NetworkImage(Api.imageUrl +
-                                                                                  '${districtController.districtData.value[index].image}'),
-                                                                              fit: BoxFit
-                                                                                  .cover),
-                                                                          color: Colors
-                                                                              .amber,
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(20)),
-                                                                      // child: Center(child: Text('$index')),
-                                                                    ),
+                                                                  decoration: BoxDecoration(
+                                                                      image: DecorationImage(
+                                                                          image: NetworkImage(Api.imageUrl +
+                                                                              '${galleryController.galleryData.value[index].image}'),
+                                                                          fit: BoxFit
+                                                                              .cover),
+                                                                      color: Colors
+                                                                          .amber,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              20)),
+                                                                  // child: Center(child: Text('$index')),
+                                                                ),
                                                         );
                                                       },
                                                     ),

@@ -33,8 +33,14 @@ class District extends StatelessWidget {
                 padding:  EdgeInsets.only(left: 12),
                 child: GestureDetector(
                   onTap: () {
-                    print(controller.districtData.value[index].id);
-                    // Get.toNamed('/singlepage');
+                    Get.toNamed('/toursinglepage',arguments: [
+                 controller.districtData.value[index].id,
+                 
+                 controller.districtData.value[index].image,
+                 controller.districtData.value[index].name,
+                
+                 
+                 ],  );
                   },
                   child: Column(
                     children: [

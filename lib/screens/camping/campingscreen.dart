@@ -10,6 +10,7 @@ import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
 import '../widgets.dart';
+import 'Components/campingprovides.dart';
 
 class CampingScreen extends StatelessWidget {
   const CampingScreen({Key? key}) : super(key: key);
@@ -56,36 +57,8 @@ class CampingScreen extends StatelessWidget {
                 ),
                 heightSizedBox(),
                 Container(
-                  height: 120,
-                  child: ListView.separated(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Container(
-                          child: Column(
-                            children: [
-                              CircleAvatar(
-                                radius: 45,
-                                backgroundImage:
-                                    AssetImage('assets/images/background.jpg'),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('kannur')
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        width: 2,
-                      );
-                    },
-                  ),
+                  height: 140,
+                  child: CampingProviders(),
                 ),
 
               
@@ -190,3 +163,4 @@ class CampingScreen extends StatelessWidget {
     );
   }
 }
+

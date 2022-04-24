@@ -29,13 +29,13 @@ class PackageCardTrecking extends StatelessWidget {
           ),
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              Get.toNamed('/singlepage',arguments: [
-                 controller.truckingPackageData.value[index],
-                 controller,
-                 controller.truckingPackageData.value[index].image,
-                 controller.truckingPackageData.value[index].name,
-                 controller.truckingPackageData.value[index].offerAmount,
-                 controller.truckingPackageData.value[index].district,
+              Get.toNamed('/truckingsinglepage',arguments: [
+                 controller.truckingPackageData.value[index].id,
+                
+                 controller.truckingPackageData.value[index].desc,
+                 controller.truckingPackageData.value[index].inclusion,
+                 controller.truckingPackageData.value[index].exclusion,
+                
                  
                  ],  );
             },
