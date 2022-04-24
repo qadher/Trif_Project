@@ -32,13 +32,10 @@ class DiscoverResorts extends StatelessWidget {
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
                 
-                Get.toNamed('/singlepage',arguments: [
-                 controller.resortData.value[index],
-                 controller,
-                 controller.resortData.value[index].image,
-                 controller.resortData.value[index].name,
-                 controller.resortData.value[index].offerAmount,
-                 controller.resortData.value[index].district,
+                Get.toNamed('/resortsinglepage',arguments: [
+                 controller.resortData.value[index].id,
+                 controller.resortData.value[index].image
+                 
                  
                  ],  );
               },

@@ -2,18 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
-import 'package:trip_calicut/controllers/keraladistrictcardcontroller.dart';
 import 'package:trip_calicut/screens/jobs/components/FixedBottomSwitch.dart';
 import 'package:trip_calicut/screens/tours/components/fixed_top_navigatio.dart';
 
-import '../../controllers/packageapicardcontroller.dart';
 import '../tours/components/staggered_grid.dart';
 
-class PackageSinglePage extends StatelessWidget {
-  final PackageApiCardController packageController =
-      Get.put(PackageApiCardController());
-  final KeralaDistrictCardController districtController =
-      Get.put(KeralaDistrictCardController());
+class CampingSinglePage extends StatelessWidget {
   final controllerValue = Get.arguments[0];
   final controller = Get.arguments[1];
   final image = Get.arguments[2];
@@ -21,7 +15,7 @@ class PackageSinglePage extends StatelessWidget {
   final price = Get.arguments[4];
   final place = Get.arguments[5];
 
-  PackageSinglePage({Key? key}) : super(key: key);
+  CampingSinglePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +195,7 @@ class PackageSinglePage extends StatelessWidget {
                                                 ),
                                                 child: TabBar(
                                                   labelStyle: TextStyle(
-                                                    fontSize: 16,
+                                                    fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black,
                                                   ),
@@ -223,7 +217,8 @@ class PackageSinglePage extends StatelessWidget {
                                                       Colors.black,
                                                   tabs: [
                                                     Text(
-                                                      'Rooms',
+                                                      'Description',
+                                                      maxLines: 1,
                                                     ),
 
                                                     Text(
@@ -258,181 +253,65 @@ class PackageSinglePage extends StatelessWidget {
                                                       onTap: () {},
                                                       child:
                                                           SingleChildScrollView(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            SizedBox(
-                                                                height: 10),
-                                                            priceData(),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            priceData(),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            priceData(),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            Text('Aminities'),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            GridView.builder(
-                                                              physics:
-                                                                  NeverScrollableScrollPhysics(),
-                                                              shrinkWrap: true,
-                                                              gridDelegate:
-                                                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                                                crossAxisCount:
-                                                                    3,
-                                                                crossAxisSpacing:
-                                                                    15,
-                                                                mainAxisSpacing:
-                                                                    15,
-                                                                mainAxisExtent:
-                                                                    25,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              SizedBox(
+                                                                  height: 10),
+                                                              Text(
+                                                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        13),
                                                               ),
-                                                              itemCount: 6,
-                                                              itemBuilder:
-                                                                  (BuildContext
-                                                                          context,
-                                                                      int index) {
-                                                                return Container(
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    color: Colors
-                                                                        .white,
-                                                                    border: Border.all(
-                                                                        color: Colors
-                                                                            .grey
-                                                                            .shade400,
-                                                                        width:
-                                                                            0),
-                                                                  ),
-                                                                  child: Row(
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .center,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Icon(Icons
-                                                                          .alarm),
-                                                                      SizedBox(
-                                                                        width:
-                                                                            5,
-                                                                      ),
-                                                                      Container(
-                                                                        child:
-                                                                            Text(
-                                                                          '24-Hour Front Desk',
-                                                                          maxLines:
-                                                                              1,
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          style:
-                                                                              TextStyle(fontSize: 7),
-                                                                        ),
-                                                                      )
-                                                                    ],
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            Text(
-                                                                'Near by Attractions'),
-                                                            SizedBox(
-                                                                height: 10),
-                                                            Container(
-                                                              padding: EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          16),
-                                                              // color: Colors.red,
-                                                              child: GridView
-                                                                  .builder(
-                                                                physics:
-                                                                    NeverScrollableScrollPhysics(),
-                                                                shrinkWrap:
-                                                                    true,
-                                                                gridDelegate:
-                                                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                                                  crossAxisCount:
-                                                                      3,
-                                                                  crossAxisSpacing:
-                                                                      15,
-                                                                  mainAxisSpacing:
-                                                                      5,
-                                                                  mainAxisExtent:
-                                                                      14.h,
-                                                                ),
-                                                                itemCount: 6,
-                                                                itemBuilder:
-                                                                    (BuildContext
-                                                                            context,
-                                                                        int index) {
-                                                                  return Column(
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding:
-                                                                            const EdgeInsets.all(4),
-                                                                        child: image.isEmpty ||
-                                                                                image == null
-                                                                            ? Container(
-                                                                                // width: MediaQuery.of(context).size.width * 0.25,
-                                                                                height: MediaQuery.of(context).size.height * 0.10,
-
-                                                                                decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/imageone.jpg'), fit: BoxFit.cover), color: Colors.amber, borderRadius: BorderRadius.circular(20)),
-                                                                                // child: Center(child: Text('$index')),
-                                                                              )
-                                                                            : Container(
-                                                                                // width: MediaQuery.of(context).size.width * 0.25,
-                                                                                height: MediaQuery.of(context).size.height * 0.10,
-
-                                                                                decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(Api.imageUrl + '${districtController.districtData.value[index].image}'), fit: BoxFit.cover), color: Colors.amber, borderRadius: BorderRadius.circular(20)),
-                                                                                // child: Center(child: Text('$index')),
-                                                                              ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding:
-                                                                            EdgeInsets.only(left: 8),
-                                                                        child:
-                                                                            Text(
-                                                                          '${districtController.districtData.value[index].name}',
-                                                                          maxLines:
-                                                                              1,
-                                                                          style:
-                                                                              TextStyle(
-                                                                            fontSize:
-                                                                                10.sp,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                            color:
-                                                                                Colors.black87,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
+                                                              SizedBox(
+                                                                  height: 20),
+                                                              Text(
+                                                                'Inclusion',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        10),
                                                               ),
-                                                            ),
-                                                            SizedBox(
-                                                                height: 20),
-                                                          ],
+                                                              SizedBox(
+                                                                  height: 10),
+                                                              Text(
+                                                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        13),
+                                                              ),
+                                                              SizedBox(
+                                                                height: 10,
+                                                              ),
+                                                              Text(
+                                                                'Exclusion',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        10),
+                                                              ),
+                                                              SizedBox(
+                                                                  height: 10),
+                                                              Text(
+                                                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        13),
+                                                              ),
+                                                              SizedBox(
+                                                                  height: 30),
+                                                            ],
+                                                          ),
                                                         ),
                                                       )),
                                                   // EducationList(),
                                                   // EducationList(),
                                                   Container(
-                                                      color: Color.fromARGB(
-                                                          255, 253, 251, 251),
                                                       padding: EdgeInsets.only(
                                                           right: 16,
                                                           left: 16,
@@ -456,9 +335,9 @@ class PackageSinglePage extends StatelessWidget {
                                                                 color: Color
                                                                     .fromARGB(
                                                                         255,
-                                                                        236,
-                                                                        235,
-                                                                        235),
+                                                                        204,
+                                                                        204,
+                                                                        204),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -549,7 +428,7 @@ class PackageSinglePage extends StatelessWidget {
                                                                       decoration: BoxDecoration(
                                                                           image: DecorationImage(
                                                                               image: NetworkImage(Api.imageUrl +
-                                                                                  '${districtController.districtData.value[index].image}'),
+                                                                                  image),
                                                                               fit: BoxFit
                                                                                   .cover),
                                                                           color: Colors

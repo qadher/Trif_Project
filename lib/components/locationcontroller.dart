@@ -13,7 +13,7 @@ class LocationController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    getLocation();
+   // getLocation();
   }
 
   @override
@@ -32,13 +32,13 @@ class LocationController extends GetxController {
     LocationPermission permission;
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      await Geolocator.openLocationSettings();
-      return Future.error('Location services are disabled.');
-    }
+    // if (!serviceEnabled) {
+    //   // Location services are not enabled don't continue
+    //   // accessing the position and request users of the
+    //   // App to enable the location services.
+    //   await Geolocator.openLocationSettings();
+    //   return Future.error('Location services are disabled.');
+    // }
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();

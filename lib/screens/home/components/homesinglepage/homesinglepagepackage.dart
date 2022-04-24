@@ -3,25 +3,44 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/keraladistrictcardcontroller.dart';
+import 'package:trip_calicut/screens/home/components/homesinglepage/packagesinglepagecontroller.dart';
 import 'package:trip_calicut/screens/jobs/components/FixedBottomSwitch.dart';
 import 'package:trip_calicut/screens/tours/components/fixed_top_navigatio.dart';
+import 'package:http/http.dart' as http;
 
-import '../../controllers/packageapicardcontroller.dart';
-import '../tours/components/staggered_grid.dart';
+import '../../../../controllers/packageapicardcontroller.dart';
 
-class PackageSinglePage extends StatelessWidget {
-  final PackageApiCardController packageController =
-      Get.put(PackageApiCardController());
+class HomeSinglePagePackage extends StatelessWidget {
+  final PackageSinglePageController controller =
+      Get.put(PackageSinglePageController());
+  //final PackageApiCardController packageController =
+  //    Get.put(PackageApiCardController());
   final KeralaDistrictCardController districtController =
       Get.put(KeralaDistrictCardController());
-  final controllerValue = Get.arguments[0];
-  final controller = Get.arguments[1];
-  final image = Get.arguments[2];
-  final name = Get.arguments[3];
-  final price = Get.arguments[4];
-  final place = Get.arguments[5];
+  //final controllerValue = Get.arguments[0];
+  //final controller = Get.arguments[1];
+  //final image = Get.arguments[2];
+  //final name = Get.arguments[3];
+  //final price = Get.arguments[4];
+  final packageCardIndex = Get.arguments[1];
+  final packageCardController = Get.arguments[2];
+  final packageCardImage = Get.arguments[3];
+  final packageCardName = Get.arguments[4];
 
-  PackageSinglePage({Key? key}) : super(key: key);
+  HomeSinglePagePackage({Key? key}) : super(key: key);
+  static final itemId = Get.arguments[0];
+
+  static final client = new http.Client();
+
+  static Future fetchHomePackageData({String? api}) async {
+    var responses = await client.post(Uri.parse(Api.apiUrl + '$api$itemId'));
+    if (responses.statusCode == 200) {
+      var jsonResponse = responses.body;
+      return jsonResponse;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +58,11 @@ class PackageSinglePage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else {
+            // return ElevatedButton(
+            //     onPressed: () {
+            //       print(controller.packageData.value.advAmount);
+            //     },
+            //     child: Text("hello"));
             return Stack(
               children: <Widget>[
                 SingleChildScrollView(
@@ -53,7 +77,7 @@ class PackageSinglePage extends StatelessWidget {
                             Stack(
                               clipBehavior: Clip.none,
                               children: [
-                                image!.isEmpty || image == null
+                                packageCardImage == null
                                     ? Container(
                                         height: 500,
                                         decoration: BoxDecoration(
@@ -76,7 +100,9 @@ class PackageSinglePage extends StatelessWidget {
                                                         .withOpacity(0.4),
                                                     BlendMode.darken),
                                                 image: NetworkImage(
-                                                    Api.imageUrl + image),
+                                                    Api.imageUrl +
+                                                        packageCardImage
+                                                            .toString()),
                                                 fit: BoxFit.cover),
                                             color: Colors.black),
                                       ),
@@ -96,29 +122,41 @@ class PackageSinglePage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                //first letter caps and rest lower
-                                                name
-                                                        .substring(0, 1)
-                                                        .toUpperCase() +
-                                                    name
-                                                        .substring(1)
-                                                        .toLowerCase(),
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.80,
+                                                child: Text(
+                                                  //first letter caps and rest lower
+                                                  //split with two words
+                                                  packageCardName,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+
+                                                  //     .substring(0, 1)
+                                                  //     .toUpperCase() +
+                                                  // controller.packageData.value.name!
+                                                  //     .substring(1)
+                                                  //     .toLowerCase(),
+                                                  style: TextStyle(
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.white),
+                                                ),
                                               ),
                                               SizedBox(
                                                 height: 5,
                                               ),
                                               Text(
-                                                place!.isEmpty || place == null
+                                                packageCardName == null
                                                     ? 'Kerala'
-                                                    : place
+                                                    : packageCardName
                                                             .substring(0, 1)
                                                             .toUpperCase() +
-                                                        place
+                                                        packageCardName
                                                             .substring(1)
                                                             .toLowerCase()
                                                             .split(' ')[0],
@@ -145,7 +183,7 @@ class PackageSinglePage extends StatelessWidget {
                                     height: 60,
                                     child: Center(
                                       child: Text(
-                                        'Price Starts from ₹${price}/-',
+                                        'Price Starts from ₹${controller.packageData.value.offerAmount}/-',
                                         style: TextStyle(
                                             fontSize: 22,
                                             fontWeight: FontWeight.bold,
@@ -255,7 +293,12 @@ class PackageSinglePage extends StatelessWidget {
                                               child: TabBarView(
                                                 children: <Widget>[
                                                   GestureDetector(
-                                                      onTap: () {},
+                                                      onTap: () {
+                                                        print(controller
+                                                            .packageData
+                                                            .value
+                                                            .id);
+                                                      },
                                                       child:
                                                           SingleChildScrollView(
                                                         child: Column(
@@ -382,8 +425,8 @@ class PackageSinglePage extends StatelessWidget {
                                                                       Padding(
                                                                         padding:
                                                                             const EdgeInsets.all(4),
-                                                                        child: image.isEmpty ||
-                                                                                image == null
+                                                                        child: controller.packageData.value.name ==
+                                                                                null
                                                                             ? Container(
                                                                                 // width: MediaQuery.of(context).size.width * 0.25,
                                                                                 height: MediaQuery.of(context).size.height * 0.10,
@@ -516,48 +559,53 @@ class PackageSinglePage extends StatelessWidget {
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(4),
-                                                          child:
-                                                              image.isEmpty ||
-                                                                      image ==
-                                                                          null
-                                                                  ? Container(
-                                                                      // width: MediaQuery.of(context).size.width * 0.25,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.10,
+                                                          child: controller
+                                                                      .packageData
+                                                                      .value
+                                                                      .name ==
+                                                                  null
+                                                              ? Container(
+                                                                  // width: MediaQuery.of(context).size.width * 0.25,
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.10,
 
-                                                                      decoration: BoxDecoration(
-                                                                          image: DecorationImage(
-                                                                              image: AssetImage(
-                                                                                  'assets/images/imageone.jpg'),
-                                                                              fit: BoxFit
-                                                                                  .cover),
-                                                                          color: Colors
-                                                                              .amber,
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(20)),
-                                                                      // child: Center(child: Text('$index')),
-                                                                    )
-                                                                  : Container(
-                                                                      // width: MediaQuery.of(context).size.width * 0.25,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.10,
+                                                                  decoration: BoxDecoration(
+                                                                      image: DecorationImage(
+                                                                          image: AssetImage(
+                                                                              'assets/images/imageone.jpg'),
+                                                                          fit: BoxFit
+                                                                              .cover),
+                                                                      color: Colors
+                                                                          .amber,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              20)),
+                                                                  // child: Center(child: Text('$index')),
+                                                                )
+                                                              : Container(
+                                                                  // width: MediaQuery.of(context).size.width * 0.25,
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.10,
 
-                                                                      decoration: BoxDecoration(
-                                                                          image: DecorationImage(
-                                                                              image: NetworkImage(Api.imageUrl +
-                                                                                  '${districtController.districtData.value[index].image}'),
-                                                                              fit: BoxFit
-                                                                                  .cover),
-                                                                          color: Colors
-                                                                              .amber,
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(20)),
-                                                                      // child: Center(child: Text('$index')),
-                                                                    ),
+                                                                  decoration: BoxDecoration(
+                                                                      image: DecorationImage(
+                                                                          image: NetworkImage(Api.imageUrl +
+                                                                              '${districtController.districtData.value[index].image}'),
+                                                                          fit: BoxFit
+                                                                              .cover),
+                                                                      color: Colors
+                                                                          .amber,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              20)),
+                                                                  // child: Center(child: Text('$index')),
+                                                                ),
                                                         );
                                                       },
                                                     ),

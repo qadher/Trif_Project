@@ -32,46 +32,63 @@ class PackageCardList extends StatelessWidget {
             ),
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
-               Get.toNamed('/homesinglepage',arguments: [
-                 controller.packageData.value[index],
-                 controller,
-                 controller.packageData.value[index].image,
-                 controller.packageData.value[index].name,
-                 controller.packageData.value[index].avgAmount,
-                 controller.packageData.value[index].name,
-                 ],  );
+                print(controller.packageData.value[index].agencyId);
+
+                Get.toNamed(
+                  '/homesinglepagepackage',
+                  arguments: [controller.packageData.value[index].agencyId,
+                       controller.packageData.value[index],
+                    controller,
+                    controller.packageData.value[index].image,
+                    controller.packageData.value[index].name  
+                  ],
+                );
+
+                // Get.to(
+                //   HomeSinglePagePackage(itemId: "${controller.packageData.value[index].id}"),
+                //   arguments: [
+                //     // controller.packageData.value[index].name,
+                //     // controller.packageData.value[index],
+                //     // controller,
+                //     // controller.packageData.value[index].image,
+                //     // controller.packageData.value[index].name,
+                //     // controller.packageData.value[index].avgAmount,
+                //     // controller.packageData.value[index].name,
+                //   ],
+                // );
               },
               child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                    color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   children: [
-                     controller.packageData.value[index].image!.isEmpty ||
+                    controller.packageData.value[index].image!.isEmpty ||
                             controller.packageData.value[index].image == null
                         ? Container(
-                      height: 20.h,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/imageone.jpg'),
-                          fit: BoxFit.fitWidth,
-                        ),
-                      ),
-                    )
-                        :  Container(
-                      height: 20.h,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: NetworkImage(Api.imageUrl +
-                              '${controller.packageData.value[index].image!}'),
-                          fit: BoxFit.fitWidth,
-                        ),
-                      ),
-                    ),
+                            height: 20.h,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/imageone.jpg'),
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                          )
+                        : Container(
+                            height: 20.h,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                image: NetworkImage(Api.imageUrl +
+                                    '${controller.packageData.value[index].image!}'),
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                          ),
                     SizedBox(
                       height: 10,
                     ),
@@ -157,4 +174,3 @@ class PackageCardList extends StatelessWidget {
     );
   }
 }
-

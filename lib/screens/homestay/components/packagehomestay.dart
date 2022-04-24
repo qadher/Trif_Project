@@ -32,13 +32,11 @@ class PackageHomeStay extends StatelessWidget {
             ),
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {
-                Get.toNamed('/singlepage',arguments: [
-                 controller.homeStayData.value[index],
-                 controller,
+                Get.toNamed('/homestaysinglepage',arguments: [
+                 controller.homeStayData.value[index].id,
+                 
                  controller.homeStayData.value[index].image,
-                 controller.homeStayData.value[index].name,
-                 controller.homeStayData.value[index].offerAmount,
-                 controller.homeStayData.value[index].district,
+                
                  
                  ],  );
               },
