@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/keraladistrictcardcontroller.dart';
-import 'package:trip_calicut/screens/home/components/homesinglepage/packagesinglepagecontroller.dart';
+import 'package:trip_calicut/screens/home/homesinglepage/packagesinglepagecontroller.dart';
 import 'package:trip_calicut/screens/jobs/components/FixedBottomSwitch.dart';
 import 'package:trip_calicut/screens/tours/components/fixed_top_navigatio.dart';
 import 'package:http/http.dart' as http;
@@ -481,59 +481,56 @@ class HomeSinglePagePackage extends StatelessWidget {
                                                           left: 16,
                                                           bottom: 20),
                                                       // color: Colors.red,
-                                                      child: Expanded(
-                                                        child:
-                                                            ListView.separated(
+                                                      child: ListView.separated(
                                                           separatorBuilder:
-                                                              (context,
-                                                                      index) =>
-                                                                  SizedBox(
-                                                            height: 10,
+                                                        (context,
+                                                                index) =>
+                                                            SizedBox(
+                                                      height: 10,
                                                           ),
                                                           itemCount: 5,
                                                           itemBuilder:
-                                                              (context, index) {
-                                                            return Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        236,
-                                                                        235,
-                                                                        235),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
-                                                              ),
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(4),
-                                                              child: ListTile(
-                                                                leading:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                  child: Image
-                                                                      .asset(
-                                                                          'assets/images/imageone.jpg'),
-                                                                ),
-                                                                title: Text(
-                                                                    "hello"),
-                                                                subtitle: Text(
-                                                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                                                    maxLines: 4,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis),
-                                                              ),
-                                                            );
-                                                          },
+                                                        (context, index) {
+                                                      return Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Color
+                                                              .fromARGB(
+                                                                  255,
+                                                                  236,
+                                                                  235,
+                                                                  235),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5),
                                                         ),
-                                                      )),
+                                                        padding:
+                                                            EdgeInsets
+                                                                .all(4),
+                                                        child: ListTile(
+                                                          leading:
+                                                              ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5),
+                                                            child: Image
+                                                                .asset(
+                                                                    'assets/images/imageone.jpg'),
+                                                          ),
+                                                          title: Text(
+                                                              "hello"),
+                                                          subtitle: Text(
+                                                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                                              maxLines: 4,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis),
+                                                        ),
+                                                      );
+                                                          },
+                                                        )),
                                                   // EducationList(),
                                                   Container(
                                                     padding:

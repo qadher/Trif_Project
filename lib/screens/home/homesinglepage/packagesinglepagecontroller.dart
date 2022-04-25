@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:trip_calicut/screens/home/components/homesinglepage/homesinglepagepackage.dart';
-import 'package:trip_calicut/screens/home/components/homesinglepage/packagesinglepagemodel.dart';
+import 'package:trip_calicut/screens/home/homesinglepage/homesinglepagepackage.dart';
+import 'package:trip_calicut/screens/home/homesinglepage/packagesinglepagemodel.dart';
+
+
 
 
 class PackageSinglePageController extends GetxController {
