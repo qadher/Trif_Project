@@ -5,18 +5,18 @@ import 'package:trip_calicut/constant/api.dart';
 
 import '../../../controllers/keraladistrictcardcontroller.dart';
 
-class KeralaPlaces extends StatelessWidget {
+class PlacesListPage extends StatelessWidget {
   final KeralaDistrictCardController controller =
       Get.put(KeralaDistrictCardController());
 
-  KeralaPlaces({
+  PlacesListPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
           'Places',
@@ -35,7 +35,7 @@ class KeralaPlaces extends StatelessWidget {
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.only(left: 8, right: 8, top: 8),
           //height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Obx(
@@ -58,35 +58,32 @@ class KeralaPlaces extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(
-                          '/toursinglepage',
-                          arguments: [
-                            controller.districtData.value[index].id,
-                            
-                          ],
-                        );
+                        Get.toNamed('/toursinglepage', arguments: [
+                          controller.districtData.value[index].id,
+                        ]);
                       },
                       child: Column(
                         children: [
                           controller.districtData.value[index].image!.isEmpty ||
-                                  controller.districtData.value[index].image == null
+                                  controller.districtData.value[index].image ==
+                                      null
                               ? Container(
                                   // width: MediaQuery.of(context).size.width * 0.25,
                                   height: 10.h,
-          
+
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
                                               'assets/images/imageone.jpg'),
                                           fit: BoxFit.cover),
-                                      color: Colors.amber,
+                                      color: Color.fromARGB(255, 134, 134, 134),
                                       borderRadius: BorderRadius.circular(20)),
                                   // child: Center(child: Text('$index')),
                                 )
                               : Container(
                                   // width: MediaQuery.of(context).size.width * 0.25,
                                   height: 10.h,
-          
+
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: NetworkImage(Api.imageUrl +

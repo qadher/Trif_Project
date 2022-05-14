@@ -33,8 +33,7 @@ class DiscoverResorts extends StatelessWidget {
               onTap: () {
                 
                 Get.toNamed('/resortsinglepage',arguments: [
-                 controller.resortData.value[index].id,
-                 controller.resortData.value[index].image
+                 controller.resortData.value[index].id
                  
                  
                  ],  );

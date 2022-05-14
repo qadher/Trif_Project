@@ -1,13 +1,14 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:trip_calicut/models/campingapicard.dart';
 import 'package:trip_calicut/screens/home/components/packagecard.dart';
 
 import '../models/packageapicard.dart';
 import '../services/service.dart';
 
-class PackageApiCardController extends GetxController {
-  final packageData = Rx<List<Packages>>([]);
+class CampingApiCardController extends GetxController {
+  final campingData = Rx<List<Camping>>([]);
   final isLoading = Rx<bool>(false);
 
   //List districtData = [].obs;
@@ -17,16 +18,16 @@ class PackageApiCardController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchAttractionData();
+    fetchCampingData();
   }
 
-  Future fetchAttractionData() async {
+  Future fetchCampingData() async {
     try {
       isLoading.value = true;
-      var response = await ApiManager.fetchData(api: 'packages');
+      var response = await ApiManager.fetchData(api: 'camping');
       var jsonResponse = json.decode(response);
-      var packageApiCard = PackageApiCard.fromJson(jsonResponse);
-      packageData.value = packageApiCard.packages!;
+      var campingApiCard = CampingApiCard.fromJson(jsonResponse);
+      campingData.value = campingApiCard.camping!;
       isLoading.value = false;
     } catch (e) {
       print(e);

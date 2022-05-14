@@ -30,14 +30,10 @@ class TravelPackageCard extends StatelessWidget {
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
               Get.toNamed(
-                '/singlepage',
+                '/travelsinglepagepackage',
                 arguments: [
-                  controller.travelPackageData.value[index],
-                  controller,
-                  controller.travelPackageData.value[index].image,
-                  controller.travelPackageData.value[index].name,
-                  controller.travelPackageData.value[index].perDayOfferAmount,
-                  controller.travelPackageData.value[index].district,
+                  controller.travelPackageData.value[index].id,
+                  
                 ],
               );
             },

@@ -37,9 +37,7 @@ class AgencyCard extends StatelessWidget {
                     child: Container(
                       child: Column(
                         children: [
-                          controller.agencyData.value[index].logo!.isEmpty ||
-                                  controller.agencyData.value[index].logo! ==
-                                      null
+                          controller.agencyData.value[index].logo!.isEmpty
                               ? CircleAvatar(
                                   radius: 40,
                                   backgroundImage:

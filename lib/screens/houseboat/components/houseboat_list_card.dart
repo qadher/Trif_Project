@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:trip_calicut/constant/api.dart';
-import 'package:trip_calicut/screens/home/components/titletext.dart';
 
 import '../../../controllers/houseboatapicardcontroller.dart';
 
@@ -27,36 +25,38 @@ class HouseBoatPackageCard extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: controller.houseBoatData.value.length,
+              //itemCount if district == Alappuzha then show only Alappuzha
+              // itemCount: controller.houseBoatData.value
+              //     .where((element) => element.district == 'Alapuzha')
+              //     .length,
               separatorBuilder: (context, index) => SizedBox(
                     height: 10,
                   ),
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  Get.toNamed('/houseboatsinglepage',arguments: [
-                 controller.houseBoatData.value[index],
-                 controller,
-                 controller.houseBoatData.value[index].image,
-                 controller.houseBoatData.value[index].name,
-                 controller.houseBoatData.value[index].budget,
-                 controller.houseBoatData.value[index].district,
-                 
-                 ],  );
-                },
-                child: Padding(
-                      padding:  EdgeInsets.all(8.0),
+                    onTap: () {
+                      Get.toNamed(
+                        '/houseboatpackagesinglepage',
+                        arguments: [
+                          controller.houseBoatData.value[index].id,
+                        ],
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Container(
                         // padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20)),
-              
+
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           height: 135,
                           child: Row(
                             children: [
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.25,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.25,
                                 child: controller.houseBoatData.value[index]
                                             .image!.isEmpty ||
                                         controller.houseBoatData.value[index]
@@ -65,8 +65,9 @@ class HouseBoatPackageCard extends StatelessWidget {
                                     ? Container(
                                         // height: 135,
                                         // width: 135,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.25,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(15),
@@ -75,7 +76,7 @@ class HouseBoatPackageCard extends StatelessWidget {
                                             image: AssetImage(
                                                 'assets/images/imageone.jpg'),
                                             fit: BoxFit.cover,
-              
+
                                             // NetworkImage(Api.imageUrl + '${controller.houseBoatData.value[index].image}'),
                                             // fit: BoxFit.cover,
                                           ),
@@ -84,8 +85,9 @@ class HouseBoatPackageCard extends StatelessWidget {
                                     : Container(
                                         // height: 135,
                                         // width: 135,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.25,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(15),
@@ -192,7 +194,7 @@ class HouseBoatPackageCard extends StatelessWidget {
                         ),
                       ),
                     ),
-              ));
+                  ));
         }
       },
     );

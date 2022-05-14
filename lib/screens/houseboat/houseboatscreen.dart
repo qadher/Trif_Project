@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:trip_calicut/screens/home/components/packagecard.dart';
 import 'package:trip_calicut/screens/houseboat/components/agencycard.dart';
 import 'package:trip_calicut/screens/houseboat/components/houseboat_list_card.dart';
 import 'package:trip_calicut/screens/houseboat/components/packagecard_houseboat.dart';
@@ -13,7 +12,6 @@ import '../../controllers/houseboatapicardcontroller.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
-import '../widgets.dart';
 
 class HouseBoatScreen extends StatelessWidget {
   final HouseboatApiCardController houseboatPageController =
@@ -82,15 +80,7 @@ class HouseBoatScreen extends StatelessWidget {
                   child: TitleText(text: 'Discover HouseBoats'),
                 ),
                 heightSizedBox(),
-                ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: 10,
-                  ),
-                  itemBuilder: (context, index) => HouseBoatPackageCard(),
-                )
+                HouseBoatPackageCard(),
               ],
             ),
           );

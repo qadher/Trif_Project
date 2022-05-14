@@ -4,23 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
+import 'package:trip_calicut/screens/home/attractionsinglepage/attractionsinglepagemodel.dart';
+import 'package:trip_calicut/screens/home/homesinglepage/packagesinglepagemodel.dart';
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatgallerymodel.dart';
+import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatpackagemodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:trip_calicut/screens/tours/singlepage/toursinglepagemodel.dart';
+import 'package:trip_calicut/screens/travel/singlepage/travelsinglepagemodel.dart';
 
 import '../../jobs/components/FixedBottomSwitch.dart';
-import '../components/fixed_top_navigatio.dart';
+import '../../tours/components/fixed_top_navigatio.dart';
 
 
 
-Future<TourSinglePageModel> fetchSinglePage(int id) async {
-  final response = await http.post(Uri.parse(Api.apiUrl + 'places/$id'));
+Future<TravelsSinglepageModel> fetchSinglePage(int id) async {
+  final response = await http.post(Uri.parse(Api.apiUrl + 'travels/$id'));
 
 // Appropriate action depending upon the
 
 // server response
   if (response.statusCode == 200) {
-    return TourSinglePageModel.fromJson(json.decode(response.body));
+    return TravelsSinglepageModel.fromJson(json.decode(response.body));
   } else {
     throw Exception('Failed to load data');
   }
@@ -28,7 +31,7 @@ Future<TourSinglePageModel> fetchSinglePage(int id) async {
 
 Future<HouseBoatGalleryModel> fetchGallery(int id) async {
   final response =
-      await http.post(Uri.parse(Api.apiUrl + 'places/gallery/$id'));
+      await http.post(Uri.parse(Api.apiUrl + 'travels/gallery/$id'));
 
 // Appropriate action depending upon the
 // server response
@@ -39,23 +42,23 @@ Future<HouseBoatGalleryModel> fetchGallery(int id) async {
   }
 }
 
-class TourSinglePagePackage extends StatefulWidget {
-  TourSinglePagePackage({Key? key}) : super(key: key);
+class TravelSinglePagePackage extends StatefulWidget {
+  TravelSinglePagePackage({Key? key}) : super(key: key);
 
   @override
-  _TourSinglePagePackageState createState() =>
-      _TourSinglePagePackageState();
+  _TravelSinglePagePackageState createState() =>
+      _TravelSinglePagePackageState();
 }
 
-class _TourSinglePagePackageState
-    extends State<TourSinglePagePackage> {
-  Future<TourSinglePageModel>? futuretour;
+class _TravelSinglePagePackageState
+    extends State<TravelSinglePagePackage> {
+  Future<TravelsSinglepageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
 
   @override
   void initState() {
     super.initState();
-    futuretour = fetchSinglePage(itemId);
+    futurePackage = fetchSinglePage(itemId);
     futureGallery = fetchGallery(itemId);
   }
 
@@ -66,8 +69,8 @@ class _TourSinglePagePackageState
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child: FutureBuilder<TourSinglePageModel>(
-            future: futuretour,
+          child: FutureBuilder<TravelsSinglepageModel>(
+            future: futurePackage,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Stack(
@@ -84,8 +87,8 @@ class _TourSinglePagePackageState
                                 Stack(
                                   clipBehavior: Clip.none,
                                   children: [
-                                    snapshot.data!.place!.image!.isEmpty ||
-                                            snapshot.data!.place!.image ==
+                                    snapshot.data!.travel!.image!.isEmpty ||
+                                            snapshot.data!.travel!.image ==
                                                 null
                                         ? Container(
                                             height: 500,
@@ -118,7 +121,7 @@ class _TourSinglePagePackageState
                                                         Api.imageUrl +
                                                             snapshot
                                                                 .data!
-                                                                .place!
+                                                                .travel!
                                                                 .image
                                                                 .toString()),
                                                     fit: BoxFit.cover),
@@ -150,7 +153,7 @@ class _TourSinglePagePackageState
                                                     child: Text(
                                                       //first letter caps and rest lower
                                                       //split with two words
-                                                      snapshot.data!.place!
+                                                      snapshot.data!.travel!
                                                           .name
                                                           .toString(),
                                                       maxLines: 1,
@@ -197,17 +200,12 @@ class _TourSinglePagePackageState
                                     width: MediaQuery.of(context).size.width,
                                     height: 60,
                                     child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                                        child: Text(
-                                          '${snapshot.data!.place!.desc}',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(255, 146, 144, 144)),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis ,
-                                        ),
+                                      child: Text(
+                                        'Price Starts from ₹${snapshot.data!.travel!.perDayOfferAmount}/-',
+                                        style: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
                                       ),
                                     ),
                                     decoration: BoxDecoration(
@@ -286,7 +284,7 @@ class _TourSinglePagePackageState
                                                           Colors.black,
                                                       tabs: [
                                                         Text(
-                                                          'Description',
+                                                          'Rooms',
                                                         ),
 
                                                         Text(
@@ -318,33 +316,97 @@ class _TourSinglePagePackageState
                                                   child: TabBarView(
                                                     children: <Widget>[
                                                       SingleChildScrollView(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              SizedBox(
-                                                                  height: 10),
-                                                              Text(
-                                                                '${snapshot.data!.place!.history}',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        13),
-                                                              ),
-                                                              SizedBox(
-                                                                  height: 30),
-                                                            ],
-                                                          ),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            // SizedBox(
+                                                            //     height: 10),
+                                                            // ListView.separated(
+                                                            //   shrinkWrap: true,
+                                                            //   physics:
+                                                            //       NeverScrollableScrollPhysics(),
+                                                            //   itemCount:
+                                                            //       roomController
+                                                            //           .roomsData
+                                                            //           .value
+                                                            //           .length,
+                                                            //   itemBuilder:
+                                                            //       (context,
+                                                            //           index) {
+                                                            //     return Container(
+                                                            //       padding: EdgeInsets
+                                                            //           .symmetric(
+                                                            //               horizontal:
+                                                            //                   16,
+                                                            //               vertical:
+                                                            //                   8),
+                                                            //       decoration: BoxDecoration(
+                                                            //           color: Color(
+                                                            //               0xffE5E5E5),
+                                                            //           borderRadius:
+                                                            //               BorderRadius.circular(
+                                                            //                   10)),
+                                                            //       child: Row(
+                                                            //         mainAxisAlignment:
+                                                            //             MainAxisAlignment
+                                                            //                 .spaceBetween,
+                                                            //         children: [
+                                                            //           Column(
+                                                            //             crossAxisAlignment:
+                                                            //                 CrossAxisAlignment.start,
+                                                            //             children: [
+                                                            //               Text(
+                                                            //                 "${roomController.roomsData.value[index].name}",
+                                                            //                 style:
+                                                            //                     TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                                            //               ),
+                                                            //               Text(
+                                                            //                   "Rooms Available ${roomController.roomsData.value[index].rooms}",
+                                                            //                   style: TextStyle(fontSize: 12, color: Colors.red)),
+                                                            //             ],
+                                                            //           ),
+                                                            //           Column(
+                                                            //             children: [
+                                                            //               Text(
+                                                            //                   "₹${roomController.roomsData.value[index].offerPrice}",
+                                                            //                   style: TextStyle(fontSize: 16, color: Colors.blue)),
+                                                            //               Text(
+                                                            //                   "₹${roomController.roomsData.value[index].price}",
+                                                            //                   style: TextStyle(fontSize: 12, color: Colors.grey, decoration: TextDecoration.lineThrough)),
+                                                            //             ],
+                                                            //           )
+                                                            //         ],
+                                                            //       ),
+                                                            //     );
+                                                            //   },
+                                                            //   separatorBuilder:
+                                                            //       (BuildContext
+                                                            //               context,
+                                                            //           int index) {
+                                                            //     return SizedBox(
+                                                            //       height: 10,
+                                                            //     );
+                                                            //   },
+                                                            // ),
+                                                            
+                                                            SizedBox(
+                                                                height: 10),
+                                                           
+                                                            SizedBox(
+                                                                height: 20),
+                                                          ],
                                                         ),
                                                       ),
                                                       // EducationList(),
                                                       // EducationList(),
                                                       Container(
-                                                          color:  Colors.white,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              253,
+                                                              251,
+                                                              251),
                                                           padding:
                                                               EdgeInsets.only(
                                                                   right: 16,

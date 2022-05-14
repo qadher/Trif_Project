@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
       Get.put(AttractionApiCardController());
   final PackageApiCardController packageController =
       Get.put(PackageApiCardController());
-      
 
   final LocationController locationController = Get.put(LocationController());
 
@@ -100,13 +99,13 @@ class HomeScreen extends StatelessWidget {
                                     width: 5,
                                   ),
                                   Text(
-                                      '${locationController.address.value}',
-                                      // 'Location',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12.sp,
-                                          fontFamily: 'Lato'),
-                                    ),
+                                    '${locationController.address.value}',
+                                    // 'Location',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Lato'),
+                                  ),
                                   // Obx(
                                   //   () => Text(
                                   //     '${locationController.address.value}',
@@ -254,8 +253,13 @@ class HomeScreen extends StatelessWidget {
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 8),
-                                          child: TitleText(
-                                              text: 'Recommended Packages'),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              print(list[0]);
+                                            },
+                                            child: TitleText(
+                                                text: 'Recommended Packages'),
+                                          ),
                                         ),
                                         SizedBox(
                                           height: 10,

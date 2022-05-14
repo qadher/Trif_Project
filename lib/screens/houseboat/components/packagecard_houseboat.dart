@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/houseboatapicardcontroller.dart';
+import 'package:http/http.dart' as http;
 
 import '../../home/components/titletext.dart';
 
@@ -33,15 +34,15 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
+                   
+
+                    print(
+                      controller.houseBoatData.value[index].id,
+                    );
                     Get.toNamed(
-                      '/singlepage',
+                      '/houseboatpackagesinglepage',
                       arguments: [
-                        controller.houseBoatData.value[index],
-                        controller,
-                        controller.houseBoatData.value[index].image,
-                        controller.houseBoatData.value[index].name,
-                        controller.houseBoatData.value[index].budget,
-                        controller.houseBoatData.value[index].district,
+                        controller.houseBoatData.value[index].id,
                       ],
                     );
                   },

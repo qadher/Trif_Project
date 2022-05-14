@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/screens/tours/components/kerala.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:trip_calicut/screens/tours/components/carousel.dart';
 import 'package:trip_calicut/screens/tours/components/districts.dart';
@@ -69,7 +70,8 @@ class TourScreen extends StatelessWidget {
                     child: TitleText(text: 'Kerala > Districts'),
                   ),
                   heightSizedBox(),
-                  District(),
+                  // District(),
+                  Kerala(),
                   // heightSizedBox(),
                   Padding(
                     padding: const EdgeInsets.only(left: 8),

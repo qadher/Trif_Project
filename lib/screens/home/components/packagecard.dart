@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/packageapicardcontroller.dart';
+import 'package:http/http.dart' as http;
 
 import 'titletext.dart';
 
+ List<int> list = [];
 class PackageCardList extends StatelessWidget {
   final PackageApiCardController controller =
       Get.put(PackageApiCardController());
@@ -13,9 +15,19 @@ class PackageCardList extends StatelessWidget {
   PackageCardList({
     Key? key,
   }) : super(key: key);
+    
 
   @override
   Widget build(BuildContext context) {
+
+  
+   
+    
+    //for loop list add api field id 
+    for (var i = 0; i < controller.packageData.value.length; i++) {
+      list.add(controller.packageData.value[i].id!.toInt());
+    }
+
     return Obx(
       () {
         if (controller.isLoading.value) {
@@ -31,16 +43,15 @@ class PackageCardList extends StatelessWidget {
               height: 10,
             ),
             itemBuilder: (context, index) => GestureDetector(
+              
+              
               onTap: () {
                 print(controller.packageData.value[index].agencyId);
 
                 Get.toNamed(
                   '/homesinglepagepackage',
-                  arguments: [controller.packageData.value[index].agencyId,
-                       controller.packageData.value[index],
-                    controller,
-                    controller.packageData.value[index].image,
-                    controller.packageData.value[index].name  
+                  arguments: [controller.packageData.value[index].id,
+                        
                   ],
                 );
 
@@ -58,6 +69,7 @@ class PackageCardList extends StatelessWidget {
                 // );
               },
               child: Container(
+                
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     color: Colors.white,

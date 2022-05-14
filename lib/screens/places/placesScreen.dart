@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:trip_calicut/screens/home/components/topattractions.dart';
+import 'package:trip_calicut/screens/places/components/kerala.dart';
 import 'package:trip_calicut/screens/places/components/trending_now.dart';
 import 'package:trip_calicut/screens/tours/components/AppBarWidget.dart';
 import 'package:trip_calicut/screens/tours/components/districts.dart';
@@ -58,7 +59,8 @@ class PlaceScreen extends StatelessWidget {
                   child: TitleText(text: 'Kerala > Districts'),
                 ),
                 heightSizedBox(),
-                PlacesDistrict(),
+                // PlacesDistrict(),
+                KeralaWidget(),
 
                 heightSizedBox(),
                 Padding(

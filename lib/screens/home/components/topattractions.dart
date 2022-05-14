@@ -75,6 +75,9 @@ class TopAttractionCard extends StatelessWidget {
                                 ),
                               ),
                             ),
+                             
+                           
+                            
                             Positioned(
                               top: 11,
                               left: 0,

@@ -153,7 +153,7 @@ class Agency {
   String? regPaper;
   String? idProof;
   String? idProof2;
-  Null? lisenceExpiry;
+  String? lisenceExpiry;
   String? createdAt;
 
   Agency(

@@ -69,18 +69,7 @@ class CampingScreen extends StatelessWidget {
                   child: TitleText(text: 'Results from Ollur...'),
                 ),
                 heightSizedBox(),
-                ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: 10,
-                  ),
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: CampPackageCard()
-                  ),
-                )
+                CampPackageCard()
               ],
             ),
           ),

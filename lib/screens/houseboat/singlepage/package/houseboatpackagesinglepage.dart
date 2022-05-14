@@ -5,22 +5,20 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatgallerymodel.dart';
+import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatpackagemodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:trip_calicut/screens/tours/singlepage/toursinglepagemodel.dart';
 
-import '../../jobs/components/FixedBottomSwitch.dart';
-import '../components/fixed_top_navigatio.dart';
+import '../../../jobs/components/FixedBottomSwitch.dart';
+import '../../../tours/components/fixed_top_navigatio.dart';
 
-
-
-Future<TourSinglePageModel> fetchSinglePage(int id) async {
-  final response = await http.post(Uri.parse(Api.apiUrl + 'places/$id'));
+Future<HouseBoatPackageModel> fetchSinglePage(int id) async {
+  final response = await http.post(Uri.parse(Api.apiUrl + 'houseboat/$id'));
 
 // Appropriate action depending upon the
 
 // server response
   if (response.statusCode == 200) {
-    return TourSinglePageModel.fromJson(json.decode(response.body));
+    return HouseBoatPackageModel.fromJson(json.decode(response.body));
   } else {
     throw Exception('Failed to load data');
   }
@@ -28,7 +26,7 @@ Future<TourSinglePageModel> fetchSinglePage(int id) async {
 
 Future<HouseBoatGalleryModel> fetchGallery(int id) async {
   final response =
-      await http.post(Uri.parse(Api.apiUrl + 'places/gallery/$id'));
+      await http.post(Uri.parse(Api.apiUrl + 'houseboat/gallery/$id'));
 
 // Appropriate action depending upon the
 // server response
@@ -39,23 +37,23 @@ Future<HouseBoatGalleryModel> fetchGallery(int id) async {
   }
 }
 
-class TourSinglePagePackage extends StatefulWidget {
-  TourSinglePagePackage({Key? key}) : super(key: key);
+class HouseBoatPackageSinglePage extends StatefulWidget {
+  HouseBoatPackageSinglePage({Key? key}) : super(key: key);
 
   @override
-  _TourSinglePagePackageState createState() =>
-      _TourSinglePagePackageState();
+  _HouseBoatPackageSinglePageState createState() =>
+      _HouseBoatPackageSinglePageState();
 }
 
-class _TourSinglePagePackageState
-    extends State<TourSinglePagePackage> {
-  Future<TourSinglePageModel>? futuretour;
+class _HouseBoatPackageSinglePageState
+    extends State<HouseBoatPackageSinglePage> {
+  Future<HouseBoatPackageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
 
   @override
   void initState() {
     super.initState();
-    futuretour = fetchSinglePage(itemId);
+    futurePackage = fetchSinglePage(itemId);
     futureGallery = fetchGallery(itemId);
   }
 
@@ -66,8 +64,8 @@ class _TourSinglePagePackageState
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child: FutureBuilder<TourSinglePageModel>(
-            future: futuretour,
+          child: FutureBuilder<HouseBoatPackageModel>(
+            future: futurePackage,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Stack(
@@ -84,8 +82,8 @@ class _TourSinglePagePackageState
                                 Stack(
                                   clipBehavior: Clip.none,
                                   children: [
-                                    snapshot.data!.place!.image!.isEmpty ||
-                                            snapshot.data!.place!.image ==
+                                    snapshot.data!.houseboats!.image!.isEmpty ||
+                                            snapshot.data!.houseboats!.image ==
                                                 null
                                         ? Container(
                                             height: 500,
@@ -118,7 +116,7 @@ class _TourSinglePagePackageState
                                                         Api.imageUrl +
                                                             snapshot
                                                                 .data!
-                                                                .place!
+                                                                .houseboats!
                                                                 .image
                                                                 .toString()),
                                                     fit: BoxFit.cover),
@@ -150,7 +148,7 @@ class _TourSinglePagePackageState
                                                     child: Text(
                                                       //first letter caps and rest lower
                                                       //split with two words
-                                                      snapshot.data!.place!
+                                                      snapshot.data!.houseboats!
                                                           .name
                                                           .toString(),
                                                       maxLines: 1,
@@ -173,8 +171,11 @@ class _TourSinglePagePackageState
                                                     height: 5,
                                                   ),
                                                   Text(
-                                                    'Kerala',
-                                                        
+                                                    snapshot.data!.houseboats!
+                                                                .district ==
+                                                            null
+                                                        ? 'Kerala'
+                                                        : "${snapshot.data!.houseboats!.district},${snapshot.data!.houseboats!.state},${snapshot.data!.houseboats!.country}",
                                                     style: TextStyle(
                                                         fontSize: 16,
                                                         // fontWeight: FontWeight.bold,
@@ -192,31 +193,31 @@ class _TourSinglePagePackageState
                                           ),
                                         )),
                                     Positioned(
-                                  bottom: 0,
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 60,
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                                        child: Text(
-                                          '${snapshot.data!.place!.desc}',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(255, 146, 144, 144)),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis ,
+                                      bottom: 0,
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height: 60,
+                                        child: Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'Price Starts from ₹${snapshot.data!.houseboats!.offerAmount}/-',
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
                                         ),
+                                        decoration: BoxDecoration(
+                                            color: Color(0xff00A6F6),
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(40),
+                                                topRight: Radius.circular(40))),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                        color: Color(0xff00A6F6),
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(40),
-                                            topRight: Radius.circular(40))),
-                                  ),
-                                ),
                                   ],
                                 ),
                                 Container(
@@ -317,34 +318,55 @@ class _TourSinglePagePackageState
                                                   ),
                                                   child: TabBarView(
                                                     children: <Widget>[
-                                                      SingleChildScrollView(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              SizedBox(
-                                                                  height: 10),
-                                                              Text(
-                                                                '${snapshot.data!.place!.history}',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        13),
+                                                      GestureDetector(
+                                                          onTap: () {},
+                                                          child:
+                                                              SingleChildScrollView(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Text(
+                                                                    '${snapshot.data!.houseboats!.description}',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            13),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Text(
+                                                                    '${snapshot.data!.houseboats!.days}',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            15),
+                                                                  ),
+                                                                  // ElevatedButton(onPressed: (){
+                                                                  //   print(houseBoatPackageItemId);
+                                                                  // }, child: Text('Book Now'),),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          30),
+                                                                ],
                                                               ),
-                                                              SizedBox(
-                                                                  height: 30),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
+                                                            ),
+                                                          )),
                                                       // EducationList(),
                                                       // EducationList(),
                                                       Container(
-                                                          color:  Colors.white,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              253,
+                                                              251,
+                                                              251),
                                                           padding:
                                                               EdgeInsets.only(
                                                                   right: 16,

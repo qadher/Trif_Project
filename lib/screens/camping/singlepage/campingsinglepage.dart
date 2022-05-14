@@ -4,23 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
+import 'package:trip_calicut/screens/camping/singlepage/campingsinglepagemodel.dart';
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatgallerymodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:trip_calicut/screens/tours/singlepage/toursinglepagemodel.dart';
 
 import '../../jobs/components/FixedBottomSwitch.dart';
-import '../components/fixed_top_navigatio.dart';
+import '../../tours/components/fixed_top_navigatio.dart';
 
 
 
-Future<TourSinglePageModel> fetchSinglePage(int id) async {
-  final response = await http.post(Uri.parse(Api.apiUrl + 'places/$id'));
+Future<CampingSinglepageModel> fetchSinglePage(int id) async {
+  final response = await http.post(Uri.parse(Api.apiUrl + 'camping/$id'));
 
 // Appropriate action depending upon the
 
 // server response
   if (response.statusCode == 200) {
-    return TourSinglePageModel.fromJson(json.decode(response.body));
+    return CampingSinglepageModel.fromJson(json.decode(response.body));
   } else {
     throw Exception('Failed to load data');
   }
@@ -28,7 +28,7 @@ Future<TourSinglePageModel> fetchSinglePage(int id) async {
 
 Future<HouseBoatGalleryModel> fetchGallery(int id) async {
   final response =
-      await http.post(Uri.parse(Api.apiUrl + 'places/gallery/$id'));
+      await http.post(Uri.parse(Api.apiUrl + 'camping/gallery/$id'));
 
 // Appropriate action depending upon the
 // server response
@@ -39,23 +39,23 @@ Future<HouseBoatGalleryModel> fetchGallery(int id) async {
   }
 }
 
-class TourSinglePagePackage extends StatefulWidget {
-  TourSinglePagePackage({Key? key}) : super(key: key);
+class CampingSinglePagePackage extends StatefulWidget {
+  CampingSinglePagePackage({Key? key}) : super(key: key);
 
   @override
-  _TourSinglePagePackageState createState() =>
-      _TourSinglePagePackageState();
+  _CampingSinglePagePackageState createState() =>
+      _CampingSinglePagePackageState();
 }
 
-class _TourSinglePagePackageState
-    extends State<TourSinglePagePackage> {
-  Future<TourSinglePageModel>? futuretour;
+class _CampingSinglePagePackageState
+    extends State<CampingSinglePagePackage> {
+  Future<CampingSinglepageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
 
   @override
   void initState() {
     super.initState();
-    futuretour = fetchSinglePage(itemId);
+    futurePackage = fetchSinglePage(itemId);
     futureGallery = fetchGallery(itemId);
   }
 
@@ -66,8 +66,8 @@ class _TourSinglePagePackageState
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child: FutureBuilder<TourSinglePageModel>(
-            future: futuretour,
+          child: FutureBuilder<CampingSinglepageModel>(
+            future: futurePackage,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Stack(
@@ -84,8 +84,8 @@ class _TourSinglePagePackageState
                                 Stack(
                                   clipBehavior: Clip.none,
                                   children: [
-                                    snapshot.data!.place!.image!.isEmpty ||
-                                            snapshot.data!.place!.image ==
+                                    snapshot.data!.camp!.image!.isEmpty ||
+                                            snapshot.data!.camp!.image ==
                                                 null
                                         ? Container(
                                             height: 500,
@@ -118,7 +118,7 @@ class _TourSinglePagePackageState
                                                         Api.imageUrl +
                                                             snapshot
                                                                 .data!
-                                                                .place!
+                                                                .camp!
                                                                 .image
                                                                 .toString()),
                                                     fit: BoxFit.cover),
@@ -150,7 +150,7 @@ class _TourSinglePagePackageState
                                                     child: Text(
                                                       //first letter caps and rest lower
                                                       //split with two words
-                                                      snapshot.data!.place!
+                                                      snapshot.data!.camp!
                                                           .name
                                                           .toString(),
                                                       maxLines: 1,
@@ -197,17 +197,12 @@ class _TourSinglePagePackageState
                                     width: MediaQuery.of(context).size.width,
                                     height: 60,
                                     child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                                        child: Text(
-                                          '${snapshot.data!.place!.desc}',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(255, 146, 144, 144)),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis ,
-                                        ),
+                                      child: Text(
+                                        'Price Starts from ₹${snapshot.data!.camp!.offerAmount}/-',
+                                        style: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
                                       ),
                                     ),
                                     decoration: BoxDecoration(
@@ -286,7 +281,7 @@ class _TourSinglePagePackageState
                                                           Colors.black,
                                                       tabs: [
                                                         Text(
-                                                          'Description',
+                                                          'Rooms',
                                                         ),
 
                                                         Text(
@@ -330,7 +325,41 @@ class _TourSinglePagePackageState
                                                               SizedBox(
                                                                   height: 10),
                                                               Text(
-                                                                '${snapshot.data!.place!.history}',
+                                                                '${snapshot.data!.camp!.desc}',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        13),
+                                                              ),
+                                                              
+                                                              SizedBox(
+                                                                  height: 20),
+                                                              Text(
+                                                                'Inclusion',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        10),
+                                                              ),
+                                                              SizedBox(
+                                                                  height: 10),
+                                                              Text(
+                                                                '${snapshot.data!.camp!.inclusion}',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        13),
+                                                              ),
+                                                              SizedBox(
+                                                                height: 10,
+                                                              ),
+                                                              Text(
+                                                                'Exclusion',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        10),
+                                                              ),
+                                                              SizedBox(
+                                                                  height: 10),
+                                                              Text(
+                                                                '${snapshot.data!.camp!.exclusion}',
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         13),
@@ -344,7 +373,11 @@ class _TourSinglePagePackageState
                                                       // EducationList(),
                                                       // EducationList(),
                                                       Container(
-                                                          color:  Colors.white,
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              253,
+                                                              251,
+                                                              251),
                                                           padding:
                                                               EdgeInsets.only(
                                                                   right: 16,
