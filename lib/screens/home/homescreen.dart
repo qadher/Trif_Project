@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/screens/home/components/catrgory.dart';
 import 'package:trip_calicut/screens/home/components/switchescard.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
