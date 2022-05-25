@@ -22,13 +22,14 @@ class TrifsDBAdapter extends TypeAdapter<TrifsDB> {
       image: fields[2] as String,
       title: fields[3] as String,
       desc: fields[4] as String,
+      fav: fields[5] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, TrifsDB obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class TrifsDBAdapter extends TypeAdapter<TrifsDB> {
       ..writeByte(3)
       ..write(obj.title)
       ..writeByte(4)
-      ..write(obj.desc);
+      ..write(obj.desc)
+      ..writeByte(5)
+      ..write(obj.fav);
   }
 
   @override

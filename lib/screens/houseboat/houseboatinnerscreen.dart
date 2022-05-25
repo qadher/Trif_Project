@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
+import 'package:trip_calicut/hive/Repository/repository.dart';
+import 'package:trip_calicut/hive/controller/db_controller.dart';
+import 'package:trip_calicut/hive/database/model/db_model.dart';
 import 'package:trip_calicut/screens/jobs/components/FixedBottomSwitch.dart';
 import 'package:trip_calicut/screens/tours/components/AppBarWidget.dart';
 import 'package:trip_calicut/screens/tours/components/fixed_top_navigatio.dart';
@@ -19,7 +22,7 @@ class HouseBoatInnerScreen extends StatelessWidget {
   final place = Get.arguments[5];
 
   HouseBoatInnerScreen({Key? key}) : super(key: key);
-
+  final DbController = Get.put(DBController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,11 +123,16 @@ class HouseBoatInnerScreen extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        Icon(
-                                          Icons.favorite_outline,
-                                          size: 30,
-                                          color:
-                                              Color.fromARGB(255, 160, 14, 14),
+                                        InkWell(
+                                          onTap: (() {
+                                         
+                                          }),
+                                          child: Icon(
+                                            Icons.favorite_outline,
+                                            size: 30,
+                                            color:
+                                                Color.fromARGB(255, 160, 14, 14),
+                                          ),
                                         ),
                                       ],
                                     ),
