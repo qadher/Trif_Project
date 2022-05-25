@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
+import 'package:trip_calicut/hive/Repository/repository.dart';
+import 'package:trip_calicut/hive/database/model/db_model.dart';
 import 'package:trip_calicut/screens/camping/singlepage/campingsinglepage.dart';
 import 'package:trip_calicut/screens/home/attractionsinglepage/attractionsinglepage.dart';
 import 'package:trip_calicut/screens/home/homeinnerscreen.dart';
@@ -33,7 +36,10 @@ import 'package:trip_calicut/screens/trekking/singlepage/truckingsinglepage.dart
 import 'package:trip_calicut/screens/trekking/trekkingscreen.dart';
 
 const status = 'first_time';
-void main() {
+void main() async{
+  await Hive.initFlutter();
+  Hive.registerAdapter(TrifsDBAdapter());
+  await RepositoryBox.openBox();
   runApp(const MyApp());
 }
 

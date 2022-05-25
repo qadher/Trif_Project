@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trip_calicut/bottom_navigation/bottomnavigation.dart';
 import 'package:trip_calicut/bottom_navigation/tab_item.dart';
 import 'package:trip_calicut/bottom_navigation/tab_navigator.dart';
+import 'package:trip_calicut/screens/favorites/favorite_screen.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/offer_page/offerPage.dart';
 
@@ -19,7 +20,7 @@ class _AppState extends State<App> {
   final _pageOptions = [
     HomeScreen(),
     HomeScreen(),
-    HomeScreen(),
+    Favorites(),
     OfferScreen(),
     HomeScreen(),
   ];
@@ -60,15 +61,13 @@ class _AppState extends State<App> {
                   width: 24,
                 ),
                 label: 'Offers'),
-                BottomNavigationBarItem(
-                  
+            BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'assets/bottom_icons/user color.svg',
                   height: 24,
                   width: 24,
                 ),
-                label: 'Account'
-                ),
+                label: 'Account'),
           ],
           selectedItemColor: Color.fromARGB(255, 5, 114, 168),
           elevation: 5.0,

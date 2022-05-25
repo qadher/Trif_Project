@@ -5,6 +5,7 @@ import 'package:trip_calicut/screens/offer_page/offersapicontroller.dart';
 import '../../widgets.dart';
 import '../tours/components/categoryscrolllist.dart';
 import 'featuredofferapicontroller.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class OfferScreen extends StatelessWidget {
   final OffersApiController offersApiController =
@@ -16,6 +17,8 @@ class OfferScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     double _w = MediaQuery.of(context).size.width;
+    int columnCount = 2;
     return Scaffold(
       backgroundColor: Color(0xffE5E5E5),
       // appBar: PreferredSize(
@@ -55,64 +58,93 @@ class OfferScreen extends StatelessWidget {
                 // JobTile(),
                 // heightSizedBox(),
                 // JobTile(),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                AnimationLimiter(
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
                     shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 2
-                        // mainAxisExtent: 100.h,
-                        ),
+                     padding: EdgeInsets.all(_w / 60),
+                    // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    //     crossAxisCount: 2,
+                    //     crossAxisSpacing: 8,
+                    //     mainAxisSpacing: 2
+                    //     // mainAxisExtent: 100.h,
+                    //     ),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: columnCount),
                     itemCount: offersApiController.offersData.value.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Column(
-                        children: [
-                          offersApiController
-                                      .offersData.value[index].image!.isEmpty ||
-                                  offersApiController
-                                          .offersData.value[index].image ==
-                                      null
-                              ? Container(
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/imageone.jpg'),
-                                          fit: BoxFit.cover),
-                                      color: Colors.amber,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  // child: Center(child: Text('$index')),
-                                )
-                               
-                              : Container(
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image:  NetworkImage(
-                                             Api.imageUrl + '${offersApiController.offersData.value[index].image}'),
-                                          fit: BoxFit.cover),
-                                      color: Colors.amber,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  // child: Center(child: Text('$index')),
-                                ),
-                          // Padding(
-                          //   padding: EdgeInsets.only(top: 8.h),
-                          //   child: Center(
-                          //     child: Text(
-                          //       'data',
-                          //       style: TextStyle(
-                          //         fontSize: 16,
-                          //         fontWeight: FontWeight.w500,
-                          //         color: Colors.black87,
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
-                        ],
-                      );
+                      // return offersApiController
+                      //             .offersData.value[index].image!.isEmpty ||
+                      //         offersApiController
+                      //                 .offersData.value[index].image ==
+                      //             null
+                      //     ? Container(
+                      //         height: 120,
+                      //         decoration: BoxDecoration(
+                      //             image: DecorationImage(
+                      //                 image: AssetImage(
+                      //                     'assets/images/imageone.jpg'),
+                      //                 fit: BoxFit.cover),
+                      //             color: Colors.amber,
+                      //             borderRadius: BorderRadius.circular(10)),
+                      //         // child: Center(child: Text('$index')),
+                      //       )
+                           
+                      //     : Container(
+                      //         height: 120,
+                      //         decoration: BoxDecoration(
+                      //             image: DecorationImage(
+                      //                 image:  NetworkImage(
+                      //                    Api.imageUrl + '${offersApiController.offersData.value[index].image}'),
+                      //                 fit: BoxFit.cover),
+                      //             color: Colors.amber,
+                      //             borderRadius: BorderRadius.circular(10)),
+                      //         // child: Center(child: Text('$index')),
+                      //       );
+                      return AnimationConfiguration.staggeredGrid(
+                position: index,
+                duration: Duration(milliseconds: 500),
+                columnCount: columnCount,
+                child: ScaleAnimation(
+                duration: Duration(milliseconds: 900),
+                curve: Curves.fastLinearToSlowEaseIn,
+                child: FadeInAnimation(
+                  child: 
+                    offersApiController
+                                  .offersData.value[index].image!.isEmpty ||
+                              offersApiController
+                                      .offersData.value[index].image ==
+                                  null
+                          ? Container(
+                              // height: 120,
+                                 margin: EdgeInsets.only(
+                        bottom: _w / 30, left: _w / 60, right: _w / 60),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/imageone.jpg'),
+                                      fit: BoxFit.cover),
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)),
+                              // child: Center(child: Text('$index')),
+                            )
+                           
+                          : Container(
+                              // height: 120,
+                                 margin: EdgeInsets.only(
+                        bottom: _w / 30, left: _w / 60, right: _w / 60),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image:  NetworkImage(
+                                         Api.imageUrl + '${offersApiController.offersData.value[index].image}'),
+                                      fit: BoxFit.cover),
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10)),
+                              // child: Center(child: Text('$index')),
+                            )
+                ),
+                ),
+              );
                     },
                   ),
                 ),
@@ -120,7 +152,7 @@ class OfferScreen extends StatelessWidget {
                 //   padding: const EdgeInsets.only(left: 8),
                 //   child: TitleText(text: 'Vehicles in Ollur...'),
                 // ),
-                heightSizedBox(),
+                // heightSizedBox(),
                 // ListView.separated(
                 //   physics: NeverScrollableScrollPhysics(),
                 //   shrinkWrap: true,
