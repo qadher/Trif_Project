@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
+import 'package:trip_calicut/controllers/houseboatapicardcontroller.dart';
 import 'package:trip_calicut/controllers/packageapicardcontroller.dart';
 import 'package:http/http.dart' as http;
 
 import 'titletext.dart';
 
  List<int> list = [];
+
 class PackageCardList extends StatelessWidget {
   final PackageApiCardController controller =
       Get.put(PackageApiCardController());
+      
 
   PackageCardList({
     Key? key,
@@ -27,7 +30,7 @@ class PackageCardList extends StatelessWidget {
     for (var i = 0; i < controller.packageData.value.length; i++) {
       list.add(controller.packageData.value[i].id!.toInt());
     }
-
+    
     return Obx(
       () {
         if (controller.isLoading.value) {
@@ -55,18 +58,7 @@ class PackageCardList extends StatelessWidget {
                   ],
                 );
 
-                // Get.to(
-                //   HomeSinglePagePackage(itemId: "${controller.packageData.value[index].id}"),
-                //   arguments: [
-                //     // controller.packageData.value[index].name,
-                //     // controller.packageData.value[index],
-                //     // controller,
-                //     // controller.packageData.value[index].image,
-                //     // controller.packageData.value[index].name,
-                //     // controller.packageData.value[index].avgAmount,
-                //     // controller.packageData.value[index].name,
-                //   ],
-                // );
+          
               },
               child: Container(
                 

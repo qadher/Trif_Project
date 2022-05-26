@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 class Switches extends StatelessWidget {
@@ -33,6 +34,17 @@ class Switches extends StatelessWidget {
 
 class SwitchesCard extends StatelessWidget {
   final SwitchesList categoryList;
+  //create url list
+  // final List<String> urlList = [
+  //   'https://www.google.com/',
+  //   'https://www.google.com/',
+  //   'https://www.google.com/',
+  //   'https://www.google.com/',
+  //   'https://www.google.com/',
+  //   'https://www.google.com/',
+  //   'https://www.google.com/',
+  //   'https://www.google.com/',
+  // ];
 
   SwitchesCard({
     Key? key,
@@ -44,7 +56,12 @@ class SwitchesCard extends StatelessWidget {
     return Container(
       //padding: EdgeInsets.all(10),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          print('trip switches clicked');
+          Get.toNamed('/trip-switches-webview', arguments: [
+            categoryList.url,
+          ]);
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -53,16 +70,6 @@ class SwitchesCard extends StatelessWidget {
               height: 10.w,
               width: 10.h,
             ),
-            // Container(
-            //   height: 45,
-            //   width: 45,
-            //   decoration: BoxDecoration(
-            //     image: DecorationImage(
-            //       image: AssetImage(categoryList.image),
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
-            // ),
             SizedBox(
               height: 10,
             ),
@@ -84,38 +91,46 @@ class SwitchesCard extends StatelessWidget {
 class SwitchesList {
   final String image;
   final String title;
+  final String url;
 
-  SwitchesList({required this.image, required this.title});
+  SwitchesList( {required this.url,required this.image, required this.title});
 }
 
 List<SwitchesList> trifSwitches = <SwitchesList>[
-  SwitchesList(image: 'assets/trifswitches/zomato.png', title: 'Zomato'),
+  SwitchesList(image: 'assets/trifswitches/zomato.png', title: 'Zomato', url: 'https://www.zomato.com/'),
   SwitchesList(
     image: 'assets/trifswitches/ola.png',
     title: 'Ola',
+     url: 'https://www.olacabs.com/'
   ),
   SwitchesList(
     image: 'assets/trifswitches/oyo.png',
     title: 'Oyo',
+    url: 'https://www.oyorooms.com/'
   ),
   SwitchesList(
     image: 'assets/trifswitches/redbus.png',
     title: 'Redbus',
+    url: 'https://www.redbus.in/'
   ),
   SwitchesList(
     image: 'assets/trifswitches/uber.png',
     title: 'Uber',
+    url: 'https://m.uber.com'
   ),
   SwitchesList(
     image: 'assets/trifswitches/swiggy.png',
     title: 'Swiggy',
+    url: 'https://www.swiggy.com/'
   ),
   SwitchesList(
     image: 'assets/trifswitches/myshow.png',
     title: 'BookMy',
+    url: 'https://in.bookmyshow.com/'
   ),
   SwitchesList(
     image: 'assets/trifswitches/ere.png',
     title: 'zCharge',
+    url: 'https://erebsindia.com/'
   ),
 ];

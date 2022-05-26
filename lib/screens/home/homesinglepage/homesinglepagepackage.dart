@@ -280,7 +280,7 @@ class _HomeSinglePagePackageState
                                                           Colors.black,
                                                       tabs: [
                                                         Text(
-                                                          'Rooms',
+                                                          'Overview',
                                                         ),
 
                                                         Text(

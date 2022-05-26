@@ -3,11 +3,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/models/houseboatapicard.dart';
 import 'package:trip_calicut/screens/blind_spot/blind_spot_screen.dart';
 import 'package:trip_calicut/screens/education/educatuion_screen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
 import 'package:trip_calicut/screens/places/placesScreen.dart';
 
+import '../../../controllers/houseboatapicardcontroller.dart';
 import '../../camping/campingscreen.dart';
 import '../../homestay/homestayscreen.dart';
 import '../../houseboat/houseboatscreen.dart';
@@ -47,7 +49,10 @@ class Category extends StatelessWidget {
 }
 
 class CategoryCard extends StatelessWidget {
+  
   final CategoryList categoryList;
+  //create empty list
+ 
 
   CategoryCard({
     Key? key,
@@ -56,17 +61,18 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       //padding: EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
-          // Get.to(categoryList.screen);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => categoryList.screen,
-            ),
-          );
+          Get.to(categoryList.screen);
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => categoryList.screen,
+          //   ),
+          // );
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
