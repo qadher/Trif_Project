@@ -46,6 +46,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_staggered_animations: ^1.0.0
   webview_flutter: ^3.0.4
+  permission_handler: ^9.2.0
 
 dev_dependencies:
   flutter_test:

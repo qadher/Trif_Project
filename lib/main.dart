@@ -35,6 +35,7 @@ import 'package:trip_calicut/screens/travel/singlepage/travelsinglepagepackage.d
 import 'package:trip_calicut/screens/travel/travelscreen.dart';
 import 'package:trip_calicut/screens/trekking/singlepage/truckingsinglepage.dart';
 import 'package:trip_calicut/screens/trekking/trekkingscreen.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 const status = 'first_time';
 void main() async{
