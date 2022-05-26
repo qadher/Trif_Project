@@ -68,6 +68,7 @@ flutter:
     - assets/icons/
     - assets/trifswitches/
     - assets/images/
+    - assets/images/districts/
     - assets/bottom_icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see

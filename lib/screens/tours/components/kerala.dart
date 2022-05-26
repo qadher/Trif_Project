@@ -14,7 +14,7 @@ class Kerala extends StatelessWidget {
                 // shrinkWrap: true,
                 itemCount:
                     //data.length,
-                    districtNames.length,
+                    districtImages.length,
                 separatorBuilder: (context, index) => SizedBox(),
                 itemBuilder: (context, index) => Padding(
                   padding:  EdgeInsets.only(left: 12),
@@ -32,7 +32,7 @@ class Kerala extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25.0),
                             image: DecorationImage(
                               image: AssetImage(
-                               'assets/images/imageone.jpg',
+                               districtImages[index],
                               ),
                               fit: BoxFit.cover,
                             ),
@@ -60,18 +60,34 @@ class Kerala extends StatelessWidget {
 
 //list of district names
 List districtNames = [
+  'Thiruvananthapuram',
+  'Kollam',
   'Alappuzha',
-  'Ernakulam',
+  'Pathanamthitta',
+  'Kottayam',
   'Idukki',
+  'Ernakulam',
+  'Thrissur',
+  'Palakkad',
+  'Malappuram',
+  'Kozhikode',
+  'Wayanad',
   'Kannur',
   'Kasaragod',
-  'Kollam',
-  'Kottayam',
-  'Kozhikode',
-  'Malappuram',
-  'Palakkad',
-  'Pathanamthitta',
-  'Thiruvananthapuram',
-  'Thrissur',
-  'Wayanad',
+];
+List districtImages = [
+  'assets/images/districts/trivandrum.jpeg',
+  'assets/images/districts/kollam.jpeg',
+  'assets/images/districts/alappuzha.jpeg',
+  'assets/images/districts/pathanamthitta.jpeg',
+  'assets/images/districts/kottayam.jpeg',
+  'assets/images/districts/idukki.jpeg',
+  'assets/images/districts/kochi.jpeg',
+  'assets/images/districts/thrissur.jpeg',
+  'assets/images/districts/palakkad.jpeg',
+  'assets/images/districts/malappuram.jpeg',
+  'assets/images/districts/calicut.jpeg',
+  'assets/images/districts/wayanad.jpeg',
+  'assets/images/districts/kannur.jpeg',
+  'assets/images/districts/kasargod.jpeg',
 ];
