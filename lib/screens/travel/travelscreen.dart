@@ -41,14 +41,14 @@ class TravelScreen extends StatelessWidget {
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(20)),
                   width: MediaQuery.of(context).size.width,
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                        autoPlay: true,
-                        aspectRatio: 2.0,
-                        enlargeCenterPage: false,
-                        viewportFraction: 1),
-                    items: imageSlidersBanner,
-                  ),
+                  // child: CarouselSlider(
+                  //   options: CarouselOptions(
+                  //       autoPlay: true,
+                  //       aspectRatio: 2.0,
+                  //       enlargeCenterPage: false,
+                  //       viewportFraction: 1),
+                  //   items: imageSlidersBanner,
+                  // ),
                 ),
                 heightSizedBox(),
                 CategoryScrollList(),

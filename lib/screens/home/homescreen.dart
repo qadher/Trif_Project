@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/screens/home/components/catrgory.dart';
+import 'package:trip_calicut/screens/home/components/promotedhomepage.dart';
 import 'package:trip_calicut/screens/home/components/switchescard.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -15,13 +16,11 @@ import 'components/packagecard.dart';
 import 'components/carousel.dart';
 import 'components/shimmerhomescreen.dart';
 
- 
 class HomeScreen extends StatelessWidget {
   final AttractionApiCardController attractionController =
       Get.put(AttractionApiCardController());
   final PackageApiCardController packageController =
       Get.put(PackageApiCardController());
-     
 
   final LocationController locationController = Get.put(LocationController());
 
@@ -29,8 +28,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
-
     return Scaffold(
       body: SafeArea(
         // Container with background image
@@ -151,8 +148,11 @@ class HomeScreen extends StatelessWidget {
                                   // SizedBox(
                                   //   height: 2.h,
                                   // ),
+                                  //Promoted 
                                   Container(
                                     height: 20.h,
+                                    
+                                    
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(20)),

@@ -1,12 +1,12 @@
 // To parse this JSON data, do
 //
-//     final promotedPackagesApi = promotedPackagesApiFromJson(jsonString);
+//     final promotedPackagesApiModel = promotedPackagesApiModelFromJson(jsonString);
 
 import 'dart:convert';
 
-PromotedPackagesApiModel promotedPackagesApiFromJson(String str) => PromotedPackagesApiModel.fromJson(json.decode(str));
+PromotedPackagesApiModel promotedPackagesApiModelFromJson(String str) => PromotedPackagesApiModel.fromJson(json.decode(str));
 
-String promotedPackagesApiToJson(PromotedPackagesApiModel data) => json.encode(data.toJson());
+String promotedPackagesApiModelToJson(PromotedPackagesApiModel data) => json.encode(data.toJson());
 
 class PromotedPackagesApiModel {
     PromotedPackagesApiModel({
@@ -45,6 +45,7 @@ class Promoted {
         this.endDate,
         this.days,
         this.amount,
+        this.image,
         this.createdAt,
     });
 
@@ -59,6 +60,7 @@ class Promoted {
     DateTime? endDate;
     int? days;
     int? amount;
+    String? image;
     DateTime? createdAt;
 
     factory Promoted.fromJson(Map<String, dynamic> json) => Promoted(
@@ -73,6 +75,7 @@ class Promoted {
         endDate: DateTime.parse(json["end_date"]),
         days: json["days"],
         amount: json["amount"],
+        image: json["image"],
         createdAt: DateTime.parse(json["created_at"]),
     );
 
@@ -88,6 +91,7 @@ class Promoted {
         "end_date": "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
         "days": days,
         "amount": amount,
+        "image": image,
         "created_at": createdAt!.toIso8601String(),
     };
 }
