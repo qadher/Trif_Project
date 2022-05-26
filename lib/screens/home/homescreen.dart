@@ -9,16 +9,19 @@ import 'package:trip_calicut/screens/home/components/topattractions.dart';
 
 import '../../components/locationcontroller.dart';
 import '../../controllers/attractionapicardcontroller.dart';
+import '../../controllers/houseboatapicardcontroller.dart';
 import '../../controllers/packageapicardcontroller.dart';
 import 'components/packagecard.dart';
 import 'components/carousel.dart';
 import 'components/shimmerhomescreen.dart';
 
+ 
 class HomeScreen extends StatelessWidget {
   final AttractionApiCardController attractionController =
       Get.put(AttractionApiCardController());
   final PackageApiCardController packageController =
       Get.put(PackageApiCardController());
+     
 
   final LocationController locationController = Get.put(LocationController());
 
@@ -26,6 +29,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
+
     return Scaffold(
       body: SafeArea(
         // Container with background image
@@ -175,29 +180,29 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 16),
-                                    child: TitleText(text: 'Nearby Places'),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    height: 23.h,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    width: MediaQuery.of(context).size.width,
-                                    child: CarouselSlider(
-                                      options: CarouselOptions(
-                                        autoPlay: true,
-                                        aspectRatio: 2.0,
-                                        enlargeCenterPage: true,
-                                        // viewportFraction: 1,
-                                      ),
-                                      items: imageSliders,
-                                    ),
-                                  ),
+                                  // Padding(
+                                  //   padding: EdgeInsets.only(left: 16),
+                                  //   child: TitleText(text: 'Nearby Places'),
+                                  // ),
+                                  // SizedBox(
+                                  //   height: 10,
+                                  // ),
+                                  // Container(
+                                  //   height: 23.h,
+                                  //   decoration: BoxDecoration(
+                                  //       borderRadius:
+                                  //           BorderRadius.circular(20)),
+                                  //   width: MediaQuery.of(context).size.width,
+                                  //   child: CarouselSlider(
+                                  //     options: CarouselOptions(
+                                  //       autoPlay: true,
+                                  //       aspectRatio: 2.0,
+                                  //       enlargeCenterPage: true,
+                                  //       // viewportFraction: 1,
+                                  //     ),
+                                  //     items: imageSliders,
+                                  //   ),
+                                  // ),
 
                                   //start
 
@@ -227,9 +232,9 @@ class HomeScreen extends StatelessWidget {
 
                                   //end
 
-                                  SizedBox(
-                                    height: 10,
-                                  ),
+                                  // SizedBox(
+                                  //   height: 10,
+                                  // ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(

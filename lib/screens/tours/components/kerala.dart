@@ -20,7 +20,7 @@ class Kerala extends StatelessWidget {
                   padding:  EdgeInsets.only(left: 12),
                   child: GestureDetector(
                     onTap: () {
-                      Get.toNamed('/placeslistpage',);
+                      Get.toNamed('/placeslistpage',arguments: [districtNames[index]]);
                     },
                     child: Column(
                       children: [

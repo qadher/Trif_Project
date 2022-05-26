@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:trip_calicut/controllers/promotedpackagesapicontroller.dart';
 
 
 final List<String> images = [
@@ -28,7 +30,10 @@ final List<String> images = [
   'assets/images/imageone.jpg',
 ];
 
- final List<String> imgListInner = [
+
+
+   final List<String> imgListInner = [
+    'assets/images/add_banner.jpg',
   'assets/images/add_banner.jpg',
   'assets/images/background.jpg',
   'assets/images/imageone.jpg',
@@ -44,6 +49,7 @@ final List<String> images = [
   'assets/images/imageone.jpg',
   
 ];
+
 
 final List<Widget> imageSliders = imgList
       .map((item) => Container(

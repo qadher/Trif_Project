@@ -10,6 +10,7 @@ import 'package:trip_calicut/screens/home/attractionsinglepage/attractionsinglep
 import 'package:trip_calicut/screens/home/homeinnerscreen.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/home/homesinglepage/homesinglepagepackage.dart';
+import 'package:trip_calicut/screens/home/webviewsinglepage.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/homestay/singlepage/homestaysinglepage.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatinnerscreen.dart';
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/keralaplaces', page: () => KeralaPlaces()),
           GetPage(name: '/campingsinglepagepackage', page: () => CampingSinglePagePackage()),
           GetPage(name: '/travelsinglepagepackage', page: () => TravelSinglePagePackage()),
+          GetPage(name: '/trip-switches-webview', page: () => WebViewSinglePage()),
           
         ],
       );

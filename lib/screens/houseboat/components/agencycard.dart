@@ -1,16 +1,38 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/agencyapicontroller.dart';
+import 'package:trip_calicut/controllers/agencysinglepagecontroller.dart';
+import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatpackagemodel.dart';
 
+import '../../../controllers/houseboatapicardcontroller.dart';
 import '../../../widgets.dart';
+import '../../home/components/packagecard.dart';
+import 'package:http/http.dart' as http;
+
+
+
+List<int> listHouseboatId = [];
 
 class AgencyCard extends StatelessWidget {
   final AgencyApiController controller = Get.put(AgencyApiController());
+  final HouseboatApiCardController controllerHouseBoat =
+      Get.put(HouseboatApiCardController());
+       final AgencySinglePageController controllerAgency =
+      Get.put(AgencySinglePageController());
+
   AgencyCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //for loop list add api field id
+    for (var i = 0; i < controllerHouseBoat.houseBoatData.value.length; i++) {
+      listHouseboatId
+          .add(controllerHouseBoat.houseBoatData.value[i].id!.toInt());
+    }
+
     return Container(
       height: 125,
       child: Obx(
@@ -31,6 +53,8 @@ class AgencyCard extends StatelessWidget {
                   onTap: () {
                     // print(controller.agencyData.value[8].name);
                     //  Get.toNamed('/singlepage',arguments: [controller.agencyData.value[index],controller],  );
+                    print('HouseBoat id : $listHouseboatId');
+                    // print(listHouseboatId);
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8),

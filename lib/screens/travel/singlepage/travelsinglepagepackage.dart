@@ -321,7 +321,7 @@ class _TravelSinglePagePackageState
                                                           Colors.black,
                                                       tabs: [
                                                         Text(
-                                                          'Rooms',
+                                                          'Overview',
                                                         ),
 
                                                         Text(
@@ -353,89 +353,61 @@ class _TravelSinglePagePackageState
                                                   child: TabBarView(
                                                     children: <Widget>[
                                                       SingleChildScrollView(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            // SizedBox(
-                                                            //     height: 10),
-                                                            // ListView.separated(
-                                                            //   shrinkWrap: true,
-                                                            //   physics:
-                                                            //       NeverScrollableScrollPhysics(),
-                                                            //   itemCount:
-                                                            //       roomController
-                                                            //           .roomsData
-                                                            //           .value
-                                                            //           .length,
-                                                            //   itemBuilder:
-                                                            //       (context,
-                                                            //           index) {
-                                                            //     return Container(
-                                                            //       padding: EdgeInsets
-                                                            //           .symmetric(
-                                                            //               horizontal:
-                                                            //                   16,
-                                                            //               vertical:
-                                                            //                   8),
-                                                            //       decoration: BoxDecoration(
-                                                            //           color: Color(
-                                                            //               0xffE5E5E5),
-                                                            //           borderRadius:
-                                                            //               BorderRadius.circular(
-                                                            //                   10)),
-                                                            //       child: Row(
-                                                            //         mainAxisAlignment:
-                                                            //             MainAxisAlignment
-                                                            //                 .spaceBetween,
-                                                            //         children: [
-                                                            //           Column(
-                                                            //             crossAxisAlignment:
-                                                            //                 CrossAxisAlignment.start,
-                                                            //             children: [
-                                                            //               Text(
-                                                            //                 "${roomController.roomsData.value[index].name}",
-                                                            //                 style:
-                                                            //                     TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                                                            //               ),
-                                                            //               Text(
-                                                            //                   "Rooms Available ${roomController.roomsData.value[index].rooms}",
-                                                            //                   style: TextStyle(fontSize: 12, color: Colors.red)),
-                                                            //             ],
-                                                            //           ),
-                                                            //           Column(
-                                                            //             children: [
-                                                            //               Text(
-                                                            //                   "₹${roomController.roomsData.value[index].offerPrice}",
-                                                            //                   style: TextStyle(fontSize: 16, color: Colors.blue)),
-                                                            //               Text(
-                                                            //                   "₹${roomController.roomsData.value[index].price}",
-                                                            //                   style: TextStyle(fontSize: 12, color: Colors.grey, decoration: TextDecoration.lineThrough)),
-                                                            //             ],
-                                                            //           )
-                                                            //         ],
-                                                            //       ),
-                                                            //     );
-                                                            //   },
-                                                            //   separatorBuilder:
-                                                            //       (BuildContext
-                                                            //               context,
-                                                            //           int index) {
-                                                            //     return SizedBox(
-                                                            //       height: 10,
-                                                            //     );
-                                                            //   },
-                                                            // ),
-                                                            
-                                                            SizedBox(
-                                                                height: 10),
-                                                           
-                                                            SizedBox(
-                                                                height: 20),
-                                                          ],
-                                                        ),
-                                                      ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Text(
+                                                                    '${snapshot.data!.travel!.area}',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            13),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Text(
+                                                                    '${snapshot.data!.travel!.perHourAmount}/- per hour',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            15),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Text(
+                                                                    'Contact',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            15,fontWeight: FontWeight.bold),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Text(
+                                                                    '${snapshot.data!.travel!.mailId}',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            15),
+                                                                  ),
+                                                                  // ElevatedButton(onPressed: (){
+                                                                  //   print(houseBoatPackageItemId);
+                                                                  // }, child: Text('Book Now'),),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          30),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
                                                       // EducationList(),
                                                       // EducationList(),
                                                       Container(
