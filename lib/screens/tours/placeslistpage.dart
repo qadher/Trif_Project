@@ -58,9 +58,7 @@ class PlacesListPage extends StatelessWidget {
                   ),
                   itemCount: controller.districtData.value.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return controller.districtData.value[index].name ==
-                            placeName
-                        ? GestureDetector(
+                    return GestureDetector(
                             onTap: () {
                               Get.toNamed('/toursinglepage', arguments: [
                                 controller.districtData.value[index].id,
@@ -98,7 +96,7 @@ class PlacesListPage extends StatelessWidget {
                                                         .imageUrl +
                                                     '${controller.districtData.value[index].image}'),
                                                 fit: BoxFit.cover),
-                                            color: Colors.amber,
+                                            color: Color.fromARGB(255, 219, 219, 219),
                                             borderRadius:
                                                 BorderRadius.circular(20)),
                                         // child: Center(child: Text('$index')),
@@ -119,8 +117,7 @@ class PlacesListPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          )
-                        : Container();
+                          );
                   },
                 );
               }

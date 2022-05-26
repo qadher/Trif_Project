@@ -7,23 +7,23 @@ Container adsBanner(BuildContext context) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.3,
     width: MediaQuery.of(context).size.width,
-    child: CarouselSlider(
-      options: CarouselOptions(
-        viewportFraction: 1.0,
-        enlargeCenterPage: false,
-        // autoPlay: false,
-      ),
-      items: adsList
-          .map((item) => Container(
-                child: Center(
-                    child: Image.asset(
-                  item,
-                  fit: BoxFit.cover,
-                  width: MediaQuery.of(context).size.width,
-                )),
-              ))
-          .toList(),
-    ),
+    // child: CarouselSlider(
+    //   options: CarouselOptions(
+    //     viewportFraction: 1.0,
+    //     enlargeCenterPage: false,
+    //     // autoPlay: false,
+    //   ),
+    //   items: adsList
+    //       .map((item) => Container(
+    //             child: Center(
+    //                 child: Image.asset(
+    //               item,
+    //               fit: BoxFit.cover,
+    //               width: MediaQuery.of(context).size.width,
+    //             )),
+    //           ))
+    //       .toList(),
+    // ),
   );
 }
 
