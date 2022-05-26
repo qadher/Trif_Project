@@ -8,6 +8,9 @@ import 'package:trip_calicut/screens/home/attractionsinglepage/attractionsinglep
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatgallerymodel.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../hive/Repository/repository.dart';
+import '../../../hive/controller/db_controller.dart';
+import '../../../hive/database/model/db_model.dart';
 import '../../jobs/components/FixedBottomSwitch.dart';
 import '../../tours/components/fixed_top_navigatio.dart';
 
@@ -47,6 +50,8 @@ class AttractionSinglePage extends StatefulWidget {
 class _AttractionSinglePageState extends State<AttractionSinglePage> {
   Future<AttracationSinglePageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
+   final DbController = Get.put(DBController());
+  IconData? icon;
 
   @override
   void initState() {
@@ -56,7 +61,7 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
   }
 
   int itemId = Get.arguments[0];
-
+  final String _type = 'attraction';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +70,7 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
           future: futurePackage,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              icon = DbController.updateIcon(name: snapshot.data!.attraction!.name!);
               return Stack(
                 children: <Widget>[
                   SingleChildScrollView(
@@ -170,11 +176,30 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                 ),
                                               ],
                                             ),
-                                            Icon(
-                                              Icons.favorite_outline,
-                                              size: 30,
-                                              color: Color.fromARGB(
-                                                  255, 160, 14, 14),
+                                             InkWell(
+                                              onTap: ()async {
+
+                                             await DbController.updateFav(name: snapshot.data!.attraction!.name.toString(), item: TrifsDB(id: itemId, type: _type, image: snapshot.data!.attraction!.image!, title: snapshot.data!.attraction!.name.toString(), desc: snapshot.data!.attraction!.desc, fav: true),);
+                                                final data = RepositoryBox.getBox();
+                                                // print(DbController.observableBox.values.toList());
+                                                // print(DbController.observableBox.length);
+                                                // print(itemId);
+                                                // print(_type);
+                                                // print(snapshot.data!.houseboats!.image!);
+                                                // print(snapshot.data!.houseboats!.name.toString());
+                                                DbController.updateIcon(name: snapshot.data!.attraction!.name!);
+                                                setState(() {
+                                                  
+                                                });
+                                                // DbController.observableBox.clear();
+                                              },
+
+                                              child: Icon(
+                                                icon,
+                                                size: 30,
+                                                color: Color.fromARGB(
+                                                    255, 160, 14, 14),
+                                              ),
                                             ),
                                           ],
                                         ),
