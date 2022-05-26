@@ -52,7 +52,7 @@ class AgencyCard extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     // print(controller.agencyData.value[8].name);
-                    //  Get.toNamed('/singlepage',arguments: [controller.agencyData.value[index],controller],  );
+                     Get.toNamed('/agencysinglepage',  );
                     print('HouseBoat id : $listHouseboatId');
                     // print(listHouseboatId);
                   },
@@ -65,7 +65,7 @@ class AgencyCard extends StatelessWidget {
                               ? CircleAvatar(
                                   radius: 40,
                                   backgroundImage:
-                                      AssetImage('assets/images/imageone.jpg'),
+                                      AssetImage('assets/images/no_image/noimage_square.jpeg'),
                                 )
                               : CircleAvatar(
                                   radius: 40,

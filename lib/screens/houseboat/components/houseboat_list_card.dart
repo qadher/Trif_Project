@@ -74,7 +74,7 @@ class HouseBoatPackageCard extends StatelessWidget {
                                               topLeft: Radius.circular(15)),
                                           image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/imageone.jpg'),
+                                                'assets/images/no_image/noimage_square.jpeg'),
                                             fit: BoxFit.cover,
 
                                             // NetworkImage(Api.imageUrl + '${controller.houseBoatData.value[index].image}'),

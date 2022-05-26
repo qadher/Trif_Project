@@ -54,7 +54,7 @@ class JobList extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
-                                image: AssetImage('assets/images/imageone.jpg'),
+                                image: AssetImage('assets/images/no_image/noimage_square.jpeg'),
                                 fit: BoxFit.cover,
                               ),
                             ),

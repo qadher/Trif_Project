@@ -66,7 +66,7 @@ class RecommendedPackageCardHouseBoat extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(15),
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/imageone.jpg'),
+                                          'assets/images/no_image/noimage_landscape.jpeg'),
                                       fit: BoxFit.cover,
                                     ),
                                   ),

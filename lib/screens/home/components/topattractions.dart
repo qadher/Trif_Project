@@ -60,7 +60,23 @@ class TopAttractionCard extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15),
                                   color: Color(0xFFAEAEAE)),
                             ),
+                            controller.attractionData.value[index].image!.isEmpty ||
+                            controller.attractionData.value[index].image == null ?
+                                
                             Container(
+                              //background image
+                              height: 16.h,
+                              width: 32.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    'assets/images/no_image/noimage_square.jpeg',
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ): Container(
                               //background image
                               height: 16.h,
                               width: 32.w,
@@ -75,7 +91,7 @@ class TopAttractionCard extends StatelessWidget {
                                 ),
                               ),
                             ),
-                             
+                            //  assets/images/no_image/noimage_square.jpeg
                            
                             
                             Positioned(

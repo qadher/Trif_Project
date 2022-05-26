@@ -61,7 +61,7 @@ class TravelPackageCard extends StatelessWidget {
                                     topLeft: Radius.circular(20)),
                                 image: DecorationImage(
                                   image: AssetImage(
-                                    'assets/images/imageone.jpg',
+                                    'assets/images/no_image/noimage_landscape.jpeg',
                                   ),
                                   fit: BoxFit.cover,
                                 ),

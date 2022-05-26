@@ -34,7 +34,7 @@ class TruckingProviders extends StatelessWidget {
                           ? CircleAvatar(
                         radius: 45,
                         backgroundImage:
-                            AssetImage('assets/images/background.jpg'),
+                            AssetImage('assets/images/no_image/noimage_square.jpeg'),
                       ):
                       CircleAvatar(
                         radius: 45,

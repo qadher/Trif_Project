@@ -27,16 +27,16 @@ class CampingProviders extends StatelessWidget {
                 child: Column(
                   children: [
                     controller.agencyData.value[index].logo!.isEmpty ||
-                            controller.agencyData.value[index].logo != null
+                            controller.agencyData.value[index].logo == null
                         ? CircleAvatar(
+                            radius: 45,
+                            backgroundImage:
+                                AssetImage('assets/images/no_image/noimage_square.jpeg'),
+                          ) 
+                        : CircleAvatar(
                             radius: 45,
                             backgroundImage: NetworkImage(Api.imageUrl +
                                 "${controller.agencyData.value[index].logo}"),
-                          )
-                        : CircleAvatar(
-                            radius: 45,
-                            backgroundImage:
-                                AssetImage('assets/images/background.jpg'),
                           ),
                     SizedBox(
                       height: 10,

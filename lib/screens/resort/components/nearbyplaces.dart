@@ -55,7 +55,7 @@ class NearbyPlaces extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                         image: DecorationImage(
                           image: AssetImage(
-                            'assets/images/imageone.jpg',
+                            'assets/images/no_image/noimage_square.jpeg',
                           ),
                           fit: BoxFit.cover,
                         ),

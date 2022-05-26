@@ -15,6 +15,7 @@ import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/homestay/singlepage/homestaysinglepage.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatinnerscreen.dart';
 import 'package:trip_calicut/screens/houseboat/houseboatscreen.dart';
+import 'package:trip_calicut/screens/houseboat/singlepage/agencysinglepages.dart';
 import 'package:trip_calicut/screens/houseboat/singlepage/package/houseboatpackagesinglepage.dart';
 import 'package:trip_calicut/screens/jobs/job_screen.dart';
 import 'package:trip_calicut/screens/jobs/job_screen_inner.dart';
@@ -24,6 +25,7 @@ import 'package:trip_calicut/screens/places/components/placesdistrict.dart';
 import 'package:trip_calicut/screens/resort/resortscreen.dart';
 import 'package:trip_calicut/screens/resort/singlepage/resortsinglepage.dart';
 import 'package:trip_calicut/screens/sign_up/signup.dart';
+import 'package:trip_calicut/screens/singlepages/agencysinglepage.dart';
 import 'package:trip_calicut/screens/singlepages/campingsinglepage.dart';
 import 'package:trip_calicut/screens/singlepages/packagesinglepage.dart';
 import 'package:trip_calicut/screens/splash_screen/splash_screen.dart';
@@ -96,6 +98,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/campingsinglepagepackage', page: () => CampingSinglePagePackage()),
           GetPage(name: '/travelsinglepagepackage', page: () => TravelSinglePagePackage()),
           GetPage(name: '/trip-switches-webview', page: () => WebViewSinglePage()),
+          GetPage(name: '/agencysinglepage', page: () => AgencySinglePages()),
           
         ],
       );
