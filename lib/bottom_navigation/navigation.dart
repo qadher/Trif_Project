@@ -7,6 +7,7 @@ import 'package:trip_calicut/screens/favorites/favorite_screen.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/offer_page/offerPage.dart';
 import 'package:trip_calicut/screens/profile/profilepage.dart';
+import 'package:trip_calicut/screens/search_page/search_page.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _AppState extends State<App> {
 
   final _pageOptions = [
     HomeScreen(),
-    HomeScreen(),
+    SearchPage(),
     Favorites(),
     OfferScreen(),
     ProfilePage(),
