@@ -8,6 +8,7 @@ import 'package:trip_calicut/screens/tours/components/carousel.dart';
 import 'package:trip_calicut/screens/tours/components/districts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:trip_calicut/screens/tours/components/shimmertourscreen.dart';
+import 'package:trip_calicut/screens/tours/imagesidescroller_tours.dart';
 import 'package:trip_calicut/screens/tours/insidescroller.dart';
 import 'package:trip_calicut/widgets.dart';
 
@@ -101,7 +102,7 @@ class TourScreen extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  insideScroller(context),
+                  insideScrollerTours(context),
                   heightSizedBox(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),

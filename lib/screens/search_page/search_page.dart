@@ -5,6 +5,9 @@ import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/widgets.dart';
 
 import '../home/components/titletext.dart';
+import '../houseboat/components/packagecard_houseboat.dart';
+import '../tours/components/kerala.dart';
+import '../tours/imagesidescroller_tours.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -37,6 +40,20 @@ class SearchPage extends StatelessWidget {
               padding: EdgeInsets.only(left: 16),
               child: TitleText(text: 'Recomended Places'),
             ),
+             SizedBox(
+                    height: 10,
+                  ),
+                   Kerala(),
+                  heightSizedBox(),
+                  Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: TitleText(text: 'Recomended Packages'),
+                ),
+                  heightSizedBox(),
+
+                RecommendedPackageCardHouseBoat(),
+
+                heightSizedBox(),
           ],
         ),
       ),
