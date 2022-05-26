@@ -11,6 +11,8 @@ import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboa
 import 'package:http/http.dart' as http;
 import 'package:trip_calicut/screens/travel/singlepage/travelsinglepagemodel.dart';
 
+import '../../../hive/controller/db_controller.dart';
+import '../../../hive/database/model/db_model.dart';
 import '../../jobs/components/FixedBottomSwitch.dart';
 import '../../tours/components/fixed_top_navigatio.dart';
 
@@ -54,7 +56,8 @@ class _TravelSinglePagePackageState
     extends State<TravelSinglePagePackage> {
   Future<TravelsSinglepageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
-
+  final DbController = Get.put(DBController());
+  IconData? icon;
   @override
   void initState() {
     super.initState();
@@ -64,6 +67,7 @@ class _TravelSinglePagePackageState
 
 
   int itemId = Get.arguments[0];
+  final String _type = 'travel';
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +77,8 @@ class _TravelSinglePagePackageState
             future: futurePackage,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                icon =
+                  DbController.updateIcon(name: snapshot.data!.travel!.name!);
                 return Stack(
                   children: <Widget>[
                     SingleChildScrollView(
@@ -185,12 +191,43 @@ class _TravelSinglePagePackageState
                                                   ),
                                                 ],
                                               ),
-                                              Icon(
-                                                Icons.favorite_outline,
+                                               InkWell(
+                                              onTap: () async {
+                                                await DbController.updateFav(
+                                                  name: snapshot
+                                                      .data!.travel!.name
+                                                      .toString(),
+                                                  item: TrifsDB(
+                                                      id: itemId,
+                                                      type: _type,
+                                                      image: snapshot
+                                                          .data!.travel!.image!,
+                                                      title: snapshot
+                                                          .data!.travel!.name
+                                                          .toString(),
+                                                      desc: '',
+                                                      fav: true),
+                                                );
+                                                // final data = RepositoryBox.getBox();
+                                                // print(DbController.observableBox.values.toList());
+                                                // print(DbController.observableBox.length);
+                                                // print(itemId);
+                                                // print(_type);
+                                                // print(snapshot.data!.travel!.image!);
+                                                // print(snapshot.data!.travel!.name.toString());
+                                                DbController.updateIcon(
+                                                    name: snapshot
+                                                        .data!.travel!.name!);
+                                                setState(() {});
+                                                // DbController.observableBox.clear();
+                                              },
+                                              child: Icon(
+                                                icon,
                                                 size: 30,
                                                 color: Color.fromARGB(
                                                     255, 160, 14, 14),
                                               ),
+                                            ),
                                             ],
                                           ),
                                         )),

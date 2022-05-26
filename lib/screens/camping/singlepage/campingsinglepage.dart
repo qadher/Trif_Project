@@ -8,6 +8,9 @@ import 'package:trip_calicut/screens/camping/singlepage/campingsinglepagemodel.d
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatgallerymodel.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../hive/Repository/repository.dart';
+import '../../../hive/controller/db_controller.dart';
+import '../../../hive/database/model/db_model.dart';
 import '../../jobs/components/FixedBottomSwitch.dart';
 import '../../tours/components/fixed_top_navigatio.dart';
 
@@ -51,6 +54,8 @@ class _CampingSinglePagePackageState
     extends State<CampingSinglePagePackage> {
   Future<CampingSinglepageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
+   final DbController = Get.put(DBController());
+  IconData? icon;
 
   @override
   void initState() {
@@ -61,7 +66,7 @@ class _CampingSinglePagePackageState
 
 
   int itemId = Get.arguments[0];
-
+   final String _type = 'camping';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +75,7 @@ class _CampingSinglePagePackageState
             future: futurePackage,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                icon = DbController.updateIcon(name: snapshot.data!.camp!.name!);
                 return Stack(
                   children: <Widget>[
                     SingleChildScrollView(
@@ -182,12 +188,31 @@ class _CampingSinglePagePackageState
                                                   ),
                                                 ],
                                               ),
-                                              Icon(
-                                                Icons.favorite_outline,
+                                              InkWell(
+                                              onTap: ()async {
+
+                                             await DbController.updateFav(name: snapshot.data!.camp!.name.toString(), item: TrifsDB(id: itemId, type: _type, image: snapshot.data!.camp!.image!, title: snapshot.data!.camp!.name.toString(), desc: snapshot.data!.camp!.desc, fav: true),);
+                                               // final data = RepositoryBox.getBox();
+                                                // print(DbController.observableBox.values.toList());
+                                                // print(DbController.observableBox.length);
+                                                // print(itemId);
+                                                // print(_type);
+                                                // print(snapshot.data!.camp!.image!);
+                                                // print(snapshot.data!.camp!.name.toString());
+                                                DbController.updateIcon(name: snapshot.data!.camp!.name!);
+                                                setState(() {
+                                                  
+                                                });
+                                                // DbController.observableBox.clear();
+                                              },
+
+                                              child: Icon(
+                                                icon,
                                                 size: 30,
                                                 color: Color.fromARGB(
                                                     255, 160, 14, 14),
                                               ),
+                                            ),
                                             ],
                                           ),
                                         )),
