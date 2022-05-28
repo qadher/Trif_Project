@@ -8,29 +8,23 @@ import 'package:http/http.dart' as http;
 
 import 'titletext.dart';
 
- List<int> list = [];
+List<int> list = [];
 
 class PackageCardList extends StatelessWidget {
   final PackageApiCardController controller =
       Get.put(PackageApiCardController());
-      
 
   PackageCardList({
     Key? key,
   }) : super(key: key);
-    
 
   @override
   Widget build(BuildContext context) {
-
-  
-   
-    
-    //for loop list add api field id 
+    //for loop list add api field id
     for (var i = 0; i < controller.packageData.value.length; i++) {
       list.add(controller.packageData.value[i].id!.toInt());
     }
-    
+
     return Obx(
       () {
         if (controller.isLoading.value) {
@@ -46,22 +40,17 @@ class PackageCardList extends StatelessWidget {
               height: 10,
             ),
             itemBuilder: (context, index) => GestureDetector(
-              
-              
               onTap: () {
                 print(controller.packageData.value[index].agencyId);
 
                 Get.toNamed(
                   '/homesinglepagepackage',
-                  arguments: [controller.packageData.value[index].id,
-                        
+                  arguments: [
+                    controller.packageData.value[index].id,
                   ],
                 );
-
-          
               },
               child: Container(
-                
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -76,7 +65,8 @@ class PackageCardList extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               image: DecorationImage(
-                                image: AssetImage('assets/images/no_image/noimage_landscape.jpeg'),
+                                image: AssetImage(
+                                    'assets/images/no_image/noimage_landscape.jpeg'),
                                 fit: BoxFit.fitWidth,
                               ),
                             ),

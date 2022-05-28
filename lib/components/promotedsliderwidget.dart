@@ -4,8 +4,7 @@ import 'package:trip_calicut/constant/api.dart';
 
 import '../controllers/promotedpackagesapicontroller.dart';
 
- final PromotedPackageApiController promotedPackageController =
-      Get.put(PromotedPackageApiController());
+ 
       
 class PromotedBannerSliderWidget extends StatelessWidget {
   final String image;

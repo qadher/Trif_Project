@@ -8,6 +8,7 @@ import 'package:trip_calicut/screens/houseboat/components/packagecard_houseboat.
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 import 'package:trip_calicut/screens/houseboat/components/shimmerhouseboatscreen.dart';
 
+import '../../controllers/agencyapicontroller.dart';
 import '../../controllers/houseboatapicardcontroller.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
@@ -16,6 +17,8 @@ import '../../widgets.dart';
 class HouseBoatScreen extends StatelessWidget {
   final HouseboatApiCardController houseboatPageController =
       Get.put(HouseboatApiCardController());
+       final AgencyHouseBoatController agencyHouseBoatController =
+      Get.put(AgencyHouseBoatController());
    HouseBoatScreen({Key? key}) : super(key: key);
 
   @override
@@ -35,7 +38,7 @@ class HouseBoatScreen extends StatelessWidget {
             return false;
           },
           child: Obx(() {
-          if (houseboatPageController.isLoading.value) {
+          if (agencyHouseBoatController.isLoading.value) {
             return ShimmerHouseBoatScreen();
           } else {
             return SingleChildScrollView(

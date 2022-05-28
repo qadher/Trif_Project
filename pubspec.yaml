@@ -47,6 +47,7 @@ dependencies:
   flutter_staggered_animations: ^1.0.0
   webview_flutter: ^3.0.4
   permission_handler: ^9.2.0
+  cached_network_image: ^3.2.1
 
 dev_dependencies:
   flutter_test:

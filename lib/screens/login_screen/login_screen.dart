@@ -5,7 +5,11 @@ import 'package:trip_calicut/bottom_navigation/navigation.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/widgets.dart';
 
+import '../../components/locationcontroller.dart';
+
 class LoginScreen extends StatefulWidget {
+//  final LocationController locationController = Get.put(LocationController());
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
