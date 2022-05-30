@@ -4,6 +4,7 @@ import 'package:trip_calicut/components/viewall.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 import 'package:trip_calicut/screens/trekking/components/packagecard_trecking.dart';
 
+import '../../components/promotedpackage.dart';
 import '../home/components/packagecard.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
@@ -37,20 +38,21 @@ class TrekkingScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // adsBanner(context),
-                Container(
-                  height: 20.h,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                  width: MediaQuery.of(context).size.width,
-                  // child: CarouselSlider(
-                  //   options: CarouselOptions(
-                  //       autoPlay: true,
-                  //       aspectRatio: 2.0,
-                  //       enlargeCenterPage: false,
-                  //       viewportFraction: 1),
-                  //   items: imageSlidersBanner,
-                  // ),
-                ),
+                PromotedPackage(sectionType: 'Trucking'),
+                // Container(
+                //   height: 20.h,
+                //   decoration:
+                //       BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                //   width: MediaQuery.of(context).size.width,
+                //   // child: CarouselSlider(
+                //   //   options: CarouselOptions(
+                //   //       autoPlay: true,
+                //   //       aspectRatio: 2.0,
+                //   //       enlargeCenterPage: false,
+                //   //       viewportFraction: 1),
+                //   //   items: imageSlidersBanner,
+                //   // ),
+                // ),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),

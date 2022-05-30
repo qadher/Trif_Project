@@ -3,11 +3,12 @@ import 'package:sizer/sizer.dart';
 
 import '../../widgets.dart';
 
-Container insideScroller(BuildContext context) {
+Container insideScrollerTours(BuildContext context) {
     return Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/tourism_banner.jpeg'),
+                    
+                    image: AssetImage('assets/images/honeymoon_banner.jpeg',),
                     fit: BoxFit.cover,
                   ),
                 ),

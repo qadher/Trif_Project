@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/components/promotedpackage.dart';
 import 'package:trip_calicut/controllers/tourcategoriescontroller.dart';
 import 'package:trip_calicut/screens/tours/components/kerala.dart';
 import 'package:trip_calicut/screens/home/components/titletext.dart';
@@ -9,6 +10,7 @@ import 'package:trip_calicut/screens/tours/components/carousel.dart';
 import 'package:trip_calicut/screens/tours/components/districts.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:trip_calicut/screens/tours/components/shimmertourscreen.dart';
+import 'package:trip_calicut/screens/tours/imagesidescroller_tours.dart';
 import 'package:trip_calicut/screens/tours/insidescroller.dart';
 import 'package:trip_calicut/widgets.dart';
 
@@ -53,21 +55,22 @@ class TourScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // adsBanner(context),
-                  Container(
-                    height: 25.h,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                    width: MediaQuery.of(context).size.width,
-                    child: CarouselSlider(
-                      options: CarouselOptions(
-                          autoPlay: true,
-                          aspectRatio: 2.0,
-                          autoPlayInterval: const Duration(seconds: 2),
-                          enlargeCenterPage: false,
-                          viewportFraction: 1),
-                      items: imageSlidersBanner,
-                    ),
-                  ),
+                  PromotedPackage(sectionType: 'Tours'),
+                  // Container(
+                  //   height: 25.h,
+                  //   decoration:
+                  //       BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  //   width: MediaQuery.of(context).size.width,
+                  //   child: CarouselSlider(
+                  //     options: CarouselOptions(
+                  //         autoPlay: true,
+                  //         aspectRatio: 2.0,
+                  //         autoPlayInterval: const Duration(seconds: 2),
+                  //         enlargeCenterPage: false,
+                  //         viewportFraction: 1),
+                  //     items: imageSlidersBanner,
+                  //   ),
+                  // ),
                   heightSizedBox(),
                   Padding(
                     padding: const EdgeInsets.only(left: 8),
@@ -146,7 +149,7 @@ class TourScreen extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  insideScroller(context),
+                  insideScrollerTours(context),
                   heightSizedBox(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),

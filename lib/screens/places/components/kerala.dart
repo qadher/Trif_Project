@@ -51,7 +51,7 @@ class KeralaWidget extends StatelessWidget {
 
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/imageone.jpg'),
+                                image: AssetImage(districtImages[index]),
                                 fit: BoxFit.cover),
                             color: Color.fromARGB(255, 179, 179, 179),
                             borderRadius: BorderRadius.circular(20)),

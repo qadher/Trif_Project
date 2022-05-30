@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class FixedBottomSwitch extends StatelessWidget {
   const FixedBottomSwitch({
@@ -45,12 +46,18 @@ class FixedBottomSwitch extends StatelessWidget {
               alignment: Alignment.center,
               height: 45,
               width: 150,
-              child: Text(
-                'Call Now',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              child: GestureDetector(
+                onTap: (){
+                  _callNumber();
+                  
+                },
+                child: Text(
+                  'Call Now',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
             ),
           ],
@@ -58,4 +65,8 @@ class FixedBottomSwitch extends StatelessWidget {
       ),
     );
   }
+  _callNumber() async{
+  const number = '8113002478'; //set the number here
+  bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+}
 }

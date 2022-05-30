@@ -352,15 +352,16 @@ class PromotedHomePage extends StatelessWidget {
                   (BuildContext context, int index, int pageViewIndex) =>
                       GestureDetector(
                 onTap: () {
-                  promotedPackageController
-                              .promotedPackageData.value[index].type ==
-                          'HouseBoats'
-                      ? Get.toNamed('/houseboatpackagesinglepage')
-                      : promotedPackageController
-                                  .promotedPackageData.value[index].type ==
-                              'Places'
-                          ? Get.toNamed('/toursinglepage')
-                          : Container();
+                  Get.toNamed('/promotedsinglepage', arguments: [
+                    promotedPackageController.promotedPackageData.value[index].district,
+                    promotedPackageController.promotedPackageData.value[index].image,
+                    promotedPackageController.promotedPackageData.value[index].amount,
+                    promotedPackageController.promotedPackageData.value[index].days,
+                    promotedPackageController,
+                    promotedPackageController.promotedPackageData.value[index].type,
+                    promotedPackageController.promotedPackageData.value[index].id,
+
+                  ]);
                 },
                 child: Container(
                   margin: EdgeInsets.all(5.0),
@@ -381,14 +382,11 @@ class PromotedHomePage extends StatelessWidget {
                                     'assets/images/no_image/noimage_landscape.jpeg',
                                     fit: BoxFit.cover,
                                     width: 1000.0)
-                                : 
-                                
-                            Image.network(
-                                Api.imageUrl +
-                                    '${promotedPackageController.promotedPackageData.value[index].image}',
-                                fit: BoxFit.cover,
-                                width: 1000.0),
-
+                                : Image.network(
+                                    Api.imageUrl +
+                                        '${promotedPackageController.promotedPackageData.value[index].image}',
+                                    fit: BoxFit.cover,
+                                    width: 1000.0),
                             Positioned(
                                 top: 0,
                                 child: Container(

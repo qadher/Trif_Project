@@ -11,6 +11,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:trip_calicut/screens/tours/insidescroller.dart';
 import 'package:trip_calicut/widgets.dart';
 
+import '../../components/promotedpackage.dart';
 import '../../components/viewall.dart';
 import '../home/components/carousel.dart';
 import '../widgets.dart';
@@ -41,18 +42,19 @@ class PlaceScreen extends StatelessWidget {
               children: [
                 // adsBanner(context),
                 heightSizedBox(),
-                Container(
-                  height: 160,
-                  width: MediaQuery.of(context).size.width,
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                      autoPlay: true,
-                      aspectRatio: 2.0,
-                      enlargeCenterPage: true,
-                    ),
-                    items: imageSliders,
-                  ),
-                ),
+                PromotedPackage(sectionType: 'Places'),
+                // Container(
+                //   height: 160,
+                //   width: MediaQuery.of(context).size.width,
+                //   child: CarouselSlider(
+                //     options: CarouselOptions(
+                //       autoPlay: true,
+                //       aspectRatio: 2.0,
+                //       enlargeCenterPage: true,
+                //     ),
+                //     items: imageSliders,
+                //   ),
+                // ),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),

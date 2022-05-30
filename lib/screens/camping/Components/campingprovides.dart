@@ -4,7 +4,7 @@ import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/agencyapicontroller.dart';
 
 class CampingProviders extends StatelessWidget {
-  final AgencyApiController controller = Get.put(AgencyApiController());
+  final AgencyCampingController controller = Get.put(AgencyCampingController());
   CampingProviders({
     Key? key,
   }) : super(key: key);
