@@ -153,7 +153,7 @@ class TourScreen extends StatelessWidget {
                   heightSizedBox(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: TitleText(text: 'Recommeneded Places '),
+                    child: TitleText(text: 'Gallery'),
                   ),
                   heightSizedBox(),
                   Container(
