@@ -360,6 +360,7 @@ class PromotedHomePage extends StatelessWidget {
                     promotedPackageController,
                     promotedPackageController.promotedPackageData.value[index].type,
                     promotedPackageController.promotedPackageData.value[index].id,
+                    promotedPackageController.promotedPackageData.value[index].agencyId,
 
                   ]);
                 },

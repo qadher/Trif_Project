@@ -20,10 +20,7 @@ class PackageCardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //for loop list add api field id
-    for (var i = 0; i < controller.packageData.value.length; i++) {
-      list.add(controller.packageData.value[i].id!.toInt());
-    }
+  
 
     return Obx(
       () {

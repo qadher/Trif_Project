@@ -15,22 +15,25 @@ class FixedBottomSwitch extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Color(0xff00A6F6),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(50),
-                    topLeft: Radius.circular(50)),
-              ),
-              alignment: Alignment.center,
-              height: 45,
-              width: 150,
-              child: Text(
-                'Enqury Now',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+            GestureDetector(
+              onTap: () => print('enquiry now clicked'),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xff00A6F6),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(50),
+                      topLeft: Radius.circular(50)),
+                ),
+                alignment: Alignment.center,
+                height: 45,
+                width: 150,
+                child: Text(
+                  'Enqury Now',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
             ),
             SizedBox(
