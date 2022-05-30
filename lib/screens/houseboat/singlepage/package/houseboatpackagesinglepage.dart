@@ -9,6 +9,7 @@ import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboa
 import 'package:http/http.dart' as http;
 import 'package:trip_calicut/widgets.dart';
 
+import '../../../../components/vodcast_tile.dart';
 import '../../../../hive/Repository/repository.dart';
 import '../../../../hive/controller/db_controller.dart';
 import '../../../../hive/database/model/db_model.dart';
@@ -427,55 +428,7 @@ class _HouseBoatPackageSinglePageState
                                                             padding:
                                                                 EdgeInsets.all(
                                                                     6),
-                                                            child: Row(
-                                                              children: [
-                                                                Stack(
-                                                                  children: [
-                                                                    Container(
-                                                                      height:
-                                                                          8.h,
-                                                                      width:
-                                                                          28.w,
-                                                                      decoration: BoxDecoration(
-                                                                          borderRadius: BorderRadius.circular(5),
-                                                                          image: DecorationImage(
-                                                                              fit: BoxFit.cover,
-                                                                              image: AssetImage(
-                                                                                'assets/images/no_image/noimage_landscape.jpeg',
-                                                                              ))),
-                                                                    ),
-                                                                    Positioned(
-                                                                      left: 0,
-                                                                      right: 0,
-                                                                      top: 0,
-                                                                      bottom: 0,
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .play_circle_outline,
-                                                                        size:
-                                                                            28,
-                                                                        color: Colors
-                                                                            .black
-                                                                            .withOpacity(0.5),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                widthSizedBox(),
-                                                                Flexible(
-                                                                  child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen',
-                                                                  overflow: TextOverflow.ellipsis,
-                                                                  maxLines: 3,
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'Lato',
-                                                                    fontSize: 16,
-                                                                    fontWeight: FontWeight.w500
-                                                                  ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                            child: VodcastTile(),
                                                           );
                                                         },
                                                       ),
@@ -594,3 +547,5 @@ class _HouseBoatPackageSinglePageState
     );
   }
 }
+
+
