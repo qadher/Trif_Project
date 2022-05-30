@@ -71,6 +71,7 @@ flutter:
     - assets/trifswitches/
     - assets/images/
     - assets/images/districts/
+    - assets/images/no_image/
     - assets/bottom_icons/
     - assets/images/no_image/
 
