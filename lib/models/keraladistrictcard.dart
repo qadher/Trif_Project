@@ -41,14 +41,19 @@ class Places {
   String? placeCode;
   String? duration;
   String? image;
+  String? district;
+  String? state;
 
-  Places(
-      {this.id,
-      this.name,
-      this.subName,
-      this.placeCode,
-      this.duration,
-      this.image});
+  Places({
+    this.id,
+    this.name,
+    this.subName,
+    this.placeCode,
+    this.duration,
+    this.image,
+    this.district,
+    this.state,
+  });
 
   Places.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -57,6 +62,8 @@ class Places {
     placeCode = json['place_code'];
     duration = json['duration'];
     image = json['image'];
+    district = json['district'];
+    state = json['state'];
   }
 
   Map<String, dynamic> toJson() {
@@ -67,6 +74,8 @@ class Places {
     data['place_code'] = this.placeCode;
     data['duration'] = this.duration;
     data['image'] = this.image;
+    data['district'] = this.district;
+    data['state'] = this.state;
     return data;
   }
 }

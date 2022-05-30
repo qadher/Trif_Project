@@ -47,6 +47,7 @@ dependencies:
   flutter_staggered_animations: ^1.0.0
   webview_flutter: ^3.0.4
   permission_handler: ^9.2.0
+  cached_network_image: ^3.2.1
   flutter_phone_direct_caller: ^2.1.1
 
 dev_dependencies:
@@ -72,6 +73,7 @@ flutter:
     - assets/images/districts/
     - assets/images/no_image/
     - assets/bottom_icons/
+    - assets/images/no_image/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

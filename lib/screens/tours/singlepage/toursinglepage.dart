@@ -475,7 +475,7 @@ class _TourSinglePagePackageState
                                                                                 MediaQuery.of(context).size.height * 0.10,
 
                                                                             decoration: BoxDecoration(
-                                                                                image: DecorationImage(image: AssetImage('assets/images/imageone.jpg'), fit: BoxFit.cover),
+                                                                                image: DecorationImage(image: AssetImage('assets/images/no_image/noimage_square.jpeg'), fit: BoxFit.cover),
                                                                                 color: Colors.amber,
                                                                                 borderRadius: BorderRadius.circular(20)),
                                                                             // child: Center(child: Text('$index')),

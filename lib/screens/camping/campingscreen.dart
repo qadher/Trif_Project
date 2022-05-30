@@ -6,6 +6,7 @@ import 'package:trip_calicut/components/viewall.dart';
 import 'package:trip_calicut/screens/camping/Components/camppackagecard.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 
+import '../../components/promotedpackage.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
@@ -36,20 +37,21 @@ class CampingScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // adsBanner(context),
-                Container(
-                  height: 20.h,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                  width: MediaQuery.of(context).size.width,
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                        autoPlay: true,
-                        aspectRatio: 2.0,
-                        enlargeCenterPage: false,
-                        viewportFraction: 1),
-                    items: imageSlidersBanner,
-                  ),
-                ),
+                PromotedPackage(sectionType: 'Camping'),
+                // Container(
+                //   height: 20.h,
+                //   decoration:
+                //       BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                //   width: MediaQuery.of(context).size.width,
+                //   child: CarouselSlider(
+                //     options: CarouselOptions(
+                //         autoPlay: true,
+                //         aspectRatio: 2.0,
+                //         enlargeCenterPage: false,
+                //         viewportFraction: 1),
+                //     items: imageSlidersBanner,
+                //   ),
+                // ),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),

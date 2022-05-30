@@ -47,7 +47,8 @@ class PlacesListPage extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else {
-                return GridView.builder(
+                return 
+                GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -58,7 +59,8 @@ class PlacesListPage extends StatelessWidget {
                   ),
                   itemCount: controller.districtData.value.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
+                    return controller.districtData.value[index].district == placeName ?
+                     GestureDetector(
                             onTap: () {
                               Get.toNamed('/toursinglepage', arguments: [
                                 controller.districtData.value[index].id,
@@ -96,7 +98,8 @@ class PlacesListPage extends StatelessWidget {
                                                         .imageUrl +
                                                     '${controller.districtData.value[index].image}'),
                                                 fit: BoxFit.cover),
-                                            color: Color.fromARGB(255, 219, 219, 219),
+                                            color: Color.fromARGB(
+                                                255, 219, 219, 219),
                                             borderRadius:
                                                 BorderRadius.circular(20)),
                                         // child: Center(child: Text('$index')),
@@ -117,7 +120,8 @@ class PlacesListPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          );
+                          ): Container()
+                        ;
                   },
                 );
               }
