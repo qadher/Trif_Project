@@ -1,19 +1,19 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatgallerymodel.dart';
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatpackagemodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:trip_calicut/widgets.dart';
 
 import '../../../../components/vodcast_tile.dart';
 import '../../../../hive/Repository/repository.dart';
 import '../../../../hive/controller/db_controller.dart';
 import '../../../../hive/database/model/db_model.dart';
-import '../../../jobs/components/FixedBottomSwitch.dart';
+import '../../../../services/apiservice.dart';
 import '../../../tours/components/fixed_top_navigatio.dart';
 
 Future<HouseBoatPackageModel> fetchSinglePage(int id) async {
@@ -395,44 +395,46 @@ class _HouseBoatPackageSinglePageState
                                                     // EducationList(),
                                                     // EducationList(),
                                                     Container(
-                                                      color: Color.fromARGB(
-                                                          255, 253, 251, 251),
-                                                      padding: EdgeInsets.only(
-                                                          right: 16,
-                                                          left: 16,
-                                                          bottom: 20),
-                                                      // color: Colors.red,
-                                                      child: ListView.separated(
-                                                        separatorBuilder:
-                                                            (context, index) =>
-                                                                SizedBox(
-                                                          height: 10,
-                                                        ),
-                                                        itemCount: 5,
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          return Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      236,
-                                                                      235,
-                                                                      235),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5),
-                                                            ),
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    6),
-                                                            child: VodcastTile(),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
+                                                        color: Color.fromARGB(
+                                                            255, 253, 251, 251),
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                right: 16,
+                                                                left: 16,
+                                                                bottom: 20),
+                                                        // color: Colors.red,
+                                                        child:
+                                                            ListView.separated(
+                                                          separatorBuilder:
+                                                              (context,
+                                                                      index) =>
+                                                                  SizedBox(
+                                                            height: 10,
+                                                          ),
+                                                          itemCount: 5,
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            return Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        236,
+                                                                        235,
+                                                                        235),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5),
+                                                              ),
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(4),
+                                                              child: VodcastTile(),
+                                                            );
+                                                          },
+                                                        )),
                                                     // EducationList(),
 
                                                     FutureBuilder<
@@ -533,7 +535,165 @@ class _HouseBoatPackageSinglePageState
                       ],
                     ),
                   ),
-                  FixedBottomSwitch(),
+                  // FixedBottomSwitchHouseBoat(),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 20),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              print('enquiry clicked');
+                              //loginMethod();
+                              enquiryMethod(
+                                  type: 'Enquiry',
+                                  packageType: 'HouseBoats',
+                                  packageId: '${snapshot.data!.houseboats!.id}',
+                                  agencyId:
+                                      '${snapshot.data!.houseboats!.agencyId}',
+                                  customerId: '111');
+                              // succes show dialog
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Enquiry'),
+                                      content: Text(
+                                          'Thank you for your Enquiry. We will respond as soon as possible'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: Text('Ok'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ],
+                                    );
+                                  });
+
+                              // EnquiryResponseModel model = EnquiryResponseModel(
+                              // user_id: '626f9cb57cc72973074f8f78',
+                              // job_designation: 'asus',
+                              // job_desc: 'asus',
+                              // category: 'asus',
+                              // province: 'asus',
+                              // city: 'asus',
+                              // minimum_pay: 'asus',
+                              // from: '2822-04-12T00:00:00.0002',
+                              // to: '2022-05-07T00:00:00.0002',
+                              // skills: 'asus'
+                              // type: 'Enquiry',
+                              // package_type: 'HouseBoats',
+
+                              // );
+                              // ApiService.fetchEnquiryData(type: model.type).then((value) {
+                              //   print(value);
+                              // });
+
+                              // ApiService.postEnquiry(model).then((value) {
+                              //   print(value);
+                              //   if (value.status == '200') {
+                              //     showDialog(
+                              //         context: context,
+                              //         builder: (BuildContext context) {
+                              //           return AlertDialog(
+                              //             title: Text('Success'),
+                              //             content: Text(
+                              //                 'Your enquiry has been sent successfully'),
+                              //             actions: <Widget>[
+                              //               FlatButton(
+                              //                 child: Text('OK'),
+                              //                 onPressed: () {
+                              //                   Navigator.of(context).pop();
+                              //                 },
+                              //               )
+                              //             ],
+                              //           );
+                              //         });
+                              //   } else {
+                              //     showDialog(
+                              //         context: context,
+                              //         builder: (BuildContext context) {
+                              //           return AlertDialog(
+                              //             title: Text('Error'),
+                              //             content: Text(
+                              //                 'Something went wrong, please try again'),
+                              //             actions: <Widget>[
+                              //               FlatButton(
+                              //                 child: Text('OK'),
+                              //                 onPressed: () {
+                              //                   Navigator.of(context).pop();
+                              //                 },
+                              //               )
+                              //             ],
+                              //           );
+                              //         });
+                              //   }
+                              // });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xff00A6F6),
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(50),
+                                    topLeft: Radius.circular(50)),
+                              ),
+                              alignment: Alignment.center,
+                              height: 45,
+                              width: 150,
+                              child: Text(
+                                'Enquiry Now',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xff00A6F6),
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(50),
+                                  topRight: Radius.circular(50)),
+                            ),
+                            alignment: Alignment.center,
+                            height: 45,
+                            width: 150,
+                            child: GestureDetector(
+                              onTap: () async {
+                                enquiryMethod(
+                                    type: 'Call',
+                                    packageType: 'HouseBoats',
+                                    packageId:
+                                        '${snapshot.data!.houseboats!.id}',
+                                    agencyId:
+                                        '${snapshot.data!.houseboats!.agencyId}',
+                                    customerId: '111');
+                                // _callNumber();
+                                // bool? res = await FlutterPhoneDirectCaller.callNumber('${snapshot.data!.agency!.mobile}');
+                                bool? res =
+                                    await FlutterPhoneDirectCaller.callNumber(
+                                        '6238265477');
+                              },
+                              child: Text(
+                                'Call Now',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   FixedTopNavigation(),
                 ],
               );
@@ -547,5 +707,4 @@ class _HouseBoatPackageSinglePageState
     );
   }
 }
-
 
