@@ -10,11 +10,12 @@ class PlacesListPage extends StatelessWidget {
       Get.put(KeralaDistrictCardController());
 
   final placeName = Get.arguments[0];
+  
 
   PlacesListPage({
     Key? key,
   }) : super(key: key);
-
+List places = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +43,18 @@ class PlacesListPage extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: Obx(
             () {
+              
               if (controller.isLoading.value) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               } else {
-                return 
-                GridView.builder(
+                for (var i = 0; i < controller.districtData.value.length; i++) {
+                if (controller.districtData.value[i].district == placeName) {
+                  places.add(controller.districtData.value[i]);
+                }
+              }
+                return GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -57,20 +63,20 @@ class PlacesListPage extends StatelessWidget {
                     mainAxisSpacing: 15,
                     mainAxisExtent: 14.h,
                   ),
-                  itemCount: controller.districtData.value.length,
+                  itemCount: places.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return controller.districtData.value[index].district == placeName ?
-                     GestureDetector(
+                    return places.isNotEmpty
+                        ? GestureDetector(
                             onTap: () {
                               Get.toNamed('/toursinglepage', arguments: [
-                                controller.districtData.value[index].id,
+                                places[index].id,
                               ]);
                             },
                             child: Column(
                               children: [
-                                controller.districtData.value[index].image!
+                                places[index].image!
                                             .isEmpty ||
-                                        controller.districtData.value[index]
+                                        places[index]
                                                 .image ==
                                             null
                                     ? Container(
@@ -96,7 +102,7 @@ class PlacesListPage extends StatelessWidget {
                                             image: DecorationImage(
                                                 image: NetworkImage(Api
                                                         .imageUrl +
-                                                    '${controller.districtData.value[index].image}'),
+                                                    '${places[index].image}'),
                                                 fit: BoxFit.cover),
                                             color: Color.fromARGB(
                                                 255, 219, 219, 219),
@@ -109,7 +115,7 @@ class PlacesListPage extends StatelessWidget {
                                 ),
                                 Center(
                                   child: Text(
-                                    '${controller.districtData.value[index].name}',
+                                    '${places[index].name}',
                                     maxLines: 1,
                                     style: TextStyle(
                                       fontSize: 10.sp,
@@ -120,8 +126,8 @@ class PlacesListPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          ): Container()
-                        ;
+                          )
+                        : Container();
                   },
                 );
               }
