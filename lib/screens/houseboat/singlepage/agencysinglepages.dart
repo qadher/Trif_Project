@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/controllers/agencyapicontroller.dart';
 import 'package:trip_calicut/screens/jobs/components/FixedBottomSwitch.dart';
-import 'package:trip_calicut/screens/tours/components/AppBarWidget.dart';
 import 'package:trip_calicut/widgets.dart';
 
 
@@ -21,7 +20,7 @@ class AgencySinglePages extends StatelessWidget {
           child: Obx(() {
             if (controller.isLoading.value) {
               return Center(
-                child: CircularProgressIndicator(),
+                child: Container(),
               );
             } else {
               return AppBar(
@@ -34,7 +33,7 @@ class AgencySinglePages extends StatelessWidget {
                       color: Colors.blue,
                     ),
                     onPressed: () {
-                      Get.offNamed('/jobs');
+                      Get.offNamed('/houseboat');
                     }),
               );
             }
