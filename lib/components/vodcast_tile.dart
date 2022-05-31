@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/screens/tours/components/kerala.dart';
 
 import '../widgets.dart';
 
 class VodcastTile extends StatelessWidget {
-  const VodcastTile({
-    Key? key,
+final String name;
+final int index;
+
+   VodcastTile({
+     
+    Key? key, required this.name, required this.index,
+  
   }) : super(key: key);
+//  static MetaDataModel? metaData;
+
+
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return 
+    Row(
       children: [
         Stack(
           children: [
@@ -24,7 +34,7 @@ class VodcastTile extends StatelessWidget {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                        'assets/images/no_image/noimage_landscape.jpeg',
+                        districtImages[index],
                       ))),
             ),
             Positioned(
@@ -47,7 +57,7 @@ class VodcastTile extends StatelessWidget {
         ),
         widthSizedBox(),
         Flexible(
-          child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen',
+          child: Text('${name + (index + 1).toString()}',
           overflow: TextOverflow.ellipsis,
           maxLines: 3,
           style: TextStyle(
