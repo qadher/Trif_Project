@@ -6,7 +6,10 @@ import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/hive/controller/db_controller.dart';
 import 'package:trip_calicut/hive/database/model/db_model.dart';
+import 'package:trip_calicut/screens/tours/components/AppBarWidgetwithoutArrow.dart';
 import 'package:trip_calicut/widgets.dart';
+
+import '../tours/components/AppBarWidget.dart';
 
 class Favorites extends StatelessWidget {
   final DBController favcontroller = Get.put(DBController());
@@ -16,9 +19,11 @@ class Favorites extends StatelessWidget {
     int columnCount = 2;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Favorites"),
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56),
+        child: AppBarWidgetWithoutBack(
+          title: 'Favorites',
+        ),
       ),
       body: AnimationLimiter(
         child: GetBuilder<DBController>(
