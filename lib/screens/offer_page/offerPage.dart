@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/screens/offer_page/offersapicontroller.dart';
+import 'package:trip_calicut/screens/tours/components/AppBarWidgetwithoutArrow.dart';
 import '../../widgets.dart';
+import '../tours/components/AppBarWidget.dart';
 import '../tours/components/categoryscrolllist.dart';
 import 'featuredofferapicontroller.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -27,9 +29,11 @@ class OfferScreen extends StatelessWidget {
       //     title: 'Offers',
       //   ),
       // ),
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text('Offers'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56),
+        child: AppBarWidgetWithoutBack(
+          title: 'Offers',
+        ),
       ),
       body: SafeArea(
         child: NotificationListener<OverscrollIndicatorNotification>(
@@ -37,28 +41,28 @@ class OfferScreen extends StatelessWidget {
             overscroll.disallowIndicator();
             return false;
           },
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+          // child: SingleChildScrollView(
+            // child: Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
                 // adsBanner(context),
 
-                heightSizedBox(),
-              // ElevatedButton(onPressed: (){
-              //   print(Api.imageUrl + '${offersApiController.offersData.value[0].image}');
-              // }, child: Text('test'),),
+              //   heightSizedBox(),
+              // // ElevatedButton(onPressed: (){
+              // //   print(Api.imageUrl + '${offersApiController.offersData.value[0].image}');
+              // // }, child: Text('test'),),
 
-                // heightSizedBox(),
-                CategoryScrollList(),
-                heightSizedBox(),
-                // JobTile(),
-                // heightSizedBox(),
-                // JobTile(),
+              //   // heightSizedBox(),
+              //   CategoryScrollList(),
+              //   heightSizedBox(),
+              //   // JobTile(),
                 // heightSizedBox(),
                 // JobTile(),
                 // heightSizedBox(),
                 // JobTile(),
-                AnimationLimiter(
+                // heightSizedBox(),
+                // JobTile(),
+               child: AnimationLimiter(
                   child: GridView.builder(
                     physics: BouncingScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics()),
@@ -165,9 +169,9 @@ class OfferScreen extends StatelessWidget {
                 //     child: PackageCard(),
                 //   ),
                 // ),
-              ],
-            ),
-          ),
+            //   ],
+            // ),
+          // ),
         ),
       ),
     );

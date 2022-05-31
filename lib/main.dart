@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sizer/sizer.dart';
@@ -42,6 +43,9 @@ import 'package:permission_handler/permission_handler.dart';
 
 const status = 'first_time';
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Hive.initFlutter();
   Hive.registerAdapter(TrifsDBAdapter());
   await RepositoryBox.openBox();

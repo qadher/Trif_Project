@@ -17,7 +17,7 @@ class DBController extends GetxController {
     });
     if (!recentlist.contains(item.title)) {
       observableBox.add(item);
-      Get.snackbar('', 'Addedddd', snackPosition: SnackPosition.BOTTOM);
+      // Get.snackbar('', 'Addedddd', snackPosition: SnackPosition.BOTTOM);
       update();
     } else {
       // Get.snackbar('', 'Already in list', snackPosition: SnackPosition.BOTTOM);
