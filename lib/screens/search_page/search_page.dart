@@ -29,6 +29,7 @@ class SearchPage extends StatelessWidget {
             children: [
               heightSizedBox(),
               Padding(
+                
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 // child: Form(
                 //   key: formKey,
@@ -52,9 +53,13 @@ class SearchPage extends StatelessWidget {
 
                 // search bar with listtile suggestions
                 child: TypeAheadFormField(
+                  
                   textFieldConfiguration: TextFieldConfiguration(
+                    
                     controller: searchController,
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey.withOpacity(0.4),
                       hintText: 'Search',
                       hintStyle:
                           TextStyle(fontSize: 18.sp, color: Colors.black),
