@@ -9,6 +9,7 @@ import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboa
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatpackagemodel.dart';
 import 'package:http/http.dart' as http;
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatvideosmodel.dart';
+import 'package:trip_calicut/screens/player_screen/player.dart';
 
 import '../../../../components/vodcast_tile.dart';
 import '../../../../hive/Repository/repository.dart';
@@ -56,6 +57,14 @@ Future<HouseBoatVideosModel> fetchVideos(int id) async {
     throw Exception('Failed to load data');
   }
 }
+//   MetaDataModel? metaData;
+// void _fetchMetadata(String link) async {
+//     // print(widget.url);
+//     print("+++++++++===============$link");
+   
+//       metaData = await YoutubeMetaData.getData(link);
+  
+//   }
 
 class HouseBoatPackageSinglePage extends StatefulWidget {
   HouseBoatPackageSinglePage({Key? key}) : super(key: key);
@@ -82,6 +91,7 @@ class _HouseBoatPackageSinglePageState
 
   int itemId = Get.arguments[0];
   final String _type = 'houseboat';
+   String name = '';
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +101,7 @@ class _HouseBoatPackageSinglePageState
           future: futurePackage,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              name = snapshot.data!.houseboats!.name!;
               icon = DbController.updateIcon(
                   name: snapshot.data!.houseboats!.name!);
               return Stack(
@@ -418,6 +429,7 @@ class _HouseBoatPackageSinglePageState
                                                       builder:
                                                           (context, snapshot) {
                                                         if (snapshot.hasData) {
+                                                       
                                                           return Container(
                                                               color: Color
                                                                   .fromARGB(
@@ -440,73 +452,78 @@ class _HouseBoatPackageSinglePageState
                                                                         SizedBox(
                                                                   height: 10,
                                                                 ),
-                                                                itemCount: 5,
+                                                                itemCount: snapshot.data!.videos!.length,
                                                                 itemBuilder:
                                                                     (context,
                                                                         index) {
+                                                                          // _fetchMetadata(snapshot.data!.videos![index].url!);
+                                                                          //  MetaDataModel metaData = await YoutubeMetaData.getData(snapshot.data!.videos![index].url!);
                                                                   return GestureDetector(
                                                                     onTap: () {
+                                                                      // print(metaData!.authorName);
                                                                       print(
                                                                           '${snapshot.data!.videos![index].url}');
+                                                                          Get.to(PLayerScreen(url: snapshot.data!.videos![index].url!));
                                                                     },
-                                                                    child:
-                                                                        Container(
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color.fromARGB(
-                                                                            255,
-                                                                            236,
-                                                                            235,
-                                                                            235),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5),
-                                                                      ),
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              4),
-                                                                      child:
-                                                                          // VodcastTile(),
-                                                                          Row(
-                                                                        children: [
-                                                                          Stack(
-                                                                            children: [
-                                                                              Container(
-                                                                                height: 8.h,
-                                                                                width: 28.w,
-                                                                                decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                    image: DecorationImage(
-                                                                                        fit: BoxFit.cover,
-                                                                                        image: AssetImage(
-                                                                                          'assets/images/no_image/noimage_landscape.jpeg',
-                                                                                        ))),
-                                                                              ),
-                                                                              Positioned(
-                                                                                left: 0,
-                                                                                right: 0,
-                                                                                top: 0,
-                                                                                bottom: 0,
-                                                                                child: Icon(
-                                                                                  Icons.play_circle_outline,
-                                                                                  size: 28,
-                                                                                  color: Colors.black.withOpacity(0.5),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                          widthSizedBox(),
-                                                                          Flexible(
-                                                                            child:
-                                                                                Text(
-                                                                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen',
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              maxLines: 3,
-                                                                              style: TextStyle(fontFamily: 'Lato', fontSize: 16, fontWeight: FontWeight.w500),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
+                                                                    child: VodcastTile(name: name, index: index,
+                                                        ),
+                                                                    //     Container(
+                                                                    //   decoration:
+                                                                    //       BoxDecoration(
+                                                                    //     color: Color.fromARGB(
+                                                                    //         255,
+                                                                    //         236,
+                                                                    //         235,
+                                                                    //         235),
+                                                                    //     borderRadius:
+                                                                    //         BorderRadius.circular(5),
+                                                                    //   ),
+                                                                    //   padding:
+                                                                    //       EdgeInsets.all(
+                                                                    //           4),
+                                                                    //   child:
+                                                                    //       // VodcastTile(),
+                                                                    //       Row(
+                                                                    //     children: [
+                                                                    //       Stack(
+                                                                    //         children: [
+                                                                    //           Container(
+                                                                    //             height: 8.h,
+                                                                    //             width: 28.w,
+                                                                    //             decoration: BoxDecoration(
+                                                                    //                 borderRadius: BorderRadius.circular(5),
+                                                                    //                 image: DecorationImage(
+                                                                    //                     fit: BoxFit.cover,
+                                                                    //                     image: AssetImage(
+                                                                    //                       'assets/images/no_image/noimage_landscape.jpeg',
+                                                                    //                     ))),
+                                                                    //           ),
+                                                                    //           Positioned(
+                                                                    //             left: 0,
+                                                                    //             right: 0,
+                                                                    //             top: 0,
+                                                                    //             bottom: 0,
+                                                                    //             child: Icon(
+                                                                    //               Icons.play_circle_outline,
+                                                                    //               size: 28,
+                                                                    //               color: Colors.black.withOpacity(0.5),
+                                                                    //             ),
+                                                                    //           ),
+                                                                    //         ],
+                                                                    //       ),
+                                                                    //       widthSizedBox(),
+                                                                    //       Flexible(
+                                                                    //         child:
+                                                                    //             Text(
+                                                                    //           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen',
+                                                                    //           overflow: TextOverflow.ellipsis,
+                                                                    //           maxLines: 3,
+                                                                    //           style: TextStyle(fontFamily: 'Lato', fontSize: 16, fontWeight: FontWeight.w500),
+                                                                    //         ),
+                                                                    //       ),
+                                                                    //     ],
+                                                                    //   ),
+                                                                    // ),
                                                                   );
                                                                 },
                                                               ));
