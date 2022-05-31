@@ -49,6 +49,7 @@ dependencies:
   permission_handler: ^9.2.0
   cached_network_image: ^3.2.1
   flutter_phone_direct_caller: ^2.1.1
+  flutter_typeahead: ^4.0.0
 
 dev_dependencies:
   flutter_test:
