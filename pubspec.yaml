@@ -51,6 +51,7 @@ dependencies:
   flutter_phone_direct_caller: ^2.1.1
   youtube_parser: ^2.0.0
   youtube_player_flutter: ^8.1.0
+  flutter_typeahead: ^4.0.0
 
 dev_dependencies:
   flutter_test:

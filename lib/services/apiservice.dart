@@ -1,7 +1,10 @@
 import 'dart:convert';
+import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:trip_calicut/models/searchresponsemodel.dart';
 
 Future enquiryMethod(
     {required String type,
@@ -30,6 +33,42 @@ Future enquiryMethod(
     return res.statusCode;
   }
 }
+
+// search api function
+Future<List<Map<String, String>>> searchMethod({
+  required String searchText,
+}) async {
+  var res = await http.post(
+    Uri.parse(
+        'https://trifs.in/api/search?search=${searchText}&type&limit=10&district='),
+  );
+  print('res : ${res.body}');
+
+  if (res.statusCode == 200) {
+    print('success');
+    final exData = jsonDecode(res.body);
+
+    print(exData);
+    // return res.body;
+    return List.generate(exData['search'].length, (index) {
+      return {
+        'name': '${exData['search'][index]['name']}',
+        'image': '${exData['search'][index]['image']}',
+        // 'price': Random().nextInt(100).toString()
+      };
+    });
+  } else {
+    print('failed');
+
+    final exData = jsonDecode(res.body);
+
+    print(exData);
+    // return res.statusCode;
+    return throw Exception('Failed to load post');
+  }
+}
+
+ 
 
 
 // class APIService {
