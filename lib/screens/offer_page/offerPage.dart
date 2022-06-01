@@ -128,7 +128,7 @@ class OfferScreen extends StatelessWidget {
                                       image: AssetImage(
                                           'assets/images/imageone.jpg'),
                                       fit: BoxFit.cover),
-                                  color: Colors.amber,
+                                  color: Color.fromARGB(255, 185, 182, 182),
                                   borderRadius: BorderRadius.circular(10)),
                               // child: Center(child: Text('$index')),
                             )
@@ -142,7 +142,7 @@ class OfferScreen extends StatelessWidget {
                                       image:  NetworkImage(
                                          Api.imageUrl + '${offersApiController.offersData.value[index].image}'),
                                       fit: BoxFit.cover),
-                                  color: Colors.amber,
+                                  color: Color.fromARGB(255, 185, 182, 182),
                                   borderRadius: BorderRadius.circular(10)),
                               // child: Center(child: Text('$index')),
                             )
