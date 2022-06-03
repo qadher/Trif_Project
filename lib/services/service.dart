@@ -9,6 +9,8 @@ class ApiManager {
         Uri.parse(Api.apiUrl + '$api'));
         if (responses.statusCode == 200) {
           var jsonResponse = responses.body;
+          
+          
           return jsonResponse;
         } else {
           throw Exception('Failed to load data');

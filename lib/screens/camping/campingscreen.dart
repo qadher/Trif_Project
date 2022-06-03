@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/controllers/campingapicardcontroller.dart';
 import 'package:trip_calicut/screens/home/components/packagecard.dart';
 import 'package:trip_calicut/components/viewall.dart';
 import 'package:trip_calicut/screens/camping/Components/camppackagecard.dart';
@@ -10,16 +12,18 @@ import '../../components/promotedpackage.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
+import '../tours/components/shimmertourscreen.dart';
 import '../widgets.dart';
 import 'Components/campingprovides.dart';
 
 class CampingScreen extends StatelessWidget {
-  const CampingScreen({Key? key}) : super(key: key);
+  final CampingApiCardController campingController = Get.put(CampingApiCardController());
+  CampingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
+      backgroundColor: Color(0xffebf5fb),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(56),
         child: AppBarWidget(
@@ -27,55 +31,57 @@ class CampingScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: NotificationListener<OverscrollIndicatorNotification>(
-          onNotification: (OverscrollIndicatorNotification overscroll) {
-            overscroll.disallowIndicator();
-            return false;
-          },
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // adsBanner(context),
-                PromotedPackage(sectionType: 'Camping'),
-                // Container(
-                //   height: 20.h,
-                //   decoration:
-                //       BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                //   width: MediaQuery.of(context).size.width,
-                //   child: CarouselSlider(
-                //     options: CarouselOptions(
-                //         autoPlay: true,
-                //         aspectRatio: 2.0,
-                //         enlargeCenterPage: false,
-                //         viewportFraction: 1),
-                //     items: imageSlidersBanner,
-                //   ),
-                // ),
-                heightSizedBox(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: TitleText(text: 'Providers'),
-                ),
-                heightSizedBox(),
-                Container(
-                  height: 140,
-                  child: CampingProviders(),
-                ),
+        child: NotificationListener<OverscrollIndicatorNotification>(onNotification: (OverscrollIndicatorNotification overscroll) {
+          overscroll.disallowIndicator();
+          return false;
+        }, child: Obx(() {
+          if (campingController.isLoading.value) {
+            return ShimmerTourScreen();
+          } else {
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // adsBanner(context),
+                  PromotedPackage(sectionType: 'Camping'),
+                  // Container(
+                  //   height: 20.h,
+                  //   decoration:
+                  //       BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  //   width: MediaQuery.of(context).size.width,
+                  //   child: CarouselSlider(
+                  //     options: CarouselOptions(
+                  //         autoPlay: true,
+                  //         aspectRatio: 2.0,
+                  //         enlargeCenterPage: false,
+                  //         viewportFraction: 1),
+                  //     items: imageSlidersBanner,
+                  //   ),
+                  // ),
+                  heightSizedBox(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: TitleText(text: 'Providers'),
+                  ),
+                  heightSizedBox(),
+                  Container(
+                    height: 140,
+                    child: CampingProviders(),
+                  ),
 
-              
-                heightSizedBox(),
+                  heightSizedBox(),
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: TitleText(text: 'Results from Ollur...'),
-                ),
-                heightSizedBox(),
-                CampPackageCard()
-              ],
-            ),
-          ),
-        ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: TitleText(text: 'Results from Ollur...'),
+                  ),
+                  heightSizedBox(),
+                  CampPackageCard()
+                ],
+              ),
+            );
+          }
+        })),
       ),
     );
   }
@@ -105,8 +111,7 @@ class CampingScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Malampuzha Dam',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
                     ),
                   ),
                 ),
@@ -140,8 +145,7 @@ class CampingScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Malampuzha Dam',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w400),
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
                     ),
                   ),
                 ),
@@ -154,4 +158,3 @@ class CampingScreen extends StatelessWidget {
     );
   }
 }
-

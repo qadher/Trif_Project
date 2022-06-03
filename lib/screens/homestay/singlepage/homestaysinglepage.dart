@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/components/vodcast_tile.dart';
@@ -16,7 +17,10 @@ import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboa
 import 'package:trip_calicut/screens/houseboat/singlepage/package/model/houseboatpackagemodel.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../services/apiservice.dart';
+import '../../houseboat/singlepage/package/model/houseboatvideosmodel.dart';
 import '../../jobs/components/FixedBottomSwitch.dart';
+import '../../player_screen/player.dart';
 import '../../tours/components/fixed_top_navigatio.dart';
 
 Future<HomeStaySinglePageModel> fetchSinglePage(int id) async {
@@ -45,6 +49,19 @@ Future<HouseBoatGalleryModel> fetchGallery(int id) async {
   }
 }
 
+Future<HouseBoatVideosModel> fetchVideos(int id) async {
+  final response =
+      await http.post(Uri.parse(Api.apiUrl + 'homestay/videos/$id'));
+
+// Appropriate action depending upon the
+// server response
+  if (response.statusCode == 200) {
+    return HouseBoatVideosModel.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Failed to load data');
+  }
+}
+
 class HomeStaySinglePagePackage extends StatefulWidget {
   HomeStaySinglePagePackage({Key? key}) : super(key: key);
 
@@ -56,6 +73,7 @@ class HomeStaySinglePagePackage extends StatefulWidget {
 class _HomeStaySinglePagePackageState extends State<HomeStaySinglePagePackage> {
   Future<HomeStaySinglePageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
+  Future<HouseBoatVideosModel>? futureVideos;
   final DbController = Get.put(DBController());
   IconData? icon;
   @override
@@ -63,12 +81,13 @@ class _HomeStaySinglePagePackageState extends State<HomeStaySinglePagePackage> {
     super.initState();
     futurePackage = fetchSinglePage(itemId);
     futureGallery = fetchGallery(itemId);
-    
+    futureVideos = fetchVideos(itemId);
 
   }
 
   int itemId = Get.arguments[0];
   final String _type = 'homestay';
+  String name = '';
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +97,7 @@ class _HomeStaySinglePagePackageState extends State<HomeStaySinglePagePackage> {
           future: futurePackage,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              name = snapshot.data!.homestay!.name!;
               icon = DbController.updateIcon(name: snapshot.data!.homestay!.name!);
               return Stack(
                 children: <Widget>[
@@ -351,58 +371,62 @@ class _HomeStaySinglePagePackageState extends State<HomeStaySinglePagePackage> {
                                                     ),
                                                     // EducationList(),
                                                     // EducationList(),
-                                                    Container(
-                                                        color: Color.fromARGB(
-                                                            255, 253, 251, 251),
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                right: 16,
-                                                                left: 16,
-                                                                bottom: 20),
-                                                        // color: Colors.red,
-                                                        child:
-                                                            ListView.separated(
-                                                          separatorBuilder:
-                                                              (context,
-                                                                      index) =>
-                                                                  SizedBox(
-                                                            height: 10,
-                                                          ),
-                                                          itemCount: 5,
-                                                          itemBuilder:
-                                                              (context, index) {
+                                                    FutureBuilder<
+                                                          HouseBoatVideosModel>(
+                                                        future: futureVideos,
+                                                        builder:
+                                                            (context, snapshot) {
+                                                          if (snapshot.hasData) {
+                                                         
                                                             return Container(
-                                                              decoration:
-                                                                  BoxDecoration(
                                                                 color: Color
                                                                     .fromARGB(
                                                                         255,
-                                                                        236,
-                                                                        235,
-                                                                        235),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
-                                                              ),
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(4),
-                                                                      // child: VodcastTile(),
-                                                              // child: ListTile(
-                                                              //   //leading
-                                                              //   title: Text(
-                                                              //       "hello"),
-                                                              //   subtitle: Text(
-                                                              //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                                              //       maxLines: 4,
-                                                              //       overflow:
-                                                              //           TextOverflow
-                                                              //               .ellipsis),
-                                                              // ),
-                                                            );
-                                                          },
-                                                        )),
+                                                                        253,
+                                                                        251,
+                                                                        251),
+                                                                padding: EdgeInsets
+                                                                    .only(
+                                                                        right: 16,
+                                                                        left: 16,
+                                                                        bottom:
+                                                                            20),
+                                                                // color: Colors.red,
+                                                                child: ListView
+                                                                    .separated(
+                                                                  separatorBuilder:
+                                                                      (context,
+                                                                              index) =>
+                                                                          SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  itemCount: snapshot.data!.videos!.length,
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          index) {
+                                                                            // _fetchMetadata(snapshot.data!.videos![index].url!);
+                                                                            //  MetaDataModel metaData = await YoutubeMetaData.getData(snapshot.data!.videos![index].url!);
+                                                                    return GestureDetector(
+                                                                      onTap: () {
+                                                                        // print(metaData!.authorName);
+                                                                        print(
+                                                                            '${snapshot.data!.videos![index].url}');
+                                                                            Get.to(PLayerScreen(url: snapshot.data!.videos![index].url!));
+                                                                      },
+                                                                      child: VodcastTile(name: name, index: index,
+                                                          ),
+                                                                    
+                                                                    );
+                                                                  },
+                                                                ));
+                                                          } else if (snapshot
+                                                              .hasError) {
+                                                            return Text(
+                                                                "${snapshot.error}");
+                                                          }
+                                                          return Center(child: CircularProgressIndicator());
+                                                        },
+                                                      ),
                                                     // EducationList(),
 
                                                     FutureBuilder<
@@ -463,17 +487,20 @@ class _HomeStaySinglePagePackageState extends State<HomeStaySinglePagePackage> {
                                                                               borderRadius: BorderRadius.circular(20)),
                                                                           // child: Center(child: Text('$index')),
                                                                         )
-                                                                      : Container(
-                                                                          // width: MediaQuery.of(context).size.width * 0.25,
-                                                                          height:
-                                                                              MediaQuery.of(context).size.height * 0.10,
-
-                                                                          decoration: BoxDecoration(
-                                                                              image: DecorationImage(image: NetworkImage(Api.imageUrl + '${snapshot.data!.images![index].image}'), fit: BoxFit.cover),
-                                                                              color: Colors.amber,
-                                                                              borderRadius: BorderRadius.circular(20)),
-                                                                          // child: Center(child: Text('$index')),
-                                                                        ),
+                                                                      : GestureDetector(
+                                                                        onTap: () => Get.toNamed('/fullscreenimage', arguments: snapshot.data!.images![index].image),
+                                                                        child: Container(
+                                                                            // width: MediaQuery.of(context).size.width * 0.25,
+                                                                            height:
+                                                                                MediaQuery.of(context).size.height * 0.10,
+                                                                      
+                                                                            decoration: BoxDecoration(
+                                                                                image: DecorationImage(image: NetworkImage(Api.imageUrl + '${snapshot.data!.images![index].image}'), fit: BoxFit.cover),
+                                                                                color: Colors.amber,
+                                                                                borderRadius: BorderRadius.circular(20)),
+                                                                            // child: Center(child: Text('$index')),
+                                                                          ),
+                                                                      ),
                                                                 );
                                                               },
                                                             ),
@@ -483,7 +510,7 @@ class _HomeStaySinglePagePackageState extends State<HomeStaySinglePagePackage> {
                                                           return Text(
                                                               "${snapshot.error}");
                                                         }
-                                                        return CircularProgressIndicator();
+                                                        return Center(child: CircularProgressIndicator());
                                                       },
                                                     ),
                                                   ],
@@ -503,7 +530,107 @@ class _HomeStaySinglePagePackageState extends State<HomeStaySinglePagePackage> {
                       ],
                     ),
                   ),
-                  FixedBottomSwitch(),
+                  // FixedBottomSwitch(),
+                  Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                print('enquiry clicked');
+                                //loginMethod();
+                                enquiryMethod(
+                                    type: 'Enquiry',
+                                    packageType: 'HomeStay',
+                                    packageId: '${snapshot.data!.homestay!.id}',
+                                    agencyId:
+                                        '${snapshot.data!.homestay!.agencyId}',
+                                    customerId: '111');
+                                // succes show dialog
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Enquiry'),
+                                        content: Text(
+                                            'Thank you for your Enquiry. We will respond as soon as possible'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: Text('Ok'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          )
+                                        ],
+                                      );
+                                    });
+      
+                              
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xff00A6F6),
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(50),
+                                      topLeft: Radius.circular(50)),
+                                ),
+                                alignment: Alignment.center,
+                                height: 45,
+                                width: 150,
+                                child: Text(
+                                  'Enquiry Now',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 2,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xff00A6F6),
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(50),
+                                    topRight: Radius.circular(50)),
+                              ),
+                              alignment: Alignment.center,
+                              height: 45,
+                              width: 150,
+                              child: GestureDetector(
+                                onTap: () async {
+                                  enquiryMethod(
+                                      type: 'Call',
+                                      packageType: 'HomeStay',
+                                      packageId:
+                                          '${snapshot.data!.homestay!.id}',
+                                      agencyId:
+                                          '${snapshot.data!.homestay!.agencyId}',
+                                      customerId: '111');
+                                  // _callNumber();
+                                  // bool? res = await FlutterPhoneDirectCaller.callNumber('${snapshot.data!.agency!.mobile}');
+                                  bool? res =
+                                      await FlutterPhoneDirectCaller.callNumber(
+                                          '6238265477');
+                                },
+                                child: Text(
+                                  'Call Now',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   FixedTopNavigation(),
                 ],
               );

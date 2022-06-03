@@ -526,7 +526,7 @@ class _HouseBoatPackageSinglePageState
                                                             return Text(
                                                                 "${snapshot.error}");
                                                           }
-                                                          return CircularProgressIndicator();
+                                                          return Center(child: CircularProgressIndicator());
                                                         },
                                                       ),
       
@@ -591,17 +591,20 @@ class _HouseBoatPackageSinglePageState
                                                                                 borderRadius: BorderRadius.circular(20)),
                                                                             // child: Center(child: Text('$index')),
                                                                           )
-                                                                        : Container(
-                                                                            // width: MediaQuery.of(context).size.width * 0.25,
-                                                                            height:
-                                                                                MediaQuery.of(context).size.height * 0.10,
-      
-                                                                            decoration: BoxDecoration(
-                                                                                image: DecorationImage(image: NetworkImage(Api.imageUrl + '${snapshot.data!.images![index].image}'), fit: BoxFit.cover),
-                                                                                color: Colors.amber,
-                                                                                borderRadius: BorderRadius.circular(20)),
-                                                                            // child: Center(child: Text('$index')),
-                                                                          ),
+                                                                        : GestureDetector(
+                                                                          onTap: () => Get.toNamed('/fullscreenimage', arguments: snapshot.data!.images![index].image),
+                                                                          child: Container(
+                                                                              // width: MediaQuery.of(context).size.width * 0.25,
+                                                                              height:
+                                                                                  MediaQuery.of(context).size.height * 0.10,
+                                                                              
+                                                                              decoration: BoxDecoration(
+                                                                                  image: DecorationImage(image: NetworkImage(Api.imageUrl + '${snapshot.data!.images![index].image}'), fit: BoxFit.cover),
+                                                                                  color: Colors.amber,
+                                                                                  borderRadius: BorderRadius.circular(20)),
+                                                                              // child: Center(child: Text('$index')),
+                                                                            ),
+                                                                        ),
                                                                   );
                                                                 },
                                                               ),
@@ -611,7 +614,7 @@ class _HouseBoatPackageSinglePageState
                                                             return Text(
                                                                 "${snapshot.error}");
                                                           }
-                                                          return CircularProgressIndicator();
+                                                          return Center(child: CircularProgressIndicator());
                                                         },
                                                       ),
                                                     ],

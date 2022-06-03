@@ -35,7 +35,7 @@ class SearchPage extends StatelessWidget {
                 //   key: formKey,
                 //   child: CupertinoSearchTextField(
                 //     //suggestions ListTile
-
+    
                 //     onChanged: (value) {
                 //       print(value);
                 //       //call search api
@@ -50,7 +50,7 @@ class SearchPage extends StatelessWidget {
                 //     style: TextStyle(fontSize: 18.sp, color: Colors.black),
                 //   ),
                 // ),
-
+    
                 // search bar with listtile suggestions
                 child: TypeAheadFormField(
                   

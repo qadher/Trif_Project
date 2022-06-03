@@ -370,59 +370,8 @@ class _TourSinglePagePackageState
                                                       ),
                                                       // EducationList(),
                                                       // EducationList(),
-                                                      Container(
-                                                          color:  Colors.white,
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  right: 16,
-                                                                  left: 16,
-                                                                  bottom: 20),
-                                                          // color: Colors.red,
-                                                          child: ListView
-                                                              .separated(
-                                                            separatorBuilder:
-                                                                (context,
-                                                                        index) =>
-                                                                    SizedBox(
-                                                              height: 10,
-                                                            ),
-                                                            itemCount: 5,
-                                                            itemBuilder:
-                                                                (context,
-                                                                    index) {
-                                                              return Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          236,
-                                                                          235,
-                                                                          235),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5),
-                                                                ),
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .all(4),
-                                                                        // child: VodcastTile(),
-                                                                // child: ListTile(
-                                                                //   //leading
-                                                                //   title: Text(
-                                                                //       "hello"),
-                                                                //   subtitle: Text(
-                                                                //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                                                //       maxLines:
-                                                                //           4,
-                                                                //       overflow:
-                                                                //           TextOverflow
-                                                                //               .ellipsis),
-                                                                // ),
-                                                              );
-                                                            },
-                                                          )),
+                                                      //Videos 
+                                                      Container(),
                                                       // EducationList(),
 
                                                       FutureBuilder<

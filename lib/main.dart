@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/bottom_navigation/navigation.dart';
+import 'package:trip_calicut/components/fullscreenimage.dart';
 import 'package:trip_calicut/components/promotedsinglepage.dart';
 import 'package:trip_calicut/hive/Repository/repository.dart';
 import 'package:trip_calicut/hive/database/model/db_model.dart';
@@ -105,6 +106,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/trip-switches-webview', page: () => WebViewSinglePage()),
           GetPage(name: '/agencysinglepage', page: () => AgencySinglePages()),
           GetPage(name: '/promotedsinglepage', page: () => PromotedSinglePage()),
+          GetPage(name: '/fullscreenimage', page: () => FullScreenImage()),
           
         ],
       );
