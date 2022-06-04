@@ -43,6 +43,7 @@ class EducationList extends StatelessWidget {
                       // padding: EdgeInsets.all(8),
 
                       // height: 105.h,
+                      width: double.maxFinite,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(width: 1, color: Colors.grey),
@@ -64,19 +65,16 @@ class EducationList extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10),
-                                child: Container(
-                                  width: 100,
-                                  child: Text(
-                                    'EdAbroad',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      // fontFamily: 'Lato'
-                                    ),
+                              Container(
+                                width: 30.w,
+                                child: Text(
+                                  'Package Name',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    // fontFamily: 'Lato'
                                   ),
                                 ),
                               ),
@@ -103,7 +101,7 @@ class EducationList extends StatelessWidget {
                                 height: 2,
                               ),
                               Container(
-                                width: 60.w,
+                                width: 55.w,
                                 child: Text(
                                   'Tuition Fee Starts from ₹12,00,000/year.',
                                   maxLines: 1,
@@ -114,39 +112,13 @@ class EducationList extends StatelessWidget {
                                       color: Colors.black87),
                                 ),
                               ),
-                              SizedBox(
-                                height: 4,
-                              ),
-                              // Container(
-                              //   width: 200,
-                              //   child: Text(
-                              //     '${controller.jobsData.value[index].qualification}',
-                              //     overflow: TextOverflow.ellipsis,
-                              //     maxLines: 2,
-                              //     style: TextStyle(
-                              //       fontSize: 12,
-                              //     ),
-                              //   ),
-                              // ),
-                              SizedBox(height: 25),
+                              
                             ],
                           )
                         ],
                       ),
                     ),
-                    // Positioned(
-                    //   bottom: 5,
-                    //   right: 14,
-                    //   child: Text(
-                    //     'Provided By Naukari obs',
-                    //     textAlign: TextAlign.end,
-                    //     style: TextStyle(
-                    //       fontWeight: FontWeight.bold,
-                    //       fontSize: 11,
-                    //       color: Color(0xFF00A6F6),
-                    //     ),
-                    //   ),
-                    // ),
+                   
                     Positioned(
                         top: 0,
                         right: 0,
@@ -161,7 +133,7 @@ class EducationList extends StatelessWidget {
                                 horizontal: 10, vertical: 14),
                             child: Center(
                               child: Text(
-                                '₹40+ Universities',
+                                '₹40+ Packages',
                                 style: TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.bold,
