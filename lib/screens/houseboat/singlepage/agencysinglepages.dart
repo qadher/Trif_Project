@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/controllers/agencyapicontroller.dart';
 import 'package:trip_calicut/screens/jobs/components/FixedBottomSwitch.dart';
 import 'package:trip_calicut/widgets.dart';
 
+import '../../education/components/education_list.dart';
 
 class AgencySinglePages extends StatelessWidget {
   final AgencyApiController controller = Get.put(AgencyApiController());
-  
 
   AgencySinglePages({Key? key}) : super(key: key);
 
@@ -25,8 +26,7 @@ class AgencySinglePages extends StatelessWidget {
             } else {
               return AppBar(
                 backgroundColor: Colors.white,
-                title: Text('Agency',
-                    style: TextStyle(color: Colors.blue)),
+                title: Text('Agency', style: TextStyle(color: Colors.blue)),
                 leading: IconButton(
                     icon: Icon(
                       Icons.arrow_back,
@@ -55,127 +55,8 @@ class AgencySinglePages extends StatelessWidget {
                 children: <Widget>[
                   SingleChildScrollView(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          padding: EdgeInsets.only(bottom: 20),
-                          // height: 300.h,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white),
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Container(
-                                    height: 130,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/JCB.jpg'),
-                                            fit: BoxFit.cover),
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20)),
-                                        color: Colors.black),
-                                  ),
-                                  Positioned(
-                                    bottom: 0,
-                                    right: 0,
-                                    child: Container(
-                                      width: 150,
-                                      height: 30,
-                                      child: Center(
-                                        child: Text(
-                                          '₹1000',
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black87),
-                                        ),
-                                      ),
-                                      decoration: BoxDecoration(
-                                          color: Colors.white60,
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(30))),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 15),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 15),
-                                      child: Container(
-                                        width: 280,
-                                        child: Text(
-                                          'Agency',
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                          style: TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold,
-                                            // fontFamily: 'Lato'
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_pin,
-                                          size: 18,
-                                          color: Color(0xFF00A6F6),
-                                        ),
-                                        Text(
-                                          'Kerala',
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.green,
-                                              fontWeight: FontWeight.w500),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      'exp',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black87),
-                                    ),
-                                    SizedBox(
-                                      height: 7,
-                                    ),
-                                    Text(
-                                      '2 years',
-                                      textAlign: TextAlign.justify,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black87),
-                                      maxLines: 5,
-                                    ),
-                                    // Text(
-                                    //   'Edabroad is one of the leading study abroad\nconsultants in Cochin with immense ...',
-                                    //   overflow: TextOverflow.ellipsis,
-                                    //   maxLines: 2,
-                                    // ),
-                                    heightSizedBox(),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
                         heightSizedBox(),
                         Stack(
                           children: [
@@ -234,6 +115,8 @@ class AgencySinglePages extends StatelessWidget {
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 15),
                                       child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             margin: EdgeInsets.only(left: 70),
@@ -242,16 +125,20 @@ class AgencySinglePages extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  'Agency',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                Padding(
+                                                  padding:
+                                                      EdgeInsets.only(left: 4),
+                                                  child: Text(
+                                                    'Agency',
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 2,
+                                                    style: TextStyle(
+                                                        color: Colors.blue,
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
                                                 ),
                                                 SizedBox(
                                                   height: 5,
@@ -280,7 +167,7 @@ class AgencySinglePages extends StatelessWidget {
                                             height: 16,
                                           ),
                                           Text(
-                                            'ernakulam,kerala',
+                                            'Three months ago, we launched the new Smart Upscaler with the unique face processing feature. Now, we’ve made it even better.',
                                             textAlign: TextAlign.justify,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
@@ -289,46 +176,12 @@ class AgencySinglePages extends StatelessWidget {
                                                 color: Colors.black87),
                                             maxLines: 5,
                                           ),
-                                          SizedBox(
-                                            height: 16,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                width: 250,
-                                                child: Text(
-                                                  'Other Jobs by agencys',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                              Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 20,
-                                                color: Colors.blue,
-                                              )
-                                            ],
-                                          )
+                                          
                                         ],
                                       )),
                                 ],
                               ),
                             ),
-                            // Positioned(
-                            //   top: 140.h,
-                            //   left: 100.w,
-                            //   child:
-                            // ),
                             Positioned(
                               top: 95,
                               left: 10,
@@ -340,8 +193,112 @@ class AgencySinglePages extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 80,
+                        heightSizedBox(),
+                        Container(
+                          // height: 700,
+                          decoration: BoxDecoration(
+                            color: Color(0xffE5E5E5),
+                          ),
+                          child: Column(
+                            children: [
+                              DefaultTabController(
+                                length: 6,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 7.h,
+                                      width: 95.w,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: TabBar(
+                                        indicator: BoxDecoration(
+                                          color: Color(0xff00A6F6),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                              color: Colors.grey.shade400),
+                                        ),
+                                        // isScrollable: true,
+                                        labelColor: Colors.white,
+                                        unselectedLabelColor: Colors.black,
+                                        isScrollable: true,
+                                        tabs: [
+                                          Text(
+                                            'Houseboat',
+                                            style: TextStyle(
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.bold,
+                                              // color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Camping',
+                                            style: TextStyle(
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.bold,
+                                              // color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Resort',
+                                            style: TextStyle(
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.bold,
+                                              // color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Travel',
+                                            style: TextStyle(
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.bold,
+                                              // color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Trekking',
+                                            style: TextStyle(
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.bold,
+                                              // color: Colors.white,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Homestay',
+                                            style: TextStyle(
+                                              fontSize: 10.sp,
+                                              fontWeight: FontWeight.bold,
+                                              // color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.only(top: 20),
+                                      constraints: BoxConstraints(
+                                        maxHeight: 80.h,
+                                        minHeight: 80.h,
+                                      ),
+                                      child: TabBarView(
+                                        children: <Widget>[
+                                          EducationList(),
+                                          EducationList(),
+                                          EducationList(),
+                                          EducationList(),
+                                          EducationList(),
+                                          EducationList(),
+
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
