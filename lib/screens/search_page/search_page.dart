@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/models/searchresponsemodel.dart';
@@ -73,7 +74,7 @@ class SearchPage extends StatelessWidget {
                     print(pattern);
                     return await searchMethod(searchText: pattern);
                   },
-                  itemBuilder: (context, Map<String, String> suggestion) {
+                  itemBuilder: (context, Map<String, dynamic> suggestion) {
                     return ListTile(
                       leading: CircleAvatar(
                         backgroundImage: NetworkImage(
@@ -82,7 +83,25 @@ class SearchPage extends StatelessWidget {
                       title: Text(suggestion['name']!),
                     );
                   },
-                  onSuggestionSelected: (Object? suggestion) {},
+                  onSuggestionSelected: (Object? suggestion) {
+                    // go to singlepage with category and id
+                    print(suggestion);
+                    // print suggestion['id'];
+                    id : (suggestion as Map<String, dynamic>);
+                    category : (suggestion as Map<String, dynamic>);
+                    print(suggestion['id']);
+                    if(suggestion['category'] == 'Places'){
+                    print('This is inside Places ${suggestion['id']}');
+
+                      // Get.toNamed('/toursinglepage',arguments: {
+                      //   suggestion['id']
+                      // Get.toNamed('/toursinglepage',arguments: [suggestion['id']]);
+                       
+                      // });
+                    }
+                   
+                   
+                  },
                 ),
               ),
               SizedBox(
