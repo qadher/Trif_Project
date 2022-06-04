@@ -24,30 +24,35 @@ class TruckingProviders extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: Container(
-                  child: Column(
-                    children: [
-                      controller.agencyData.value[index].logo!.isEmpty ||
-                      controller.agencyData.value[index].logo == null
-                          ? CircleAvatar(
-                        radius: 45,
-                        backgroundImage:
-                            AssetImage('assets/images/no_image/noimage_square.jpeg'),
-                      ):
-                      CircleAvatar(
-                        radius: 45,
-                        backgroundImage:
-                            NetworkImage(Api.imageUrl + '${controller.agencyData.value[index].logo!}'),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      //text with split word
-                      
-                      Text('${controller.agencyData.value[index].name!.split(' ')[0]}'),
-                    ],
+              return GestureDetector(
+                onTap: () => Get.toNamed(
+                '/agencysinglepage',
+              ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Container(
+                    child: Column(
+                      children: [
+                        controller.agencyData.value[index].logo!.isEmpty ||
+                        controller.agencyData.value[index].logo == null
+                            ? CircleAvatar(
+                          radius: 45,
+                          backgroundImage:
+                              AssetImage('assets/images/no_image/noimage_square.jpeg'),
+                        ):
+                        CircleAvatar(
+                          radius: 45,
+                          backgroundImage:
+                              NetworkImage(Api.imageUrl + '${controller.agencyData.value[index].logo!}'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        //text with split word
+                        
+                        Text('${controller.agencyData.value[index].name!.split(' ')[0]}'),
+                      ],
+                    ),
                   ),
                 ),
               );
