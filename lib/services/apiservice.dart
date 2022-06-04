@@ -35,7 +35,7 @@ Future enquiryMethod(
 }
 
 // search api function
-Future<List<Map<String, String>>> searchMethod({
+Future<List<Map<String, dynamic>>> searchMethod({
   required String searchText,
 }) async {
   var res = await http.post(
@@ -52,8 +52,10 @@ Future<List<Map<String, String>>> searchMethod({
     // return res.body;
     return List.generate(exData['search'].length, (index) {
       return {
+        'id': '${exData['search'][index]['id']}',
         'name': '${exData['search'][index]['name']}',
         'image': '${exData['search'][index]['image']}',
+        'category': '${exData['search'][index]['category']}',
         // 'price': Random().nextInt(100).toString()
       };
     });

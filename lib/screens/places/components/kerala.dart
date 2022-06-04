@@ -40,7 +40,7 @@ class KeralaWidget extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     Get.toNamed(
-                      '/keralaplaces',
+                    '/placeslistpage',arguments: [districtNames[index]]
                     );
                   },
                   child: Column(
