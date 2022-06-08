@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
-class ShimmerHouseBoatScreen extends StatelessWidget {
-  ShimmerHouseBoatScreen({Key? key}) : super(key: key);
+class CommonShimmer extends StatelessWidget {
+  CommonShimmer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,33 +26,7 @@ class ShimmerHouseBoatScreen extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                height: 20,
-                width: 100,
-                color: Colors.white,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 100,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: 10,
-                  itemBuilder: (context, index) => Container(
-                    height: 205,
-                    width: 220,
-                    color: Colors.white,
-                  ),
-                  separatorBuilder: (context, index) => SizedBox(
-                    width: 10,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
+             
               Container(
                 height: 20,
                 width: 100,
