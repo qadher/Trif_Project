@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/screens/houseboat/components/shimmerhouseboatscreen.dart';
 
 class VodcastsHomePage extends StatelessWidget {
   const VodcastsHomePage({
@@ -10,7 +11,9 @@ class VodcastsHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed('/vodcastSinglePage'),
+      onTap: () => 
+      // Get.toNamed('/vodcastSinglePage'),
+      Get.to(ShimmerHouseBoatScreen()),
       child: Container(
           height: 16.h,
           padding: EdgeInsets.all(8),

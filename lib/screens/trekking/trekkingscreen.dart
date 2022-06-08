@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/components/commonshimmer.dart';
 import 'package:trip_calicut/components/viewall.dart';
 import 'package:trip_calicut/controllers/truckingpackageapicardcontroller.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 import 'package:trip_calicut/screens/trekking/components/packagecard_trecking.dart';
 
 import '../../components/promotedpackage.dart';
+import '../../controllers/agencyapicontroller.dart';
 import '../home/components/packagecard.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
@@ -18,6 +20,7 @@ import 'components/truckingproviders.dart';
 
 class TrekkingScreen extends StatelessWidget {
   final TruckingPackageApiCardController truckingController = Get.put(TruckingPackageApiCardController());
+   final AgencyTrekkingController agencyController = Get.put(AgencyTrekkingController());
 
   TrekkingScreen({Key? key}) : super(key: key);
 
@@ -36,8 +39,8 @@ class TrekkingScreen extends StatelessWidget {
           overscroll.disallowIndicator();
           return false;
         }, child: Obx(() {
-          if (truckingController.isLoading.value) {
-            return Center(child: CircularProgressIndicator());
+          if (agencyController.isLoading.value  || truckingController.isLoading.value) {
+            return CommonShimmer();
           } else {
             return SingleChildScrollView(
               child: Column(

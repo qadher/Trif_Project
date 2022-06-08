@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/components/commonshimmer.dart';
 import 'package:trip_calicut/controllers/campingapicardcontroller.dart';
 import 'package:trip_calicut/screens/home/components/packagecard.dart';
 import 'package:trip_calicut/components/viewall.dart';
@@ -9,6 +10,7 @@ import 'package:trip_calicut/screens/camping/Components/camppackagecard.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 
 import '../../components/promotedpackage.dart';
+import '../../controllers/agencyapicontroller.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
@@ -18,6 +20,7 @@ import 'Components/campingprovides.dart';
 
 class CampingScreen extends StatelessWidget {
   final CampingApiCardController campingController = Get.put(CampingApiCardController());
+  final AgencyCampingController agencyController = Get.put(AgencyCampingController());
   CampingScreen({Key? key}) : super(key: key);
 
   @override
@@ -35,8 +38,8 @@ class CampingScreen extends StatelessWidget {
           overscroll.disallowIndicator();
           return false;
         }, child: Obx(() {
-          if (campingController.isLoading.value) {
-            return ShimmerTourScreen();
+          if (agencyController.isLoading.value || campingController.isLoading.value) {
+            return CommonShimmer();
           } else {
             return SingleChildScrollView(
               child: Column(
