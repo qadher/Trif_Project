@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -11,8 +12,7 @@ import 'titletext.dart';
 List<int> list = [];
 
 class PackageCardList extends StatelessWidget {
-  final PackageApiCardController controller =
-      Get.put(PackageApiCardController());
+  final PackageApiCardController controller = Get.put(PackageApiCardController());
 
   PackageCardList({
     Key? key,
@@ -20,8 +20,6 @@ class PackageCardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
-
     return Obx(
       () {
         if (controller.isLoading.value) {
@@ -49,37 +47,28 @@ class PackageCardList extends StatelessWidget {
               },
               child: Container(
                 padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   children: [
-                    controller.packageData.value[index].image!.isEmpty ||
-                            controller.packageData.value[index].image == null
-                        ? Container(
-                            height: 20.h,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/no_image/noimage_landscape.jpeg'),
-                                fit: BoxFit.fitWidth,
+                    Container(
+                      height: 20.h,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: controller.packageData.value[index].image!.isEmpty || controller.packageData.value[index].image == null
+                            ? Image.asset(
+                                'assets/images/no_image/noimage_landscape.jpeg',
+                                fit: BoxFit.cover,
+                              )
+                            : CachedNetworkImage(
+                                imageUrl: Api.imageUrl + '${controller.packageData.value[index].image!}',
+                                fit: BoxFit.cover,
                               ),
-                            ),
-                          )
-                        : Container(
-                            height: 20.h,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                image: NetworkImage(Api.imageUrl +
-                                    '${controller.packageData.value[index].image!}'),
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                          ),
+                      ),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
@@ -87,12 +76,8 @@ class PackageCardList extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TitleText(
-                          text: controller.packageData.value[index].name!
-                                  .substring(0, 1)
-                                  .toUpperCase() +
-                              controller.packageData.value[index].name!
-                                  .substring(1)
-                                  .toLowerCase(),
+                          text: controller.packageData.value[index].name!.substring(0, 1).toUpperCase() +
+                              controller.packageData.value[index].name!.substring(1).toLowerCase(),
                         )
                       ],
                     ),
@@ -107,11 +92,7 @@ class PackageCardList extends StatelessWidget {
                             // Text('₹'),
                             Text(
                               '₹${controller.packageData.value[index].avgAmount!.toString()}/-',
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF00A6F6)),
+                              style: TextStyle(fontFamily: 'Lato', fontSize: 17, fontWeight: FontWeight.bold, color: Color(0xFF00A6F6)),
                             ),
                             SizedBox(
                               width: 8,
@@ -130,22 +111,13 @@ class PackageCardList extends StatelessWidget {
                             ),
                             Text(
                               '${controller.packageData.value[index].advAmount!.toString()}%Off',
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFF6B100)),
+                              style: TextStyle(fontFamily: 'Lato', fontSize: 17, fontWeight: FontWeight.bold, color: Color(0xFFF6B100)),
                             ),
                           ],
                         ),
                         Text(
-                          controller.packageData.value[index].name!
-                                  .substring(0, 1)
-                                  .toUpperCase() +
-                              controller.packageData.value[index].name!
-                                  .substring(1)
-                                  .toLowerCase()
-                                  .split(' ')[0],
+                          controller.packageData.value[index].name!.substring(0, 1).toUpperCase() +
+                              controller.packageData.value[index].name!.substring(1).toLowerCase().split(' ')[0],
                           style: TextStyle(
                             fontFamily: 'Lato',
                             color: Color.fromARGB(255, 102, 101, 101),

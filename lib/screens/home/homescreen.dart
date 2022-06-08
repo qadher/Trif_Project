@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/components/vodcast_tile.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/screens/home/components/catrgory.dart';
 import 'package:trip_calicut/screens/home/components/switchescard.dart';
@@ -17,15 +18,13 @@ import '../../controllers/promotedpackagesapicontroller.dart';
 import 'components/packagecard.dart';
 import 'components/carousel.dart';
 import 'components/shimmerhomescreen.dart';
+import 'components/vodcastshomepage.dart';
 
-final PromotedPackageApiController promotedPackageController =
-    Get.put(PromotedPackageApiController());
+final PromotedPackageApiController promotedPackageController = Get.put(PromotedPackageApiController());
 
 class HomeScreen extends StatelessWidget {
-  final AttractionApiCardController attractionController =
-      Get.put(AttractionApiCardController());
-  final PackageApiCardController packageController =
-      Get.put(PackageApiCardController());
+  final AttractionApiCardController attractionController = Get.put(AttractionApiCardController());
+  final PackageApiCardController packageController = Get.put(PackageApiCardController());
 
   final LocationController locationController = Get.put(LocationController());
 
@@ -116,10 +115,7 @@ class HomeScreen extends StatelessWidget {
                                     () => Text(
                                       '${locationController.address.value}',
                                       // 'Location',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12.sp,
-                                          fontFamily: 'Lato'),
+                                      style: TextStyle(color: Colors.white, fontSize: 12.sp, fontFamily: 'Lato'),
                                     ),
                                   ),
                                 ],
@@ -170,72 +166,15 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  // Padding(
-                                  //   padding: EdgeInsets.only(left: 16),
-                                  //   child: TitleText(text: 'Nearby Places'),
-                                  // ),
-                                  // SizedBox(
-                                  //   height: 10,
-                                  // ),
-                                  // Container(
-                                  //   height: 23.h,
-                                  //   decoration: BoxDecoration(
-                                  //       borderRadius:
-                                  //           BorderRadius.circular(20)),
-                                  //   width: MediaQuery.of(context).size.width,
-                                  //   child: CarouselSlider(
-                                  //     options: CarouselOptions(
-                                  //       autoPlay: true,
-                                  //       aspectRatio: 2.0,
-                                  //       enlargeCenterPage: true,
-                                  //       // viewportFraction: 1,
-                                  //     ),
-                                  //     items: imageSliders,
-                                  //   ),
-                                  // ),
 
-                                  //start
-
-                                  // Container(
-                                  //   height: 23.h,
-                                  //   decoration: BoxDecoration(
-                                  //       borderRadius:
-                                  //           BorderRadius.circular(20)),
-                                  //   width: MediaQuery.of(context).size.width,
-                                  //   child: CarouselSlider(
-                                  //     options: CarouselOptions(
-                                  //       autoPlay: true,
-                                  //       aspectRatio: 2.0,
-                                  //       enlargeCenterPage: true,
-                                  //       // viewportFraction: 1,
-                                  //     ),
-                                  //     items: [
-                                  //       nearbySliderWidget(
-                                  //           'assets/images/ads.png'),
-                                  //       nearbySliderWidget(
-                                  //           'assets/images/JCB.jpg'),
-                                  //           nearbySliderWidget(
-                                  //           'assets/images/background.jpg'),
-                                  //     ],
-                                  //   ),
-                                  // ),
-
-                                  //end
-
-                                  // SizedBox(
-                                  //   height: 10,
-                                  // ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8),
-                                          child:
-                                              TitleText(text: 'Trif Switches'),
+                                          padding: const EdgeInsets.only(left: 8),
+                                          child: TitleText(text: 'Trif Switches'),
                                         ),
                                         SizedBox(
                                           height: 10,
@@ -245,14 +184,23 @@ class HomeScreen extends StatelessWidget {
                                           height: 10,
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8),
+                                          padding: const EdgeInsets.only(left: 8),
+                                          child: TitleText(text: 'Trifs Vodcasts'),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        VodcastsHomePage(),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 8),
                                           child: GestureDetector(
                                             onTap: () {
                                               print(list[0]);
                                             },
-                                            child: TitleText(
-                                                text: 'Recommended Packages'),
+                                            child: TitleText(text: 'Recommended Packages'),
                                           ),
                                         ),
                                         SizedBox(
@@ -295,16 +243,12 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          Color.fromARGB(200, 0, 0, 0),
-                          Color.fromARGB(0, 0, 0, 0)
-                        ],
+                        colors: [Color.fromARGB(200, 0, 0, 0), Color.fromARGB(0, 0, 0, 0)],
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
                       ),
                     ),
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                    padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                     // child: Text(
                     //   'No. ${imgList.indexOf(item)} image',
                     //   style: TextStyle(
@@ -321,6 +265,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 class PromotedHomePage extends StatelessWidget {
   PromotedHomePage({
@@ -341,16 +287,10 @@ class PromotedHomePage extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             child: CarouselSlider.builder(
               itemCount: 3,
-              options: CarouselOptions(
-                  autoPlay: true,
-                  aspectRatio: 2.0,
-                  enlargeCenterPage: false,
-                  viewportFraction: 1
+              options: CarouselOptions(autoPlay: true, aspectRatio: 2.0, enlargeCenterPage: false, viewportFraction: 1
                   // viewportFraction: 1,
                   ),
-              itemBuilder:
-                  (BuildContext context, int index, int pageViewIndex) =>
-                      GestureDetector(
+              itemBuilder: (BuildContext context, int index, int pageViewIndex) => GestureDetector(
                 onTap: () {
                   Get.toNamed('/promotedsinglepage', arguments: [
                     promotedPackageController.promotedPackageData.value[index].district,
@@ -361,46 +301,44 @@ class PromotedHomePage extends StatelessWidget {
                     promotedPackageController.promotedPackageData.value[index].type,
                     promotedPackageController.promotedPackageData.value[index].id,
                     promotedPackageController.promotedPackageData.value[index].agencyId,
-
                   ]);
                 },
                 child: Container(
                   margin: EdgeInsets.all(5.0),
                   child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
                       child: Container(
                         color: Color.fromARGB(255, 192, 192, 192),
                         child: Stack(
                           children: <Widget>[
-                            promotedPackageController.promotedPackageData
-                                        .value[index].image!.isEmpty ||
-                                    promotedPackageController
-                                            .promotedPackageData
-                                            .value[index]
-                                            .image ==
-                                        null
-                                ? Image.asset(
-                                    'assets/images/no_image/noimage_landscape.jpeg',
-                                    fit: BoxFit.cover,
-                                    width: 1000.0)
-                                : Image.network(
-                                    Api.imageUrl +
-                                        '${promotedPackageController.promotedPackageData.value[index].image}',
-                                    fit: BoxFit.cover,
-                                    width: 1000.0),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: promotedPackageController.promotedPackageData.value[index].image!.isEmpty ||
+                                      promotedPackageController.promotedPackageData.value[index].image == null
+                                  ? Image.asset('assets/images/no_image/noimage_landscape.jpeg', fit: BoxFit.cover, width: 1000.0)
+                                  : CachedNetworkImage(
+                                      imageUrl: Api.imageUrl + '${promotedPackageController.promotedPackageData.value[index].image}',
+                                      fit: BoxFit.cover,
+                                      width: 1000,
+                                    ),
+                            ),
+
+                            // Image.network(
+                            //     Api.imageUrl +
+                            //         '${promotedPackageController.promotedPackageData.value[index].image}',
+                            //     fit: BoxFit.cover,
+                            //     width: 1000.0),
                             Positioned(
                                 top: 0,
                                 child: Container(
                                   // width: 60.w,
                                   decoration: BoxDecoration(
                                     color: Colors.grey.withOpacity(0.5),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5.0)),
+                                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                   ),
 
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 4, vertical: 2),
+                                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                                     child: Text('Promoted',
                                         style: TextStyle(
                                           fontSize: 15,

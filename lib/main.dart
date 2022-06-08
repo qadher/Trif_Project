@@ -13,6 +13,7 @@ import 'package:trip_calicut/screens/home/attractionsinglepage/attractionsinglep
 import 'package:trip_calicut/screens/home/homeinnerscreen.dart';
 import 'package:trip_calicut/screens/home/homescreen.dart';
 import 'package:trip_calicut/screens/home/homesinglepage/homesinglepagepackage.dart';
+import 'package:trip_calicut/screens/home/homesinglepage/vodcastsinglepage.dart';
 import 'package:trip_calicut/screens/home/webviewsinglepage.dart';
 import 'package:trip_calicut/screens/homestay/homestayscreen.dart';
 import 'package:trip_calicut/screens/homestay/singlepage/homestaysinglepage.dart';
@@ -107,6 +108,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/agencysinglepage', page: () => AgencySinglePages()),
           GetPage(name: '/promotedsinglepage', page: () => PromotedSinglePage()),
           GetPage(name: '/fullscreenimage', page: () => FullScreenImage()),
+          GetPage(name: '/vodcastSinglePage', page: () => VodcastSinglePage()),
           
         ],
       );

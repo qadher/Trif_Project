@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/controllers/truckingpackageapicardcontroller.dart';
@@ -6,9 +7,9 @@ import '../../../constant/api.dart';
 import '../../home/components/titletext.dart';
 
 class PackageCardTrecking extends StatelessWidget {
-  final TruckingPackageApiCardController  controller = Get.put(TruckingPackageApiCardController());
+  final TruckingPackageApiCardController controller = Get.put(TruckingPackageApiCardController());
 
-   PackageCardTrecking({
+  PackageCardTrecking({
     Key? key,
   }) : super(key: key);
 
@@ -29,18 +30,18 @@ class PackageCardTrecking extends StatelessWidget {
           ),
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              Get.toNamed('/truckingsinglepage',arguments: [
-                 controller.truckingPackageData.value[index].id,
-                
-                 controller.truckingPackageData.value[index].desc,
-                 controller.truckingPackageData.value[index].inclusion,
-                 controller.truckingPackageData.value[index].exclusion,
-                
-                 
-                 ],  );
+              Get.toNamed(
+                '/truckingsinglepage',
+                arguments: [
+                  controller.truckingPackageData.value[index].id,
+                  controller.truckingPackageData.value[index].desc,
+                  controller.truckingPackageData.value[index].inclusion,
+                  controller.truckingPackageData.value[index].exclusion,
+                ],
+              );
             },
             child: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -51,36 +52,25 @@ class PackageCardTrecking extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      controller.truckingPackageData.value[index].image!.isEmpty ||
-                              controller.truckingPackageData.value[index].image ==
-                                  null
-                          ? Container(
-                              height: 130,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20)),
-                                image: DecorationImage(
-                                  image: AssetImage(
+                      Container(
+                        height: 130,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                        ),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                            child: controller.truckingPackageData.value[index].image!.isEmpty ||
+                                    controller.truckingPackageData.value[index].image == null
+                                ? Image.asset(
                                     'assets/images/no_image/noimage_landscape.jpeg',
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            )
-                          : Container(
-                              height: 130,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20)),
-                                image: DecorationImage(
-                                  image: NetworkImage(Api.imageUrl +
-                                      '${controller.truckingPackageData.value[index].image}'),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
+                                    fit: BoxFit.cover,
+                                  )
+                                : CachedNetworkImage(
+                                    imageUrl: Api.imageUrl + '${controller.truckingPackageData.value[index].image}',
+                                    fit: BoxFit.cover,
+                                  )),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -94,8 +84,7 @@ class PackageCardTrecking extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: MediaQuery.of(context).size.width *
-                                            0.5,
+                                        width: MediaQuery.of(context).size.width * 0.5,
                                         child: Text(
                                           '${controller.truckingPackageData.value[index].name}',
                                           overflow: TextOverflow.ellipsis,
@@ -104,8 +93,7 @@ class PackageCardTrecking extends StatelessWidget {
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'Lato',
-                                              color:
-                                                  Colors.black.withOpacity(0.5)),
+                                              color: Colors.black.withOpacity(0.5)),
                                         ),
                                       ),
                                       Row(
@@ -115,24 +103,15 @@ class PackageCardTrecking extends StatelessWidget {
                                             size: 18,
                                             color: Color(0xFF00A6F6),
                                           ),
-                                          controller
-                                                          .truckingPackageData
-                                                          .value[index]
-                                                          .district ==
-                                                      null ||
-                                                  controller
-                                                      .truckingPackageData
-                                                      .value[index]
-                                                      .district!
-                                                      .isEmpty
+                                          controller.truckingPackageData.value[index].district == null ||
+                                                  controller.truckingPackageData.value[index].district!.isEmpty
                                               ? Text(
                                                   'Wayanad',
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.bold,
                                                       fontFamily: 'Lato',
-                                                      color: Colors.black
-                                                          .withOpacity(0.5)),
+                                                      color: Colors.black.withOpacity(0.5)),
                                                 )
                                               : Text(
                                                   '${controller.truckingPackageData.value[index].district}',
@@ -140,8 +119,7 @@ class PackageCardTrecking extends StatelessWidget {
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.bold,
                                                       fontFamily: 'Lato',
-                                                      color: Colors.black
-                                                          .withOpacity(0.5)),
+                                                      color: Colors.black.withOpacity(0.5)),
                                                 ),
                                         ],
                                       ),
@@ -155,10 +133,7 @@ class PackageCardTrecking extends StatelessWidget {
                                           '₹${controller.truckingPackageData.value[index].offerAmount}',
                                           maxLines: 1,
                                           style: TextStyle(
-                                              fontFamily: 'Lato',
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color(0xFF00A6F6)),
+                                              fontFamily: 'Lato', fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF00A6F6)),
                                         ),
                                         Text(
                                           '₹${controller.truckingPackageData.value[index].avgAmount}',
@@ -168,8 +143,7 @@ class PackageCardTrecking extends StatelessWidget {
                                               fontSize: 16,
                                               fontFamily: 'Lato',
                                               // line text
-                                              decoration:
-                                                  TextDecoration.lineThrough),
+                                              decoration: TextDecoration.lineThrough),
                                         ),
                                         Text(
                                           '${controller.truckingPackageData.value[index].advAmount}%Off',
@@ -195,18 +169,12 @@ class PackageCardTrecking extends StatelessWidget {
                                         text: TextSpan(children: [
                                       TextSpan(
                                         text: 'Provided by ',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            color:
-                                                Color.fromARGB(255, 58, 58, 58)),
+                                        style: TextStyle(fontSize: 10, color: Color.fromARGB(255, 58, 58, 58)),
                                       ),
                                       TextSpan(
                                           text: 'Jiss Travels',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 65, 64, 64))),
+                                          style:
+                                              TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 65, 64, 64))),
                                     ])),
                                   ),
                                 ),

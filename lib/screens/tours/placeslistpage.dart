@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -6,16 +7,14 @@ import 'package:trip_calicut/constant/api.dart';
 import '../../../controllers/keraladistrictcardcontroller.dart';
 
 class PlacesListPage extends StatelessWidget {
-  final KeralaDistrictCardController controller =
-      Get.put(KeralaDistrictCardController());
+  final KeralaDistrictCardController controller = Get.put(KeralaDistrictCardController());
 
   final placeName = Get.arguments[0];
-  
 
   PlacesListPage({
     Key? key,
   }) : super(key: key);
-List places = [];
+  List places = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,17 +42,16 @@ List places = [];
           width: MediaQuery.of(context).size.width,
           child: Obx(
             () {
-              
               if (controller.isLoading.value) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               } else {
                 for (var i = 0; i < controller.districtData.value.length; i++) {
-                if (controller.districtData.value[i].district == placeName) {
-                  places.add(controller.districtData.value[i]);
+                  if (controller.districtData.value[i].district == placeName) {
+                    places.add(controller.districtData.value[i]);
+                  }
                 }
-              }
                 return GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -74,42 +72,27 @@ List places = [];
                             },
                             child: Column(
                               children: [
-                                places[index].image!
-                                            .isEmpty ||
-                                        places[index]
-                                                .image ==
-                                            null
-                                    ? Container(
-                                        // width: MediaQuery.of(context).size.width * 0.25,
-                                        height: 10.h,
-
-                                        decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/imageone.jpg'),
-                                                fit: BoxFit.cover),
-                                            color: Color.fromARGB(
-                                                255, 134, 134, 134),
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        // child: Center(child: Text('$index')),
-                                      )
-                                    : Container(
-                                        // width: MediaQuery.of(context).size.width * 0.25,
-                                        height: 10.h,
-
-                                        decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: NetworkImage(Api
-                                                        .imageUrl +
-                                                    '${places[index].image}'),
-                                                fit: BoxFit.cover),
-                                            color: Color.fromARGB(
-                                                255, 219, 219, 219),
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        // child: Center(child: Text('$index')),
-                                      ),
+                                Container(
+                                  height: 10.h,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage('assets/images/no_image/noimage_square.jpeg'), fit: BoxFit.cover),
+                                      color: Color.fromARGB(255, 134, 134, 134),
+                                      borderRadius: BorderRadius.circular(20)),
+                                  // child: Center(child: Text('$index')),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    child: places[index].image!.isEmpty || places[index].image == null
+                                        ? Image.asset(
+                                            'assets/images/imageone.jpg',
+                                            fit: BoxFit.cover,
+                                          )
+                                        : CachedNetworkImage(
+                                            imageUrl: Api.imageUrl + '${places[index].image}',
+                                            fit: BoxFit.cover,
+                                          ),
+                                  ),
+                                ),
                                 SizedBox(
                                   height: 5,
                                 ),

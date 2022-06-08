@@ -10,14 +10,14 @@ import '../hive/controller/db_controller.dart';
 import '../services/apiservice.dart';
 
 class PromotedSinglePage extends StatelessWidget {
-  final district = Get.arguments[0];
+  final String district = Get.arguments[0];
   final image = Get.arguments[1];
-  final amount = Get.arguments[2];
-  final days = Get.arguments[3];
+  final int amount = Get.arguments[2];
+  final int days = Get.arguments[3];
   final controller = Get.arguments[4];
-  final type = Get.arguments[5];
-  final itemId = Get.arguments[6];
-  final agencyId = Get.arguments[7];
+  final String type = Get.arguments[5];
+  final int itemId = Get.arguments[6];
+  final int agencyId = Get.arguments[7];
   
   final DbController = Get.put(DBController());
   IconData? icon;

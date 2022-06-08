@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
@@ -31,8 +32,7 @@ Future<AttracationSinglePageModel> fetchSinglePage(int id) async {
 }
 
 Future<HouseBoatGalleryModel> fetchGallery(int id) async {
-  final response =
-      await http.post(Uri.parse(Api.apiUrl + 'houseboat/gallery/$id'));
+  final response = await http.post(Uri.parse(Api.apiUrl + 'houseboat/gallery/$id'));
 
 // Appropriate action depending upon the
 // server response
@@ -53,7 +53,7 @@ class AttractionSinglePage extends StatefulWidget {
 class _AttractionSinglePageState extends State<AttractionSinglePage> {
   Future<AttracationSinglePageModel>? futurePackage;
   Future<HouseBoatGalleryModel>? futureGallery;
-   final DbController = Get.put(DBController());
+  final DbController = Get.put(DBController());
   IconData? icon;
 
   @override
@@ -88,88 +88,58 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                               Stack(
                                 clipBehavior: Clip.none,
                                 children: [
-                                  snapshot.data!.attraction!.image!.isEmpty ||
-                                          snapshot.data!.attraction!.image ==
-                                              null
+                                  snapshot.data!.attraction!.image!.isEmpty || snapshot.data!.attraction!.image == null
                                       ? Container(
                                           height: 500,
                                           decoration: BoxDecoration(
                                               image: DecorationImage(
-                                                  colorFilter: ColorFilter.mode(
-                                                      Colors.black
-                                                          .withOpacity(0.4),
-                                                      BlendMode.darken),
-                                                  image: AssetImage(
-                                                      'assets/images/imageone.jpg'),
+                                                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.darken),
+                                                  image: AssetImage('assets/images/imageone.jpg'),
                                                   fit: BoxFit.cover),
                                               color: Colors.black),
                                         )
                                       : Container(
                                           height: 500,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  colorFilter: ColorFilter.mode(
-                                                      Colors.black
-                                                          .withOpacity(0.4),
-                                                      BlendMode.darken),
-                                                  image: NetworkImage(
-                                                      Api.imageUrl +
-                                                          snapshot.data!
-                                                              .attraction!.image
-                                                              .toString()),
-                                                  fit: BoxFit.cover),
-                                              color: Colors.black),
+                                          color: Colors.grey,
+                                          child: CachedNetworkImage(
+                                            imageUrl: Api.imageUrl + snapshot.data!.attraction!.image.toString(),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                   Positioned(
                                       bottom: 75,
                                       width: MediaQuery.of(context).size.width,
                                       child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 18),
+                                        padding: EdgeInsets.symmetric(horizontal: 18),
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
                                           children: [
                                             Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.80,
+                                                  width: MediaQuery.of(context).size.width * 0.80,
                                                   child: Text(
                                                     //first letter caps and rest lower
                                                     //split with two words
-                                                    snapshot
-                                                        .data!.attraction!.name
-                                                        .toString(),
+                                                    snapshot.data!.attraction!.name.toString(),
                                                     maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
+                                                    overflow: TextOverflow.ellipsis,
 
                                                     //     .substring(0, 1)
                                                     //     .toUpperCase() +
                                                     // controller.packageData.value.name!
                                                     //     .substring(1)
                                                     //     .toLowerCase(),
-                                                    style: TextStyle(
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.white),
+                                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
                                                   ),
                                                 ),
                                                 SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  snapshot.data!.attraction!
-                                                              .district ==
-                                                          null
+                                                  snapshot.data!.attraction!.district == null
                                                       ? 'Kerala'
                                                       : "${snapshot.data!.attraction!.district},${snapshot.data!.attraction!.state}",
                                                   style: TextStyle(
@@ -179,10 +149,18 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                 ),
                                               ],
                                             ),
-                                             InkWell(
-                                              onTap: ()async {
-
-                                             await DbController.updateFav(name: snapshot.data!.attraction!.name.toString(), item: TrifsDB(id: itemId, type: _type, image: snapshot.data!.attraction!.image!, title: snapshot.data!.attraction!.name.toString(), desc: snapshot.data!.attraction!.desc, fav: true),);
+                                            InkWell(
+                                              onTap: () async {
+                                                await DbController.updateFav(
+                                                  name: snapshot.data!.attraction!.name.toString(),
+                                                  item: TrifsDB(
+                                                      id: itemId,
+                                                      type: _type,
+                                                      image: snapshot.data!.attraction!.image!,
+                                                      title: snapshot.data!.attraction!.name.toString(),
+                                                      desc: snapshot.data!.attraction!.desc,
+                                                      fav: true),
+                                                );
                                                 final data = RepositoryBox.getBox();
                                                 // print(DbController.observableBox.values.toList());
                                                 // print(DbController.observableBox.length);
@@ -191,17 +169,13 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                 // print(snapshot.data!.houseboats!.image!);
                                                 // print(snapshot.data!.houseboats!.name.toString());
                                                 DbController.updateIcon(name: snapshot.data!.attraction!.name!);
-                                                setState(() {
-                                                  
-                                                });
+                                                setState(() {});
                                                 // DbController.observableBox.clear();
                                               },
-
                                               child: Icon(
                                                 icon,
                                                 size: 30,
-                                                color: Color.fromARGB(
-                                                    255, 160, 14, 14),
+                                                color: Color.fromARGB(255, 160, 14, 14),
                                               ),
                                             ),
                                           ],
@@ -214,24 +188,18 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                       height: 60,
                                       child: Center(
                                         child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 18, vertical: 8),
+                                          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                                           child: Text(
                                             '${snapshot.data!.attraction!.desc}/-',
                                             maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white),
+                                            style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white),
                                           ),
                                         ),
                                       ),
                                       decoration: BoxDecoration(
                                           color: Color(0xff00A6F6),
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(40),
-                                              topRight: Radius.circular(40))),
+                                          borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40))),
                                     ),
                                   ),
                                 ],
@@ -239,13 +207,10 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                               Container(
                                 color: Color(0xff00A6F6),
                                 child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.65,
+                                  height: MediaQuery.of(context).size.height * 0.65,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(40),
-                                        topRight: Radius.circular(40)),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
                                   ),
                                   child: Column(
                                     children: [
@@ -256,11 +221,7 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 4,
-                                                    right: 8,
-                                                    left: 8,
-                                                    bottom: 8),
+                                                padding: const EdgeInsets.only(top: 4, right: 8, left: 8, bottom: 8),
                                                 child: Container(
                                                   height: 40,
                                                   // width: 95,
@@ -268,9 +229,7 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                   //     top: 20, left: 20, right: 20),
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
+                                                    borderRadius: BorderRadius.circular(20),
                                                     // border: Border.all(
                                                     //     color: Colors.grey.shade400,
                                                     //     width: 0),
@@ -278,27 +237,21 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                   child: TabBar(
                                                     labelStyle: TextStyle(
                                                       fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.bold,
+                                                      fontWeight: FontWeight.bold,
                                                       color: Colors.black,
                                                     ),
-                                                    unselectedLabelStyle:
-                                                        TextStyle(
+                                                    unselectedLabelStyle: TextStyle(
                                                       fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.bold,
+                                                      fontWeight: FontWeight.bold,
                                                       color: Colors.black,
                                                     ),
                                                     indicator: BoxDecoration(
                                                       color: Color(0xffE5E5E5),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
+                                                      borderRadius: BorderRadius.circular(20),
                                                     ),
                                                     // isScrollable: true,
                                                     labelColor: Colors.black,
-                                                    unselectedLabelColor:
-                                                        Colors.black,
+                                                    unselectedLabelColor: Colors.black,
                                                     tabs: [
                                                       Text(
                                                         'History',
@@ -319,36 +272,22 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                               ),
                                               Container(
                                                 constraints: BoxConstraints(
-                                                  maxHeight:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.50,
-                                                  minHeight:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.50,
+                                                  maxHeight: MediaQuery.of(context).size.height * 0.50,
+                                                  minHeight: MediaQuery.of(context).size.height * 0.50,
                                                 ),
                                                 child: TabBarView(
                                                   children: <Widget>[
                                                     SingleChildScrollView(
                                                       child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(8.0),
+                                                        padding: const EdgeInsets.all(8.0),
                                                         child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
-                                                            SizedBox(
-                                                                height: 10),
+                                                            SizedBox(height: 10),
 
                                                             Text(
                                                               '${snapshot.data!.attraction!.history}',
-                                                              style: TextStyle(
-                                                                  fontSize: 13),
+                                                              style: TextStyle(fontSize: 13),
                                                             ),
                                                             // SizedBox(
                                                             //     height: 20),
@@ -384,8 +323,7 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                             //           13),
                                                             // ),
 
-                                                            SizedBox(
-                                                                height: 30),
+                                                            SizedBox(height: 30),
                                                           ],
                                                         ),
                                                       ),
@@ -393,43 +331,22 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                     // EducationList(),
                                                     // EducationList(),
                                                     Container(
-                                                        color: Color.fromARGB(
-                                                            255, 253, 251, 251),
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                right: 16,
-                                                                left: 16,
-                                                                bottom: 20),
+                                                        color: Color.fromARGB(255, 253, 251, 251),
+                                                        padding: EdgeInsets.only(right: 16, left: 16, bottom: 20),
                                                         // color: Colors.red,
-                                                        child:
-                                                            ListView.separated(
-                                                          separatorBuilder:
-                                                              (context,
-                                                                      index) =>
-                                                                  SizedBox(
+                                                        child: ListView.separated(
+                                                          separatorBuilder: (context, index) => SizedBox(
                                                             height: 10,
                                                           ),
                                                           itemCount: 5,
-                                                          itemBuilder:
-                                                              (context, index) {
+                                                          itemBuilder: (context, index) {
                                                             return Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        236,
-                                                                        235,
-                                                                        235),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
+                                                              decoration: BoxDecoration(
+                                                                color: Color.fromARGB(255, 236, 235, 235),
+                                                                borderRadius: BorderRadius.circular(5),
                                                               ),
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(4),
-                                                                      // child: VodcastTile(),
+                                                              padding: EdgeInsets.all(4),
+                                                              // child: VodcastTile(),
                                                               // child: ListTile(
                                                               //   //leading
                                                               //   title: Text(
@@ -446,71 +363,48 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                         )),
                                                     // EducationList(),
 
-                                                    FutureBuilder<
-                                                        HouseBoatGalleryModel>(
+                                                    FutureBuilder<HouseBoatGalleryModel>(
                                                       future: futureGallery,
-                                                      builder:
-                                                          (context, snapshot) {
+                                                      builder: (context, snapshot) {
                                                         if (snapshot.hasData) {
                                                           return Container(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    horizontal:
-                                                                        16),
+                                                            padding: EdgeInsets.symmetric(horizontal: 16),
                                                             // color: Colors.red,
-                                                            child: GridView
-                                                                .builder(
-                                                              physics:
-                                                                  NeverScrollableScrollPhysics(),
+                                                            child: GridView.builder(
+                                                              physics: NeverScrollableScrollPhysics(),
                                                               shrinkWrap: true,
-                                                              gridDelegate:
-                                                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                                                crossAxisCount:
-                                                                    3,
-                                                                crossAxisSpacing:
-                                                                    15,
-                                                                mainAxisSpacing:
-                                                                    5,
-                                                                mainAxisExtent:
-                                                                    14.h,
+                                                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                                                crossAxisCount: 3,
+                                                                crossAxisSpacing: 15,
+                                                                mainAxisSpacing: 5,
+                                                                mainAxisExtent: 14.h,
                                                               ),
-                                                              itemCount:
-                                                                  snapshot
-                                                                      .data!
-                                                                      .images!
-                                                                      .length,
-                                                              itemBuilder:
-                                                                  (BuildContext
-                                                                          context,
-                                                                      int index) {
+                                                              itemCount: snapshot.data!.images!.length,
+                                                              itemBuilder: (BuildContext context, int index) {
                                                                 return Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(4),
-                                                                  child: snapshot
-                                                                              .data!
-                                                                              .images!
-                                                                              .isEmpty ||
-                                                                          snapshot.data!.images ==
-                                                                              null
+                                                                  padding: const EdgeInsets.all(4),
+                                                                  child: snapshot.data!.images!.isEmpty || snapshot.data!.images == null
                                                                       ? Container(
                                                                           // width: MediaQuery.of(context).size.width * 0.25,
-                                                                          height:
-                                                                              MediaQuery.of(context).size.height * 0.10,
+                                                                          height: MediaQuery.of(context).size.height * 0.10,
 
                                                                           decoration: BoxDecoration(
-                                                                              image: DecorationImage(image: AssetImage('assets/images/imageone.jpg'), fit: BoxFit.cover),
+                                                                              image: DecorationImage(
+                                                                                  image: AssetImage('assets/images/imageone.jpg'),
+                                                                                  fit: BoxFit.cover),
                                                                               color: Colors.amber,
                                                                               borderRadius: BorderRadius.circular(20)),
                                                                           // child: Center(child: Text('$index')),
                                                                         )
                                                                       : Container(
                                                                           // width: MediaQuery.of(context).size.width * 0.25,
-                                                                          height:
-                                                                              MediaQuery.of(context).size.height * 0.10,
+                                                                          height: MediaQuery.of(context).size.height * 0.10,
 
                                                                           decoration: BoxDecoration(
-                                                                              image: DecorationImage(image: NetworkImage(Api.imageUrl + '${snapshot.data!.images![index].image}'), fit: BoxFit.cover),
+                                                                              image: DecorationImage(
+                                                                                  image: NetworkImage(Api.imageUrl +
+                                                                                      '${snapshot.data!.images![index].image}'),
+                                                                                  fit: BoxFit.cover),
                                                                               color: Colors.amber,
                                                                               borderRadius: BorderRadius.circular(20)),
                                                                           // child: Center(child: Text('$index')),
@@ -519,10 +413,8 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                                               },
                                                             ),
                                                           );
-                                                        } else if (snapshot
-                                                            .hasError) {
-                                                          return Text(
-                                                              "${snapshot.error}");
+                                                        } else if (snapshot.hasError) {
+                                                          return Text("${snapshot.error}");
                                                         }
                                                         return CircularProgressIndicator();
                                                       },
@@ -561,8 +453,7 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                   type: 'Enquiry',
                                   packageType: 'Packages',
                                   packageId: '${snapshot.data!.attraction!.id}',
-                                  agencyId:
-                                      '1',
+                                  agencyId: '1',
                                   customerId: '111');
                               // succes show dialog
                               showDialog(
@@ -570,8 +461,7 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                   builder: (BuildContext context) {
                                     return AlertDialog(
                                       title: Text('Enquiry'),
-                                      content: Text(
-                                          'Thank you for your Enquiry. We will respond as soon as possible'),
+                                      content: Text('Thank you for your Enquiry. We will respond as soon as possible'),
                                       actions: <Widget>[
                                         TextButton(
                                           child: Text('Ok'),
@@ -582,25 +472,18 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                                       ],
                                     );
                                   });
-
-                              
                             },
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Color(0xff00A6F6),
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(50),
-                                    topLeft: Radius.circular(50)),
+                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), topLeft: Radius.circular(50)),
                               ),
                               alignment: Alignment.center,
                               height: 45,
                               width: 150,
                               child: Text(
                                 'Enquiry Now',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                               ),
                             ),
                           ),
@@ -610,33 +493,26 @@ class _AttractionSinglePageState extends State<AttractionSinglePage> {
                           Container(
                             decoration: BoxDecoration(
                               color: Color(0xff00A6F6),
-                              borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(50),
-                                  topRight: Radius.circular(50)),
+                              borderRadius: BorderRadius.only(bottomRight: Radius.circular(50), topRight: Radius.circular(50)),
                             ),
                             alignment: Alignment.center,
                             height: 45,
                             width: 150,
                             child: GestureDetector(
-                              onTap: () async{
+                              onTap: () async {
                                 enquiryMethod(
-                                  type: 'Call',
-                                  packageType: 'Packages',
-                                  packageId: '${snapshot.data!.attraction!.id}',
-                                  agencyId:
-                                      '1',
-                                  customerId: '111');
+                                    type: 'Call',
+                                    packageType: 'Packages',
+                                    packageId: '${snapshot.data!.attraction!.id}',
+                                    agencyId: '1',
+                                    customerId: '111');
                                 // _callNumber();
                                 // bool? res = await FlutterPhoneDirectCaller.callNumber('${snapshot.data!.agency!.mobile}');
                                 bool? res = await FlutterPhoneDirectCaller.callNumber('6238265477');
-
                               },
                               child: Text(
                                 'Call Now',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                               ),
                             ),
                           ),

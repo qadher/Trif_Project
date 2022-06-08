@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/constant/api.dart';
@@ -7,21 +8,15 @@ import 'package:trip_calicut/controllers/agencyapicontroller.dart';
 
 import '../../../widgets.dart';
 
-
-
 List<int> listHouseboatId = [];
 
 class AgencyCard extends StatelessWidget {
-  
-      final AgencyHouseBoatController agencyHouseBoatController =
-      Get.put(AgencyHouseBoatController());
+  final AgencyHouseBoatController agencyHouseBoatController = Get.put(AgencyHouseBoatController());
 
   AgencyCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-   
-
     return Container(
       height: 125,
       child: Obx(
@@ -41,7 +36,9 @@ class AgencyCard extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     // print(controller.agencyData.value[8].name);
-                     Get.toNamed('/agencysinglepage',  );
+                    Get.toNamed('/agencysinglepage', arguments: [
+                      agencyHouseBoatController.agencyData.value[index].id,
+                    ]);
                     print('HouseBoat id : $listHouseboatId');
                     // print(listHouseboatId);
                   },
@@ -50,17 +47,23 @@ class AgencyCard extends StatelessWidget {
                     child: Container(
                       child: Column(
                         children: [
-                          agencyHouseBoatController.agencyData.value[index].logo!.isEmpty
-                              ? CircleAvatar(
-                                  radius: 40,
-                                  backgroundImage:
-                                      AssetImage('assets/images/no_image/noimage_square.jpeg'),
-                                )
-                              : CircleAvatar(
-                                  radius: 40,
-                                  backgroundImage: NetworkImage(Api.imageUrl +
-                                      '/${agencyHouseBoatController.agencyData.value[index].logo}'),
-                                ),
+                          CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            radius: 40,
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: agencyHouseBoatController.agencyData.value[index].logo!.isEmpty ||
+                                        agencyHouseBoatController.agencyData.value[index].logo == null
+                                    ? Image.asset(
+                                        'assets/images/no_image/noimage_square.jpeg',
+                                        fit: BoxFit.cover,
+                                      )
+                                    : CachedNetworkImage(
+                                        imageUrl: Api.imageUrl + '/${agencyHouseBoatController.agencyData.value[index].logo}',
+                                        fit: BoxFit.cover,
+                                      )),
+                          ),
+
                           // CircleAvatar(
                           //   radius: 40.sp,
                           //   backgroundImage: NetworkImage(Api.imageUrl +

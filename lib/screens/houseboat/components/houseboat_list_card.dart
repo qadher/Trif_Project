@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/constant/api.dart';
@@ -5,8 +6,7 @@ import 'package:trip_calicut/constant/api.dart';
 import '../../../controllers/houseboatapicardcontroller.dart';
 
 class HouseBoatPackageCard extends StatelessWidget {
-  final HouseboatApiCardController controller =
-      Get.put(HouseboatApiCardController());
+  final HouseboatApiCardController controller = Get.put(HouseboatApiCardController());
 
   HouseBoatPackageCard({
     Key? key,
@@ -45,9 +45,7 @@ class HouseBoatPackageCard extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Container(
                         // padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
 
                         child: Container(
                           width: MediaQuery.of(context).size.width,
@@ -55,51 +53,28 @@ class HouseBoatPackageCard extends StatelessWidget {
                           child: Row(
                             children: [
                               Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.25,
-                                child: controller.houseBoatData.value[index]
-                                            .image!.isEmpty ||
-                                        controller.houseBoatData.value[index]
-                                                .image ==
-                                            null
-                                    ? Container(
-                                        // height: 135,
-                                        // width: 135,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.25,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(15),
-                                              topLeft: Radius.circular(15)),
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/no_image/noimage_square.jpeg'),
-                                            fit: BoxFit.cover,
-
-                                            // NetworkImage(Api.imageUrl + '${controller.houseBoatData.value[index].image}'),
-                                            // fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      )
-                                    : Container(
-                                        // height: 135,
-                                        // width: 135,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.25,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(15),
-                                              topLeft: Radius.circular(15)),
-                                          image: DecorationImage(
-                                            image: NetworkImage(Api.imageUrl +
-                                                '${controller.houseBoatData.value[index].image}'),
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                              ),
+                                  height: MediaQuery.of(context).size.height * 0.25,
+                                  child: Container(
+                                    // height: 135,
+                                    // width: 135,
+                                    width: MediaQuery.of(context).size.width * 0.25,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), topLeft: Radius.circular(15)),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), topLeft: Radius.circular(15)),
+                                      child: controller.houseBoatData.value[index].image!.isEmpty ||
+                                              controller.houseBoatData.value[index].image == null
+                                          ? Image.asset(
+                                              'assets/images/no_image/noimage_square.jpeg',
+                                              fit: BoxFit.cover,
+                                            )
+                                          : CachedNetworkImage(
+                                              imageUrl: Api.imageUrl + '${controller.houseBoatData.value[index].image!}',
+                                              fit: BoxFit.cover,
+                                            ),
+                                    ),
+                                  )),
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.70,
                                 padding: EdgeInsets.all(8),
@@ -125,20 +100,14 @@ class HouseBoatPackageCard extends StatelessWidget {
                                         ),
                                         Text(
                                           '${controller.houseBoatData.value[index].district}',
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color:
-                                                  Colors.black.withOpacity(0.5),
-                                              fontWeight: FontWeight.w500),
+                                          style: TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.5), fontWeight: FontWeight.w500),
                                         ),
                                       ],
                                     ),
                                     Expanded(
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
                                         children: [
                                           Text(
                                             'Verified',
@@ -148,12 +117,10 @@ class HouseBoatPackageCard extends StatelessWidget {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: 'Lato',
-                                                color: Colors.black
-                                                    .withOpacity(0.5)),
+                                                color: Colors.black.withOpacity(0.5)),
                                           ),
                                           Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
+                                            mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
                                               Text(
                                                 '${controller.houseBoatData.value[index].advAmount}%Off',
@@ -178,8 +145,7 @@ class HouseBoatPackageCard extends StatelessWidget {
                                                     fontSize: 16,
                                                     fontFamily: 'Lato',
                                                     // line text
-                                                    decoration: TextDecoration
-                                                        .lineThrough),
+                                                    decoration: TextDecoration.lineThrough),
                                               ),
                                             ],
                                           )

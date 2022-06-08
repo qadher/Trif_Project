@@ -30,13 +30,12 @@ class SearchPage extends StatelessWidget {
             children: [
               heightSizedBox(),
               Padding(
-                
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 // child: Form(
                 //   key: formKey,
                 //   child: CupertinoSearchTextField(
                 //     //suggestions ListTile
-    
+
                 //     onChanged: (value) {
                 //       print(value);
                 //       //call search api
@@ -51,22 +50,18 @@ class SearchPage extends StatelessWidget {
                 //     style: TextStyle(fontSize: 18.sp, color: Colors.black),
                 //   ),
                 // ),
-    
+
                 // search bar with listtile suggestions
                 child: TypeAheadFormField(
-                  
                   textFieldConfiguration: TextFieldConfiguration(
-                    
                     controller: searchController,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.grey.withOpacity(0.4),
                       hintText: 'Search',
-                      hintStyle:
-                          TextStyle(fontSize: 18.sp, color: Colors.black),
+                      hintStyle: TextStyle(fontSize: 18.sp, color: Colors.black),
                       border: InputBorder.none,
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     ),
                     style: TextStyle(fontSize: 18.sp, color: Colors.black),
                   ),
@@ -77,8 +72,7 @@ class SearchPage extends StatelessWidget {
                   itemBuilder: (context, Map<String, dynamic> suggestion) {
                     return ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            Api.imageUrl + '${suggestion['image']}'),
+                        backgroundImage: NetworkImage(Api.imageUrl + '${suggestion['image']}'),
                       ),
                       title: Text(suggestion['name']!),
                     );
@@ -87,20 +81,36 @@ class SearchPage extends StatelessWidget {
                     // go to singlepage with category and id
                     print(suggestion);
                     // print suggestion['id'];
-                    id : (suggestion as Map<String, dynamic>);
-                    category : (suggestion as Map<String, dynamic>);
+                    id:
+                    (suggestion as Map<String, dynamic>);
+                    category:
+                    (suggestion as Map<String, dynamic>);
                     print(suggestion['id']);
-                    if(suggestion['category'] == 'Places'){
-                    print('This is inside Places ${suggestion['id']}');
-
-                      // Get.toNamed('/toursinglepage',arguments: {
-                      //   suggestion['id']
-                      // Get.toNamed('/toursinglepage',arguments: [suggestion['id']]);
-                       
-                      // });
+                    int id = int.parse(suggestion['id']);
+                    if (suggestion['category'] == 'Places') {
+                      Get.toNamed('/toursinglepage', arguments: [id]);
                     }
-                   
-                   
+                   else if (suggestion['category'] == 'Packages') {
+                      Get.toNamed('/homesinglepagepackage', arguments: [id]);
+                    }
+                    else if (suggestion['category'] == 'Houseboat') {
+                      Get.toNamed('/houseboatpackagesinglepage', arguments: [id]);
+                    }
+                    else if (suggestion['category'] == 'Resorts') {
+                      Get.toNamed('/resortsinglepage', arguments: [id]);
+                    }
+                    else if (suggestion['category'] == 'OnlyTravelling') {
+                      Get.toNamed('/toursinglepage', arguments: [id]);
+                    }
+                    else if (suggestion['category'] == 'Camping') {
+                      Get.toNamed('/campingsinglepagepackage', arguments: [id]);
+                    }
+                    else if (suggestion['category'] == 'Trucking') {
+                      Get.toNamed('/truckingsinglepage', arguments: [id]);
+                    }
+                    else if (suggestion['category'] == 'HomeStay') {
+                      Get.toNamed('/homestaysinglepage', arguments: [id]);
+                    }
                   },
                 ),
               ),

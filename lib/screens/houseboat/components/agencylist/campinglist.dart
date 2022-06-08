@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:trip_calicut/constant/api.dart';
+import 'package:trip_calicut/controllers/campingapicardcontroller.dart';
 import 'package:trip_calicut/controllers/jobsapicardcontroller.dart';
 import 'package:trip_calicut/screens/education/education_inner.dart';
 import 'package:trip_calicut/widgets.dart';
 
+
 // import '../job_screen_inner.dart';
 
-class EducationList extends StatelessWidget {
+class CampingList extends StatelessWidget {
   final JobsApiCardController controller = Get.put(JobsApiCardController());
+  final agentId;
+  final CampingApiCardController campingController = Get.put(CampingApiCardController());
 
-  EducationList({
-    Key? key,
+  CampingList({
+    Key? key, this.agentId,
   }) : super(key: key);
 
   @override
@@ -26,14 +31,13 @@ class EducationList extends StatelessWidget {
           return ListView.separated(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: controller.jobsData.value.length,
+            itemCount: campingController.campingData.value.length,
             separatorBuilder: (context, index) => SizedBox(
               height: 10,
             ),
-            itemBuilder: (context, index) => GestureDetector(
+            itemBuilder: (context, index) => campingController.campingData.value[index].agencyId == agentId ? GestureDetector(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (ctx) => EducationInnerScreen()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => EducationInnerScreen()));
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -45,18 +49,32 @@ class EducationList extends StatelessWidget {
                       // height: 105.h,
                       width: double.maxFinite,
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(width: 1, color: Colors.grey),
-                          borderRadius: BorderRadius.circular(20)),
+                          color: Colors.white, border: Border.all(width: 1, color: Colors.grey), borderRadius: BorderRadius.circular(20)),
                       child: Row(
                         children: [
+                          campingController.campingData.value[index].image!.isEmpty ||
+                                campingController.campingData.value[index].image == null ?
                           Container(
                             height: 12.h,
                             width: 26.w,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
-                                image: AssetImage('assets/images/no_image/noimage_square.jpeg'),
+                                image: 
+                                 AssetImage('assets/images/no_image/noimage_square.jpeg'),
+                                 
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ) :
+                          Container(
+                            height: 12.h,
+                            width: 26.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: DecorationImage(
+                                image: 
+                                 NetworkImage(Api.imageUrl + '${campingController.campingData.value[index].image}'),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -68,7 +86,7 @@ class EducationList extends StatelessWidget {
                               Container(
                                 width: 30.w,
                                 child: Text(
-                                  'Package Name',
+                                  '${campingController.campingData.value[index].name}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
@@ -90,10 +108,7 @@ class EducationList extends StatelessWidget {
                                   // ),
                                   Text(
                                     '100+ Successful stories',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.green,
-                                        fontWeight: FontWeight.w500),
+                                    style: TextStyle(fontSize: 14, color: Colors.green, fontWeight: FontWeight.w500),
                                   )
                                 ],
                               ),
@@ -106,38 +121,27 @@ class EducationList extends StatelessWidget {
                                   'Tuition Fee Starts from ₹12,00,000/year.',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black87),
+                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black87),
                                 ),
                               ),
-                              
                             ],
                           )
                         ],
                       ),
                     ),
-                   
                     Positioned(
                         top: 0,
                         right: 0,
                         child: Container(
                           decoration: BoxDecoration(
                               color: Color(0xFF00A6F6).withOpacity(0.4),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20))),
+                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), topRight: Radius.circular(20))),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 14),
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
                             child: Center(
                               child: Text(
                                 '₹40+ Packages',
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54),
+                                style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.black54),
                               ),
                             ),
                           ),
@@ -145,7 +149,8 @@ class EducationList extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            ) :
+            Container(),
           );
         }
       },

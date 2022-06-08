@@ -60,6 +60,7 @@ class SwitchesCard extends StatelessWidget {
           print('trip switches clicked');
           Get.toNamed('/trip-switches-webview', arguments: [
             categoryList.url,
+            categoryList.title,
           ]);
         },
         child: Column(

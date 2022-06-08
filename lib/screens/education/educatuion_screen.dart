@@ -6,13 +6,14 @@ import 'package:trip_calicut/screens/education/components/control_bar.dart';
 import 'package:trip_calicut/screens/home/components/carousel.dart';
 import 'package:trip_calicut/screens/jobs/components/joblist.dart';
 
+import '../../components/promotedpackage.dart';
 import '../home/components/packagecard.dart';
 import '../home/components/titletext.dart';
 import '../tours/components/AppBarWidget.dart';
 import '../../widgets.dart';
 import '../tours/components/categoryscrolllist.dart';
 import '../widgets.dart';
-import 'components/education_list.dart';
+import '../houseboat/components/agencylist/houseboatlist.dart';
 
 class EducationScreen extends StatelessWidget {
   const EducationScreen({Key? key}) : super(key: key);
@@ -38,20 +39,7 @@ class EducationScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // adsBanner(context),
-                Container(
-                  height: 20.h,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                  width: MediaQuery.of(context).size.width,
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                        autoPlay: true,
-                        aspectRatio: 2.0,
-                        enlargeCenterPage: false,
-                        viewportFraction: 1),
-                    items: imageSlidersBanner,
-                  ),
-                ),
+                PromotedPackage(sectionType: 'Education'),
                 heightSizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
@@ -144,9 +132,12 @@ class EducationScreen extends StatelessWidget {
                               ),
                               child: TabBarView(
                                 children: <Widget>[
-                                  EducationList(),
-                                  EducationList(),
-                                  EducationList(),
+                                  // EducationList(),
+                                  // EducationList(),
+                                  // EducationList(),
+                                  Container(),
+                                  Container(),
+                                  Container(),
                                   // Card(
                                   //   color: Color(0xffE5E5E5),
                                   //   child: ListTile(

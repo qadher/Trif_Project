@@ -1,11 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/constant/api.dart';
 import 'package:trip_calicut/controllers/campingapicardcontroller.dart';
 
 class CampPackageCard extends StatelessWidget {
-  final CampingApiCardController controller =
-      Get.put(CampingApiCardController());
+  final CampingApiCardController controller = Get.put(CampingApiCardController());
 
   CampPackageCard({
     Key? key,
@@ -28,8 +28,7 @@ class CampPackageCard extends StatelessWidget {
           ),
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              Get.toNamed('/campingsinglepagepackage',
-                  arguments: [controller.campingData.value[index].id]);
+              Get.toNamed('/campingsinglepagepackage', arguments: [controller.campingData.value[index].id]);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -43,34 +42,25 @@ class CampPackageCard extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      controller.campingData.value[index].image!.isEmpty ||
-                              controller.campingData.value[index].image == null
-                          ? Container(
-                              height: 130,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20)),
-                                image: DecorationImage(
-                                  image:
-                                      AssetImage('assets/images/no_image/noimage_landscape.jpeg'),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            )
-                          : Container(
-                              height: 130,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    topLeft: Radius.circular(20)),
-                                image: DecorationImage(
-                                  image: NetworkImage(Api.imageUrl +
-                                      '${controller.campingData.value[index].image}'),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
+                      Container(
+                          height: 130,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                           
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+                            child: controller.campingData.value[index].image!.isEmpty || controller.campingData.value[index].image == null
+                                ? Image.asset(
+                                    'assets/images/no_image/noimage_landscape.jpeg',
+                                    fit: BoxFit.cover,
+                                  )
+                                : CachedNetworkImage(
+                                    imageUrl: Api.imageUrl + '${controller.campingData.value[index].image}',
+                                    fit: BoxFit.cover,
+                                  ),
+                          )),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -81,13 +71,10 @@ class CampPackageCard extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.5,
+                                        width: MediaQuery.of(context).size.width * 0.5,
                                         child: Text(
                                           '${controller.campingData.value[index].name}',
                                           overflow: TextOverflow.ellipsis,
@@ -96,8 +83,7 @@ class CampPackageCard extends StatelessWidget {
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'Lato',
-                                              color: Colors.black
-                                                  .withOpacity(0.5)),
+                                              color: Colors.black.withOpacity(0.5)),
                                         ),
                                       ),
                                       Row(
@@ -109,11 +95,8 @@ class CampPackageCard extends StatelessWidget {
                                           ),
                                           Text(
                                             '${controller.campingData.value[index].district}',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.black
-                                                    .withOpacity(0.5),
-                                                fontWeight: FontWeight.w500),
+                                            style:
+                                                TextStyle(fontSize: 14, color: Colors.black.withOpacity(0.5), fontWeight: FontWeight.w500),
                                           ),
                                         ],
                                       ),
@@ -121,17 +104,13 @@ class CampPackageCard extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         Text(
                                           '₹${controller.campingData.value[index].offerAmount}',
                                           maxLines: 1,
                                           style: TextStyle(
-                                              fontFamily: 'Lato',
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color(0xFF00A6F6)),
+                                              fontFamily: 'Lato', fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF00A6F6)),
                                         ),
                                         Text(
                                           '₹${controller.campingData.value[index].avgAmount}',
@@ -141,8 +120,7 @@ class CampPackageCard extends StatelessWidget {
                                               fontSize: 16,
                                               fontFamily: 'Lato',
                                               // line text
-                                              decoration:
-                                                  TextDecoration.lineThrough),
+                                              decoration: TextDecoration.lineThrough),
                                         ),
                                         Text(
                                           '${controller.campingData.value[index].advAmount}%Off',
@@ -168,18 +146,12 @@ class CampPackageCard extends StatelessWidget {
                                         text: TextSpan(children: [
                                       TextSpan(
                                         text: 'Provided by ',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            color: Color.fromARGB(
-                                                255, 58, 58, 58)),
+                                        style: TextStyle(fontSize: 10, color: Color.fromARGB(255, 58, 58, 58)),
                                       ),
                                       TextSpan(
                                           text: 'Jiss Travels',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 65, 64, 64))),
+                                          style:
+                                              TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 65, 64, 64))),
                                     ])),
                                   ),
                                 ),

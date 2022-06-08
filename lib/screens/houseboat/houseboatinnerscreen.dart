@@ -10,7 +10,7 @@ import 'package:trip_calicut/screens/tours/components/AppBarWidget.dart';
 import 'package:trip_calicut/screens/tours/components/fixed_top_navigatio.dart';
 import 'package:trip_calicut/widgets.dart';
 
-import '../education/components/education_list.dart';
+import 'components/agencylist/houseboatlist.dart';
 import '../tours/components/staggered_grid.dart';
 
 class HouseBoatInnerScreen extends StatelessWidget {

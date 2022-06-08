@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trip_calicut/constant/api.dart';
@@ -30,15 +31,21 @@ class CampingProviders extends StatelessWidget {
                 child: Container(
                   child: Column(
                     children: [
-                      controller.agencyData.value[index].logo!.isEmpty || controller.agencyData.value[index].logo == null
-                          ? CircleAvatar(
-                              radius: 45,
-                              backgroundImage: AssetImage('assets/images/no_image/noimage_square.jpeg'),
-                            )
-                          : CircleAvatar(
-                              radius: 45,
-                              backgroundImage: NetworkImage(Api.imageUrl + "${controller.agencyData.value[index].logo}"),
-                            ),
+                      CircleAvatar(
+                        radius: 45,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(45),
+                            child: controller.agencyData.value[index].logo!.isEmpty || controller.agencyData.value[index].logo == null
+                                ? Image.asset(
+                                    'assets/images/no_image/noimage_square.jpeg',
+                                    fit: BoxFit.cover,
+                                  )
+                                : CachedNetworkImage(
+                                    imageUrl: Api.imageUrl + "${controller.agencyData.value[index].logo}",
+                                    fit: BoxFit.cover,
+                                  )),
+                      ),
+
                       SizedBox(
                         height: 10,
                       ),
