@@ -41,12 +41,12 @@ dependencies:
   shimmer: ^2.0.0
   geocoding: ^2.0.4
   geolocator: ^8.2.0
-  image_picker: ^0.8.5
+  image_picker: ^0.8.5+3
   hive: ^2.2.1
   hive_flutter: ^1.1.0
   flutter_staggered_animations: ^1.0.0
   webview_flutter: ^3.0.4
-  permission_handler: ^10.0.0
+  permission_handler: ^9.2.0
   cached_network_image: ^3.2.1
   flutter_phone_direct_caller: ^2.1.1
   youtube_parser: ^2.0.0
